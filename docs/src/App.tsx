@@ -5,20 +5,22 @@ import Team from './pages/Team';
 import Events from './pages/Events';
 import Robot from './pages/Robot';
 import Contact from './pages/Contact';
-
 import './App.css';
 
 function App() {
   return (
     <Router basename="/xCellence">
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='team' element={<Team />} />
-          <Route path='events' element={<Events />} />
-          <Route path='robot' element={<Robot />} />
-          <Route path='contact' element={<Contact />} />
+          <Route path="team" element={<Team />} />
+          <Route path="events" element={<Events />} />
+          <Route path="robot" element={<Robot />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
+
+        {/* Fallback for any unmatched routes */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   );
