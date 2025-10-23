@@ -11,7 +11,7 @@ function App() {
   return (
     <Router basename="/xCellence">
       <Routes>
-        <Route path="xCellence" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="team" element={<Team />} />
           <Route path="events" element={<Events />} />
