@@ -1,213 +1,61 @@
-# xCellence FTC Team Website
+# Image Assets Guide
 
-A modern, responsive website for the xCellence FIRST Tech Challenge (FTC) robotics team. Built with React, TypeScript, and Vite.
+This folder should contain the following images for the xCellence FTC website:
 
-## 🎨 Design Features
+## Required Images
 
-- **Modern Black & Orange Theme**: Sleek, professional design with orange accent colors
-- **Fully Responsive**: Optimized for desktop, tablet, and mobile devices
-- **Smooth Animations**: Engaging transitions and hover effects
-- **Intuitive Navigation**: Easy-to-use header with mobile menu support
-- **SEO Friendly**: Clean semantic HTML structure
-
-## 📄 Pages
+### Logo
+- `logo.png` - xCellence team logo (transparent background recommended)
 
 ### Home Page
-- Full-screen hero section with team photo
-- FIRST Tech Challenge mission statement
-- News & achievements section (easily populatable)
-- Sponsors showcase
-- Footer with social media links
+- `team-photo.jpg` - Full team photo for hero section (high resolution, landscape, minimum 1920x1080px)
+- `news-1.jpg` through `news-4.jpg` - News article images
+- `sponsor-1.png` through `sponsor-6.png` - Sponsor logos (transparent background recommended)
 
 ### Team Page
-- Team member profiles with photos
-- Role descriptions
-- Hover effects for interactive experience
-
-### Events Page
-- Upcoming events calendar
-- Past events timeline with achievements
-- Competition history
+- `team-member-1.jpg` through `team-member-6.jpg` - Individual team member photos (portrait orientation, minimum 800x1000px)
 
 ### Robot Page
-- Robot showcase with main photo
-- Technical specifications
-- Key features and innovations
-- Image gallery
+- `robot-main.jpg` - Main robot photo (high resolution, minimum 1200x1200px)
+- `robot-gallery-1.jpg` through `robot-gallery-6.jpg` - Various robot angles and details
 
-### Contact Page
-- Contact form
-- Contact information cards
-- Social media links
-- Email addresses for general inquiries and sponsorships
+## Image Specifications
 
-## 🚀 Getting Started
+### Recommended Formats
+- **Photos**: JPG (optimized for web, 70-85% quality)
+- **Logos**: PNG (with transparency) or SVG (preferred for scalability)
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+### Recommended Sizes
+- **Hero Images**: 1920x1080px or larger
+- **Team Photos**: 800x1000px or larger (portrait)
+- **Robot Photos**: 1200x1200px or larger
+- **News Images**: 600x400px or larger
+- **Sponsor Logos**: 400x200px or adaptable (maintain aspect ratio)
 
-### Installation
+### Optimization Tips
+1. Compress images before uploading (use tools like TinyPNG or ImageOptim)
+2. Use appropriate file formats (JPG for photos, PNG for logos with transparency)
+3. Consider using WebP format for better compression (with fallbacks)
+4. Ensure images are properly sized before uploading (don't rely on CSS to resize large images)
 
-1. Navigate to the frontend directory:
-```bash
-cd frontend
-```
+## Placeholder Images
 
-2. Install dependencies:
-```bash
-npm install
-```
+Until real images are added, the website will display:
+- Gradient backgrounds for missing photos
+- Fallback text for missing logos
+- The site will remain functional but visuals will be limited
 
-3. Start the development server:
-```bash
-npm run dev
-```
+## How to Add Images
 
-4. Open your browser and visit `http://localhost:5173`
+1. Place your images in this `public` folder
+2. Ensure file names match those listed above
+3. The website will automatically load them
 
-### Building for Production
+## Color Scheme Reference
 
-```bash
-npm run build
-```
+When creating or editing images, use these colors for consistency:
+- **Primary Black**: #0a0a0a
+- **Primary Orange**: #ff6b35
+- **Secondary Orange**: #ff8c42
+- **Text White**: #ffffff
 
-The production-ready files will be in the `dist` folder.
-
-## 📁 Project Structure
-
-```
-frontend/
-├── public/              # Static assets and images
-│   └── README.md       # Image requirements guide
-├── src/
-│   ├── components/     # Reusable components
-│   │   ├── Header.tsx
-│   │   ├── Header.css
-│   │   ├── Footer.tsx
-│   │   ├── Footer.css
-│   │   └── Layout.tsx
-│   ├── pages/          # Page components
-│   │   ├── Home.tsx    # Home page
-│   │   ├── Home.css
-│   │   ├── Team.tsx    # Team members
-│   │   ├── Team.css
-│   │   ├── Events.tsx  # Events & competitions
-│   │   ├── Events.css
-│   │   ├── Robot.tsx   # Robot showcase
-│   │   ├── Robot.css
-│   │   ├── Contact.tsx # Contact form
-│   │   └── Contact.css
-│   ├── App.tsx         # Main app component with routing
-│   ├── App.css
-│   ├── index.css       # Global styles and theme
-│   └── main.tsx        # App entry point
-├── index.html
-├── package.json
-└── vite.config.ts
-```
-
-## 🎨 Color Scheme
-
-The website uses a consistent black and orange color palette:
-
-- **Primary Black**: `#0a0a0a`
-- **Secondary Black**: `#1a1a1a`
-- **Primary Orange**: `#ff6b35`
-- **Secondary Orange**: `#ff8c42`
-- **Accent Orange**: `#ffaa00`
-- **Text White**: `#ffffff`
-- **Text Gray**: `#b0b0b0`
-
-## 📸 Adding Images
-
-1. Place your images in the `public` folder
-2. Follow the naming conventions in `public/README.md`
-3. Required images:
-   - `logo.png` - Team logo
-   - `team-photo.jpg` - Full team photo for hero
-   - `news-1.jpg` to `news-4.jpg` - News images
-   - `sponsor-1.png` to `sponsor-6.png` - Sponsor logos
-   - `team-member-1.jpg` to `team-member-6.jpg` - Team photos
-   - `robot-main.jpg` - Main robot image
-   - `robot-gallery-1.jpg` to `robot-gallery-6.jpg` - Robot gallery
-
-## 🔧 Customization
-
-### Updating News
-Edit the `newsItems` array in `src/pages/Home.tsx`:
-
-```typescript
-const [newsItems] = useState([
-  {
-    id: 1,
-    title: "Your Title",
-    date: "Date",
-    image: "/your-image.jpg",
-    description: "Description",
-    category: "Category"
-  },
-  // Add more news items...
-]);
-```
-
-### Updating Team Members
-Edit the `teamMembers` array in `src/pages/Team.tsx`:
-
-```typescript
-const teamMembers = [
-  { name: "Name", role: "Role", image: "/member-image.jpg" },
-  // Add more members...
-];
-```
-
-### Updating Events
-Edit the `upcomingEvents` and `pastEvents` arrays in `src/pages/Events.tsx`
-
-### Updating Robot Specs
-Edit the `robotSpecs` and `features` arrays in `src/pages/Robot.tsx`
-
-### Changing Colors
-Update CSS variables in `src/index.css`:
-
-```css
-:root {
-  --primary-black: #0a0a0a;
-  --primary-orange: #ff6b35;
-  /* etc... */
-}
-```
-
-## 📱 Responsive Breakpoints
-
-- **Desktop**: > 1024px
-- **Tablet**: 768px - 1024px
-- **Mobile**: < 768px
-- **Small Mobile**: < 480px
-
-## 🌐 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📝 License
-
-This project is created for the xCellence FTC Team.
-
-## 🤝 Contributing
-
-Team members can contribute by:
-1. Adding new images to the `public` folder
-2. Updating content in page files
-3. Improving styles and animations
-4. Adding new features
-
-## 📧 Contact
-
-For questions about the website, contact the team at info@xcellenceftc.com
-
----
-
-**Built with ❤️ by the xCellence FTC Team**
