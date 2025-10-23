@@ -1,0 +1,136 @@
+.team-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--primary-black);
+}
+
+.team-hero {
+  height: 40vh;
+  min-height: 300px;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary-orange) 50%, transparent 100%);
+}
+
+.team-hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.team-hero-content p {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-gray);
+}
+
+.team-content {
+  padding: 5rem 2rem;
+}
+
+.team-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team-member-card {
+  background: var(--secondary-black);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.team-member-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+  border-color: var(--primary-orange);
+}
+
+.member-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+}
+
+.member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-member-card:hover .member-image {
+  transform: scale(1.1);
+}
+
+.member-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.9) 100%);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.team-member-card:hover .member-overlay {
+  transform: translateY(0);
+}
+
+.member-role {
+  color: var(--primary-orange);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.member-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.member-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-white);
+}
+
+.member-info p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .team-content {
+    padding: 3rem 1rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

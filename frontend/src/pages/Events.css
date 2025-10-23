@@ -1,0 +1,240 @@
+.events-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--primary-black);
+}
+
+.events-hero {
+  height: 40vh;
+  min-height: 300px;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.events-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary-orange) 50%, transparent 100%);
+}
+
+.events-hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.events-hero-content p {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-gray);
+}
+
+.events-content {
+  padding: 5rem 2rem;
+}
+
+.events-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.event-card {
+  background: var(--secondary-black);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover::before {
+  transform: scaleX(1);
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+  border-color: var(--primary-orange);
+}
+
+.event-type-badge {
+  display: inline-block;
+  background: var(--primary-orange);
+  color: var(--text-white);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.event-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-white);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-gray);
+  font-size: 1rem;
+}
+
+.detail-icon {
+  font-size: 1.2rem;
+}
+
+.event-description {
+  color: var(--text-gray);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+/* Past Events Timeline */
+.past-events-timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 3rem;
+}
+
+.past-events-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-orange) 0%, transparent 100%);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 2rem 0 2rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2rem;
+  top: 2.5rem;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-orange);
+  border-radius: 50%;
+  border: 4px solid var(--primary-black);
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+}
+
+.timeline-content {
+  background: var(--secondary-black);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(10px);
+  border-color: var(--primary-orange);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+}
+
+.timeline-type {
+  display: inline-block;
+  color: var(--primary-orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-white);
+}
+
+.timeline-date {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-achievement {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: rgba(255, 107, 53, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  color: var(--primary-orange);
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .events-content {
+    padding: 3rem 1rem;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .past-events-timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-marker {
+    left: -1.7rem;
+  }
+}
+
