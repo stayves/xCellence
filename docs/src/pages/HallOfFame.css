@@ -1,0 +1,210 @@
+.hall-page {
+  padding-top: 80px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.hall-hero {
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hall-hero-content {
+  max-width: 760px;
+}
+
+.hall-hero-content h1 {
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  margin-bottom: 1.1rem;
+}
+
+.hall-hero-content p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+.hall-section {
+  padding: 5rem 2rem;
+}
+
+.hall-section.metrics {
+  background: linear-gradient(180deg, var(--secondary-black) 0%, var(--primary-black) 100%);
+}
+
+.hall-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.hall-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--surface-card-shadow);
+}
+
+.hall-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-orange);
+  box-shadow: var(--surface-card-shadow-hover);
+}
+
+.hall-card h3 {
+  font-size: 1.5rem;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.hall-card p {
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+.hall-year {
+  display: inline-block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  margin-bottom: 0.5rem;
+}
+
+.hall-event {
+  color: var(--text-white);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.metric-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 107, 53, 0.18), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metric-card:hover::after {
+  opacity: 1;
+}
+
+.metric-value {
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  font-weight: 800;
+  color: var(--primary-orange);
+  position: relative;
+}
+
+.metric-card h3 {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: var(--text-white);
+  position: relative;
+}
+
+.metric-card p {
+  margin-top: 0.75rem;
+  color: var(--text-gray);
+  line-height: 1.7;
+  position: relative;
+}
+
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.alumni-highlight-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 18px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.alumni-highlight-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-orange);
+}
+
+.alumni-highlight-card h3 {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin-bottom: 0.4rem;
+}
+
+.alumni-role {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+}
+
+.alumni-highlight-card p {
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .hall-hero {
+    padding: 5rem 1.5rem 3.5rem;
+  }
+
+  .hall-section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hall-hero {
+    padding: 4rem 1rem 3rem;
+  }
+
+  .hall-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .hall-card,
+  .metric-card,
+  .alumni-highlight-card {
+    padding: 1.75rem;
+  }
+}
+
+
+

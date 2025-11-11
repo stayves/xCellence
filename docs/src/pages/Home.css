@@ -251,11 +251,11 @@
 }
 
 .mission-main {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-card);
   padding: 3rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 107, 53, 0.2);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--surface-card-border);
+  box-shadow: var(--surface-card-shadow);
 }
 
 .mission-subtitle {
@@ -289,10 +289,10 @@
 }
 
 .mission-card {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(10, 10, 10, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, var(--surface-subtle) 100%);
   padding: 2.5rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid var(--surface-card-border);
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -300,7 +300,7 @@
 .mission-card:hover {
   transform: translateY(-10px);
   border-color: var(--primary-orange);
-  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+  box-shadow: var(--surface-card-shadow-hover);
 }
 
 .card-icon {
@@ -351,16 +351,17 @@
 }
 
 .news-card {
-  background: var(--secondary-black);
+  background: var(--surface-card);
   border-radius: 15px;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--surface-card-border);
+  box-shadow: var(--surface-card-shadow);
 }
 
 .news-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+  box-shadow: var(--surface-card-shadow-hover);
   border-color: var(--primary-orange);
 }
 
@@ -489,20 +490,20 @@
 }
 
 .sponsor-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-card);
   padding: 2rem;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 150px;
-  border: 2px solid rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--surface-card-border);
   transition: all 0.3s ease;
 }
 
 .sponsor-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
+  box-shadow: var(--surface-card-shadow-hover);
 }
 
 .sponsor-card.platinum {
@@ -569,11 +570,12 @@
 }
 
 .sponsors-cta-content {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+  background: var(--surface-card);
   padding: 4rem 3rem;
   border-radius: 20px;
   text-align: center;
   border: 2px solid var(--primary-orange);
+  box-shadow: var(--surface-card-shadow);
 }
 
 .sponsors-cta-content h3 {

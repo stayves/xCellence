@@ -1,0 +1,232 @@
+.calendar-page {
+  padding-top: 80px;
+  background: var(--primary-black);
+  color: var(--text-white);
+  min-height: 100vh;
+}
+
+.calendar-hero {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.25), transparent 55%);
+  opacity: 0.8;
+}
+
+.calendar-hero-content {
+  position: relative;
+  max-width: 800px;
+  text-align: center;
+  z-index: 1;
+}
+
+.calendar-hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+.calendar-hero-content p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+.calendar-section {
+  padding: 5rem 2rem;
+  background: var(--primary-black);
+}
+
+.calendar-section.alt {
+  background: var(--secondary-black);
+}
+
+.calendar-section.timeline {
+  background: linear-gradient(180deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+}
+
+.calendar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.calendar-grid.compact {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.calendar-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 18px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: var(--surface-card-shadow);
+}
+
+.calendar-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-orange);
+  box-shadow: var(--surface-card-shadow-hover);
+}
+
+.calendar-card-header h3 {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  color: var(--text-white);
+}
+
+.calendar-event-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  background: var(--badge-surface);
+  color: var(--badge-text);
+}
+
+.calendar-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.calendar-details dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-gray);
+  margin-bottom: 0.25rem;
+}
+
+.calendar-details dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.calendar-description {
+  color: var(--text-gray);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.calendar-link {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--primary-orange);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.calendar-link:hover {
+  transform: translateX(5px);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.timeline-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 18px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.35), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-orange);
+}
+
+.timeline-card:hover::before {
+  opacity: 1;
+}
+
+.timeline-season {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-white);
+}
+
+.timeline-card p {
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .calendar-hero {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .calendar-section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .calendar-card,
+  .timeline-card {
+    padding: 1.5rem;
+  }
+}
+
+
+

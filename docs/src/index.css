@@ -5,25 +5,75 @@
 }
 
 :root {
-  --primary-black: #0a0a0a;
-  --secondary-black: #1a1a1a;
+  color-scheme: dark;
+  --primary-black: #060607;
+  --secondary-black: #111116;
   --primary-orange: #ff6b35;
   --secondary-orange: #ff8c42;
-  --text-white: #ffffff;
-  --text-gray: #b0b0b0;
   --accent-orange: #ffaa00;
-  
+  --text-white: #f8f9fb;
+  --text-gray: #c7c9d1;
+  --accent-surface: rgba(255, 107, 53, 0.25);
+  --surface-card: rgba(24, 24, 32, 0.95);
+  --surface-card-border: rgba(255, 255, 255, 0.08);
+  --surface-card-shadow: 0 18px 40px rgba(8, 8, 10, 0.35);
+  --surface-card-shadow-hover: 0 24px 48px rgba(255, 107, 53, 0.25);
+  --surface-subtle: rgba(20, 20, 26, 0.85);
+  --surface-subtle-border: rgba(255, 255, 255, 0.06);
+  --badge-surface: rgba(255, 107, 53, 0.18);
+  --badge-text: #ff8c42;
+  --header-bg: rgba(10, 10, 16, 0.65);
+  --header-bg-solid: rgba(8, 8, 12, 0.95);
+  --header-border: rgba(255, 107, 53, 0.3);
+  --header-shadow: rgba(8, 8, 12, 0.55);
+  --nav-link-active: var(--primary-orange);
+  --theme-toggle-bg: rgba(20, 20, 26, 0.7);
+  --theme-toggle-border: rgba(255, 255, 255, 0.18);
+  --theme-toggle-focus-ring: rgba(255, 107, 53, 0.25);
+  --mobile-menu-bg: rgba(12, 12, 18, 0.98);
+  --mobile-menu-shadow: rgba(0, 0, 0, 0.65);
+  --logo-filter: invert(1);
+
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  
   color: var(--text-white);
   background-color: var(--primary-black);
-  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --primary-black: #f5f6fb;
+  --secondary-black: #ffffff;
+  --primary-orange: #ff6b35;
+  --secondary-orange: #ff8c42;
+  --accent-orange: #ffb347;
+  --text-white: #1b1c24;
+  --text-gray: #4b4c58;
+  --accent-surface: rgba(255, 132, 78, 0.22);
+  --surface-card: rgba(255, 255, 255, 0.94);
+  --surface-card-border: rgba(17, 18, 32, 0.08);
+  --surface-card-shadow: 0 16px 36px rgba(17, 20, 32, 0.12);
+  --surface-card-shadow-hover: 0 22px 44px rgba(255, 107, 53, 0.22);
+  --surface-subtle: rgba(243, 244, 249, 0.9);
+  --surface-subtle-border: rgba(17, 18, 32, 0.05);
+  --badge-surface: rgba(255, 107, 53, 0.12);
+  --badge-text: #d55624;
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-bg-solid: rgba(255, 255, 255, 0.96);
+  --header-border: rgba(255, 107, 53, 0.18);
+  --header-shadow: rgba(17, 20, 32, 0.1);
+  --nav-link-active: #d55624;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.85);
+  --theme-toggle-border: rgba(17, 18, 32, 0.1);
+  --theme-toggle-focus-ring: rgba(255, 107, 53, 0.25);
+  --mobile-menu-bg: rgba(255, 255, 255, 0.96);
+  --mobile-menu-shadow: rgba(17, 20, 32, 0.18);
+  --logo-filter: none;
 }
 
 body {
@@ -31,6 +81,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
+  background: var(--primary-black);
+  color: var(--text-white);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 #root {
@@ -38,7 +91,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-white);
@@ -92,7 +150,6 @@ button:active {
   transform: translateY(0);
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -110,7 +167,9 @@ button:active {
   background: var(--secondary-orange);
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
+
+
+

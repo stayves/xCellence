@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -48,6 +49,8 @@ const Home = () => {
     { name: "Sponsor 6", logo: "/sponsor-6.png", tier: "silver" },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -86,10 +89,10 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-cta">
-              <button className="cta-primary" onClick={() => window.location.href = '/robot'}>
+              <button className="cta-primary" onClick={() => navigate('/robot')}>
                 See Our Robot
               </button>
-              <button className="cta-secondary" onClick={() => window.location.href = '/team'}>
+              <button className="cta-secondary" onClick={() => navigate('/team')}>
                 Meet the Team
               </button>
             </div>
