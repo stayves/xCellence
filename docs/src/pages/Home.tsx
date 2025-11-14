@@ -9,7 +9,7 @@ const Home = () => {
       id: 1,
       title: "World Championship Qualification",
       date: "March 15, 2025",
-      image: "/news-1.jpg",
+      image: "/xCellence/news-1.jpg",
       description: "xCellence team qualifies for the FIRST Tech Challenge World Championship in Houston!",
       category: "Achievement"
     },
@@ -17,7 +17,7 @@ const Home = () => {
       id: 2,
       title: "New Robot Reveal: 'Phoenix'",
       date: "February 28, 2025",
-      image: "/news-2.jpg",
+      image: "/xCellence/news-2.jpg",
       description: "Meet Phoenix, our latest robot designed for the INTO THE DEEP season with innovative mechanisms.",
       category: "Robot"
     },
@@ -25,7 +25,7 @@ const Home = () => {
       id: 3,
       title: "Regional Competition Victory",
       date: "February 10, 2025",
-      image: "/news-3.jpg",
+      image: "/xCellence/news-3.jpg",
       description: "Team secures first place at the Regional Championship with a perfect autonomous score.",
       category: "Competition"
     },
@@ -33,7 +33,7 @@ const Home = () => {
       id: 4,
       title: "Community Outreach: STEM Workshop",
       date: "January 20, 2025",
-      image: "/news-4.jpg",
+      image: "/xCellence/news-4.jpg",
       description: "Hosted a successful robotics workshop for 50+ elementary school students in our community.",
       category: "Outreach"
     }
@@ -41,12 +41,12 @@ const Home = () => {
 
   // Sample sponsors data
   const sponsors = [
-    { name: "Sponsor 1", logo: "/sponsor-1.png", tier: "platinum" },
-    { name: "Sponsor 2", logo: "/sponsor-2.png", tier: "platinum" },
-    { name: "Sponsor 3", logo: "/sponsor-3.png", tier: "gold" },
-    { name: "Sponsor 4", logo: "/sponsor-4.png", tier: "gold" },
-    { name: "Sponsor 5", logo: "/sponsor-5.png", tier: "silver" },
-    { name: "Sponsor 6", logo: "/sponsor-6.png", tier: "silver" },
+    { name: "Sponsor 1", logo: "/xCellence/sponsor-1.png", tier: "platinum" },
+    { name: "Sponsor 2", logo: "/xCellence/sponsor-2.png", tier: "platinum" },
+    { name: "Sponsor 3", logo: "/xCellence/sponsor-3.png", tier: "gold" },
+    { name: "Sponsor 4", logo: "/xCellence/sponsor-4.png", tier: "gold" },
+    { name: "Sponsor 5", logo: "/xCellence/sponsor-5.png", tier: "silver" },
+    { name: "Sponsor 6", logo: "/xCellence/sponsor-6.png", tier: "silver" },
   ];
 
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="hero-image-container">
           <img 
-            src="/team-photo.jpg" 
+            src="/xCellence/team-photo.jpg" 
             alt="xCellence FTC Team" 
             className="hero-image"
           />

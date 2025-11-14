@@ -52,7 +52,7 @@ const Header = ({ theme, onToggleTheme }: HeaderProps) => {
       <div className="header-container">
         <Link to="/" className="logo-link">
           <div className="logo">
-            <img src="/xCellence.png" alt="xCellence Logo" className="logo-image" />
+            <img src="/xCellence/xCellence.png" alt="xCellence Logo" className="logo-image" />
             <span className="logo-text">xCellence</span>
           </div>
         </Link>
