@@ -15,68 +15,68 @@ type Milestone = {
 
 const awards: Award[] = [
   {
-    title: 'World Championship Finalists',
-    event: 'FIRST Championship Houston',
-    year: '2024',
+    title: 'Design Award Winner',
+    event: 'Central Asia Championship',
+    year: '2025',
     description:
-      'Alliance finalists on the Daly field with the highest autonomous score of the division and top 3 Inspire Award ranking.',
+      'Recognized for excellence in engineering documentation, innovative robot design, and systematic development process.',
   },
   {
-    title: 'Inspire Award Winners',
-    event: 'Central Asia Regional Championship',
+    title: 'Think Award Winner',
+    event: 'India Regional Championship',
     year: '2023',
     description:
-      'Recognized for outstanding engineering portfolio, outreach impact, and gracious professionalism across the region.',
+      'Awarded for outstanding engineering notebook documenting our analytical approach, iterative design process, and strategic innovation.',
   },
   {
-    title: 'Think Award Champions',
-    event: 'Kazakhstan National Championship',
-    year: '2022',
+    title: 'Social Media Award',
+    event: 'Central Asia Championship',
+    year: '2024',
     description:
-      'Awarded for analytics-driven design notebooks capturing our iterative development and data-informed game strategy.',
+      'Honored for exceptional online presence reaching 29,000+ people, managing KZ Robotics community (250 members), and inspiring youth across Kazakhstan.',
   },
   {
-    title: 'Connect Award Winners',
-    event: 'Eurasia Invitational',
-    year: '2021',
+    title: 'Team Achievements',
+    event: 'Multiple Competitions & Projects',
+    year: '2022-2025',
     description:
-      'Honored for bridging industry mentors with local schools and expanding access to competitive robotics programs.',
+      'Members won $25k at FAP with Digital Bridge, participated in WRO international stage, won Technovation Girls republican stage, and created MindShield (Discovery of the Year - Steppe Awards).',
   },
 ];
 
 const milestones: Milestone[] = [
   {
-    title: 'Awards Earned',
-    value: '37',
-    detail: 'Across Inspire, Think, Innovate, and Design awards over nine competitive seasons.',
+    title: 'People Reached Offline',
+    value: '190',
+    detail: 'Through workshops, masterclasses, forums, hackathons, and continuous education programs.',
   },
   {
-    title: 'Worlds Appearances',
-    value: '4',
-    detail: 'Represented Kazakhstan on the global stage with alliances from five continents.',
+    title: 'People Engaged Online',
+    value: '29,000',
+    detail: 'Via social media (Instagram 800+ followers, 150K views), KZ Robotics Telegram (250 members), YouTube & TikTok.',
   },
   {
-    title: 'Community Hours',
-    value: '1,800+',
-    detail: 'Delivered STEM workshops, mentorship, and demos to students aged 6-18 every season.',
+    title: 'Event Hours Delivered',
+    value: '105+',
+    detail: 'Across 7 cities and 2 rural towns in Kazakhstan, including training camps, forums, courses, and masterclasses.',
+  },
+  {
+    title: 'Teams Supported',
+    value: '16',
+    detail: 'Started and mentored 6 teams (FTC & FLL), assisted 10+ teams with technical guidance and resources.',
   },
 ];
 
 const alumniHighlights = [
   {
-    name: 'Aida Beketova',
-    role: 'Mechanical Lead 2019-2022',
-    achievement: 'Now a mechanical engineering major at MIT focusing on autonomous underwater vehicles.',
+    name: 'Asylbek Myrzakhmetov',
+    role: 'Director of USTEM Robotics Development Fund',
+    achievement: 'Member of the Robotics, STEAM and Programming Development Council at the Ministry of Education of Kazakhstan. Oversees Smart Sarbaz / Zhas Sarbaz patriotic program for military-engineering education through robotics.',
   },
   {
-    name: 'Timur Saparov',
-    role: 'Programming Captain 2020-2023',
-    achievement: 'Founded a startup developing vision systems for agricultural robotics in Central Asia.',
-  },
-  {
-    name: 'Dana Ryskul',
-    role: 'Outreach Director 2018-2021',
-    achievement: 'Coordinates nationwide STEM policy initiatives at the Ministry of Education.',
+    name: 'Daniyar Ermatov',
+    role: 'FIRST Program Delivery Partner',
+    achievement: 'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
   },
 ];
 
@@ -134,9 +134,12 @@ const HallOfFame = () => {
       <section className="hall-section alumni">
         <div className="hall-container">
           <div className="section-header">
-            <span className="section-tag">Beyond FTC</span>
-            <h2 className="section-title">Alumni Trailblazers</h2>
+            <span className="section-tag">Community Leaders</span>
+            <h2 className="section-title">Hall of Fame Honorees</h2>
             <div className="title-underline"></div>
+            <p style={{ maxWidth: '800px', margin: '1rem auto', textAlign: 'center', opacity: 0.9 }}>
+              Recognizing leaders in Kazakhstan's robotics ecosystem who inspire and guide the next generation.
+            </p>
           </div>
 
           <div className="alumni-grid">

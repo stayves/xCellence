@@ -7,69 +7,135 @@ type Member = {
   bio: string;
 };
 
-const currentMembers: Member[] = [
+const mentors: Member[] = [
   {
-    name: 'Dias Nurpeissov',
-    role: 'Team Captain & Drive Coach',
-    image: 'https://images.unsplash.com/photo-1529158062015-cad636e69505?auto=format&fit=crop&w=600&q=80',
-    bio: 'Coordinates alliance strategy, on-field performance, and cross-subsystem integration.',
+    name: 'Vladimir Ussoltcev',
+    role: 'Primary Mentor',
+    image: '/xCellence/vladimir.jpg',
+    bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
   },
   {
-    name: 'Arman Zhetpisbay',
-    role: 'Programming Lead',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80',
-    bio: 'Architects autonomous routines, controls, and telemetry dashboards for our robot.',
+    name: 'Madi Mukash',
+    role: 'Primary Mentor',
+    image: '/xCellence/madi.jpg',
+    bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
   },
   {
-    name: 'Aruzhan Shalabayeva',
-    role: 'Mechanical Lead',
-    image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80',
-    bio: 'Oversees CAD, prototyping, and reliability testing of all scoring mechanisms.',
+    name: 'Daniil Filimonov',
+    role: 'Research Assistant at ISSAI',
+    image: '/xCellence/daniil.jpg',
+    bio: 'Provides deep insights into AI, automation, and modern computational methods.',
   },
   {
-    name: 'Miras Altynbek',
-    role: 'Electrical & Controls',
-    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=600&q=80',
-    bio: 'Maintains control hub wiring, sensors, and power distribution best practices.',
+    name: 'Azamat Eshmukhambetov',
+    role: 'Professor at Nazarbayev University',
+    image: '/xCellence/azamat.jpg',
+    bio: 'Offers expertise in advanced engineering principles and research-based problem solving.',
   },
   {
-    name: 'Dana Yusupova',
-    role: 'Outreach Director',
-    image: 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=600&q=80',
-    bio: 'Leads community workshops, sponsor relations, and storytelling for our program.',
+    name: 'Azat Slyam',
+    role: 'Technology Specialist',
+    image: '/xCellence/azat.jpg',
+    bio: 'Contributing valuable knowledge in technological development and innovation.',
   },
   {
-    name: 'Sanzhar Kapar',
-    role: 'CAD Specialist',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
-    bio: 'Focuses on modular assemblies, manufacturing drawings, and version control.',
+    name: 'Zhanat Kapassov',
+    role: 'NU SEDS Professor',
+    image: '/xCellence/zhanat.jpg',
+    bio: 'Expert in robotics and control systems, supporting technical growth and strategic engineering decisions.',
   },
 ];
 
-const alumniMembers: Member[] = [
+const currentMembers: Member[] = [
   {
-    name: 'Aigerim Kassymova',
-    role: 'Class of 2022 · Mechanical Lead',
-    image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80',
-    bio: 'Currently researching haptics at Stanford University while mentoring local FTC teams.',
+    name: 'Zhanarys Kaparov',
+    role: 'Captain & Driver',
+    image: '/xCellence/zhanarys.jpg',
+    bio: 'Captain and driver of the team.',
   },
   {
-    name: 'Nurlan Ospan',
-    role: 'Class of 2021 · Programming Captain',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
-    bio: 'Software engineer at a robotics startup building perception systems for autonomous drones.',
+    name: 'Zhanibek Danabek',
+    role: 'CAD Specialist',
+    image: '/xCellence/zhanibek.jpg',
+    bio: 'CAD specialist and designer of the team.',
   },
   {
-    name: 'Dinara Makhmud',
-    role: 'Class of 2020 · Outreach Lead',
-    image: 'https://images.unsplash.com/photo-1544723795-432537ff1fe2?auto=format&fit=crop&w=600&q=80',
-    bio: 'Coordinates STEM access programs with UNICEF across Central Asia, focusing on rural schools.',
+    name: 'Arnur Togambayev',
+    role: 'Programmer ',
+    image: '/xCellence/arnur.jpg',
+    bio: 'Programming of the team.',
   },
   {
-    name: 'Serik Moldakhmet',
-    role: 'Class of 2019 · Drive Coach',
-    image: 'https://images.unsplash.com/photo-1527254059243-099aa62cc8a1?auto=format&fit=crop&w=600&q=80',
-    bio: 'Pursuing a master’s degree in robotics at ETH Zürich, specializing in motion control.',
+    name: 'Asylzhan Sailau',
+    role: 'Inspire',
+    image: '/xCellence/asylzhan.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Aizere Askarova',
+    role: 'Inspire',
+    image: '/xCellence/aizere.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Semyon Chistyakov',
+    role: 'Inspire',
+    image: '/xCellence/semyon.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Togzhan Kabdolda',
+    role: 'Inspire',
+    image: '/xCellence/togzhan.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Alzere Chindaliyeva',
+    role: 'Inspire',
+    image: '/xCellence/alzere.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Zhanaiym Tashkenbay',
+    role: 'Inspire',
+    image: '/xCellence/zhanaiym.jpg',
+    bio: 'Inspire of the team.',
+  },
+  {
+    name: 'Dastan Musrepov',
+    role: 'CAD Specialist',
+    image: '/xCellence/dastan.jpg',
+    bio: 'CAD specialist of the team.',
+  },
+  {
+    name: 'Sayan Orynbek',
+    role: 'Builder',
+    image: '/xCellence/sayan.jpg',
+    bio: 'Builder of the team.',
+  },
+  {
+    name: 'Najmudin Adikhanov ',
+    role: 'Builder',
+    image: '/xCellence/najmudin.jpg',
+    bio: 'Builder of the team.',
+  },
+  {
+    name: 'Targyn Faizulla',
+    role: 'CAD Specialist',
+    image: '/xCellence/targyn.jpg',
+    bio: 'CAD specialist of the team.',
+  },
+  {
+    name: 'Vagiz Dissembayev',
+    role: 'Builder',
+    image: '/xCellence/vagiz.jpg',
+    bio: 'Builder of the team.',
+  },
+  {
+    name: 'Ali Umargaliyev',
+    role: 'Driver & Builder',
+    image: '/xCellence/ali.jpg',
+    bio: 'Driver of the team.',
   },
 ];
 
@@ -86,9 +152,44 @@ const Team = () => {
       <section className="team-content">
         <div className="team-container">
           <div className="section-header">
+            <span className="section-tag">Mentorship</span>
+            <h2 className="section-title">Mentors & Advisors</h2>
+            <div className="title-underline"></div>
+            <p className="alumni-intro">
+              Our team is guided by highly qualified mentors, researchers, and professors who provide expertise 
+              in engineering, AI, automation, and strategic problem solving.
+            </p>
+          </div>
+
+          <div className="team-grid">
+            {mentors.map((mentor) => (
+              <div key={mentor.name} className="team-member-card">
+                <div className="member-image-wrapper">
+                  <img src={mentor.image} alt={mentor.name} className="member-image" />
+                  <div className="member-overlay">
+                    <span className="member-role">{mentor.role}</span>
+                  </div>
+                </div>
+                <div className="member-info">
+                  <h3>{mentor.name}</h3>
+                  <p>{mentor.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="team-content">
+        <div className="team-container">
+          <div className="section-header">
             <span className="section-tag">Our People</span>
             <h2 className="section-title">Current Team Members</h2>
             <div className="title-underline"></div>
+            <p className="alumni-intro">
+              Since 2022, four generations of students have been part of xCellence. We continuously cultivate 
+              new leaders, engineers, and mentors who explore all areas of robotics.
+            </p>
           </div>
 
           <div className="team-grid">
@@ -113,30 +214,37 @@ const Team = () => {
       <section className="team-content alumni-section">
         <div className="team-container">
           <div className="section-header">
-            <span className="section-tag">Alumni Network</span>
-            <h2 className="section-title">xCellence Alumni</h2>
+            <span className="section-tag">Team Support</span>
+            <h2 className="section-title">Teams We've Mentored & Assisted</h2>
             <div className="title-underline"></div>
             <p className="alumni-intro">
-              Our alumni continue to engineer, research, and inspire across universities, startups, and global
-              organizations. We are proud to celebrate the impact they ignite beyond the field.
+              We care about the sustainability of our school's robotics and Kazakhstan's STEAM ecosystem. 
+              We have started and mentored 1 new FTC team and 2 new FLL teams, and assisted 16 teams total.
             </p>
           </div>
 
-          <div className="team-grid alumni-grid">
-            {alumniMembers.map((alumni) => (
-              <div key={alumni.name} className="team-member-card">
-                <div className="member-image-wrapper">
-                  <img src={alumni.image} alt={alumni.name} className="member-image" />
-                  <div className="member-overlay">
-                    <span className="member-role">{alumni.role}</span>
+          <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
+            <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>Started & Mentored</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                {['xCeption', 'XLNC Nova', 'XLNC Feral', 'SlapSeals', 'DostyqBot', 'ThanosNIS'].map(team => (
+                  <div key={team} style={{ padding: '1rem', background: 'rgba(255,107,0,0.1)', borderRadius: '8px', textAlign: 'center' }}>
+                    <strong>{team}</strong>
                   </div>
-                </div>
-                <div className="member-info">
-                  <h3>{alumni.name}</h3>
-                  <p>{alumni.bio}</p>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-color)' }}>Assisted</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
+                {['Celestial (FTC)', 'BILMS (FLL)', 'Akita', 'Sakura', 'KAP', 'Meow-Meow', 'JelToqSun', 'PID', 'BilOrda', 'Venom', 'Reckless'].map(team => (
+                  <div key={team} style={{ padding: '0.75rem', background: 'rgba(0,150,255,0.1)', borderRadius: '8px', textAlign: 'center', fontSize: '0.9rem' }}>
+                    {team}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

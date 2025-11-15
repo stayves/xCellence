@@ -3,39 +3,39 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  // Sample news data - can be populated dynamically
+  // Real team news and achievements
   const [newsItems] = useState([
     {
       id: 1,
-      title: "World Championship Qualification",
-      date: "March 15, 2025",
+      title: "Design Award Winner CA 2025",
+      date: "March 2025",
       image: "/xCellence/news-1.jpg",
-      description: "xCellence team qualifies for the FIRST Tech Challenge World Championship in Houston!",
+      description: "xCellence wins Design Award at Central Asia Championship, showcasing excellence in engineering documentation and robot design.",
       category: "Achievement"
     },
     {
       id: 2,
-      title: "New Robot Reveal: 'Phoenix'",
-      date: "February 28, 2025",
+      title: "WRO Republican Training Camp",
+      date: "August 3, 2024",
       image: "/xCellence/news-2.jpg",
-      description: "Meet Phoenix, our latest robot designed for the INTO THE DEEP season with innovative mechanisms.",
-      category: "Robot"
+      description: "Successfully organized week-long training camp with 45 participants from all NIS schools, featuring conferences with robotics mentors and NU professors.",
+      category: "Outreach"
     },
     {
       id: 3,
-      title: "Regional Competition Victory",
-      date: "February 10, 2025",
+      title: "Temirqazyq Forum Success",
+      date: "October 2, 2024",
       image: "/xCellence/news-3.jpg",
-      description: "Team secures first place at the Regional Championship with a perfect autonomous score.",
-      category: "Competition"
+      description: "35 participants attended our STEM startups forum featuring leading specialists Karakoz Tasbolatova, Nurdaulet Bazylbekov, and Arlan Rakhmetzhanov.",
+      category: "Forum"
     },
     {
       id: 4,
-      title: "Community Outreach: STEM Workshop",
-      date: "January 20, 2025",
+      title: "Social Media Milestone",
+      date: "2024-2025",
       image: "/xCellence/news-4.jpg",
-      description: "Hosted a successful robotics workshop for 50+ elementary school students in our community.",
-      category: "Outreach"
+      description: "Reached 800+ followers on Instagram with 150,000 views and 6,000 accounts reached in last 3 months. Managing KZ Robotics Telegram with 250+ members.",
+      category: "Media"
     }
   ]);
 
@@ -67,25 +67,25 @@ const Home = () => {
           <div className="hero-text">
             <h1 className="hero-title">
               <span className="hero-title-main">x<span className="orange-text">Cellence</span></span>
-              <span className="hero-title-sub">FTC Team</span>
+              <span className="hero-title-sub">Robotics Team</span>
             </h1>
             <p className="hero-description">
               Engineering the Future, One Innovation at a Time
             </p>
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-number">10+</span>
-                <span className="stat-label">Years Active</span>
+                <span className="stat-number">190</span>
+                <span className="stat-label">People Engaged Offline</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
-                <span className="stat-number">50+</span>
-                <span className="stat-label">Competitions</span>
+                <span className="stat-number">29,000</span>
+                <span className="stat-label">People Engaged Online</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
-                <span className="stat-number">100+</span>
-                <span className="stat-label">Awards</span>
+                <span className="stat-number">105+</span>
+                <span className="stat-label">Event Hours</span>
               </div>
             </div>
             <div className="hero-cta">
@@ -117,17 +117,16 @@ const Home = () => {
             <div className="mission-main">
               <h3 className="mission-subtitle">FIRST Tech Challenge Mission</h3>
               <p className="mission-text">
-                The <strong>FIRST</strong> Tech Challenge (FTC) is a robotics competition for students in grades 7-12
-                to compete head-to-head, using a sports model. Teams design, build, and program robots to 
-                compete in an alliance format against other teams. The robot kit is reusable from year-to-year
-                and is programmed using a variety of languages.
+                Since 2022, xCellence has been promoting robotics and STEAM in Kazakhstan, developing innovations, 
+                training new generation of engineers and uniting communities. We are now in our 4th generation of 
+                students, with <strong>Design Award Winner CA 2025</strong>, <strong>Think Award India 2023</strong>, 
+                and <strong>Social Media Award CA 2024</strong>.
               </p>
               <p className="mission-text">
-                <strong>FIRST</strong> stands for <em>For Inspiration and Recognition of Science and Technology</em>.
-                The mission is to inspire young people to be science and technology leaders and innovators, by 
-                engaging them in exciting mentor-based programs that build science, engineering, and technology 
-                skills, that inspire innovation, and that foster well-rounded life capabilities including 
-                self-confidence, communication, and leadership.
+                Our mission is to create technologies, share knowledge and inspire youth, forming a culture of 
+                engineering creativity and representing Kazakhstan on the world stage. We strive to acquire new 
+                knowledge and share it, spreading robotics and STEAM among youth, uniting communities and improving 
+                communication.
               </p>
             </div>
 
