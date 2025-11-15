@@ -46,7 +46,7 @@ const Robot = () => {
         <div className="robot-container">
           <div className="robot-image-section">
             <div className="robot-image-wrapper">
-              <img src="/xCellence/robot-main.jpg" alt="Phoenix Robot" className="robot-main-image" />
+              <img src="/xCellence/robot_main.jpg" alt="Phoenix Robot" className="robot-main-image" />
               <div className="robot-name-tag">
                 <span className="robot-name">PHOENIX</span>
                 <span className="robot-season">2024-2025</span>
@@ -106,7 +106,7 @@ const Robot = () => {
           <div className="gallery-grid">
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <div key={num} className="gallery-item">
-                <img src={`/xCellence/robot-gallery-${num}.jpg`} alt={`Robot view ${num}`} />
+                <img src={`/xCellence/robot_sub${num}.jpg`} alt={`Robot view ${num}`} />
                 <div className="gallery-overlay">
                   <span>View Details</span>
                 </div>
