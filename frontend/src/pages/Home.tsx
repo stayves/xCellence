@@ -70,7 +70,7 @@ const Home = () => {
               <span className="hero-title-sub">Robotics Team</span>
             </h1>
             <p className="hero-description">
-              Engineering the Future, One Innovation at a Time
+              Engineering the Future, One Innovation at a Time!
             </p>
             <div className="hero-stats">
               <div className="stat-item">
