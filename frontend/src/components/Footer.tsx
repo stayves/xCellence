@@ -118,7 +118,7 @@ const Footer = () => {
            <a href='https://www.instagram.com/arnur_togambayev/' target='_blank' rel='noopener noreferrer'>
                <img src='/instagram.svg' alt='arnur' className='instagram' />
            
-           <h4>Made by: Arnur Togambayev </h4>
+           <h4>Want to make your own website? Contact: Arnur </h4>
            </a>
         </div>
 

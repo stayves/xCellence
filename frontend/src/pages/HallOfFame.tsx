@@ -13,6 +13,12 @@ type Milestone = {
   detail: string;
 };
 
+type GalleryItem = {
+  src: string
+  title: string
+  description: string
+}
+
 const awards: Award[] = [
   {
     title: 'Design Award Winner',
@@ -66,6 +72,39 @@ const milestones: Milestone[] = [
     detail: 'Started and mentored 6 teams (FTC & FLL), assisted 10+ teams with technical guidance and resources.',
   },
 ];
+
+const hallGallery: GalleryItem[] = [
+  {
+    src: '/xCellence/team.jpg',
+    title: 'Championship Prep',
+    description: 'Leadership team aligning strategy before Central Asia Championship presentations.'
+  },
+  {
+    src: '/xCellence/news-2.jpg',
+    title: 'American Corner Workshop',
+    description: 'Fusion 360 bootcamp introducing 15+ students to CAD fundamentals.'
+  },
+  {
+    src: '/xCellence/robot-main.jpg',
+    title: 'Phoenix Reveal',
+    description: 'Our DECODE season robot featuring modular drivetrain and custom manipulator.'
+  },
+  {
+    src: '/xCellence/arnur.jpg',
+    title: 'Programming Excellence',
+    description: 'Driver-station debugging session that secured autonomous consistency.'
+  },
+  {
+    src: '/xCellence/asylzhan.jpg',
+    title: 'Outreach Champions',
+    description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
+  },
+  {
+    src: '/xCellence/news-4.jpg',
+    title: 'WRO Training Camp',
+    description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
+  },
+]
 
 const alumniHighlights = [
   {
@@ -126,6 +165,33 @@ const HallOfFame = () => {
                 <h3>{milestone.title}</h3>
                 <p>{milestone.detail}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="hall-section gallery">
+        <div className="hall-container">
+          <div className="section-header">
+            <span className="section-tag">Legacy Moments</span>
+            <h2 className="section-title">Hall of Fame Gallery</h2>
+            <div className="title-underline"></div>
+            <p style={{ maxWidth: '820px', margin: '1rem auto 0', color: 'var(--text-gray)' }}>
+              Snapshots from award ceremonies, workshops, and milestones that define our culture of excellence.
+            </p>
+          </div>
+
+          <div className="hall-gallery-grid">
+            {hallGallery.map((item) => (
+              <article key={item.title} className="hall-gallery-card">
+                <div className="hall-gallery-media">
+                  <img src={item.src} alt={item.title} loading="lazy" />
+                </div>
+                <div className="hall-gallery-info">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
