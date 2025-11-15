@@ -58,7 +58,7 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="hero-image-container">
           <img 
-            src="/xCellence/team-photo.jpg" 
+            src="/xCellence/team.jpg" 
             alt="xCellence FTC Team" 
             className="hero-image"
           />
