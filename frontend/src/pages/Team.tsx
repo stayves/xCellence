@@ -68,13 +68,13 @@ const currentMembers: Member[] = [
   {
     name: 'Asylzhan Sailau',
     role: 'Inspire',
-    image: '/xCellence/asylzhan.jpg',
+    image: '/xCellence/asylzhan1.jpg',
     bio: 'Inspire of the team.',
   },
   {
     name: 'Aizere Askarova',
     role: 'Inspire',
-    image: '/xCellence/aizere.jpg',
+    image: '/xCellence/aizere1.jpg',
     bio: 'Inspire of the team.',
   },
   {
@@ -92,7 +92,7 @@ const currentMembers: Member[] = [
   {
     name: 'Alzere Chindaliyeva',
     role: 'Inspire',
-    image: '/xCellence/alzere.jpg',
+    image: '/xCellence/alzere1.jpg',
     bio: 'Inspire of the team.',
   },
   {
@@ -104,7 +104,7 @@ const currentMembers: Member[] = [
   {
     name: 'Dastan Musrepov',
     role: 'CAD Specialist',
-    image: '/xCellence/dastan.jpg',
+    image: '/xCellence/dastan1.jpg',
     bio: 'CAD specialist of the team.',
   },
   {
@@ -128,13 +128,13 @@ const currentMembers: Member[] = [
   {
     name: 'Vagiz Dissembayev',
     role: 'Builder',
-    image: '/xCellence/vagiz.jpg',
+    image: '/xCellence/vagiz1.jpg',
     bio: 'Builder of the team.',
   },
   {
     name: 'Ali Umargaliyev',
     role: 'Driver & Builder',
-    image: '/xCellence/ali.jpg',
+    image: '/xCellence/ali1.jpg',
     bio: 'Driver of the team.',
   },
 ];
