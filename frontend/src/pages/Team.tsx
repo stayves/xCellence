@@ -128,7 +128,7 @@ const currentMembers: Member[] = [
   {
     name: 'Vagiz Dissembayev',
     role: 'Builder',
-    image: '/xCellence/vagiz2.jpg',
+    image: '/xCellence/vagiz3.jpg',
     bio: 'Builder of the team.',
   },
   {
