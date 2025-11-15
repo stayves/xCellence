@@ -62,7 +62,7 @@ const currentMembers: Member[] = [
   {
     name: 'Arnur Togambayev',
     role: 'Programmer ',
-    image: '/xCellence/arnur.jpg',
+    image: '/xCellence/arnur1.jpg',
     bio: 'Programmer of the team.',
   },
   {
