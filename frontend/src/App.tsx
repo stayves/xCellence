@@ -8,6 +8,7 @@ import Contact from './pages/Contact.tsx';
 import Calendar from './pages/Calendar.tsx';
 import Resources from './pages/Resources.tsx';
 import Blog from './pages/Blog.tsx';
+import BlogArticle from './pages/BlogArticle.tsx';
 import HallOfFame from './pages/HallOfFame.tsx';
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="calendar" element={<Calendar />} />
           <Route path="resources" element={<Resources />} />
           <Route path="blog" element={<Blog />} />
+          <Route path="blog/:slug" element={<BlogArticle />} />
           <Route path="hall-of-fame" element={<HallOfFame />} />
           <Route path="contact" element={<Contact />} />
         </Route>

@@ -1,54 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+import { blogPosts, fusionGuideArticle } from '../data/blog';
 import './Blog.css';
 
-type BlogPost = {
-  title: string;
-  date: string;
-  author: string;
-  summary: string;
-  readTime: string;
-  tag: string;
-};
-
-const posts: BlogPost[] = [
-  {
-    title: 'Building a Reliable Underwater Intake for INTO THE DEEP',
-    date: 'October 18, 2025',
-    author: 'Aruzhan — Mechanical Lead',
-    summary:
-      'A deep dive into our dual-roller intake prototype, from CAD iterations and material selection to water-resistant sealing tests.',
-    readTime: '6 min read',
-    tag: 'Engineering',
-  },
-  {
-    title: 'Training Autonomous Neural Networks with FTC Dashboard',
-    date: 'September 29, 2025',
-    author: 'Arman — Software Captain',
-    summary:
-      'How we leveraged TensorFlow object detection, AprilTag localization, and Road Runner trajectories to score reliably in auto.',
-    readTime: '8 min read',
-    tag: 'Programming',
-  },
-  {
-    title: 'Inside Our Community STEM Workshops',
-    date: 'September 10, 2025',
-    author: 'Ainur — Outreach Lead',
-    summary:
-      'Highlights from the 200+ students we mentored this fall, including lesson plans, feedback, and future collaboration goals.',
-    readTime: '5 min read',
-    tag: 'Outreach',
-  },
-  {
-    title: 'Season Kickoff Strategy: From Whiteboard to Drive Practice',
-    date: 'August 28, 2025',
-    author: 'Dias — Team Captain',
-    summary:
-      'Our process for breaking down the game manual, defining scoring priorities, and translating strategy into subsystem milestones.',
-    readTime: '7 min read',
-    tag: 'Strategy',
-  },
-];
-
 const Blog = () => {
+  const navigate = useNavigate();
+  const handleReadStory = (slug?: string) => {
+    if (!slug) {
+      return;
+    }
+
+    navigate(`/blog/${slug}`);
+  };
+
   return (
     <div className="blog-page">
       <section className="blog-hero">
@@ -65,7 +28,7 @@ const Blog = () => {
       <section className="blog-section">
         <div className="blog-container">
           <div className="blog-grid">
-            {posts.map((post) => (
+            {blogPosts.map((post) => (
               <article key={post.title} className="blog-card">
                 <header className="blog-card-header">
                   <span className="blog-tag">{post.tag}</span>
@@ -80,9 +43,65 @@ const Blog = () => {
                   </div>
                   <span className="blog-author">{post.author}</span>
                 </footer>
-                <button type="button" className="blog-cta">Read story</button>
+                <button
+                  type="button"
+                  className="blog-cta"
+                  onClick={() => handleReadStory(post.slug)}
+                  disabled={!post.slug}
+                >
+                  {post.slug ? 'Read story' : 'Coming soon'}
+                </button>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="feature-article" id="fusion-guide">
+        <div className="feature-container">
+          <div className="feature-hero">
+            <span className="section-tag">{fusionGuideArticle.kicker}</span>
+            <h2>{fusionGuideArticle.title}</h2>
+            <p>{fusionGuideArticle.intro}</p>
+            <div className="feature-meta">
+              <div>
+                <span>{fusionGuideArticle.date}</span>
+                <span className="blog-dot">•</span>
+                <span>{fusionGuideArticle.readTime}</span>
+              </div>
+              <span className="feature-author">{fusionGuideArticle.author}</span>
+            </div>
+            <button
+              type="button"
+              className="blog-cta feature-cta"
+              onClick={() => handleReadStory(fusionGuideArticle.slug)}
+            >
+              Read the full article
+            </button>
+          </div>
+          <div className="feature-body">
+            <figure className="feature-image">
+              <img src={fusionGuideArticle.heroImage} alt={fusionGuideArticle.heroAlt} />
+              <figcaption>Photo: xCellence Media Team</figcaption>
+            </figure>
+            <article className="feature-content">
+              {fusionGuideArticle.sections.map((section) => (
+                <div key={section.title} className="feature-section">
+                  <h3>{section.title}</h3>
+                  {section.paragraphs.map((paragraph, index) => (
+                    <p key={`${section.title}-${index}`}>{paragraph}</p>
+                  ))}
+                  {section.bullets && (
+                    <ul className="feature-list">
+                      {section.bullets.map((bullet, listIndex) => (
+                        <li key={`${section.title}-bullet-${listIndex}`}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+              <p className="feature-closing">{fusionGuideArticle.closing}</p>
+            </article>
           </div>
         </div>
       </section>
@@ -91,6 +110,4 @@ const Blog = () => {
 };
 
 export default Blog;
-
-
 
