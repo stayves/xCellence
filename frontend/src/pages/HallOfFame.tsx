@@ -89,18 +89,18 @@ const hallGallery: GalleryItem[] = [
     title: 'Driver Trainer Reveal',
     description: 'Our new trainer for drivers which you can exploit in the Trainer page'
   },
+  // {
+  //   src: '/xCellence/arnur1.jpg',
+  //   title: 'Programming Excellence',
+  //   description: 'Driver-station debugging session that secured autonomous consistency.'
+  // },
+  // {
+  //   src: '/xCellence/asylzhan1.jpg',
+  //   title: 'Outreach Champions',
+  //   description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
+  // },
   {
-    src: '/xCellence/arnur1.jpg',
-    title: 'Programming Excellence',
-    description: 'Driver-station debugging session that secured autonomous consistency.'
-  },
-  {
-    src: '/xCellence/asylzhan1.jpg',
-    title: 'Outreach Champions',
-    description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
-  },
-  {
-    src: '/xCellence/WROKazakhstan.png',
+    src: '/xCellence/WROKazakhstan.',
     title: 'WRO Training Camp',
     description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
   },

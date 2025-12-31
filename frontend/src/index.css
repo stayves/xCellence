@@ -99,6 +99,19 @@ body {
   background-position: center;
 }
 
+@media (max-width: 768px) {
+  body {
+    /* Mobile browsers often ignore fixed backgrounds; use scroll so the image stays visible */
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+  }
+
+  :root[data-theme='light'] body {
+    background-attachment: scroll;
+  }
+}
+
 #root {
   width: 100%;
   min-height: 100vh;

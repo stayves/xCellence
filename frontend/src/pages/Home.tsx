@@ -221,16 +221,16 @@ const Home = () => {
                   <time className="news-date">{news.date}</time>
                   <h3 className="news-title">{news.title}</h3>
                   <p className="news-description">{news.description}</p>
-                  <a href="#" className="news-link">
+                  <button className="news-link" onClick={() => navigate('/blog')}>
                     Read More →
-                  </a>
+                  </button>
                 </div>
               </article>
             ))}
           </div>
 
           <div className="news-cta">
-            <button className="view-all-btn">View All News</button>
+            <button className="view-all-btn" onClick={() => navigate('/blog')}>View All News</button>
           </div>
         </div>
       </section>
@@ -275,9 +275,7 @@ const Home = () => {
             <div className="sponsors-cta-content">
               <h3>Become a Sponsor</h3>
               <p>Support our team and help us inspire the next generation of innovators.</p>
-              <button className="sponsor-btn" onClick={() => window.location.href = '/contact'}>
-                Partner With Us
-              </button>
+              <button className="sponsor-btn" onClick={() => navigate('/contact')}>Partner With Us</button>
             </div>
           </div>
         </div>

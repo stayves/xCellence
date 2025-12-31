@@ -467,6 +467,10 @@
   font-size: 0.9rem;
   transition: all 0.3s ease;
   display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .news-link:hover {
