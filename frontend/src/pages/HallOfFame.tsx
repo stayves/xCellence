@@ -100,7 +100,7 @@ const hallGallery: GalleryItem[] = [
   //   description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
   // },
   {
-    src: '/xCellence/WROKazakhstan.',
+    src: '/xCellence/WROKazakhstan.png',
     title: 'WRO Training Camp',
     description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
   },
