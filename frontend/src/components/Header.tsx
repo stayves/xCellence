@@ -31,7 +31,7 @@ const Header = ({ theme, onToggleTheme }: HeaderProps) => {
     { path: '/', label: 'Home' },
     { path: '/team', label: 'Team' },
     { path: '/events', label: 'Events' },
-    { path: '/robot', label: 'Our Robot' },
+    { path: '/trainer', label: 'Driver Trainer' },
     { path: '/calendar', label: 'Calendar' },
     { path: '/resources', label: 'Resources' },
     { path: '/blog', label: 'Blog' },

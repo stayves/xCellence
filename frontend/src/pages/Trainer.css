@@ -1,0 +1,254 @@
+.trainer-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--primary-black);
+  color: var(--text-white);
+}
+
+.trainer-hero {
+  padding: 4.5rem 2rem 3rem;
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.trainer-hero-content {
+  max-width: 960px;
+  text-align: center;
+}
+
+.trainer-hero-content h1 {
+  margin: 0.5rem 0;
+}
+
+.trainer-hero-content p {
+  color: var(--text-gray);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.trainer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.trainer-controller {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 999px;
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+
+.trainer-controller .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+  display: inline-block;
+}
+
+.trainer-sim {
+  padding: 4rem 2rem 5rem;
+}
+
+.trainer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--secondary-black);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 20px;
+  box-shadow: var(--surface-card-shadow);
+}
+
+.sim-header {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--surface-card-border);
+  flex-wrap: wrap;
+}
+
+.sim-header h2 {
+  margin-top: 0.5rem;
+}
+
+.sim-header p {
+  color: var(--text-gray);
+}
+
+.sim-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sim-buttons .ghost {
+  border: 1px solid var(--surface-card-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-white);
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sim-buttons .ghost:hover:not(:disabled) {
+  border-color: var(--primary-orange);
+  transform: translateY(-2px);
+}
+
+.sim-buttons .ghost:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sim-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.canvas-wrap {
+  position: relative;
+  border: 1px solid var(--surface-card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #05070e;
+}
+
+.canvas-wrap canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.controller-warning {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--text-white);
+  gap: 0.35rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.finish-popup {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.finish-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sim-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--surface-card-shadow);
+}
+
+.info-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+.info-card p {
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.status-grid .label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-gray);
+  font-size: 0.85rem;
+}
+
+.status-grid .value {
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.controls-list {
+  list-style: disc;
+  padding-left: 1.2rem;
+  color: var(--text-gray);
+  line-height: 1.6;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.controls-list strong {
+  color: var(--text-white);
+}
+
+@media (max-width: 1080px) {
+  .sim-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .trainer-hero {
+    padding: 3.5rem 1.25rem 2.5rem;
+  }
+
+  .trainer-sim {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .trainer-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sim-header {
+    padding: 1.5rem;
+  }
+
+  .sim-body {
+    padding: 1.5rem;
+  }
+}
+

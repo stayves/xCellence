@@ -3,7 +3,7 @@ import Layout from './components/Layout.tsx';
 import Home from './pages/Home.tsx';
 import Team from './pages/Team.tsx';
 import Events from './pages/Events.tsx';
-import Robot from './pages/Robot.tsx';
+import Trainer from './pages/Trainer.tsx';
 import Contact from './pages/Contact.tsx';
 import Calendar from './pages/Calendar.tsx';
 import Resources from './pages/Resources.tsx';
@@ -30,7 +30,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="team" element={<Team />} />
           <Route path="events" element={<Events />} />
-          <Route path="robot" element={<Robot />} />
+          <Route path="trainer" element={<Trainer />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="resources" element={<Resources />} />
           <Route path="blog" element={<Blog />} />

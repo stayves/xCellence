@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSU! Joystick Trainer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        #canvas {
+            border: 2px solid #333;
+            background-color: #0a0a0a;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .stats {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #fff;
+            text-align: right;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .score-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .nav-link {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .no-controller {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 24px;
+            color: #ff0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .no-controller p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .combo {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="info" id="controllerInfo">No controller detected</div>
+    <div class="stats" id="stats"></div>
+    <div class="score-display" id="scoreDisplay"></div>
+    <div class="combo" id="comboDisplay" style="display: none;"></div>
+    <div class="controls">
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="pauseGame()">Pause</button>
+        <button onclick="resetGame()">Reset</button>
+        <button onclick="changeDifficulty()">Difficulty: <span id="difficultyText">Normal</span></button>
+    </div>
+    <a href="mecanum_simulator.html" class="nav-link">Mecanum Simulator →</a>
+    <div class="no-controller" id="noController" style="display: none;">
+        <div>No controller detected!</div>
+        <p>Please connect a controller and press any button</p>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const controllerInfo = document.getElementById('controllerInfo');
+        const noControllerDiv = document.getElementById('noController');
+        const statsDiv = document.getElementById('stats');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const comboDisplay = document.getElementById('comboDisplay');
+        const difficultyText = document.getElementById('difficultyText');
+
+        // Set canvas size
+        canvas.width = 1200;
+        canvas.height = 800;
+
+        // Colors (OSU style)
+        const colors = {
+            hitCircle: '#ff66aa',
+            approachCircle: '#ffffff',
+            slider: '#66aaff',
+            spinner: '#ffaa66',
+            score300: '#ffffff',
+            score100: '#66ff66',
+            score50: '#66aaff',
+            miss: '#ff0000',
+            combo: '#ffffff'
+        };
+
+        let gamepad = null;
+        let controllerConnected = false;
+        let gameActive = false;
+        let gamePaused = false;
+        let lastTime = Date.now();
+        
+        // Game state
+        let activeCircles = [];
+        let nextCircleTime = 0;
+        let difficulty = 1; // 0 = Easy, 1 = Normal, 2 = Hard
+        const difficulties = [
+            { name: 'Easy', approachTime: 2000, spawnInterval: 1500, tolerance: 0.15 },
+            { name: 'Normal', approachTime: 1500, spawnInterval: 1000, tolerance: 0.12 },
+            { name: 'Hard', approachTime: 1000, spawnInterval: 700, tolerance: 0.08 }
+        ];
+        
+        // Statistics
+        let stats = {
+            score: 0,
+            combo: 0,
+            maxCombo: 0,
+            hits300: 0,
+            hits100: 0,
+            hits50: 0,
+            misses: 0,
+            accuracy: 100
+        };
+
+        // Hit circle class
+        class HitCircle {
+            constructor(x, y, spawnTime, approachTime) {
+                this.x = x;
+                this.y = y;
+                this.spawnTime = spawnTime;
+                this.hitTime = spawnTime + approachTime;
+                this.radius = 50;
+                this.approachRadius = 150;
+                this.hit = false;
+                this.missed = false;
+                this.hitScore = null;
+            }
+
+            update(currentTime, leftStickPos, rightStickPos) {
+                const timeLeft = this.hitTime - currentTime;
+                const totalTime = this.hitTime - this.spawnTime;
+                const progress = Math.max(0, Math.min(1, 1 - (timeLeft / totalTime)));
+                
+                // Update approach circle size (shrinks from 150 to 50)
+                if (progress >= 0 && progress <= 1) {
+                    this.approachRadius = 150 - (progress * 100);
+                }
+
+                // Check if hit (when approach circle is close to hit circle size)
+                if (!this.hit && !this.missed && currentTime >= this.hitTime - 200) {
+                    // Calculate squared distance from both joysticks (avoid sqrt for performance)
+                    const leftDx = this.x - leftStickPos.x;
+                    const leftDy = this.y - leftStickPos.y;
+                    const leftDistanceSq = leftDx * leftDx + leftDy * leftDy;
+                    
+                    const rightDx = this.x - rightStickPos.x;
+                    const rightDy = this.y - rightStickPos.y;
+                    const rightDistanceSq = rightDx * rightDx + rightDy * rightDy;
+                    
+                    // Use whichever joystick is closer (compare squared distances)
+                    const minDistanceSq = Math.min(leftDistanceSq, rightDistanceSq);
+                    const tolerance = this.radius + (difficulties[difficulty].tolerance * 50);
+                    const toleranceSq = tolerance * tolerance;
+                    
+                    // Hit when joystick is in position AND timing is right
+                    if (minDistanceSq <= toleranceSq && Math.abs(timeLeft) < 200) {
+                        const timeDiff = Math.abs(timeLeft);
+                        let score = 'miss';
+                        
+                        if (timeDiff < 50) {
+                            score = '300';
+                            stats.hits300++;
+                        } else if (timeDiff < 100) {
+                            score = '100';
+                            stats.hits100++;
+                        } else if (timeDiff < 150) {
+                            score = '50';
+                            stats.hits50++;
+                        }
+                        
+                        if (score !== 'miss') {
+                            this.hit = true;
+                            this.hitScore = score;
+                            stats.combo++;
+                            stats.maxCombo = Math.max(stats.maxCombo, stats.combo);
+                            showScore(score);
+                        }
+                    }
+                }
+
+                // Check if missed (after hit time window)
+                if (currentTime > this.hitTime + 100 && !this.hit && !this.missed) {
+                    this.missed = true;
+                    stats.combo = 0;
+                    stats.misses++;
+                    showScore('miss');
+                }
+
+                // Remove circle after animation
+                return currentTime > this.hitTime + 500;
+            }
+
+            draw() {
+                // Draw approach circle
+                if (!this.hit && !this.missed) {
+                    ctx.strokeStyle = colors.approachCircle;
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.approachRadius, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                // Draw hit circle
+                if (!this.missed) {
+                    ctx.fillStyle = this.hit ? '#00ff00' : colors.hitCircle;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                }
+
+                // Draw score if hit
+                if (this.hitScore) {
+                    ctx.fillStyle = colors['score' + this.hitScore];
+                    ctx.font = 'bold 32px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(this.hitScore, this.x, this.y - 80);
+                }
+            }
+        }
+
+        // Convert joystick position to screen coordinates
+        function joystickToScreen(stickX, stickY, centerX, centerY, maxRadius) {
+            return {
+                x: centerX + stickX * maxRadius,
+                y: centerY + stickY * maxRadius
+            };
+        }
+
+        // Generate random position within joystick reachable areas
+        function generateRandomPosition() {
+            // Generate position that can be reached by at least one joystick
+            const leftCenterX = 300;
+            const rightCenterX = 900;
+            const centerY = 400;
+            const maxRadius = 200;
+            
+            // Randomly choose left or right joystick area
+            const useLeft = Math.random() < 0.5;
+            const centerX = useLeft ? leftCenterX : rightCenterX;
+            
+            // Generate random position within the joystick circle
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * maxRadius;
+            
+            return {
+                x: centerX + Math.cos(angle) * distance,
+                y: centerY + Math.sin(angle) * distance
+            };
+        }
+
+        function showScore(score) {
+            scoreDisplay.textContent = score;
+            scoreDisplay.style.opacity = '1';
+            scoreDisplay.style.color = colors['score' + score] || colors.miss;
+            
+            setTimeout(() => {
+                scoreDisplay.style.opacity = '0';
+            }, 500);
+        }
+
+        function startGame() {
+            gameActive = true;
+            gamePaused = false;
+            activeCircles = [];
+            nextCircleTime = Date.now();
+            stats = {
+                score: 0,
+                combo: 0,
+                maxCombo: 0,
+                hits300: 0,
+                hits100: 0,
+                hits50: 0,
+                misses: 0,
+                accuracy: 100
+            };
+        }
+
+        function pauseGame() {
+            gamePaused = !gamePaused;
+        }
+
+        function resetGame() {
+            gameActive = false;
+            gamePaused = false;
+            activeCircles = [];
+            stats = {
+                score: 0,
+                combo: 0,
+                maxCombo: 0,
+                hits300: 0,
+                hits100: 0,
+                hits50: 0,
+                misses: 0,
+                accuracy: 100
+            };
+        }
+
+        function changeDifficulty() {
+            difficulty = (difficulty + 1) % 3;
+            difficultyText.textContent = difficulties[difficulty].name;
+        }
+
+        // Gamepad API
+        window.addEventListener('gamepadconnected', (e) => {
+            gamepad = navigator.getGamepads()[e.gamepad.index];
+            controllerConnected = true;
+            controllerInfo.textContent = `Controller: ${gamepad.id}`;
+            noControllerDiv.style.display = 'none';
+        });
+
+        window.addEventListener('gamepaddisconnected', (e) => {
+            gamepad = null;
+            controllerConnected = false;
+            controllerInfo.textContent = 'No controller detected';
+            noControllerDiv.style.display = 'block';
+        });
+
+        function checkGamepads() {
+            const gamepads = navigator.getGamepads();
+            for (let i = 0; i < gamepads.length; i++) {
+                if (gamepads[i]) {
+                    gamepad = gamepads[i];
+                    controllerConnected = true;
+                    controllerInfo.textContent = `Controller: ${gamepad.id}`;
+                    noControllerDiv.style.display = 'none';
+                    break;
+                }
+            }
+        }
+
+        function getControllerInputs() {
+            if (!gamepad) {
+                checkGamepads();
+                return null;
+            }
+            gamepad = navigator.getGamepads()[gamepad.index];
+            if (!gamepad) return null;
+
+            return {
+                leftStickX: gamepad.axes[0] || 0,
+                leftStickY: gamepad.axes[1] || 0,
+                rightStickX: gamepad.axes[2] || 0,
+                rightStickY: gamepad.axes[3] || 0
+            };
+        }
+
+        function drawJoystickAreaBackground(x, y, label) {
+            const radius = 200;
+            
+            // Outer circle
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Label
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(label, x, y - radius - 30);
+        }
+
+        function drawJoystickPosition(x, y, stickX, stickY, color) {
+            const radius = 200;
+            
+            // Current position indicator
+            const posX = x + stickX * radius;
+            const posY = y + stickY * radius;
+            
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(posX, posY, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        let lastStatsString = '';
+        let lastCombo = -1;
+
+        function drawStats() {
+            if (!gameActive) {
+                const newString = 'Training: OFF<br>Press "Start Training" to begin';
+                if (statsDiv.innerHTML !== newString) {
+                    statsDiv.innerHTML = newString;
+                }
+                return;
+            }
+
+            const totalHits = stats.hits300 + stats.hits100 + stats.hits50;
+            const total = totalHits + stats.misses;
+            const accuracy = total > 0 ? ((stats.hits300 * 300 + stats.hits100 * 100 + stats.hits50 * 50) / (total * 300) * 100) : 100;
+
+            const newString = `
+                <div style="font-size: 24px; margin-bottom: 10px;">Score: ${stats.score.toLocaleString()}</div>
+                <div>Combo: ${stats.combo} (Max: ${stats.maxCombo})</div>
+                <div style="color: ${colors.score300}">300: ${stats.hits300}</div>
+                <div style="color: ${colors.score100}">100: ${stats.hits100}</div>
+                <div style="color: ${colors.score50}">50: ${stats.hits50}</div>
+                <div style="color: ${colors.miss}">Miss: ${stats.misses}</div>
+                <div style="margin-top: 10px; font-size: 18px;">Accuracy: ${accuracy.toFixed(2)}%</div>
+            `;
+
+            // Only update DOM if stats changed
+            if (lastStatsString !== newString) {
+                statsDiv.innerHTML = newString;
+                lastStatsString = newString;
+            }
+
+            // Only update combo display if it changed
+            if (lastCombo !== stats.combo) {
+                if (stats.combo > 0) {
+                    comboDisplay.textContent = `${stats.combo}x`;
+                    comboDisplay.style.display = 'block';
+                } else {
+                    comboDisplay.style.display = 'none';
+                }
+                lastCombo = stats.combo;
+            }
+        }
+
+        function draw() {
+            // Clear canvas
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const inputs = getControllerInputs();
+            const currentTime = Date.now();
+
+            if (inputs) {
+                // Draw joystick area backgrounds first
+                drawJoystickAreaBackground(300, 400, 'Left Stick');
+                drawJoystickAreaBackground(900, 400, 'Right Stick');
+
+                if (gameActive && !gamePaused) {
+                    // Spawn new circles (limit to prevent performance issues)
+                    if (currentTime >= nextCircleTime && activeCircles.length < 20) {
+                        const pos = generateRandomPosition();
+                        const circle = new HitCircle(
+                            pos.x,
+                            pos.y,
+                            currentTime,
+                            difficulties[difficulty].approachTime
+                        );
+                        activeCircles.push(circle);
+                        nextCircleTime = currentTime + difficulties[difficulty].spawnInterval;
+                    }
+
+                    // Convert both joystick positions to screen coordinates
+                    const leftStickPos = joystickToScreen(inputs.leftStickX, inputs.leftStickY, 300, 400, 200);
+                    const rightStickPos = joystickToScreen(inputs.rightStickX, inputs.rightStickY, 900, 400, 200);
+
+                    // Update and draw circles
+                    activeCircles = activeCircles.filter(circle => {
+                        // Update circle state - check both joysticks
+                        const shouldRemove = circle.update(currentTime, leftStickPos, rightStickPos);
+                        circle.draw();
+                        
+                        return !shouldRemove;
+                    });
+
+                    // Draw joystick position indicators on top of circles
+                    drawJoystickPosition(300, 400, inputs.leftStickX, inputs.leftStickY, colors.hitCircle);
+                    drawJoystickPosition(900, 400, inputs.rightStickX, inputs.rightStickY, colors.slider);
+
+                    // Update score
+                    stats.score = stats.hits300 * 300 + stats.hits100 * 100 + stats.hits50 * 50;
+                } else {
+                    // Draw joystick position indicators even when paused
+                    drawJoystickPosition(300, 400, inputs.leftStickX, inputs.leftStickY, colors.hitCircle);
+                    drawJoystickPosition(900, 400, inputs.rightStickX, inputs.rightStickY, colors.slider);
+                    
+                    if (gamePaused) {
+                        // Draw pause overlay
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = 'bold 48px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
+                    }
+                }
+            } else {
+                noControllerDiv.style.display = 'block';
+            }
+
+            drawStats();
+            requestAnimationFrame(draw);
+        }
+
+        // Initialize
+        checkGamepads();
+        draw();
+    </script>
+</body>
+</html>

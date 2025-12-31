@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mecanum Drive Simulator + Trainer</title>
+
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        background:#0f1a33;
+        color:white;
+        font-family:Arial, sans-serif;
+        overflow:hidden;
+    }
+    #canvas {
+        position:absolute;
+        top:0; left:0;
+        border:2px solid #333;
+    }
+    .controls {
+        position:absolute;
+        top:10px; right:10px;
+        background:rgba(0,0,0,0.55);
+        padding:12px;
+        border-radius:8px;
+        width:160px;
+        backdrop-filter:blur(4px);
+        font-size:14px;
+    }
+    button {
+        width:100%;
+        margin-top:6px;
+        padding:7px;
+        border:none;
+        border-radius:20px;
+        background:#627aff;
+        color:white;
+        cursor:pointer;
+        font-weight:bold;
+        transition:0.2s;
+    }
+    button:hover { transform:scale(1.05); }
+
+    #finishPopup {
+        position:absolute;
+        top:50%; left:50%;
+        transform:translate(-50%, -50%);
+        background:rgba(0,0,0,0.85);
+        padding:25px;
+        border-radius:12px;
+        text-align:center;
+        font-size:20px;
+        display:none;
+        width:260px;
+    }
+    #finishPopup button {
+        margin-top:15px;
+        width:150px;
+    }
+    .modeLabel {
+        margin-top:10px;
+        padding:6px;
+        border-radius:10px;
+        background:rgba(255,255,255,0.1);
+        text-align:center;
+        font-weight:bold;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="controls">
+    <div><b>TRAINER MODE</b></div>
+    <button id="btnStart">Start Trainer</button>
+    <button id="btnRegen" disabled>New Path</button>
+    <button id="btnEnd" disabled>End Trainer</button>
+
+    <div style="margin-top:12px;"><b>Drive Mode</b></div>
+    <button id="btnMode">Robot-Centric</button>
+
+    <div class="modeLabel" id="modeLabel">Mode: Robot-Centric</div>
+
+    <div style="margin-top:12px;">
+        Left Stick = Move<br>
+        Right Stick X = Turn<br>
+        X = New Path<br>
+        △ = Toggle Mode
+    </div>
+</div>
+
+<div id="finishPopup">
+    <div id="finishText">Training Complete!</div>
+    <button id="btnRestart">Restart</button>
+    <button id="btnNew">New Path</button>
+</div>
+
+<script>
+//////////////////////////////////////////////////////
+// Canvas & Robot
+//////////////////////////////////////////////////////
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = 1200;
+canvas.height = 800;
+
+const robot = {
+    x: canvas.width/2,
+    y: canvas.height/2,
+    angle: -Math.PI/2,
+    vx: 0, vy: 0, omega: 0,
+    width: 60,
+    height: 60,
+    maxSpeed: 600,
+    maxAngularSpeed: 7
+};
+
+//////////////////////////////////////////////////////
+// Physics constants
+//////////////////////////////////////////////////////
+
+const ACC = 2000;
+const ANG_ACC = 20;
+const FRICTION = 0.88;
+const ANG_FRICTION = 0.84;
+const STATIC_THRESHOLD = 0.12;
+const STATIC_RELEASE = 30;
+const BRAKE = 3;
+
+function round(v) {
+    return Math.abs(v) < 0.0005 ? 0 : Math.round(v * 1000)/1000;
+}
+
+//////////////////////////////////////////////////////
+// Mecanum Drive
+//////////////////////////////////////////////////////
+
+function mecanum(tvx, tvy, tom, dt) {
+    const tVX = tvx * robot.maxSpeed;
+    const tVY = tvy * robot.maxSpeed;
+    const tOM = tom * robot.maxAngularSpeed;
+
+    const maxA = ACC * dt;
+    const maxAR = ANG_ACC * dt;
+
+    // X movement
+    let diffX = tVX - robot.vx;
+    if (Math.abs(tvx) > 0.01) {
+        if (Math.abs(robot.vx) < 2 && Math.abs(tvx) < STATIC_THRESHOLD) robot.vx = 0;
+        else if (Math.abs(robot.vx) < 2) robot.vx = Math.sign(tvx) * STATIC_RELEASE;
+        else {
+            const opp = Math.sign(tvx) !== Math.sign(robot.vx);
+            robot.vx += Math.sign(diffX) * Math.min(maxA * (opp ? BRAKE : 1), Math.abs(diffX));
+        }
+    } else robot.vx *= FRICTION;
+
+    // Y movement
+    let diffY = tVY - robot.vy;
+    if (Math.abs(tvy) > 0.01) {
+        if (Math.abs(robot.vy) < 2 && Math.abs(tvy) < STATIC_THRESHOLD) robot.vy = 0;
+        else if (Math.abs(robot.vy) < 2) robot.vy = Math.sign(tvy) * STATIC_RELEASE;
+        else {
+            const opp = Math.sign(tvy) !== Math.sign(robot.vy);
+            robot.vy += Math.sign(diffY) * Math.min(maxA * (opp ? BRAKE : 1), Math.abs(diffY));
+        }
+    } else robot.vy *= FRICTION;
+
+    // Rotation
+    let diffOm = tOM - robot.omega;
+    if (Math.abs(tom) > 0.01) {
+        const opp = Math.sign(tom) !== Math.sign(robot.omega);
+        robot.omega += Math.sign(diffOm) * Math.min(maxAR * (opp ? BRAKE : 1), Math.abs(diffOm));
+    } else robot.omega *= ANG_FRICTION;
+
+    robot.vx = round(robot.vx);
+    robot.vy = round(robot.vy);
+    robot.omega = round(robot.omega);
+
+    // Apply movement
+    robot.angle += robot.omega * dt;
+
+    const c = Math.cos(robot.angle);
+    const s = Math.sin(robot.angle);
+
+    const gVx = robot.vx * c - robot.vy * s;
+    const gVy = robot.vx * s + robot.vy * c;
+
+    robot.x += gVx * dt;
+    robot.y += gVy * dt;
+
+    robot.x = Math.max(30, Math.min(canvas.width - 30, robot.x));
+    robot.y = Math.max(30, Math.min(canvas.height - 30, robot.y));
+}
+
+//////////////////////////////////////////////////////
+// TRAINER MODE
+//////////////////////////////////////////////////////
+
+let trainerActive = false;
+let checkpoints = [];
+let currentCP = 0;
+let startTime = 0;
+
+function generatePath() {
+    checkpoints = [];
+    let count = 7 + Math.floor(Math.random()*4);
+
+    for (let i=0; i<count; i++) {
+        let x, y;
+        do {
+            x = 100 + Math.random()*(canvas.width-200);
+            y = 100 + Math.random()*(canvas.height-200);
+        } while (checkpoints.some(c => Math.hypot(c.x-x, c.y-y) < 150));
+        checkpoints.push({x,y});
+    }
+    currentCP = 0;
+}
+
+function startTrainer() {
+    generatePath();
+    trainerActive = true;
+    startTime = performance.now();
+
+    btnStart.disabled = true;
+    btnRegen.disabled = false;
+    btnEnd.disabled = false;
+}
+
+function endTrainer() {
+    trainerActive = false;
+
+    btnStart.disabled = false;
+    btnRegen.disabled = true;
+    btnEnd.disabled = true;
+}
+
+function finishTrainer() {
+    let time = (performance.now() - startTime)/1000;
+    finishText.innerHTML = `Training Complete!<br>Time: ${time.toFixed(2)}s`;
+    finishPopup.style.display = "block";
+}
+
+//////////////////////////////////////////////////////
+// Draw path and checkpoints
+//////////////////////////////////////////////////////
+
+function drawPath(points) {
+    if (points.length < 2) return;
+
+    ctx.strokeStyle = "#6da8ff";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+
+    // Catmull-Rom to Bézier spline
+    for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i - 1] || points[i];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2] || p2;
+
+        // Catmull-Rom basis → Bézier control points
+        const cp1x = p1.x + (p2.x - p0.x) / 6;
+        const cp1y = p1.y + (p2.y - p0.y) / 6;
+        const cp2x = p2.x - (p3.x - p1.x) / 6;
+        const cp2y = p2.y - (p3.y - p1.y) / 6;
+
+        if (i === 0) ctx.moveTo(p1.x, p1.y);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
+    }
+
+    ctx.stroke();
+}
+
+
+function drawCheckpoints() {
+    for (let i=0; i<checkpoints.length; i++) {
+        const cp = checkpoints[i];
+        let col = "rgba(255,255,255,0.4)";
+        let radius = 20;
+
+        if (i < currentCP) col = "rgba(0,255,0,0.4)";
+        else if (i === currentCP) {
+            let pulse = 0.4 + 0.3 * Math.sin(performance.now()/200);
+            col = `rgba(255,255,0,${pulse})`;
+        }
+
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, radius, 0, Math.PI*2);
+        ctx.fillStyle = col;
+        ctx.fill();
+    }
+}
+
+//////////////////////////////////////////////////////
+// Draw robot
+//////////////////////////////////////////////////////
+
+function drawRobot() {
+    ctx.save();
+    ctx.translate(robot.x, robot.y);
+    ctx.rotate(robot.angle);
+
+    ctx.fillStyle = "#4a90e2";
+    ctx.fillRect(-30,-30,60,60);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(20,-5,10,10);
+
+    ctx.restore();
+}
+
+//////////////////////////////////////////////////////
+// Gamepad Input (PS5 FIXED)
+//////////////////////////////////////////////////////
+
+let gp = null;
+window.addEventListener("gamepadconnected", e => gp = e.gamepad);
+window.addEventListener("gamepaddisconnected", ()=>gp = null);
+
+let fieldCentric = false;
+let toggleLock = false;
+
+function gamepadControl(dt) {
+    if (!gp) return;
+
+    let g = navigator.getGamepads()[gp.index];
+    if (!g) return;
+
+    // LEFT STICK
+    let lx = g.axes[0] ?? 0;
+    let ly = g.axes[1] ?? 0;
+
+    // RIGHT STICK (PS5 FIX: axis[3] fallback)
+    let rx = g.axes[2] ?? 0;
+    if (Math.abs(rx) < 0.05 && g.axes[3] !== undefined)
+        rx = g.axes[3];
+
+    if (Math.abs(lx) < 0.04) lx = 0;
+    if (Math.abs(ly) < 0.04) ly = 0;
+    if (Math.abs(rx) < 0.04) rx = 0;
+
+    let forward = -ly;
+    let strafe  = lx;
+
+    if (fieldCentric) {
+    // Driver controls assume forward = UP on screen
+    // But canvas Y+ = DOWN → invert Y
+    let fieldX = strafe;
+    let fieldY = -forward;
+
+    // Rotate the field inputs by NEGATIVE robot angle
+    const ca = Math.cos(-robot.angle-Math.PI/2);
+    const sa = Math.sin(-robot.angle-Math.PI/2);
+
+    const rx = fieldX * ca - fieldY * sa;
+    const ry = fieldX * sa + fieldY * ca;
+
+    // Convert back to robot-style forward/strafe
+    forward = -ry;   // invert again for canvas Y direction
+    strafe  = rx;
+}
+
+
+    mecanum(forward, strafe, rx, dt);
+
+    // X button → new path
+    if (g.buttons[0].pressed) {
+        generatePath();
+        trainerActive = true;
+        startTime = performance.now();
+    }
+
+    // Triangle/Y button → toggle mode
+    if (g.buttons[3].pressed && !toggleLock) {
+        fieldCentric = !fieldCentric;
+        btnMode.textContent = fieldCentric ? "Field-Centric" : "Robot-Centric";
+        modeLabel.textContent = btnMode.textContent;
+        toggleLock = true;
+    }
+    if (!g.buttons[3].pressed) toggleLock = false;
+}
+
+//////////////////////////////////////////////////////
+// Main Loop
+//////////////////////////////////////////////////////
+
+let last = performance.now();
+
+function loop() {
+    let now = performance.now();
+    let dt = Math.min((now - last)/1000, 0.1);
+    last = now;
+
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    if (gp) gamepadControl(dt);
+
+    if (trainerActive) {
+        drawPath(checkpoints);
+        drawCheckpoints();
+
+        let cp = checkpoints[currentCP];
+        let d = Math.hypot(robot.x - cp.x, robot.y - cp.y);
+
+        if (d < 40) {
+            currentCP++;
+            if (currentCP >= checkpoints.length) {
+                trainerActive = false;
+                finishTrainer();
+            }
+        }
+    }
+
+    drawRobot();
+    requestAnimationFrame(loop);
+}
+
+loop();
+
+//////////////////////////////////////////////////////
+// Button UI
+//////////////////////////////////////////////////////
+
+const btnStart = document.getElementById("btnStart");
+const btnRegen = document.getElementById("btnRegen");
+const btnEnd   = document.getElementById("btnEnd");
+const btnMode  = document.getElementById("btnMode");
+const modeLabel = document.getElementById("modeLabel");
+
+btnStart.onclick = startTrainer;
+btnRegen.onclick = () => generatePath();
+btnEnd.onclick = endTrainer;
+
+btnMode.onclick = () => {
+    fieldCentric = !fieldCentric;
+    btnMode.textContent = fieldCentric ? "Field-Centric" : "Robot-Centric";
+    modeLabel.textContent = btnMode.textContent;
+};
+
+const finishPopup = document.getElementById("finishPopup");
+
+document.getElementById("btnRestart").onclick = () => {
+    finishPopup.style.display = "none";
+    currentCP = 0;
+    trainerActive = true;
+    startTime = performance.now();
+};
+
+document.getElementById("btnNew").onclick = () => {
+    finishPopup.style.display = "none";
+    generatePath();
+    trainerActive = true;
+    startTime = performance.now();
+};
+
+</script>
+</body>
+</html>

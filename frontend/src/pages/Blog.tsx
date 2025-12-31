@@ -30,6 +30,9 @@ const Blog = () => {
           <div className="blog-grid">
             {blogPosts.map((post) => (
               <article key={post.title} className="blog-card">
+                <figure className="blog-card-cover">
+                  <img src={post.coverImage} alt={post.coverAlt} loading="lazy" />
+                </figure>
                 <header className="blog-card-header">
                   <span className="blog-tag">{post.tag}</span>
                   <h2>{post.title}</h2>

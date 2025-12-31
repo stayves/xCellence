@@ -1,8 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
+const withBase = (path: string) => {
+  const base = import.meta.env.BASE_URL?.replace(/\/+$/, '') ?? '';
+  const cleanPath = path.replace(/^\/+/, '');
+  return `${base}/${cleanPath}`;
+};
+
 const Home = () => {
+  const teamSlides = useMemo(
+    () =>
+      ['xCellenceTeam1.jpg', 'xCellenceTeam2.jpg', 'xCellenceTeam3.JPG', 'xCellenceTeam4.JPG'].map((src) =>
+        withBase(src)
+      ),
+    []
+  );
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (teamSlides.length <= 1) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % teamSlides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [teamSlides.length]);
+
   // Real team news and achievements
   const [newsItems] = useState([
     {
@@ -16,17 +43,17 @@ const Home = () => {
     {
       id: 2,
       title: "WRO Republican Training Camp",
-      date: "August 3, 2024",
+      date: "August 3, 2025",
       image: "/xCellence/news-2.jpg",
       description: "Successfully organized week-long training camp with 45 participants from all NIS schools, featuring conferences with robotics mentors and NU professors.",
       category: "Outreach"
     },
     {
       id: 3,
-      title: "Temirqazyq Forum Success",
-      date: "October 2, 2024",
-      image: "/xCellence/news-3.jpg",
-      description: "35 participants attended our STEM startups forum featuring leading specialists Karakoz Tasbolatova, Nurdaulet Bazylbekov, and Arlan Rakhmetzhanov.",
+      title: "Astana Innovation Forum",
+      date: "December 21, 2025",
+      image: "/xCellence/AIFlogo.jpg",
+      description: "Biggest entrepreneurship forum for students in Central Asia, with 200+ participants, 150+ startups and top speakers from startup ecosystem. Partners included: Master Education, Silkroad Innovation Hub, GloCoach. ",
       category: "Forum"
     },
     {
@@ -57,9 +84,10 @@ const Home = () => {
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-image-container">
-          <img 
-            src="/xCellence/team.jpg" 
-            alt="xCellence FTC Team" 
+          <img
+            key={teamSlides[currentSlide]}
+            src={teamSlides[currentSlide]}
+            alt={`xCellence team highlight ${currentSlide + 1}`}
             className="hero-image"
           />
         </div>
@@ -89,8 +117,8 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-cta">
-              <button className="cta-primary" onClick={() => navigate('/robot')}>
-                See Our Robot
+              <button className="cta-primary" onClick={() => navigate('/trainer')}>
+                Try Driver Trainer
               </button>
               <button className="cta-secondary" onClick={() => navigate('/team')}>
                 Meet the Team
@@ -98,6 +126,20 @@ const Home = () => {
             </div>
           </div>
         </div>
+        {teamSlides.length > 1 && (
+          <div className="hero-carousel-dots" role="tablist" aria-label="Team highlights carousel">
+            {teamSlides.map((_, index) => (
+              <button
+                key={teamSlides[index]}
+                type="button"
+                className={`hero-dot ${currentSlide === index ? 'active' : ''}`}
+                aria-label={`Show team photo ${index + 1}`}
+                aria-pressed={currentSlide === index}
+                onClick={() => setCurrentSlide(index)}
+              />
+            ))}
+          </div>
+        )}
         <div className="hero-scroll-indicator">
           <span>Scroll to explore</span>
           <div className="scroll-arrow">↓</div>

@@ -46,12 +46,46 @@
   background: var(--surface-card);
   border: 1px solid var(--surface-card-border);
   border-radius: 18px;
-  padding: 2rem;
+  padding: 0 0 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--surface-card-shadow);
+}
+
+.blog-card-cover {
+  margin: 0;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--surface-card-border);
+}
+
+.blog-card-cover img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: 190px;
+}
+
+.blog-card-header,
+.blog-summary,
+.blog-meta,
+.blog-cta {
+  padding: 0 2rem;
+}
+
+.blog-card-header {
+  padding-top: 1.5rem;
+}
+
+.blog-summary {
+  padding-top: 0.25rem;
+}
+
+.blog-meta {
+  padding-bottom: 0.25rem;
 }
 
 .blog-card:hover {
@@ -119,6 +153,7 @@
   letter-spacing: 0.8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-left: 0;
 }
 
 .blog-cta:hover {

@@ -20,30 +20,7 @@ const mentors: Member[] = [
     image: '/xCellence/madi.jpg',
     bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
   },
-  {
-    name: 'Daniil Filimonov',
-    role: 'Research Assistant at ISSAI',
-    image: '/xCellence/daniil.jpg',
-    bio: 'Provides deep insights into AI, automation, and modern computational methods.',
-  },
-  {
-    name: 'Azamat Eshmukhambetov',
-    role: 'Professor at Nazarbayev University',
-    image: '/xCellence/azamat.jpg',
-    bio: 'Offers expertise in advanced engineering principles and research-based problem solving.',
-  },
-  {
-    name: 'Azat Slyam',
-    role: 'Technology Specialist',
-    image: '/xCellence/azat.jpg',
-    bio: 'Contributing valuable knowledge in technological development and innovation.',
-  },
-  {
-    name: 'Zhanat Kapassov',
-    role: 'NU SEDS Professor',
-    image: '/xCellence/zhanat.jpg',
-    bio: 'Expert in robotics and control systems, supporting technical growth and strategic engineering decisions.',
-  },
+
 ];
 
 const currentMembers: Member[] = [

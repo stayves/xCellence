@@ -80,27 +80,27 @@ const hallGallery: GalleryItem[] = [
     description: 'Leadership team aligning strategy before Central Asia Championship presentations.'
   },
   {
-    src: '/xCellence/news-2.jpg',
+    src: '/xCellence/American.jpg',
     title: 'American Corner Workshop',
     description: 'Fusion 360 bootcamp introducing 15+ students to CAD fundamentals.'
   },
   {
     src: '/xCellence/robot-main.jpg',
-    title: 'Phoenix Reveal',
-    description: 'Our DECODE season robot featuring modular drivetrain and custom manipulator.'
+    title: 'Driver Trainer Reveal',
+    description: 'Our new trainer for drivers which you can exploit in the Trainer page'
   },
   {
-    src: '/xCellence/arnur.jpg',
+    src: '/xCellence/arnur1.jpg',
     title: 'Programming Excellence',
     description: 'Driver-station debugging session that secured autonomous consistency.'
   },
   {
-    src: '/xCellence/asylzhan.jpg',
+    src: '/xCellence/asylzhan1.jpg',
     title: 'Outreach Champions',
     description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
   },
   {
-    src: '/xCellence/news-4.jpg',
+    src: '/xCellence/WROKazakhstan.png',
     title: 'WRO Training Camp',
     description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
   },
@@ -110,12 +110,16 @@ const alumniHighlights = [
   {
     name: 'Asylbek Myrzakhmetov',
     role: 'Director of USTEM Robotics Development Fund',
-    achievement: 'Member of the Robotics, STEAM and Programming Development Council at the Ministry of Education of Kazakhstan. Oversees Smart Sarbaz / Zhas Sarbaz patriotic program for military-engineering education through robotics.',
+    achievement:
+      'Member of the Robotics, STEAM and Programming Development Council at the Ministry of Education of Kazakhstan. Oversees Smart Sarbaz / Zhas Sarbaz patriotic program for military-engineering education through robotics.',
+    photo: '/xCellence/Asylbek.jpeg',
   },
   {
     name: 'Daniyar Ermatov',
     role: 'FIRST Program Delivery Partner',
-    achievement: 'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
+    achievement:
+      'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
+    photo: '/xCellence/Daniyar.jpg',
   },
 ];
 
@@ -185,7 +189,7 @@ const HallOfFame = () => {
             {hallGallery.map((item) => (
               <article key={item.title} className="hall-gallery-card">
                 <div className="hall-gallery-media">
-                  <img src={item.src} alt={item.title} loading="lazy" />
+                  <img src={item.src} alt={item.title} />
                 </div>
                 <div className="hall-gallery-info">
                   <h3>{item.title}</h3>
@@ -211,9 +215,16 @@ const HallOfFame = () => {
           <div className="alumni-grid">
             {alumniHighlights.map((alumni) => (
               <div key={alumni.name} className="alumni-highlight-card">
-                <h3>{alumni.name}</h3>
-                <span className="alumni-role">{alumni.role}</span>
-                <p>{alumni.achievement}</p>
+                {alumni.photo && (
+                  <div className="alumni-photo">
+                    <img src={alumni.photo} alt={alumni.name} loading="lazy" />
+                  </div>
+                )}
+                <div>
+                  <h3>{alumni.name}</h3>
+                  <span className="alumni-role">{alumni.role}</span>
+                  <p>{alumni.achievement}</p>
+                </div>
               </div>
             ))}
           </div>

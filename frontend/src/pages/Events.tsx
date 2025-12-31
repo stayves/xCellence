@@ -1,4 +1,4 @@
-import './Events.css';
+﻿import './Events.css';
 
 type EventCard = {
   title: string
@@ -14,7 +14,7 @@ const Events = () => {
   const upcomingEvents: EventCard[] = [
     {
       title: "NIS School Hackathon",
-      date: "December 25, 2024",
+      date: "January 25, 2026",
       location: "NIS EMN Astana",
       type: "Hackathon",
       description: "School-wide hackathon with business cases from companies, 200,000₸ prize fund for best solutions.",
@@ -34,7 +34,7 @@ const Events = () => {
       location: "American Corner Astana",
       type: "Workshop",
       description: "Week-long comprehensive CAD training bootcamp in partnership with American Corner.",
-      image: "/xCellence/news-3.jpg",
+      image: "/xCellence/News-3.jpg",
     },
   ];
 
@@ -44,7 +44,7 @@ const Events = () => {
       date: "November 13, 2024",
       achievement: "Mentorship session with Prof. Azamat Eshmukhambetov",
       type: "Forum",
-      image: "/xCellence/robot-gallery-1.jpg",
+      image: "/xCellence/xCellenceNU.png",
     },
     {
       title: "Masterclass in Rural School Shortandy",
@@ -58,28 +58,28 @@ const Events = () => {
       date: "October 12, 2024",
       achievement: "2 alumni, 1 mentor, 40+ stories answered",
       type: "Forum",
-      image: "/xCellence/robot-gallery-3.jpg",
+      image: "/xCellence/alumni1.jpg",
     },
     {
       title: "Alumni Forum",
       date: "October 5, 2024",
       achievement: "45 participants online - FTC & WRO alumni shared career experiences",
       type: "Forum",
-      image: "/xCellence/robot-gallery-4.jpg",
+      image: "/xCellence/AlumniForum.png",
     },
     {
       title: "Temirqazyq Forum",
       date: "October 2, 2024",
       achievement: "35 participants - STEM startup leaders panel (Karakoz Tasbolatova, Nurdaulet Bazylbekov, Arlan Rakhmetzhanov)",
       type: "Forum",
-      image: "/xCellence/robot-gallery-5.jpg",
+      image: "/xCellence/Forum.png",
     },
     {
       title: "Kindergarten Robotics Lessons Started",
       date: "September 10, 2024",
       achievement: "24 hours conducted - 15 kids, 2x/week at Triumph Kindergarten",
       type: "Outreach",
-      image: "/xCellence/robot-gallery-6.jpg",
+      image: "/xCellence/deti.jpg",
     },
     {
       title: "Decode Season Kickoff Livestream",
@@ -93,7 +93,7 @@ const Events = () => {
       date: "August 3, 2024",
       achievement: "45 participants, 1 week - all NIS schools, conferences with mentors & NU professors",
       type: "Training",
-      image: "/xCellence/news-4.jpg",
+      image: "/xCellence/WROKazakhstan.png",
     },
     {
       title: "Astana FIRST Workshop",
@@ -114,7 +114,7 @@ const Events = () => {
       date: "November 26, 2023",
       achievement: "20 participants, 3 sessions × 3 hours - EV3 programming & sumo competitions",
       type: "Workshop",
-      image: "/xCellence/news-2.jpg",
+      image: "/xCellence/news-1.jpg",
     },
   ];
 
