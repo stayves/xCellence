@@ -1,0 +1,60 @@
+A Fisherman’s guide to Fusion 360 from Zhanibek
+
+What’s Fusion 360?
+
+Fusion 360 is considered to be the most popular program to use for robotics competitions, and First Tech Challenge is no exception. While building a functional and practical robot with exclusively pre-made parts is possible, many teams opt to model and print their own to increase efficiency, decrease weight and more. It is also a good way for teams to compensate for less access to expensive REV or goBilda kits.
+
+What do we use it for?
+
+On the left is a screenshot of our CA robot for Into the Deep.
+
+All the parts that are coloured are custom-made 3D Models.
+
+As you can see, almost every single mechanism used to interact with the game elements is 3D printed.
+
+Including the arm, the claw, the extend and the lift mechanisms.
+
+How do we use it?
+
+Now that we’ve gotten everything else out of the way, it’s time to get into the nitty gritty of what techniques and what methodologies our CAD team practices to ensure that we’re making the best robot we can.
+
+Number One: “TENET” (a.k.a. Abuse the Parametric Timeline)
+
+In F360, the parametric timeline is and will be your best friend forever. To give you a quick rundown of what exactly it is, it’s a ledger that records every action and change you make in a design. That alone, obviously, is not too impressive. However, its real use comes from the fact that this ledger can be edited. What I mean by this is that at any point in your design process, it is possible to “inverse” time TENET style, make a change (like adjusting the size of a dimension) and go Back to the Future where your change will be reflected.
+
+Some use cases include:
+Miscalculated the required size of a part.
+Jointed/Aligned two parts incorrectly.
+Sketched on the wrong plane.
+Extruded a sketch too long/too short.
+
+And that’s only the surface level ones.
+
+Number Two: “Sketch me like one of your French girls” (a.k.a. Sketches, sketches and more sketches)
+
+In Fusion 360, sketching is the core tool used to model anything. Just like raising a city from the ground up, many of your 3D models will be raised from the ground (plane) up, which is why it’s integral to master the fundamentals of sketching before getting into F360.
+
+These are the shapes and forms you will primarily be working with during your workflow. These are quite simple so I believe a detailed explanation is not warranted.
+
+Constraints however, are a different matter altogether.
+
+To put it simply, constraints allow you to enforce certain “rules” on your geometry. Take for example the equal constraint, one of the more basic ones. By selecting it and then selecting two lines, you “force” those two lines to be equal no matter what. So, changing the length of one line automatically changes the other.
+
+Coincident is another useful constraint. This one is fairly simple in practice too. It allows you to connect two points and all the geometry connected to those points, as pictured on the left.
+Going over every single constraint would take a lot of time and honestly it would be somewhat redundant due to many of them being self-explanatory, so I’ll refrain from doing that. Instead, I’ll explain what exactly they are useful for.
+
+Try to imagine this situation: you change a dimension to be a bit bigger or just move a part of a sketch. If there are no constraints applied, only that part will be affected while the sketch as a whole remains the same. Usually, that’s not ideal since it leads to messy geometry. To make sure that this doesn’t happen, try to constrain sketches as much as possible to fit your vision.
+
+Number Three: Astral Projection (a.k.a. Project and Intersect)
+
+Project and Intersect allow you to “duplicate” geometry from a different plane or a different sketch or even an entire object to your current sketch plane.
+
+Unprojected Geometry			Projected Geometry
+
+Aside from allowing you to more precisely interact and work off of previous geometry, its main use is adding dependencies. In short, by working off of projected geometry and constraining off of it, changing the geometry/object that was projected also changes its projection and consequently whatever sketch depends on that projection.
+
+This makes it incredibly convenient when working with the Parametric Timeline, due to the fact that it even further simplifies the time travel shenanigans that allow you to make an edit to a feature you added 40 steps ago.
+
+The End
+
+This marks the end of this short fisherman’s guide from me. I tried to focus primarily on just good practices and habits to have when working with Fusion360 rather than in-depth solutions on modeling, which I believe is the right decision. Building up these habits early will not only help out in the long game, but also makes the whole learning experience much more smooth and comfortable. I sincerely hope that these will be of help. Thank you for reading this article.

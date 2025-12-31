@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecanum Drive Simulator</title>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #canvas {
+            border: 2px solid #333;
+            background-color: #0a0a0a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .info, .controls {
+            position: absolute;
+            top: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .info { left: 10px; }
+        .controls { right: 10px; }
+
+        .no-controller {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px; text-align: center;
+            font-size: 24px; color: red;
+            background: rgba(0,0,0,0.7);
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover { transform: translateY(-2px); }
+
+        a {
+            position: absolute; bottom: 10px; left: 10px;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div class="info" id="controllerInfo">No controller detected</div>
+
+    <div class="controls">
+        <div>Left Stick Y: Forward</div>
+        <div>Left Stick X: Strafe</div>
+        <div>Right Stick X: Rotate</div>
+        <button onclick="resetPosition()">Reset Position</button>
+    </div>
+
+    <div class="no-controller" id="noController" style="display:none;">
+        No controller detected!
+        <p>Connect a controller and press any button.</p>
+    </div>
+
+    <a href="index.html">← Back</a>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 1200;
+canvas.height = 800;
+
+// Robot data structure
+const robot = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    angle: 0,
+    width: 60,
+    height: 60,
+    vx: 0,
+    vy: 0,
+    omega: 0,
+    maxSpeed: 600,
+    maxAngularSpeed: 12
+};
+
+// Physics constants
+const ACCELERATION = 2000;
+const ANGULAR_ACCELERATION = 40;
+const FRICTION = 0.88;         // stronger friction = more stable
+const ANGULAR_FRICTION = 0.84;
+const STATIC_THRESHOLD = 0.12;
+const STATIC_RELEASE_SPEED = 30;
+const BRAKE_MULTIPLIER = 3;
+
+// Velocity rounding to prevent FPS drops
+function roundVelocity(v) {
+    return Math.abs(v) < 0.0005 ? 0 : Math.round(v * 1000) / 1000;
+}
+
+// MAIN MECHANUM DRIVE (NO DRIFT FRICTION)
+function mecanumDrive(targetVx, targetVy, targetOmega, dt) {
+
+    const targetVX = targetVx * robot.maxSpeed;
+    const targetVY = targetVy * robot.maxSpeed;
+    const targetOM = targetOmega * robot.maxAngularSpeed;
+
+    const maxA = ACCELERATION * dt;
+    const maxArot = ANGULAR_ACCELERATION * dt;
+
+    // ----------------- VX ------------------
+    const vxDiff = targetVX - robot.vx;
+
+    if (Math.abs(targetVx) > 0.01) {
+
+        if (Math.abs(robot.vx) < 2 && Math.abs(targetVx) < STATIC_THRESHOLD) {
+            robot.vx = 0;
+        }
+        else if (Math.abs(robot.vx) < 2 && Math.abs(targetVx) >= STATIC_THRESHOLD) {
+            robot.vx = Math.sign(targetVx) * STATIC_RELEASE_SPEED;
+        }
+        else {
+            const opp = Math.sign(targetVx) !== Math.sign(robot.vx);
+
+            if (opp) robot.vx += Math.sign(vxDiff) * maxA * BRAKE_MULTIPLIER;
+            else robot.vx += Math.sign(vxDiff) * Math.min(maxA, Math.abs(vxDiff));
+        }
+    } 
+    else {
+        robot.vx *= FRICTION;
+    }
+
+    // ----------------- VY ------------------
+    const vyDiff = targetVY - robot.vy;
+
+    if (Math.abs(targetVy) > 0.01) {
+
+        if (Math.abs(robot.vy) < 2 && Math.abs(targetVy) < STATIC_THRESHOLD) {
+            robot.vy = 0;
+        }
+        else if (Math.abs(robot.vy) < 2 && Math.abs(targetVy) >= STATIC_THRESHOLD) {
+            robot.vy = Math.sign(targetVy) * STATIC_RELEASE_SPEED;
+        }
+        else {
+            const opp = Math.sign(targetVy) !== Math.sign(robot.vy);
+
+            if (opp) robot.vy += Math.sign(vyDiff) * maxA * BRAKE_MULTIPLIER;
+            else robot.vy += Math.sign(vyDiff) * Math.min(maxA, Math.abs(vyDiff));
+        }
+    }
+    else {
+        robot.vy *= FRICTION;
+    }
+
+    // ----------------- ROTATION ------------------
+    const oDiff = targetOM - robot.omega;
+
+    if (Math.abs(targetOmega) > 0.01) {
+        const opp = Math.sign(targetOmega) !== Math.sign(robot.omega);
+
+        if (opp) robot.omega += Math.sign(oDiff) * maxArot * BRAKE_MULTIPLIER;
+        else robot.omega += Math.sign(oDiff) * Math.min(maxArot, Math.abs(oDiff));
+    }
+    else {
+        robot.omega *= ANGULAR_FRICTION;
+    }
+
+    // ROUND velocities (IMPORTANT)
+    robot.vx = roundVelocity(robot.vx);
+    robot.vy = roundVelocity(robot.vy);
+    robot.omega = roundVelocity(robot.omega);
+
+    // ----------------- APPLY MOVEMENT ------------------
+    robot.angle += robot.omega * dt;
+
+    const c = Math.cos(robot.angle);
+    const s = Math.sin(robot.angle);
+
+    const gVx = robot.vx * c - robot.vy * s;
+    const gVy = robot.vx * s + robot.vy * c;
+
+    robot.x += gVx * dt;
+    robot.y += gVy * dt;
+
+    // Keep inside bounds
+    robot.x = Math.max(robot.width / 2, Math.min(canvas.width - robot.width / 2, robot.x));
+    robot.y = Math.max(robot.height / 2, Math.min(canvas.height - robot.height / 2, robot.y));
+}
+
+// ----------------- GAMEPAD -----------------
+let gp = null;
+
+window.addEventListener("gamepadconnected", e => {
+    gp = navigator.getGamepads()[e.gamepad.index];
+    document.getElementById("controllerInfo").textContent = gp.id;
+    document.getElementById("noController").style.display = "none";
+});
+
+window.addEventListener("gamepaddisconnected", () => {
+    gp = null;
+    document.getElementById("controllerInfo").textContent = "No controller detected";
+    document.getElementById("noController").style.display = "block";
+});
+
+// ----------------- RESET -----------------
+function resetPosition() {
+    robot.x = canvas.width / 2;
+    robot.y = canvas.height / 2;
+    robot.angle = 0;
+    robot.vx = 0;
+    robot.vy = 0;
+    robot.omega = 0;
+}
+
+// ----------------- DRAW -----------------
+function drawRobot() {
+    ctx.save();
+    ctx.translate(robot.x, robot.y);
+    ctx.rotate(robot.angle);
+
+    ctx.fillStyle = "#4a90e2";
+    ctx.fillRect(-30, -30, 60, 60);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(20, -5, 10, 10);
+
+    ctx.restore();
+}
+
+function drawGrid() {
+    ctx.strokeStyle = "#222";
+    ctx.beginPath();
+    for (let x = 0; x < canvas.width; x += 50) {
+        ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height);
+    }
+    for (let y = 0; y < canvas.height; y += 50) {
+        ctx.moveTo(0, y); ctx.lineTo(canvas.width, y);
+    }
+    ctx.stroke();
+}
+
+// ----------------- GAME LOOP -----------------
+let last = performance.now();
+
+function gameLoop() {
+    const now = performance.now();
+    const dt = Math.min((now - last) / 1000, 0.1);
+    last = now;
+
+    if (gp) {
+        const g = navigator.getGamepads()[gp.index];
+        if (g) {
+            const f = -(Math.abs(g.axes[1]) < 0.04 ? 0 : g.axes[1]);
+            const s =  (Math.abs(g.axes[0]) < 0.04 ? 0 : g.axes[0]);
+            const r =  (Math.abs(g.axes[2]) < 0.04 ? 0 : g.axes[2]);
+
+            mecanumDrive(f, s, r, dt);
+        }
+    }
+
+    ctx.fillStyle = "#0a0a0a";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawGrid();
+    drawRobot();
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+</body>
+</html>
