@@ -5,8 +5,14 @@
 }
 
 .hall-hero {
-  padding: 6rem 2rem 4rem;
-  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
+  padding: var(--hero-padding);
+  min-height: var(--hero-min-height);
+  height: var(--hero-height);
+  background: linear-gradient(135deg, rgba(6, 6, 7, 0.82) 0%, rgba(10, 10, 14, 0.76) 55%, rgba(255, 107, 53, 0.22) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +21,12 @@
 
 .hall-hero-content {
   max-width: 760px;
+  padding: 1.75rem;
+  background: rgba(6, 6, 7, 0.62);
+  border: 1px solid var(--surface-card-border);
+  border-radius: 18px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
 }
 
 .hall-hero-content h1 {
@@ -42,6 +54,27 @@
 .hall-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.18);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='light'] .hall-container {
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  border-color: rgba(17, 18, 32, 0.08);
+  box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
 
 .hall-grid {
@@ -264,10 +297,17 @@
 @media (max-width: 768px) {
   .hall-hero {
     padding: 5rem 1.5rem 3.5rem;
+    background-position: center;
   }
 
   .hall-section {
     padding: 4rem 1.5rem;
+  }
+
+  .hall-hero-content {
+    padding: 1.5rem;
+    background: rgba(6, 6, 7, 0.72);
+    border-radius: 16px;
   }
 }
 
@@ -289,3 +329,18 @@
 
 
 
+
+
+:root[data-theme="light"] .hall-hero {
+  background: linear-gradient(135deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.85) 55%, rgba(255, 107, 53, 0.18) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+:root[data-theme="light"] .hall-hero-content {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(17, 18, 32, 0.08);
+  box-shadow: 0 16px 38px rgba(17, 20, 32, 0.12);
+}

@@ -168,22 +168,25 @@ const Events = () => {
             <div className="title-underline"></div>
           </div>
 
-          <div className="past-events-timeline">
+          <div className="past-events-grid">
             {pastEvents.map((event, index) => (
-              <div key={index} className="timeline-item">
-                <div className="timeline-marker"></div>
-                <div className="timeline-content">
+              <div key={index} className="past-event-card">
+                <div className="past-event-image">
                   {event.image && (
-                    <div className="timeline-image">
-                      <img src={event.image} alt={event.title} loading="lazy" />
-                    </div>
+                    <img src={event.image} alt={event.title} loading="lazy" />
                   )}
-                  <div className="timeline-type">{event.type}</div>
-                  <h3 className="timeline-title">{event.title}</h3>
-                  <p className="timeline-date">{event.date}</p>
-                  <div className="timeline-achievement">
-                    <span className="achievement-icon">🏆</span>
-                    {event.achievement}
+                </div>
+                <div className="past-event-body">
+                  <span className="past-event-type">{event.type}</span>
+                  <div className="past-event-text">
+                    <h3 className="past-event-title">{event.title}</h3>
+                    <p className="past-event-date">{event.date}</p>
+                    {event.achievement && (
+                      <div className="past-event-achievement">
+                        <span className="achievement-icon">🏆</span>
+                        <span>{event.achievement}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

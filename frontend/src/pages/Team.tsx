@@ -9,7 +9,7 @@ type Member = {
 
 const mentors: Member[] = [
   {
-    name: 'Vladimir Ussoltcev',
+    name: 'Vladimir Ussoltsev',
     role: 'Primary Mentor',
     image: '/xCellence/vladimir.jpg',
     bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
@@ -44,9 +44,9 @@ const currentMembers: Member[] = [
   },
   {
     name: 'Asylzhan Sailau',
-    role: 'Inspire',
+    role: 'Lead Inspire',
     image: '/xCellence/asylzhan1.jpg',
-    bio: 'Inspire of the team.',
+    bio: 'Lead Inspire of the team.',
   },
   {
     name: 'Aizere Askarova',
@@ -56,9 +56,9 @@ const currentMembers: Member[] = [
   },
   {
     name: 'Semyon Chistyakov',
-    role: 'Inspire',
+    role: 'Inspire/Programmer',
     image: '/xCellence/semyon.jpg',
-    bio: 'Inspire of the team.',
+    bio: 'Inspire/Programmer of the team.',
   },
   {
     name: 'Togzhan Kabdolda',
@@ -80,21 +80,21 @@ const currentMembers: Member[] = [
   },
   {
     name: 'Dastan Musrepov',
-    role: 'CAD Specialist',
+    role: 'Lead CAD Specialist',
     image: '/xCellence/dastan1.jpg',
-    bio: 'CAD specialist of the team.',
+    bio: 'Lead CAD specialist of the team.',
   },
   {
     name: 'Sayan Orynbek',
-    role: 'Builder',
+    role: 'Engineer/Builder',
     image: '/xCellence/sayan.jpg',
-    bio: 'Builder of the team.',
+    bio: 'Engineer/Builder of the team.',
   },
   {
     name: 'Najmudin Adikhanov ',
-    role: 'Builder',
+    role: 'Lead Engineer/Builder',
     image: '/xCellence/naj.jpg',
-    bio: 'Builder of the team.',
+    bio: 'Lead Engineer/Builder of the team.',
   },
   {
     name: 'Targyn Faizulla',
@@ -199,6 +199,18 @@ const Team = () => {
               We have started and mentored 1 new FTC team and 2 new FLL teams, and assisted 16 teams total.
             </p>
           </div>
+          <div style={{maxWidth: '900px', margin: '0 auto', padding: '2rem'   }}>
+          <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>XLNC Family</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                {['XLNC Qtech', 'XLNC Nova', 'XLNC Feral',].map(team => (
+                  <div key={team} style={{ padding: '1rem', background: 'rgba(255,107,0,0.1)', borderRadius: '8px', textAlign: 'center' }}>
+                    <strong>{team}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
             <div style={{ marginBottom: '3rem' }}>
@@ -215,7 +227,7 @@ const Team = () => {
             <div>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-color)' }}>Assisted</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
-                {['Celestial (FTC)', 'BILMS (FLL)', 'Akita', 'Sakura', 'KAP', 'Meow-Meow', 'JelToqSun', 'PID', 'BilOrda', 'Venom', 'Reckless'].map(team => (
+                {['Celestial ', 'BILMS', 'Akita', 'Sakura', 'KAP', 'Meow-Meow', 'JelToqSun', 'PID', 'BilOrda', 'Venom', 'Reckless'].map(team => (
                   <div key={team} style={{ padding: '0.75rem', background: 'rgba(0,150,255,0.1)', borderRadius: '8px', textAlign: 'center', fontSize: '0.9rem' }}>
                     {team}
                   </div>

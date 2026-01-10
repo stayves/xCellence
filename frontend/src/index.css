@@ -8,6 +8,9 @@
   color-scheme: dark;
   --primary-black: rgba(6, 6, 7, 0.78);
   --secondary-black: rgba(17, 17, 22, 0.72);
+  --hero-height: 32vh;
+  --hero-min-height: 240px;
+  --hero-padding: 3rem 1.5rem 2.25rem;
   --primary-orange: #ff6b35;
   --secondary-orange: #ff8c42;
   --accent-orange: #ffaa00;
@@ -48,6 +51,9 @@
   color-scheme: light;
   --primary-black: #f5f6fb;
   --secondary-black: #ffffff;
+  --hero-height: 32vh;
+  --hero-min-height: 240px;
+  --hero-padding: 3.5rem 1.5rem 2.5rem;
   --primary-orange: #ff6b35;
   --secondary-orange: #ff8c42;
   --accent-orange: #ffb347;
@@ -81,7 +87,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: linear-gradient(180deg, rgba(6, 6, 7, 0.7) 0%, rgba(8, 8, 12, 0.64) 45%, rgba(6, 6, 7, 0.72) 100%),
-    url('/xCellence/Background.jpg');
+    url('/xCellence/Background2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -92,7 +98,7 @@ body {
 
 :root[data-theme='light'] body {
   background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(242, 243, 249, 0.86) 40%, rgba(235, 237, 244, 0.9) 100%),
-    url('/xCellence/Background.jpg');
+    url('/xCellence/Background2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

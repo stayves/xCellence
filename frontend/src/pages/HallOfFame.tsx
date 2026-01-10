@@ -1,94 +1,94 @@
 import './HallOfFame.css';
 
-type Award = {
-  title: string;
-  event: string;
-  year: string;
-  description: string;
-};
+// type Award = {
+//   title: string;
+//   event: string;
+//   year: string;
+//   description: string;
+// };
 
-type Milestone = {
-  title: string;
-  value: string;
-  detail: string;
-};
+// type Milestone = {
+//   title: string;
+//   value: string;
+//   detail: string;
+// };
 
-type GalleryItem = {
-  src: string
-  title: string
-  description: string
-}
+// type GalleryItem = {
+//   src: string
+//   title: string
+//   description: string
+// }
 
-const awards: Award[] = [
-  {
-    title: 'Design Award Winner',
-    event: 'Central Asia Championship',
-    year: '2025',
-    description:
-      'Recognized for excellence in engineering documentation, innovative robot design, and systematic development process.',
-  },
-  {
-    title: 'Think Award Winner',
-    event: 'India Regional Championship',
-    year: '2023',
-    description:
-      'Awarded for outstanding engineering notebook documenting our analytical approach, iterative design process, and strategic innovation.',
-  },
-  {
-    title: 'Social Media Award',
-    event: 'Central Asia Championship',
-    year: '2024',
-    description:
-      'Honored for exceptional online presence reaching 29,000+ people, managing KZ Robotics community (250 members), and inspiring youth across Kazakhstan.',
-  },
-  {
-    title: 'Team Achievements',
-    event: 'Multiple Competitions & Projects',
-    year: '2022-2025',
-    description:
-      'Members won $25k at FAP with Digital Bridge, participated in WRO international stage, won Technovation Girls republican stage, and created MindShield (Discovery of the Year - Steppe Awards).',
-  },
-];
+// const awards: Award[] = [
+//   {
+//     title: 'Design Award Winner',
+//     event: 'Central Asia Championship',
+//     year: '2025',
+//     description:
+//       'Recognized for excellence in engineering documentation, innovative robot design, and systematic development process.',
+//   },
+//   {
+//     title: 'Think Award Winner',
+//     event: 'India Regional Championship',
+//     year: '2023',
+//     description:
+//       'Awarded for outstanding engineering notebook documenting our analytical approach, iterative design process, and strategic innovation.',
+//   },
+//   {
+//     title: 'Social Media Award',
+//     event: 'Central Asia Championship',
+//     year: '2024',
+//     description:
+//       'Honored for exceptional online presence reaching 29,000+ people, managing KZ Robotics community (250 members), and inspiring youth across Kazakhstan.',
+//   },
+//   {
+//     title: 'Team Achievements',
+//     event: 'Multiple Competitions & Projects',
+//     year: '2022-2025',
+//     description:
+//       'Members won $25k at FAP with Digital Bridge, participated in WRO international stage, won Technovation Girls republican stage, and created MindShield (Discovery of the Year - Steppe Awards).',
+//   },
+// ];
 
-const milestones: Milestone[] = [
-  {
-    title: 'People Reached Offline',
-    value: '190',
-    detail: 'Through workshops, masterclasses, forums, hackathons, and continuous education programs.',
-  },
-  {
-    title: 'People Engaged Online',
-    value: '29,000',
-    detail: 'Via social media (Instagram 800+ followers, 150K views), KZ Robotics Telegram (250 members), YouTube & TikTok.',
-  },
-  {
-    title: 'Event Hours Delivered',
-    value: '105+',
-    detail: 'Across 7 cities and 2 rural towns in Kazakhstan, including training camps, forums, courses, and masterclasses.',
-  },
-  {
-    title: 'Teams Supported',
-    value: '16',
-    detail: 'Started and mentored 6 teams (FTC & FLL), assisted 10+ teams with technical guidance and resources.',
-  },
-];
+// const milestones: Milestone[] = [
+//   {
+//     title: 'People Reached Offline',
+//     value: '190',
+//     detail: 'Through workshops, masterclasses, forums, hackathons, and continuous education programs.',
+//   },
+//   {
+//     title: 'People Engaged Online',
+//     value: '29,000',
+//     detail: 'Via social media (Instagram 800+ followers, 150K views), KZ Robotics Telegram (250 members), YouTube & TikTok.',
+//   },
+//   {
+//     title: 'Event Hours Delivered',
+//     value: '105+',
+//     detail: 'Across 7 cities and 2 rural towns in Kazakhstan, including training camps, forums, courses, and masterclasses.',
+//   },
+//   {
+//     title: 'Teams Supported',
+//     value: '16',
+//     detail: 'Started and mentored 6 teams (FTC & FLL), assisted 10+ teams with technical guidance and resources.',
+//   },
+// ];
 
-const hallGallery: GalleryItem[] = [
-  {
-    src: '/xCellence/team.jpg',
-    title: 'Championship Prep',
-    description: 'Leadership team aligning strategy before Central Asia Championship presentations.'
-  },
-  {
-    src: '/xCellence/American.jpg',
-    title: 'American Corner Workshop',
-    description: 'Fusion 360 bootcamp introducing 15+ students to CAD fundamentals.'
-  },
-  {
-    src: '/xCellence/robot-main.jpg',
-    title: 'Driver Trainer Reveal',
-    description: 'Our new trainer for drivers which you can exploit in the Trainer page'
-  },
+// const hallGallery: GalleryItem[] = [
+//   {
+//     src: '/xCellence/team.jpg',
+//     title: 'Championship Prep',
+//     description: 'Leadership team aligning strategy before Central Asia Championship presentations.'
+//   },
+//   {
+//     src: '/xCellence/American.jpg',
+//     title: 'American Corner Workshop',
+//     description: 'Fusion 360 bootcamp introducing 15+ students to CAD fundamentals.'
+//   },
+//   {
+//     src: '/xCellence/robot-main.jpg',
+//     title: 'Driver Trainer Reveal',
+//     description: 'Our new trainer for drivers which you can exploit in the Trainer page'
+//   },
   // {
   //   src: '/xCellence/arnur1.jpg',
   //   title: 'Programming Excellence',
@@ -99,12 +99,12 @@ const hallGallery: GalleryItem[] = [
   //   title: 'Outreach Champions',
   //   description: 'Inspire squad leading rural school masterclasses and Q&A forums.'
   // },
-  {
-    src: '/xCellence/WROKazakhstan.png',
-    title: 'WRO Training Camp',
-    description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
-  },
-]
+//   {
+//     src: '/xCellence/WROKazakhstan.png',
+//     title: 'WRO Training Camp',
+//     description: 'Week-long camp that gathered 45 NIS students for advanced workshops.'
+//   },
+// ]
 
 const alumniHighlights = [
   {
@@ -137,7 +137,7 @@ const HallOfFame = () => {
         </div>
       </section>
 
-      <section className="hall-section achievements">
+      {/* <section className="hall-section achievements">
         <div className="hall-container">
           <div className="section-header">
             <span className="section-tag">Accolades</span>
@@ -199,7 +199,7 @@ const HallOfFame = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="hall-section alumni">
         <div className="hall-container">

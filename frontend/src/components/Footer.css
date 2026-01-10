@@ -6,6 +6,11 @@
   border-top: 2px solid var(--primary-orange);
 }
 
+:root[data-theme='light'] .footer {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f4fb 60%, #e5e8f5 100%);
+  color: var(--text-white);
+}
+
 .footer-container {
   max-width: 1400px;
   margin: 0 auto;

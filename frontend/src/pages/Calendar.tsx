@@ -1,258 +1,544 @@
 import { useMemo, useState } from 'react'
 import './Calendar.css'
 
-type CalendarLink = {
-  label: string
-  url: string
-}
+type CategoryId = 'kickoff' | 'regionals' | 'qualifiers' | 'bigEvents' | 'offSeason'
+type TrackId = 'FIRST' | 'WRO' | 'Other'
 
-type CalendarEvent = {
+type EventEntry = {
   id: string
   title: string
-  summary: string
-  date: string
-  time: string
-  category: string
-  mode: 'online' | 'offline' | 'hybrid'
   city: string
+  dates: string
   venue: string
-  image: string
-  tags: string[]
-  links: CalendarLink[]
+  categories: string[]
+  registrationDeadline?: string
+  status?: string
+  track: 'FIRST' | 'WRO'
+}
+
+type CategoryConfig = {
+  id: CategoryId
+  label: string
+  description: string
+  logoSrc?: string
+  logoAlt?: string
+}
+
+type TrackConfig = {
+  id: TrackId
+  label: string
+  description: string
+  logoSrc?: string
+  logoAlt?: string
 }
 
 type Tournament = {
   name: string
   organizer: string
-  site: string
+  site?: string
 }
 
-type CalendarSection = {
-  id: string
-  title: string
-  icon: string
-  description: string
-  badge: string
-  eventIds: string[]
-}
+const TRACK_CONFIG: TrackConfig[] = [
+  { id: 'FIRST', label: 'FIRST', description: 'Kick-offs, Regionals, Qualifiers, Big Events, Off-Season', logoSrc: '/xCellence/FirstLogo.webp', logoAlt: 'FIRST' },
+  { id: 'WRO', label: 'WRO', description: 'World Robotics Olympiad schedule', logoSrc: '/xCellence/WROLogo.webp', logoAlt: 'WRO' },
+  { id: 'Other', label: 'Other', description: 'Additional circuits & briefings' },
+]
 
-const withBase = (path: string) => {
-  const base = import.meta.env.BASE_URL?.replace(/\/+$/, '') ?? ''
-  const cleanPath = path.replace(/^\/+/, '')
-  return `${base}/${cleanPath}`
-}
-
-const EVENTS: Record<string, CalendarEvent> = {
-  fllKickoff: {
-    id: 'fllKickoff',
-    title: 'FIRST LEGO League Unearthed Kick-Off',
-    summary: 'Season launch stream with Kazakh & Russian commentary, judging checklists, and AMA.',
-    date: '2025-08-06',
-    time: '15:00',
-    category: 'FIRST LEGO League',
-    mode: 'online',
-    city: 'Instagram + YouTube',
-    venue: '@firstroboticskz / USTEM Foundation',
-    image: withBase('news-1.jpg'),
-    tags: ['FLL-D', 'FLL-E', 'FLL-C'],
-    links: [
-      { label: '@firstroboticskz', url: 'https://www.instagram.com/firstroboticskz/' },
-      { label: 'USTEM Foundation', url: 'https://www.youtube.com/@USTEMFoundation' },
-    ],
-  },
-  astanaKickoff: {
-    id: 'astanaKickoff',
-    title: 'Astana FIRST Kick-off',
-    summary: 'Hybrid meet with field demo, volunteer signups, and FTC/FLL clinics.',
-    date: '2025-09-07',
-    time: '11:00',
-    category: 'FIRST Tech Challenge',
-    mode: 'hybrid',
-    city: 'Astana',
-    venue: 'Quantum Tech School + Zoom',
-    image: withBase('news-2.jpg'),
-    tags: ['FTC', 'FLL-C', 'Kick-off'],
-    links: [{ label: 'Quantum Tech School', url: 'https://quantum.kz/' }],
-  },
-  almatyKickoff: {
-    id: 'almatyKickoff',
-    title: 'Almaty FIRST Kick-off',
-    summary: 'Community expo with mentor office hours, scrimmage planning, and sponsor booths.',
-    date: '2025-09-07',
-    time: '11:00',
-    category: 'FIRST Tech Challenge',
-    mode: 'hybrid',
-    city: 'Almaty',
-    venue: 'USTEM Hub + Online',
-    image: withBase('news-3.jpg'),
-    tags: ['FTC', 'Community'],
-    links: [{ label: 'USTEM Hub', url: 'https://www.firstrobotics.kz/ru/' }],
-  },
-  wroCamp: {
-    id: 'wroCamp',
-    title: 'WRO RoboMission National Camp',
-    summary: 'Hands-on XLNC Cyrex labs for Senior RoboMission strategies, tethering, and Pixy pipelines.',
-    date: '2025-08-20',
-    time: '10:00',
-    category: 'WRO',
-    mode: 'offline',
-    city: 'Astana',
-    venue: 'NIS EMN Makerspace',
-    image: withBase('robot-gallery-1.jpg'),
-    tags: ['RoboMission', 'Bootcamp'],
-    links: [{ label: 'KazRobotics', url: 'http://www.kazrobotics.org/KK/' }],
-  },
-  wroRobosport: {
-    id: 'wroRobosport',
-    title: 'WRO RoboSport Strategy Lab',
-    summary: 'Ball management prototyping, flywheel tuning, and AI camera calibration with XLNC Fury.',
-    date: '2025-09-15',
-    time: '09:30',
-    category: 'WRO',
-    mode: 'offline',
-    city: 'Almaty',
-    venue: 'USTEM Performance Lab',
-    image: withBase('robot-gallery-4.jpg'),
-    tags: ['RoboSport', 'Clinic'],
-    links: [{ label: 'USTEM Events', url: 'https://www.firstrobotics.kz/ru/' }],
-  },
-  ftcMeet: {
-    id: 'ftcMeet',
-    title: 'FTC League Meet 1: INTO THE DEEP',
-    summary: 'Qualifier with inspection support, autonomous clinic, and volunteer certification session.',
-    date: '2025-10-18',
-    time: '09:00',
-    category: 'FIRST Tech Challenge',
-    mode: 'offline',
-    city: 'Astana',
-    venue: 'NIS IB Campus Arena',
-    image: withBase('robot-gallery-2.jpg'),
-    tags: ['League Meet', 'FTC'],
-    links: [{ label: 'FTC Kazakhstan', url: 'https://www.firstrobotics.kz/ru/' }],
-  },
-  roboLand: {
-    id: 'roboLand',
-    title: 'RoboLand Expo & Challenge',
-    summary: 'Kazdidac expo featuring FIRA, VEX, and DIY robotics showcases plus teacher training.',
-    date: '2025-11-12',
-    time: '12:00',
-    category: 'International',
-    mode: 'offline',
-    city: 'Karaganda',
-    venue: 'Kazdidac Convention Center',
-    image: withBase('robot-gallery-5.jpg'),
-    tags: ['FIRA', 'Expo'],
-    links: [{ label: 'RoboLand', url: 'https://roboland.kz/' }],
-  },
-  robotekGrand: {
-    id: 'robotekGrand',
-    title: 'Robotek Grand Tournament',
-    summary: 'Open hardware hackathon with industrial automation cases and jury from Korean partners.',
-    date: '2025-11-28',
-    time: '10:00',
-    category: 'International',
-    mode: 'offline',
-    city: 'Shymkent',
-    venue: 'Robotek Arena',
-    image: withBase('robot-gallery-6.jpg'),
-    tags: ['RGT', 'Hackathon'],
-    links: [{ label: 'Robotek', url: 'https://rgt.robotek.kz/' }],
-  },
-  natRoboCom: {
-    id: 'natRoboCom',
-    title: 'NatRoboCom Selection Meet',
-    summary: 'National robotics committee sync for VEX + FTC volunteer alignment and judging refreshers.',
-    date: '2025-09-30',
-    time: '14:00',
-    category: 'National Competitions',
-    mode: 'online',
-    city: 'Hybrid',
-    venue: 'Teams + Hailybury Hub',
-    image: withBase('team.jpg'),
-    tags: ['VEX', 'FTC', 'Briefing'],
-    links: [{ label: 'NatRoboCom', url: 'https://www.firstrobotics.kz/ru/' }],
-  },
-  republicQualifier: {
-    id: 'republicQualifier',
-    title: 'Republican FTC Qualifier',
-    summary: 'Scrimmage for regions outside Almaty/Astana with remote judging and Onshape review.',
-    date: '2025-11-02',
-    time: '08:30',
-    category: 'National Competitions',
-    mode: 'hybrid',
-    city: 'Kokshetau',
-    venue: 'NIS Kokshetau + Discord',
-    image: withBase('robot-main.jpg'),
-    tags: ['FTC', 'Qualifier'],
-    links: [{ label: 'FTC Republic', url: 'https://www.firstrobotics.kz/ru/' }],
-  },
-}
-
-const SECTIONS: CalendarSection[] = [
+const CATEGORY_CONFIG: CategoryConfig[] = [
   {
-    id: 'wro',
-    title: 'WRO RoboMission & RoboSport',
-    icon: '🤖',
-    badge: 'WRO',
-    description: 'Bootcamps and challenges powered by XLNC Cyrex & XLNC Fury.',
-    eventIds: ['wroCamp', 'wroRobosport'],
+    id: 'kickoff',
+    label: 'Kick-Off',
+    description: 'Season launch events and broadcasts.',
+    logoSrc: '/xCellence/FirstLogo.webp',
+    logoAlt: 'FIRST',
   },
   {
-    id: 'first',
-    title: 'FIRST Tech Challenge & FLL',
-    icon: '🚀',
-    badge: 'FIRST',
-    description: 'Kick-offs, league meets, and FLL launches hosted by USTEM.',
-    eventIds: ['fllKickoff', 'astanaKickoff', 'almatyKickoff', 'ftcMeet'],
+    id: 'regionals',
+    label: 'Regionals 2025',
+    description: 'City-by-city FIRST Regionals.',
+    logoSrc: '/xCellence/FirstLogo.webp',
+    logoAlt: 'FIRST',
   },
   {
-    id: 'international',
-    title: 'International Circuits & Expos',
-    icon: '🌍',
-    badge: 'Global',
-    description: 'RoboLand, Robotek Grand Tournament, and FIRA-aligned showcases.',
-    eventIds: ['roboLand', 'robotekGrand'],
+    id: 'qualifiers',
+    label: "Qualifiers '26",
+    description: 'Qualifier events by region.',
+    logoSrc: '/xCellence/FirstLogo.webp',
+    logoAlt: 'FIRST',
   },
   {
-    id: 'national',
-    title: 'National Competitions & Briefings',
-    icon: '🏅',
-    badge: 'National',
-    description: 'NatRoboCom prep calls and republican FTC qualifiers.',
-    eventIds: ['natRoboCom', 'republicQualifier'],
+    id: 'bigEvents',
+    label: 'Big Events',
+    description: 'Championships, bridges, and major deadlines.',
+    logoSrc: '/xCellence/FirstLogo.webp',
+    logoAlt: 'FIRST',
+  },
+  {
+    id: 'offSeason',
+    label: 'Off-Season',
+    description: 'Post-season FIRST opens.',
+    logoSrc: '/xCellence/FirstLogo.webp',
+    logoAlt: 'FIRST',
   },
 ]
 
+const CATEGORY_EVENTS: Record<CategoryId, EventEntry[]> = {
+  kickoff: [
+    {
+      id: 'kickoff-online',
+      city: 'Online',
+      title: 'FIRST LEGO League Unearthed Season Kick-Off',
+      dates: '06.08.2025 15:00',
+      venue: 'Instagram (@firstroboticskz) / YouTube (USTEM Foundation)',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C'],
+      track: 'FIRST',
+    },
+    {
+      id: 'kickoff-astana',
+      city: 'Astana + Online',
+      title: 'Astana FIRST Kick-off',
+      dates: '07.09.2025 11:00',
+      venue: 'Quantum Tech School',
+      categories: ['FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'kickoff-almaty',
+      city: 'Almaty + Online',
+      title: 'Almaty FIRST Kick-off',
+      dates: '07.09.2025 11:00',
+      venue: 'Hybrid / Online',
+      categories: ['FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+  ],
+  regionals: [
+    {
+      id: 'regional-osh',
+      city: 'Ош',
+      title: 'Osh FIRST Regional 2025',
+      dates: '25.10.2025 - 26.10.2025',
+      registrationDeadline: '22.10.2025',
+      venue: 'Maarif School',
+      categories: ['FLL-E', 'FLL-C', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-burabay',
+      city: 'Бурабай',
+      title: 'Burabay FIRST Regional 2025',
+      dates: '08.11.2025 - 09.11.2025',
+      registrationDeadline: '02.11.2025',
+      venue: 'IQanat High School of Burabay',
+      categories: ['FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-qyzylorda',
+      city: 'Қызылорда',
+      title: 'Qyzylorda FIRST Regional 2025',
+      dates: '11.11.2025',
+      registrationDeadline: '08.11.2025',
+      venue: 'Abai School',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-taraz',
+      city: 'Тараз',
+      title: 'Taraz FIRST Regional 2025',
+      dates: '14.11.2025',
+      registrationDeadline: '11.11.2025',
+      venue: 'Абай атындағы мектеп- гимназия',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-pavlodar',
+      city: 'Павлодар',
+      title: 'Ertis FIRST Regional 2025',
+      dates: '15.11.2025',
+      registrationDeadline: '12.11.2025',
+      venue: 'Samgau, Ekibastuz',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-astana',
+      city: 'Астана',
+      title: 'Astana FIRST Regional 2025',
+      dates: '15.11.2025 - 16.11.2025',
+      registrationDeadline: '12.11.2025',
+      venue: 'Kazakhstan International School Astana',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-qonaev',
+      city: 'Қонаев',
+      title: 'Qonaev FIRST Regional 2025',
+      dates: '17.11.2025',
+      registrationDeadline: '14.11.2025',
+      venue: 'Esik BIL',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-aktobe',
+      city: 'Актөбе',
+      title: 'Aktobe FIRST Regional 2025',
+      dates: '22.11.2025',
+      registrationDeadline: '19.11.2025',
+      venue: 'JOO High school',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-almaty',
+      city: 'Алматы',
+      title: 'Almaty FIRST Regional 2025',
+      dates: '22.11.2025 - 23.11.2025',
+      registrationDeadline: '17.11.2025',
+      venue: 'Общеобразовательная школа № 218',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-oskemen',
+      city: 'Өскемен',
+      title: 'Oskemen FIRST Regional 2025',
+      dates: '28.11.2025',
+      registrationDeadline: '25.11.2025',
+      venue: 'Областная специализированная IT-школа-лицей',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-atyrau',
+      city: 'Атырау',
+      title: 'Atyrau FIRST Regional 2025',
+      dates: '29.11.2025',
+      registrationDeadline: '26.11.2025',
+      venue: 'Farabi International School',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-shymkent',
+      city: 'Шымкент',
+      title: 'Shymkent FIRST Regional 2025',
+      dates: '29.11.2025',
+      registrationDeadline: '26.11.2025',
+      venue: 'Қонаев мектебі',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-oral',
+      city: 'Орал',
+      title: 'Jaiyq FIRST Regional 2025',
+      dates: '29.11.2025',
+      registrationDeadline: '26.11.2025',
+      venue: 'Дворец школьников',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-semey',
+      city: 'Семей',
+      title: 'Abay FIRST Regional 2025',
+      dates: '29.11.2025 - 30.11.2025',
+      registrationDeadline: '25.11.2025',
+      venue: 'Средняя общеобразовательная школа №51',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-taldykorgan',
+      city: 'Талдықорған',
+      title: 'Jetisu FIRST Regional 2025',
+      dates: '05.12.2025',
+      registrationDeadline: '02.12.2025',
+      venue: '27 Мектеп',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-aktau',
+      city: 'Ақтау',
+      title: 'Mangystau FIRST Regional 2025',
+      dates: '06.12.2025 - 07.12.2025',
+      registrationDeadline: '03.12.2025',
+      venue: 'Жас Қанат мектеп лицейі',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-turkistan',
+      city: 'Түркістан',
+      title: 'Turkistan FIRST Regional 2025',
+      dates: '08.12.2025 - 09.12.2025',
+      registrationDeadline: '04.12.2025',
+      venue: '№34 жалпы білім беретін мектеп',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-bishkek',
+      city: 'Бишкек',
+      title: 'Bishkek FIRST Regional 2025',
+      dates: '13.12.2025 - 14.12.2025',
+      registrationDeadline: '',
+      venue: 'Maarif School',
+      categories: ['FLL-E', 'FLL-C', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-kokshetau',
+      city: 'Көкшетау',
+      title: 'Kokshetau FIRST Regional 2025',
+      dates: '20.12.2025',
+      registrationDeadline: '15.12.2025',
+      venue: 'KokshetauBIL',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-karagandy',
+      city: 'Қарағанды',
+      title: 'Saryarqa FIRST Regional 2025',
+      dates: '21.12.2025',
+      registrationDeadline: '',
+      venue: 'Общеобразовательная школа №24',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League', 'FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-petropavl',
+      city: 'Петропавл',
+      title: 'Qyzylzhar FIRST Regional 2025',
+      dates: '24.12.2025',
+      registrationDeadline: '21.12.2025',
+      venue: 'Digital Urpaq',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-qostanay',
+      city: 'Қостанай',
+      title: 'Qostanay FIRST Regional 2025',
+      dates: '29.12.2025',
+      registrationDeadline: '',
+      venue: '',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-zhezkazgan',
+      city: 'Жезқазған',
+      title: 'Ulytau FIRST Regional 2025',
+      dates: 'Желтоқсан, 2025',
+      registrationDeadline: '',
+      venue: '',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'Keleshek League'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'regional-tashkent',
+      city: 'Ташкент',
+      title: 'Tashkent FIRST Regional 2025',
+      dates: '',
+      registrationDeadline: '',
+      venue: '',
+      categories: [],
+      status: '',
+      track: 'FIRST',
+    },
+  ],
+  qualifiers: [
+    {
+      id: 'qualifier-almaty',
+      city: 'Алматы',
+      title: 'Daryn FIRST Qualifier 2026',
+      dates: '04.01.2026 - 06.01.2026',
+      registrationDeadline: '22.12.2025',
+      venue: 'SDU University',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'qualifier-turkistan',
+      city: 'Түркістан',
+      title: 'Ontustik FIRST Qualifier 2026',
+      dates: '12.01.2026 - 14.01.2026',
+      venue: 'Karavan Saray Arena',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'qualifier-aktau',
+      city: 'Актау',
+      title: 'Batys FIRST Qualifier 2026',
+      dates: '17.01.2026 - 18.01.2026',
+      registrationDeadline: '05.01.2026',
+      venue: 'Aqtau International School',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'qualifier-astana',
+      city: 'Астана',
+      title: 'Astana FIRST Qualifier 2026',
+      dates: '23.01.2026 - 25.01.2026',
+      registrationDeadline: '04.01.2026',
+      venue: '',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+  ],
+  bigEvents: [
+    {
+      id: 'big-digital-bridge',
+      city: 'Астана',
+      title: 'Digital Bridge 2025',
+      dates: '02.10.2025 - 04.10.2025',
+      venue: 'Международный выставочный центр Expo',
+      categories: ['FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'big-deans-application',
+      city: 'Online',
+      title: "Dean's List Application Deadline",
+      dates: '15.12.2025',
+      venue: 'Online',
+      categories: ['FTC'],
+      status: 'Өтілді',
+      track: 'FIRST',
+    },
+    {
+      id: 'big-deans-interview',
+      city: 'Online',
+      title: "Dean's List Interview 2026",
+      dates: '10.01.2026 - 11.01.2026',
+      venue: 'Online',
+      categories: ['FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'big-central-asia-championship',
+      city: 'Астана',
+      title: 'Kazakhstan Central Asia FIRST Championship 2026',
+      dates: '10.02.2026 - 13.02.2026',
+      venue: 'Международный выставочный центр Expo',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'big-kyrgyzstan-championship',
+      city: 'Бишкек',
+      title: 'Kyrgyzstan FIRST Championship 2026',
+      dates: 'Late February',
+      venue: '',
+      categories: ['FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'big-uzbekistan-championship',
+      city: 'Ташкент',
+      title: 'Uzbekistan FIRST Championship 2026',
+      dates: '',
+      venue: '',
+      categories: ['FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'big-digital-ministry',
+      city: 'Алматы',
+      title: 'Digital Ministry Cup 2026',
+      dates: '',
+      venue: '',
+      categories: ['FTC'],
+      track: 'FIRST',
+    },
+  ],
+  offSeason: [
+    {
+      id: 'offseason-astana',
+      city: 'Астана',
+      title: 'Bilim Shyny FIRST Off-Season',
+      dates: '10.04.2026 - 11.04.2026',
+      venue: 'Дворец школьников им. Аль-Фараби',
+      categories: ['FLL-D', 'FLL-E', 'FLL-C', 'FTC'],
+      track: 'FIRST',
+    },
+    {
+      id: 'offseason-zhylandy',
+      city: 'Жыланды',
+      title: 'Zhylandy International FIRST Off-Season',
+      dates: 'Маусым/Июнь 2026',
+      venue: 'Жыланды Мәдениет Үйі',
+      categories: ['FTC'],
+      track: 'FIRST',
+    },
+  ],
+}
+
 const TOURNAMENTS: Tournament[] = [
-  { name: 'WRO', organizer: 'АО НИШ', site: 'https://robotics.nis.edu.kz/' },
-  { name: 'FIRST (FTC/FLL)', organizer: 'USTEM', site: 'https://www.firstrobotics.kz/ru/' },
-  { name: 'Robotek Grand Tournament', organizer: 'TOO Роботек', site: 'https://rgt.robotek.kz/' },
+  { name: 'Robotek Grand Tournament', organizer: 'ТОО Роботек', site: 'https://rgt.robotek.kz/' },
   { name: 'KazRobotics', organizer: 'Федерация Казроботикс', site: 'http://www.kazrobotics.org/KK/' },
   { name: 'RoboLand', organizer: 'Ассоциация Kazdidac', site: 'https://roboland.kz/' },
   { name: 'R:ED FEST', organizer: 'RED Robotics Education', site: 'https://frio.kz/ru/red-fest' },
-  { name: 'Fibonacci International Robot Olympiad', organizer: 'AZ Group', site: 'https://fibonacci.kz/' },
-  { name: 'Robotics for Good Youth Challenge', organizer: 'Hailybury', site: 'https://hailybury.kz/' },
-  { name: 'Kazakhstan International Robotics Competition (VEX)', organizer: 'USTEM', site: 'https://www.firstrobotics.kz/ru/' },
-  { name: 'NatRoboCom', organizer: 'USTEM', site: 'https://www.firstrobotics.kz/ru/' },
-  { name: 'RoboZerde', organizer: 'USTEM', site: 'https://www.firstrobotics.kz/ru/' },
-  { name: 'FIRA Kazakhstan', organizer: 'FIRA', site: 'https://firakz.com/' },
+  { name: 'Fibonacci International Robot Olympiad', organizer: 'AZ Group' },
+  { name: 'Robotics for Good Youth Challenge', organizer: 'Hailybury' },
+  { name: 'Kazakhstan International Robotics Competition (VEX)', organizer: '' },
+  { name: 'NatRoboCom', organizer: '' },
+  { name: 'RoboZerde', organizer: '' },
+  { name: 'Federation of International Robot-sports association (FIRA)', organizer: '' },
 ]
 
 const Calendar = () => {
-  const [activeSection, setActiveSection] = useState(SECTIONS[0].id)
+  const [activeTrack, setActiveTrack] = useState<TrackId>('FIRST')
+  const [activeCategory, setActiveCategory] = useState<CategoryId>('kickoff')
   const [searchTerm, setSearchTerm] = useState('')
 
   const visibleEvents = useMemo(() => {
-    const section = SECTIONS.find((entry) => entry.id === activeSection)
-    if (!section) return []
-    return section.eventIds
-      .map((id) => EVENTS[id])
-      .filter((event) => {
-        if (!searchTerm) return true
-        const haystack = `${event.title} ${event.city} ${event.tags.join(' ')}`.toLowerCase()
-        return haystack.includes(searchTerm.toLowerCase())
-      })
-  }, [activeSection, searchTerm])
+    if (activeTrack !== 'FIRST') return []
+    const events = CATEGORY_EVENTS[activeCategory] ?? []
+    if (!searchTerm) return events
+    const query = searchTerm.toLowerCase()
+    return events.filter((event) => {
+      const haystack = `${event.title} ${event.city} ${event.venue} ${event.categories.join(' ')}`.toLowerCase()
+      return haystack.includes(query)
+    })
+  }, [activeCategory, activeTrack, searchTerm])
+
+  const activeConfig = CATEGORY_CONFIG.find((cat) => cat.id === activeCategory)
+  const activeTrackConfig = TRACK_CONFIG.find((t) => t.id === activeTrack)
 
   return (
     <div className="calendar-page">
@@ -260,11 +546,11 @@ const Calendar = () => {
         <div className="calendar-hero-content">
           <div className="hero-label">Robotics calendar</div>
           <h1>Events in Kazakhstan</h1>
-          <p>Pick a track - WRO, FIRST, international expos, or national qualifiers - and see what is coming up.</p>
+          <p>Select a track, then dive into categories to see competitions and deadlines.</p>
           <div className="calendar-search">
             <input
               type="search"
-              placeholder="Search by city, keyword, or tag"
+              placeholder="Search by city, venue, or category tag"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
             />
@@ -272,97 +558,129 @@ const Calendar = () => {
         </div>
       </section>
 
-      <section className="calendar-tabs">
-        <div className="calendar-tab-row">
-          {SECTIONS.map((section) => (
+      <section className="track-switch">
+        <div className="track-grid">
+          {TRACK_CONFIG.map((track) => (
             <button
-              key={section.id}
-              className={`calendar-tab ${activeSection === section.id ? 'active' : ''}`}
-              onClick={() => setActiveSection(section.id)}
+              key={track.id}
+              className={`track-pill ${activeTrack === track.id ? 'active' : ''}`}
+              onClick={() => setActiveTrack(track.id)}
             >
-              <span className="tab-icon" aria-hidden>
-                {section.icon}
-              </span>
-              <span className="tab-label">{section.title}</span>
+              <div className="track-pill-left">
+                <span className="tab-label">{track.label}</span>
+                <span className="track-desc">{track.description}</span>
+              </div>
+              {track.logoSrc && (
+                <div className="track-logo">
+                  <img src={track.logoSrc} alt={track.logoAlt ?? track.label} loading="lazy" />
+                </div>
+              )}
             </button>
           ))}
         </div>
       </section>
 
+      {activeTrack === 'FIRST' && (
+        <section className="calendar-categories">
+          <div className="category-grid">
+            {CATEGORY_CONFIG.map((category) => (
+              <button
+                key={category.id}
+                className={`category-card ${activeCategory === category.id ? 'active' : ''}`}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                <div className="category-card-top">
+                  <span className="tab-label">{category.label}</span>
+                  {category.logoSrc && (
+                    <div className="category-logo">
+                      <img src={category.logoSrc} alt={category.logoAlt ?? category.label} loading="lazy" />
+                    </div>
+                  )}
+                </div>
+                <p className="category-description">{category.description}</p>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="calendar-results">
         <header className="calendar-results-header">
           <div>
-            <span className="section-tag">
-              {SECTIONS.find((section) => section.id === activeSection)?.badge ?? 'Track'}
-            </span>
-            <h2>{SECTIONS.find((section) => section.id === activeSection)?.title}</h2>
-            <p>{SECTIONS.find((section) => section.id === activeSection)?.description}</p>
+            <span className="section-tag">{activeTrackConfig?.label ?? 'Track'}</span>
+            <h2>
+              {activeTrackConfig?.label}
+              {activeTrack === 'FIRST' && activeConfig ? ` — ${activeConfig.label}` : ''}
+            </h2>
+            <p>
+              {activeTrackConfig?.description}
+              {activeTrack === 'FIRST' && activeConfig ? ` · ${activeConfig.description}` : ''}
+            </p>
           </div>
         </header>
 
-        <div className="calendar-card-grid">
-          {visibleEvents.map((event) => (
-            <article key={event.id} className="calendar-card">
-              <div className="calendar-card-media">
-                <img src={event.image} alt={event.title} loading="lazy" />
-                <span className="calendar-card-mode">{event.mode === 'offline' ? 'In person' : event.mode}</span>
+        {activeTrack === 'Other' ? (
+          <div className="calendar-tournaments">
+            <div className="tournaments-header">
+              <span className="section-tag">Tournament directory</span>
+              <h2>Robotics circuits to bookmark</h2>
+              <p>Bookmark the organizers running WRO, FIRST, and other competitions.</p>
+            </div>
+            <div className="tournaments-table">
+              <div className="tournaments-row tournaments-head">
+                <span>Турнир</span>
+                <span>Организатор</span>
+                <span>Сайт</span>
               </div>
-              <div className="calendar-card-body">
-                <div className="calendar-card-date">
-                  {new Date(`${event.date}T${event.time}`).toLocaleDateString('en-US', {
-                    weekday: 'short',
-                    month: 'short',
-                    day: 'numeric',
-                  })}{' '}
-                  · {event.time}
+              {TOURNAMENTS.map((tournament) => (
+                <div key={tournament.name} className="tournaments-row">
+                  <span>{tournament.name || '—'}</span>
+                  <span>{tournament.organizer || '—'}</span>
+                  {tournament.site ? (
+                    <a href={tournament.site} target="_blank" rel="noreferrer">
+                      {tournament.site.replace(/^https?:\/\//, '')}
+                    </a>
+                  ) : (
+                    <span>—</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="calendar-card-grid">
+            {visibleEvents.map((event) => (
+              <article key={event.id} className="calendar-card">
+                <div className="calendar-card-head">
+                  <span className="calendar-city">{event.city || 'City TBA'}</span>
+                  <span className={`track-badge ${event.track === 'FIRST' ? 'first' : 'wro'}`}>
+                    {event.track === 'FIRST' ? 'FIRST' : 'WRO'}
+                  </span>
                 </div>
                 <h3>{event.title}</h3>
-                <p>{event.summary}</p>
+                <div className="calendar-card-dates">
+                  <span>Dates: {event.dates || 'TBA'}</span>
+                  {event.registrationDeadline && <span className="deadline">Reg. deadline: {event.registrationDeadline}</span>}
+                </div>
                 <div className="calendar-card-meta">
-                  <span>{event.city}</span>
-                  <span>•</span>
-                  <span>{event.venue}</span>
+                  <span className="label">Venue</span>
+                  <span className="value">{event.venue || 'TBA'}</span>
                 </div>
-                <div className="calendar-card-tags">
-                  {event.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-                <div className="calendar-card-links">
-                    {event.links.map((link) => (
-                      <a key={link.url} href={link.url} target="_blank" rel="noreferrer">
-                        {link.label} →
-                      </a>
+                {event.categories.length > 0 && (
+                  <div className="calendar-card-tags">
+                    {event.categories.map((tag) => (
+                      <span key={tag}>{tag}</span>
                     ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="calendar-tournaments">
-        <div className="tournaments-header">
-          <span className="section-tag">Tournament directory</span>
-          <h2>Robotics circuits to bookmark</h2>
-          <p>Bookmark the organizers running FLL, FTC, WRO, VEX, FIRA, and community olympiads.</p>
-        </div>
-        <div className="tournaments-table">
-          <div className="tournaments-row tournaments-head">
-            <span>Турнир</span>
-            <span>Организатор</span>
-            <span>Сайт</span>
+                  </div>
+                )}
+                {event.status && <div className="status-pill">{event.status}</div>}
+              </article>
+            ))}
+            {visibleEvents.length === 0 && (
+              <div className="empty-state">No events match your search in this category.</div>
+            )}
           </div>
-          {TOURNAMENTS.map((tournament) => (
-            <div key={tournament.name} className="tournaments-row">
-              <span>{tournament.name}</span>
-              <span>{tournament.organizer}</span>
-              <a href={tournament.site} target="_blank" rel="noreferrer">
-                {tournament.site.replace(/^https?:\/\//, '')}
-              </a>
-            </div>
-          ))}
-        </div>
+        )}
       </section>
     </div>
   )

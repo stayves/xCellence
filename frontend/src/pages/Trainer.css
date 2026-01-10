@@ -6,33 +6,40 @@
 }
 
 .trainer-hero {
-  padding: 4.5rem 2rem 3rem;
+  padding: var(--hero-padding);
+  min-height: var(--hero-min-height);
+  height: var(--hero-height);
   background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .trainer-hero-content {
   max-width: 960px;
   text-align: center;
+  display: grid;
+  gap: 0.75rem;
 }
 
 .trainer-hero-content h1 {
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+  font-size: clamp(2.3rem, 3vw, 3.1rem);
 }
 
 .trainer-hero-content p {
   color: var(--text-gray);
   line-height: 1.7;
-  font-size: 1.05rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
 }
 
 .trainer-actions {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
 
 .trainer-controller {
@@ -62,10 +69,27 @@
 .trainer-container {
   max-width: 1400px;
   margin: 0 auto;
-  background: var(--secondary-black);
-  border: 1px solid var(--surface-card-border);
-  border-radius: 20px;
-  box-shadow: var(--surface-card-shadow);
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.18);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='light'] .trainer-container {
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+    url('/xCellence/Background2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  border-color: rgba(17, 18, 32, 0.08);
+  box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
 
 .sim-header {
@@ -230,10 +254,6 @@
 }
 
 @media (max-width: 768px) {
-  .trainer-hero {
-    padding: 3.5rem 1.25rem 2.5rem;
-  }
-
   .trainer-sim {
     padding: 3rem 1.25rem 4rem;
   }

@@ -16,12 +16,54 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSending, setIsSending] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setStatusMessage('');
+    setIsSending(true);
+
+    const serviceId = 'service_oy4sppb'; // provided
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_isn78dj';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!templateId || !publicKey) {
+      setStatusMessage('Email service is not configured. Please try again later.');
+      setIsSending(false);
+      return;
+    }
+
+    const templateParams = {
+      name: formData.name,
+      message: `${formData.message}\n\nSubject: ${formData.subject || 'Not provided'}\nEmail: ${formData.email}`,
+      time: new Date().toLocaleString(),
+    };
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: templateParams,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`EmailJS request failed with status ${response.status}`);
+      }
+
+      setStatusMessage('Thank you! Your message has been sent.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      setStatusMessage('Sorry, something went wrong. Please try again later.');
+      console.error('EmailJS error:', err);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const contactInfo = [
@@ -46,7 +88,7 @@ const Contact = () => {
     {
       icon: '',
       title: 'Location',
-      detail: 'San Diego, California',
+      detail: 'Nazarbayev Intellectual School of Natural Sciences and Mathematics in the Nura district of Astana, Kazakhstan',
       link: '#'
     }
   ];
@@ -159,8 +201,10 @@ const Contact = () => {
               </div>
 
               <button type="submit" className="submit-btn">
-                Send Message
+              {isSending ? 'Sending...' : 'Send Message'}
               </button>
+
+            {statusMessage && <p className="form-status">{statusMessage}</p>}
             </form>
           </div>
         </div>

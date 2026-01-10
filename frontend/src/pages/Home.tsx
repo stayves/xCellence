@@ -11,7 +11,7 @@ const withBase = (path: string) => {
 const Home = () => {
   const teamSlides = useMemo(
     () =>
-      ['xCellenceTeam1.jpg', 'xCellenceTeam2.jpg', 'xCellenceTeam3.JPG', 'xCellenceTeam4.JPG'].map((src) =>
+      ['xCellenceTeam9.jpg', 'xCellenceTeam2.jpg', 'xCellenceTeam4.JPG', 'xCellenceTeam1.jpg', 'xCellenceTeam6.jpg','xCellenceTeam5.jpg','xCellenceTeam7.jpg','xCellenceTeam8.jpg'].map((src) =>
         withBase(src)
       ),
     []
@@ -34,18 +34,18 @@ const Home = () => {
   const [newsItems] = useState([
     {
       id: 1,
-      title: "Design Award Winner CA 2025",
-      date: "March 2025",
-      image: "/xCellence/news-1.jpg",
+      title: "Inerview with Asylbek Myrzakhmetov",
+      date: "December 2025",
+      image: "/xCellence/xCellenceTeam8.jpg",
       description: "xCellence wins Design Award at Central Asia Championship, showcasing excellence in engineering documentation and robot design.",
       category: "Achievement"
     },
     {
       id: 2,
-      title: "WRO Republican Training Camp",
+      title: "WRO Worlds",
       date: "August 3, 2025",
-      image: "/xCellence/news-2.jpg",
-      description: "Successfully organized week-long training camp with 45 participants from all NIS schools, featuring conferences with robotics mentors and NU professors.",
+      image: "/xCellence/xCellenceWRO.jpg",
+      description: "xCellence at WRO Worlds, showcasing excellence in engineering documentation and robot design.",
       category: "Outreach"
     },
     {
@@ -68,8 +68,8 @@ const Home = () => {
 
   // Sample sponsors data
   const sponsors = [
-    { name: "Sponsor 1", logo: "/xCellence/sponsor-1.png", tier: "platinum" },
-    { name: "Sponsor 2", logo: "/xCellence/sponsor-2.png", tier: "platinum" },
+    { name: "Sponsor 1", logo: "/xCellence/Sponsor1.jpg", tier: "platinum" },
+    { name: "Sponsor 2", logo: "/xCellence/Sponsor2.jpg", tier: "platinum" },
     { name: "Sponsor 3", logo: "/xCellence/sponsor-3.png", tier: "gold" },
     { name: "Sponsor 4", logo: "/xCellence/sponsor-4.png", tier: "gold" },
     { name: "Sponsor 5", logo: "/xCellence/sponsor-5.png", tier: "silver" },
@@ -117,9 +117,9 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-cta">
-              <button className="cta-primary" onClick={() => navigate('/trainer')}>
+              {/* <button className="cta-primary" onClick={() => navigate('/trainer')}>
                 Try Driver Trainer
-              </button>
+              </button> */}
               <button className="cta-secondary" onClick={() => navigate('/team')}>
                 Meet the Team
               </button>
@@ -147,7 +147,7 @@ const Home = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="mission">
+      {/* <section className="mission">
         <div className="mission-container">
           <div className="section-header">
             <span className="section-tag">Our Purpose</span>
@@ -199,7 +199,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* News Section */}
       <section className="news">
