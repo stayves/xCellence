@@ -21,12 +21,12 @@ const Events = () => {
       image: "/xCellence/news-1.jpg",
     },
     {
-      title: "MUN Conference with Robotics Committees",
-      date: "Spring 2025",
+      title: "Girls Go First Forum",
+      date: "January 18 2025",
       location: "TBA",
-      type: "Conference",
-      description: "Model United Nations conference featuring robotics and STEAM-focused committees.",
-      image: "/xCellence/news-2.jpg",
+      type: "Forum",
+      description: "Forum for girls to learn about robotics and STEAM-focused committees.",
+      image: "/xCellence/GirlsFoGirst.png",
     },
     {
       title: "Fusion 360 Bootcamp",
