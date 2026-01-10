@@ -34,7 +34,7 @@ const Events = () => {
       location: "American Corner Astana",
       type: "Workshop",
       description: "Week-long comprehensive CAD training bootcamp in partnership with American Corner.",
-      image: "/xCellence/News-3.jpg",
+      image: "/xCellence/American.jpg",
     },
   ];
 
