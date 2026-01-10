@@ -7,7 +7,7 @@ type ThemeMode = 'light' | 'dark';
 
 const getPreferredTheme = (): ThemeMode => {
   if (typeof window === 'undefined') {
-    return 'dark';
+    return 'light';
   }
 
   const stored = window.localStorage.getItem('xcellence-theme');
@@ -15,11 +15,11 @@ const getPreferredTheme = (): ThemeMode => {
     return stored;
   }
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    return 'light';
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
   }
 
-  return 'dark';
+  return 'light';
 };
 
 function Layout() {
