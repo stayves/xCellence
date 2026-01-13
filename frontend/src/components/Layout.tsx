@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -23,6 +23,7 @@ const getPreferredTheme = (): ThemeMode => {
 };
 
 function Layout() {
+  const location = useLocation();
   const [theme, setTheme] = useState<ThemeMode>(() => {
     const preferred = getPreferredTheme();
 
@@ -44,6 +45,12 @@ function Layout() {
       window.localStorage.setItem('xcellence-theme', theme);
     }
   }, [theme]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, [location.pathname]);
 
   const toggleTheme = () => {
     setTheme((current) => (current === 'dark' ? 'light' : 'dark'));

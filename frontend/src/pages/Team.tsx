@@ -20,6 +20,12 @@ const mentors: Member[] = [
     image: '/xCellence/madi.jpg',
     bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
   },
+  {
+    name: 'Ansar Saurbayev',
+    role: 'Secondary Mentor',
+    image: '/xCellence/Ansar.JPG',
+    bio: 'Secondary mentor with extensive hands-on engineering and robotics experience.',
+  }
 
 ];
 

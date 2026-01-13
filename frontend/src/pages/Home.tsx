@@ -38,7 +38,7 @@ const Home = () => {
       date: "December 2025",
       image: "/xCellence/xCellenceTeam8.jpg",
       description: "xCellence wins Design Award at Central Asia Championship, showcasing excellence in engineering documentation and robot design.",
-      category: "Achievement"
+      category: "Outreach"
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ const Home = () => {
       date: "August 3, 2025",
       image: "/xCellence/xCellenceWRO.jpg",
       description: "xCellence at WRO Worlds, showcasing excellence in engineering documentation and robot design.",
-      category: "Outreach"
+      category: "Achievement"
     },
     {
       id: 3,

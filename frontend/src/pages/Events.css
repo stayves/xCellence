@@ -37,13 +37,13 @@
 }
 
 .events-content {
-  padding: 5rem 2rem;
+  padding: 4rem 1.5rem;
 }
 
 .events-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2.5rem 1.5rem;
   background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
     url('/xCellence/Background2.png');
   background-size: cover;
@@ -70,12 +70,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .event-card {
   background: var(--secondary-black);
-  padding: 2.5rem;
+  padding: 2.25rem;
   border-radius: 15px;
   border: 2px solid rgba(255, 107, 53, 0.2);
   transition: all 0.3s ease;
@@ -86,7 +86,7 @@
 .event-media {
   width: calc(100% + 5rem);
   height: 220px;
-  margin: -2.5rem -2.5rem 1.5rem;
+  margin: -2.25rem -2.25rem 1.35rem;
   overflow: hidden;
 }
 
@@ -173,7 +173,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
-  margin-top: 3rem;
+  margin-top: 2.25rem;
 }
 
 .past-event-card {
@@ -197,8 +197,10 @@
 .past-event-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
+  max-height: 220px;
   background: var(--secondary-black);
+  overflow: hidden;
 }
 
 .past-event-image img {
@@ -267,7 +269,7 @@
 
 @media (max-width: 768px) {
   .events-content {
-    padding: 3rem 1rem;
+    padding: 2.75rem 0.9rem;
   }
 
   .events-grid {

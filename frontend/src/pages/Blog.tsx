@@ -1,15 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { blogPosts, fusionGuideArticle } from '../data/blog';
+import { blogPosts} from '../data/blog';
 import './Blog.css';
 
 const Blog = () => {
   const navigate = useNavigate();
-  const handleReadStory = (slug?: string) => {
-    if (!slug) {
-      return;
-    }
-
+  const handleActivate = (slug?: string) => {
+    if (!slug) return;
     navigate(`/blog/${slug}`);
+  };
+
+  const handleKeyActivate = (event: React.KeyboardEvent, slug?: string) => {
+    if (!slug) return;
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      navigate(`/blog/${slug}`);
+    }
   };
 
   return (
@@ -29,7 +34,15 @@ const Blog = () => {
         <div className="blog-container">
           <div className="blog-grid">
             {blogPosts.map((post) => (
-              <article key={post.title} className="blog-card">
+              <article
+                key={post.title}
+                className={`blog-card ${post.slug ? 'clickable' : 'disabled'}`}
+                role="button"
+                tabIndex={post.slug ? 0 : -1}
+                onClick={() => handleActivate(post.slug)}
+                onKeyDown={(event) => handleKeyActivate(event, post.slug)}
+                aria-disabled={!post.slug}
+              >
                 <figure className="blog-card-cover">
                   <img src={post.coverImage} alt={post.coverAlt} loading="lazy" />
                 </figure>
@@ -46,68 +59,20 @@ const Blog = () => {
                   </div>
                   <span className="blog-author">{post.author}</span>
                 </footer>
-                <button
-                  type="button"
-                  className="blog-cta"
-                  onClick={() => handleReadStory(post.slug)}
-                  disabled={!post.slug}
-                >
-                  {post.slug ? 'Read story' : 'Coming soon'}
-                </button>
+                <div className="blog-cta-inline">
+                  {post.slug ? (
+                    <span className="cta-link">Read story →</span>
+                  ) : (
+                    <span className="cta-disabled">Coming soon</span>
+                  )}
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="feature-article" id="fusion-guide">
-        <div className="feature-container">
-          <div className="feature-hero">
-            <span className="section-tag">{fusionGuideArticle.kicker}</span>
-            <h2>{fusionGuideArticle.title}</h2>
-            <p>{fusionGuideArticle.intro}</p>
-            <div className="feature-meta">
-              <div>
-                <span>{fusionGuideArticle.date}</span>
-                <span className="blog-dot">•</span>
-                <span>{fusionGuideArticle.readTime}</span>
-              </div>
-              <span className="feature-author">{fusionGuideArticle.author}</span>
-            </div>
-            <button
-              type="button"
-              className="blog-cta feature-cta"
-              onClick={() => handleReadStory(fusionGuideArticle.slug)}
-            >
-              Read the full article
-            </button>
-          </div>
-          <div className="feature-body">
-            <figure className="feature-image">
-              <img src={fusionGuideArticle.heroImage} alt={fusionGuideArticle.heroAlt} />
-              <figcaption>Photo: xCellence Media Team</figcaption>
-            </figure>
-            <article className="feature-content">
-              {fusionGuideArticle.sections.map((section) => (
-                <div key={section.title} className="feature-section">
-                  <h3>{section.title}</h3>
-                  {section.paragraphs.map((paragraph, index) => (
-                    <p key={`${section.title}-${index}`}>{paragraph}</p>
-                  ))}
-                  {section.bullets && (
-                    <ul className="feature-list">
-                      {section.bullets.map((bullet, listIndex) => (
-                        <li key={`${section.title}-bullet-${listIndex}`}>{bullet}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
-              <p className="feature-closing">{fusionGuideArticle.closing}</p>
-            </article>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };

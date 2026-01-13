@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -58,21 +57,6 @@ const Footer = () => {
               FIRST Tech Challenge Team dedicated to inspiring the next generation
               through science, technology, engineering, and mathematics.
             </p>
-          </div>
-
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/team">Team</Link></li>
-              <li><Link to="/events">Events</Link></li>
-              <li><Link to="/trainer">Driver Trainer</Link></li>
-              <li><Link to="/calendar">Calendar</Link></li>
-              <li><Link to="/resources">Resources</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/hall-of-fame">Hall of Fame</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
           </div>
 
           <div className="footer-section">

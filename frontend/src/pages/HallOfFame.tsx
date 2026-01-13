@@ -121,6 +121,13 @@ const alumniHighlights = [
       'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
     photo: '/xCellence/Daniyar.jpg',
   },
+  {
+    name: 'Azamat Bidanov',
+    role: 'FIRST Program Delivery Partner',
+    achievement:
+      'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
+    photo: '/xCellence/Azamat.png',
+  }
 ];
 
 const HallOfFame = () => {

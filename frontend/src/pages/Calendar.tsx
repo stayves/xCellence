@@ -38,6 +38,22 @@ type Tournament = {
   site?: string
 }
 
+const parseEventDate = (rawDate: string | undefined): number | null => {
+  if (!rawDate) return null
+  const exact = rawDate.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/)
+  if (exact) {
+    const [, day, month, year] = exact
+    return new Date(Number(year), Number(month) - 1, Number(day)).getTime()
+  }
+
+  const yearOnly = rawDate.match(/(20\d{2})/)
+  if (yearOnly) {
+    return new Date(Number(yearOnly[1]), 0, 1).getTime()
+  }
+
+  return null
+}
+
 const TRACK_CONFIG: TrackConfig[] = [
   { id: 'FIRST', label: 'FIRST', description: 'Kick-offs, Regionals, Qualifiers, Big Events, Off-Season', logoSrc: '/xCellence/FirstLogo.webp', logoAlt: 'FIRST' },
   { id: 'WRO', label: 'WRO', description: 'World Robotics Olympiad schedule', logoSrc: '/xCellence/WROLogo.webp', logoAlt: 'WRO' },
@@ -524,18 +540,19 @@ const TOURNAMENTS: Tournament[] = [
 const Calendar = () => {
   const [activeTrack, setActiveTrack] = useState<TrackId>('FIRST')
   const [activeCategory, setActiveCategory] = useState<CategoryId>('kickoff')
-  const [searchTerm, setSearchTerm] = useState('')
 
   const visibleEvents = useMemo(() => {
     if (activeTrack !== 'FIRST') return []
     const events = CATEGORY_EVENTS[activeCategory] ?? []
-    if (!searchTerm) return events
-    const query = searchTerm.toLowerCase()
-    return events.filter((event) => {
-      const haystack = `${event.title} ${event.city} ${event.venue} ${event.categories.join(' ')}`.toLowerCase()
-      return haystack.includes(query)
+    return [...events].sort((a, b) => {
+      const dateA = parseEventDate(a.dates)
+      const dateB = parseEventDate(b.dates)
+      if (dateA !== null && dateB !== null) return dateB - dateA
+      if (dateA !== null) return -1
+      if (dateB !== null) return 1
+      return a.title.localeCompare(b.title)
     })
-  }, [activeCategory, activeTrack, searchTerm])
+  }, [activeCategory, activeTrack])
 
   const activeConfig = CATEGORY_CONFIG.find((cat) => cat.id === activeCategory)
   const activeTrackConfig = TRACK_CONFIG.find((t) => t.id === activeTrack)
@@ -547,14 +564,6 @@ const Calendar = () => {
           <div className="hero-label">Robotics calendar</div>
           <h1>Events in Kazakhstan</h1>
           <p>Select a track, then dive into categories to see competitions and deadlines.</p>
-          <div className="calendar-search">
-            <input
-              type="search"
-              placeholder="Search by city, venue, or category tag"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-            />
-          </div>
         </div>
       </section>
 

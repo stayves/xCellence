@@ -2,11 +2,30 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import './Trainer.css';
 
 type Point = { x: number; y: number };
+type AimCircle = {
+  x: number;
+  y: number;
+  radius: number;
+  approachRadius: number;
+  spawnTime: number;
+  hitTime: number;
+  hit: boolean;
+  missed: boolean;
+  hitScore?: '300' | '100' | '50';
+};
 
 const canvasSize = { width: 1200, height: 800 };
+const aimCanvasSize = { width: 1200, height: 800 };
+
+const AIM_DIFFICULTIES = [
+  { name: 'Easy', approachTime: 2000, spawnInterval: 1500, tolerance: 0.15 },
+  { name: 'Normal', approachTime: 1500, spawnInterval: 1000, tolerance: 0.12 },
+  { name: 'Hard', approachTime: 1000, spawnInterval: 700, tolerance: 0.08 },
+];
 
 const Trainer = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const aimCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const [mode, setMode] = useState<'robot' | 'field'>('robot');
   const [controllerLabel, setControllerLabel] = useState('No controller detected');
@@ -36,6 +55,27 @@ const Trainer = () => {
   const trainerActiveRef = useRef(false);
   const triangleLatchRef = useRef(false);
   const xLatchRef = useRef(false);
+
+  // Aim trainer state/refs
+  const aimRunningRef = useRef(false);
+  const aimPausedRef = useRef(false);
+  const aimDifficultyRef = useRef(1);
+  const aimNextSpawnRef = useRef(0);
+  const aimCirclesRef = useRef<AimCircle[]>([]);
+  const aimStatsRef = useRef({
+    score: 0,
+    combo: 0,
+    maxCombo: 0,
+    hits300: 0,
+    hits100: 0,
+    hits50: 0,
+    misses: 0,
+    accuracy: 100,
+  });
+  const [aimStats, setAimStats] = useState(aimStatsRef.current);
+  const [aimDifficulty, setAimDifficulty] = useState(AIM_DIFFICULTIES[aimDifficultyRef.current].name);
+  const [aimRunning, setAimRunning] = useState(false);
+  const [aimPaused, setAimPaused] = useState(false);
 
   const round = (v: number) => (Math.abs(v) < 0.0005 ? 0 : Math.round(v * 1000) / 1000);
 
@@ -82,6 +122,70 @@ const Trainer = () => {
     setFinishTime(null);
     resetRobot();
   }, [generatePath, resetRobot]);
+
+  const restartTrainer = useCallback(() => {
+    if (checkpointsRef.current.length === 0) {
+      generatePath();
+    }
+    currentCPRef.current = 0;
+    setCheckpointInfo({ current: 0, total: checkpointsRef.current.length });
+    trainerActiveRef.current = true;
+    setTrainerActive(true);
+    setShowFinish(false);
+    setFinishTime(null);
+    startTimeRef.current = performance.now();
+    resetRobot();
+  }, [generatePath, resetRobot]);
+
+  const resetAimStats = useCallback(() => {
+    aimStatsRef.current = {
+      score: 0,
+      combo: 0,
+      maxCombo: 0,
+      hits300: 0,
+      hits100: 0,
+      hits50: 0,
+      misses: 0,
+      accuracy: 100,
+    };
+    setAimStats(aimStatsRef.current);
+  }, []);
+
+  const startAimTrainer = useCallback(() => {
+    resetAimStats();
+    aimCirclesRef.current = [];
+    aimNextSpawnRef.current = performance.now();
+    aimRunningRef.current = true;
+    aimPausedRef.current = false;
+    setAimRunning(true);
+    setAimPaused(false);
+  }, [resetAimStats]);
+
+  const pauseAimTrainer = useCallback(() => {
+    aimPausedRef.current = !aimPausedRef.current;
+    setAimPaused(aimPausedRef.current);
+  }, []);
+
+  const stopAimTrainer = useCallback(() => {
+    aimRunningRef.current = false;
+    aimPausedRef.current = false;
+    setAimRunning(false);
+    setAimPaused(false);
+  }, []);
+
+  const cycleAimDifficulty = useCallback(() => {
+    aimDifficultyRef.current = (aimDifficultyRef.current + 1) % AIM_DIFFICULTIES.length;
+    setAimDifficulty(AIM_DIFFICULTIES[aimDifficultyRef.current].name);
+  }, []);
+
+  const updateAimAccuracy = useCallback(() => {
+    const stats = aimStatsRef.current;
+    const totalHits = stats.hits300 + stats.hits100 + stats.hits50;
+    const total = totalHits + stats.misses;
+    stats.accuracy =
+      total > 0 ? ((stats.hits300 * 300 + stats.hits100 * 100 + stats.hits50 * 50) / (total * 300)) * 100 : 100;
+    setAimStats({ ...stats });
+  }, []);
 
   const endTrainer = useCallback(() => {
     trainerActiveRef.current = false;
@@ -351,6 +455,219 @@ const Trainer = () => {
     };
   }, [beginTrainer, finishTrainer, generatePath]);
 
+  // Aim trainer loop
+  useEffect(() => {
+    const canvas = aimCanvasRef.current;
+    if (!canvas) return;
+    canvas.width = aimCanvasSize.width;
+    canvas.height = aimCanvasSize.height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const radius = 200;
+    const leftCenter = { x: 300, y: 400 };
+    const rightCenter = { x: 900, y: 400 };
+
+    const joystickToScreen = (stickX: number, stickY: number, centerX: number, centerY: number) => ({
+      x: centerX + stickX * radius,
+      y: centerY + stickY * radius,
+    });
+
+    const generateRandomPosition = () => {
+      const useLeft = Math.random() < 0.5;
+      const center = useLeft ? leftCenter : rightCenter;
+      const ang = Math.random() * Math.PI * 2;
+      const dist = Math.random() * radius;
+      return { x: center.x + Math.cos(ang) * dist, y: center.y + Math.sin(ang) * dist };
+    };
+
+    const drawJoystickArea = (center: { x: number; y: number }, label: string) => {
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, radius, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 20px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, center.x, center.y - radius - 24);
+    };
+
+    const drawJoystickPos = (center: { x: number; y: number }, stickX: number, stickY: number, color: string) => {
+      const posX = center.x + stickX * radius;
+      const posY = center.y + stickY * radius;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(posX, posY, 12, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    };
+
+    let anim = 0;
+
+    const frame = () => {
+      const now = performance.now();
+
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Base joystick guides
+      drawJoystickArea(leftCenter, 'Left Stick');
+      drawJoystickArea(rightCenter, 'Right Stick');
+
+      const gamepad = gpRef.current ? navigator.getGamepads()[gpRef.current.index] : null;
+      if (!gamepad) {
+        // No controller overlay
+        ctx.fillStyle = 'rgba(0,0,0,0.65)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ff4d4f';
+        ctx.font = 'bold 32px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('No controller detected', canvas.width / 2, canvas.height / 2);
+        anim = requestAnimationFrame(frame);
+        return;
+      }
+
+      const lx = gamepad.axes[0] ?? 0;
+      const ly = gamepad.axes[1] ?? 0;
+      const rx = gamepad.axes[2] ?? 0;
+      const ry = gamepad.axes[3] ?? 0;
+
+      drawJoystickPos(leftCenter, lx, ly, '#66aaff');
+      drawJoystickPos(rightCenter, rx, ry, '#ff66aa');
+
+      if (aimRunningRef.current && !aimPausedRef.current) {
+        const difficulty = AIM_DIFFICULTIES[aimDifficultyRef.current];
+        if (now >= aimNextSpawnRef.current) {
+          const pos = generateRandomPosition();
+          aimCirclesRef.current.push({
+            x: pos.x,
+            y: pos.y,
+            radius: 50,
+            approachRadius: 150,
+            spawnTime: now,
+            hitTime: now + difficulty.approachTime,
+            hit: false,
+            missed: false,
+          });
+          aimNextSpawnRef.current = now + difficulty.spawnInterval;
+        }
+      }
+
+      // Update circles
+      const circles = aimCirclesRef.current;
+      for (let i = circles.length - 1; i >= 0; i -= 1) {
+        const c = circles[i];
+        const timeLeft = c.hitTime - now;
+        const totalTime = c.hitTime - c.spawnTime;
+        const progress = Math.max(0, Math.min(1, 1 - timeLeft / totalTime));
+        c.approachRadius = 150 - progress * 100;
+
+        if (!c.hit && !c.missed && now >= c.hitTime - 200) {
+          const leftPos = joystickToScreen(lx, ly, leftCenter.x, leftCenter.y);
+          const rightPos = joystickToScreen(rx, ry, rightCenter.x, rightCenter.y);
+          const leftDistSq = (c.x - leftPos.x) ** 2 + (c.y - leftPos.y) ** 2;
+          const rightDistSq = (c.x - rightPos.x) ** 2 + (c.y - rightPos.y) ** 2;
+          const minDistSq = Math.min(leftDistSq, rightDistSq);
+          const tolerance = c.radius + AIM_DIFFICULTIES[aimDifficultyRef.current].tolerance * 50;
+          const tolSq = tolerance * tolerance;
+
+          if (minDistSq <= tolSq) {
+            const timeDiff = Math.abs(timeLeft);
+            let score: AimCircle['hitScore'] = undefined;
+            if (timeDiff < 50) score = '300';
+            else if (timeDiff < 100) score = '100';
+            else if (timeDiff < 150) score = '50';
+
+            if (score) {
+              c.hit = true;
+              c.hitScore = score;
+              const stats = aimStatsRef.current;
+              if (score === '300') stats.hits300 += 1;
+              if (score === '100') stats.hits100 += 1;
+              if (score === '50') stats.hits50 += 1;
+              stats.combo += 1;
+              stats.maxCombo = Math.max(stats.maxCombo, stats.combo);
+              stats.score += score === '300' ? 300 : score === '100' ? 100 : 50;
+              aimStatsRef.current = { ...stats };
+              updateAimAccuracy();
+            }
+          }
+        }
+
+        if (now > c.hitTime + 100 && !c.hit && !c.missed) {
+          c.missed = true;
+          const stats = aimStatsRef.current;
+          stats.combo = 0;
+          stats.misses += 1;
+          aimStatsRef.current = { ...stats };
+          updateAimAccuracy();
+        }
+
+        if (now > c.hitTime + 500) {
+          circles.splice(i, 1);
+        }
+      }
+
+      // Draw circles
+      circles.forEach((c) => {
+        if (!c.hit && !c.missed) {
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.approachRadius, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        if (!c.missed) {
+          ctx.fillStyle = c.hit ? '#00ff88' : '#ff66aa';
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+        if (c.hitScore) {
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 28px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(c.hitScore, c.x, c.y - 70);
+        }
+      });
+
+      // HUD
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '20px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText(`Score: ${aimStatsRef.current.score}`, 20, 36);
+      ctx.fillText(`Combo: ${aimStatsRef.current.combo} (Max: ${aimStatsRef.current.maxCombo})`, 20, 64);
+      ctx.fillText(`Acc: ${aimStatsRef.current.accuracy.toFixed(2)}%`, 20, 92);
+      ctx.fillText(`Difficulty: ${AIM_DIFFICULTIES[aimDifficultyRef.current].name}`, 20, 120);
+      if (!aimRunningRef.current) {
+        ctx.fillStyle = 'rgba(0,0,0,0.65)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 28px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Aim Trainer Idle — press Start', canvas.width / 2, canvas.height / 2);
+      } else if (aimPausedRef.current) {
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 28px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Paused', canvas.width / 2, canvas.height / 2);
+      }
+
+      anim = requestAnimationFrame(frame);
+    };
+
+    anim = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(anim);
+  }, [updateAimAccuracy]);
+
   return (
     <div className="trainer-page">
       <section className="trainer-hero">
@@ -364,6 +681,9 @@ const Trainer = () => {
           <div className="trainer-actions">
             <button className="cta-primary" onClick={beginTrainer}>
               Start Training Run
+            </button>
+            <button className="cta-secondary" onClick={restartTrainer}>
+              Restart Path
             </button>
             <button className="cta-secondary" onClick={resetRobot}>
               Reset Robot
@@ -391,6 +711,9 @@ const Trainer = () => {
               <button className="ghost" onClick={generatePath}>
                 New Path
               </button>
+              <button className="ghost" onClick={restartTrainer} disabled={trainerActive}>
+                Restart Path
+              </button>
               <button className="ghost" onClick={endTrainer} disabled={!trainerActive}>
                 End Trainer
               </button>
@@ -415,6 +738,9 @@ const Trainer = () => {
                   <h3>Training Complete</h3>
                   <p>Time: {finishTime.toFixed(2)}s</p>
                   <div className="finish-actions">
+                    <button className="cta-secondary" onClick={restartTrainer}>
+                      Restart Path
+                    </button>
                     <button className="cta-primary" onClick={beginTrainer}>
                       New Run
                     </button>
@@ -468,6 +794,62 @@ const Trainer = () => {
                   <li>Reset Robot if you drift too far off-center.</li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="aim-section">
+        <div className="trainer-container">
+          <div className="sim-header">
+            <div>
+              <span className="section-tag">Aim Trainer</span>
+              <h2>Joystick OSU-style Trainer</h2>
+              <p>Use left/right sticks to hit shrinking circles. Practice timing, accuracy, and stick coordination.</p>
+            </div>
+            <div className="sim-buttons">
+              <button className="ghost" onClick={startAimTrainer}>
+                Start Training
+              </button>
+              <button className="ghost" onClick={pauseAimTrainer} disabled={!aimRunning}>
+                {aimPaused ? 'Resume' : 'Pause'}
+              </button>
+              <button className="ghost" onClick={stopAimTrainer} disabled={!aimRunning}>
+                Stop
+              </button>
+              <button className="ghost" onClick={cycleAimDifficulty}>
+                Difficulty: {aimDifficulty}
+              </button>
+            </div>
+          </div>
+
+          <div className="aim-body">
+            <div className="canvas-wrap aim-canvas">
+              <canvas ref={aimCanvasRef} />
+            </div>
+            <div className="info-card">
+              <h4>Current Stats</h4>
+              <ul className="controls-list">
+                <li>
+                  <strong>Score:</strong> {aimStats.score.toLocaleString()}
+                </li>
+                <li>
+                  <strong>Combo:</strong> {aimStats.combo} (Max {aimStats.maxCombo})
+                </li>
+                <li>
+                  <strong>Accuracy:</strong> {aimStats.accuracy.toFixed(2)}%
+                </li>
+                <li>
+                  <strong>Hits:</strong> 300: {aimStats.hits300} · 100: {aimStats.hits100} · 50: {aimStats.hits50}
+                </li>
+                <li>
+                  <strong>Misses:</strong> {aimStats.misses}
+                </li>
+              </ul>
+              <p className="controls-note">
+                Left stick = aim (left field), Right stick = aim (right field). Press Start to begin, Pause/Resume as
+                needed. Change difficulty to adjust spawn speed and timing windows.
+              </p>
             </div>
           </div>
         </div>

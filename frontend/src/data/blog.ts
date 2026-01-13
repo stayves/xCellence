@@ -145,7 +145,7 @@ export const cyrexWroArticle: FeatureArticle = {
   author: 'XLNC Cyrex — Hardware Squad',
   readTime: '8 min read',
   slug: 'wro-cyrex-hardware',
-  heroImage: withBase('robot_main.jpg'),
+  heroImage: withBase('1PicSayan.jpg'),
   heroAlt: 'XLNC Cyrex manipulator prototype for WRO RoboMission',
   intro:
     'В данном цикле статей и гайдов мы, как республиканские и международные призеры WRO Robomission Senior, хотели бы поделиться своим опытом и фишками в данной категории.',

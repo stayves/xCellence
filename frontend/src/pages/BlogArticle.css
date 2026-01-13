@@ -13,6 +13,21 @@
   z-index: 2;
 }
 
+:root[data-theme='light'] .article-topbar {
+  background: rgba(235, 237, 244, 0.95);
+  border-bottom: 1px solid rgba(17, 18, 32, 0.12);
+  box-shadow: 0 6px 24px rgba(17, 20, 32, 0.12);
+}
+
+:root[data-theme='light'] .article-breadcrumbs,
+:root[data-theme='light'] .article-topbar-meta {
+  color: #1f2230;
+}
+
+:root[data-theme='light'] .article-breadcrumbs a {
+  color: #1b1c24;
+}
+
 .article-topbar-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -115,9 +130,10 @@
 
 .article-cover img {
   width: 100%;
+  height: clamp(240px, 38vw, 420px);
+  max-height: 420px;
   display: block;
   object-fit: cover;
-  min-height: 320px;
 }
 
 .article-cover figcaption {
