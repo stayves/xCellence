@@ -123,9 +123,9 @@ const alumniHighlights = [
   },
   {
     name: 'Azamat Bidanov',
-    role: 'FIRST Program Delivery Partner',
+    role: 'WRO National Organizer',
     achievement:
-      'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
+      '',
     photo: '/xCellence/Azamat.png',
   }
 ];
