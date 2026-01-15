@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import './Team.css';
 
 type Member = {
@@ -7,140 +8,31 @@ type Member = {
   bio: string;
 };
 
-const mentors: Member[] = [
-  {
-    name: 'Vladimir Ussoltsev',
-    role: 'Primary Mentor',
-    image: '/xCellence/vladimir.jpg',
-    bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
-  },
-  {
-    name: 'Madi Mukash',
-    role: 'Primary Mentor',
-    image: '/xCellence/madi.jpg',
-    bio: 'Primary mentor with extensive hands-on engineering and robotics experience.',
-  },
-  {
-    name: 'Ansar Saurbayev',
-    role: 'Secondary Mentor',
-    image: '/xCellence/Ansar.JPG',
-    bio: 'Secondary mentor with extensive hands-on engineering and robotics experience.',
-  }
-
-];
-
-const currentMembers: Member[] = [
-  {
-    name: 'Zhanarys Kaparov',
-    role: 'Captain & Driver',
-    image: '/xCellence/zhanarys.jpg',
-    bio: 'Captain and driver of the team.',
-  },
-  {
-    name: 'Zhanibek Danabek',
-    role: 'CAD Specialist',
-    image: '/xCellence/zhanibek.jpg',
-    bio: 'CAD specialist and designer of the team.',
-  },
-  {
-    name: 'Arnur Togambayev',
-    role: 'Programmer ',
-    image: '/xCellence/arnur1.jpg',
-    bio: 'Programmer of the team.',
-  },
-  {
-    name: 'Asylzhan Sailau',
-    role: 'Lead Inspire',
-    image: '/xCellence/asylzhan1.jpg',
-    bio: 'Lead Inspire of the team.',
-  },
-  {
-    name: 'Aizere Askarova',
-    role: 'Inspire',
-    image: '/xCellence/aizere1.jpg',
-    bio: 'Inspire of the team.',
-  },
-  {
-    name: 'Semyon Chistyakov',
-    role: 'Inspire/Programmer',
-    image: '/xCellence/semyon.jpg',
-    bio: 'Inspire/Programmer of the team.',
-  },
-  {
-    name: 'Togzhan Kabdolda',
-    role: 'Inspire',
-    image: '/xCellence/togzhan.jpg',
-    bio: 'Inspire of the team.',
-  },
-  {
-    name: 'Alzere Chindaliyeva',
-    role: 'Inspire',
-    image: '/xCellence/alzere1.jpg',
-    bio: 'Inspire of the team.',
-  },
-  {
-    name: 'Zhanaiym Tashkenbay',
-    role: 'Inspire',
-    image: '/xCellence/zhanaiym.jpg',
-    bio: 'Inspire of the team.',
-  },
-  {
-    name: 'Dastan Musrepov',
-    role: 'Lead CAD Specialist',
-    image: '/xCellence/dastan1.jpg',
-    bio: 'Lead CAD specialist of the team.',
-  },
-  {
-    name: 'Sayan Orynbek',
-    role: 'Engineer/Builder',
-    image: '/xCellence/sayan.jpg',
-    bio: 'Engineer/Builder of the team.',
-  },
-  {
-    name: 'Najmudin Adikhanov ',
-    role: 'Lead Engineer/Builder',
-    image: '/xCellence/naj.jpg',
-    bio: 'Lead Engineer/Builder of the team.',
-  },
-  {
-    name: 'Targyn Faizulla',
-    role: 'CAD Specialist',
-    image: '/xCellence/targyn.jpg',
-    bio: 'CAD specialist of the team.',
-  },
-  {
-    name: 'Vagiz Dissembayev',
-    role: 'Builder',
-    image: '/xCellence/vagiz3.jpg',
-    bio: 'Builder of the team.',
-  },
-  {
-    name: 'Ali Umargaliyev',
-    role: 'Driver & Builder',
-    image: '/xCellence/ali1.jpg',
-    bio: 'Driver of the team.',
-  },
-];
-
 const Team = () => {
+  const { t } = useTranslation();
+  const mentors = t('team.mentors.people', { returnObjects: true }) as Member[];
+  const currentMembers = t('team.members.people', { returnObjects: true }) as Member[];
+  const xlncFamilyTeams = t('team.support.families.xlnc.teams', { returnObjects: true }) as string[];
+  const startedTeams = t('team.support.families.started.teams', { returnObjects: true }) as string[];
+  const assistedTeams = t('team.support.families.assisted.teams', { returnObjects: true }) as string[];
+
   return (
     <div className="team-page">
       <section className="team-hero">
         <div className="team-hero-content">
-          <h1>Meet Our Team</h1>
-          <p>The brilliant minds behind xCellence</p>
+          <h1>{t('team.hero.title')}</h1>
+          <p>{t('team.hero.subtitle')}</p>
         </div>
       </section>
 
       <section className="team-content">
         <div className="team-container">
           <div className="section-header">
-            <span className="section-tag">Mentorship</span>
-            <h2 className="section-title">Mentors & Advisors</h2>
+            <span className="section-tag">{t('team.mentors.tag')}</span>
+            <h2 className="section-title">{t('team.mentors.title')}</h2>
             <div className="title-underline"></div>
             <p className="alumni-intro">
-              Our team is guided by highly qualified mentors, researchers, and professors who provide expertise 
-              in engineering, AI, automation, and strategic problem solving.
+              {t('team.mentors.intro')}
             </p>
           </div>
 
@@ -166,12 +58,11 @@ const Team = () => {
       <section className="team-content">
         <div className="team-container">
           <div className="section-header">
-            <span className="section-tag">Our People</span>
-            <h2 className="section-title">Current Team Members</h2>
+            <span className="section-tag">{t('team.members.tag')}</span>
+            <h2 className="section-title">{t('team.members.title')}</h2>
             <div className="title-underline"></div>
             <p className="alumni-intro">
-              Since 2022, four generations of students have been part of xCellence. We continuously cultivate 
-              new leaders, engineers, and mentors who explore all areas of robotics.
+              {t('team.members.intro')}
             </p>
           </div>
 
@@ -197,19 +88,20 @@ const Team = () => {
       <section className="team-content alumni-section">
         <div className="team-container">
           <div className="section-header">
-            <span className="section-tag">Team Support</span>
-            <h2 className="section-title">Teams We've Mentored & Assisted</h2>
+            <span className="section-tag">{t('team.support.tag')}</span>
+            <h2 className="section-title">{t('team.support.title')}</h2>
             <div className="title-underline"></div>
             <p className="alumni-intro">
-              We care about the sustainability of our school's robotics and Kazakhstan's STEAM ecosystem. 
-              We have started and mentored 1 new FTC team and 2 new FLL teams, and assisted 16 teams total.
+              {t('team.support.intro')}
             </p>
           </div>
           <div style={{maxWidth: '900px', margin: '0 auto', padding: '2rem'   }}>
           <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>XLNC Family</h3>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>
+                {t('team.support.families.xlnc.title')}
+              </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                {['XLNC Qtech', 'XLNC Nova', 'XLNC Feral',].map(team => (
+                {xlncFamilyTeams.map((team) => (
                   <div key={team} style={{ padding: '1rem', background: 'rgba(255,107,0,0.1)', borderRadius: '8px', textAlign: 'center' }}>
                     <strong>{team}</strong>
                   </div>
@@ -220,9 +112,11 @@ const Team = () => {
 
           <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
             <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>Started & Mentored</h3>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>
+                {t('team.support.families.started.title')}
+              </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                {['xCeption', 'XLNC Nova', 'XLNC Feral', 'SlapSeals', 'DostyqBot', 'ThanosNIS'].map(team => (
+                {startedTeams.map((team) => (
                   <div key={team} style={{ padding: '1rem', background: 'rgba(255,107,0,0.1)', borderRadius: '8px', textAlign: 'center' }}>
                     <strong>{team}</strong>
                   </div>
@@ -231,9 +125,11 @@ const Team = () => {
             </div>
 
             <div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-color)' }}>Assisted</h3>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-color)' }}>
+                {t('team.support.families.assisted.title')}
+              </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
-                {['Celestial ', 'BILMS', 'Akita', 'Sakura', 'KAP', 'Meow-Meow', 'JelToqSun', 'PID', 'BilOrda', 'Venom', 'Reckless'].map(team => (
+                {assistedTeams.map((team) => (
                   <div key={team} style={{ padding: '0.75rem', background: 'rgba(0,150,255,0.1)', borderRadius: '8px', textAlign: 'center', fontSize: '0.9rem' }}>
                     {team}
                   </div>

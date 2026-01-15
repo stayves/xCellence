@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -50,29 +52,24 @@ const Footer = () => {
             <h3 className="footer-logo">
               xCellence
             </h3>
-            <p className="footer-tagline">
-              Excellence in Robotics & Innovation
-            </p>
-            <p className="footer-description">
-              FIRST Tech Challenge Team dedicated to inspiring the next generation
-              through science, technology, engineering, and mathematics.
-            </p>
+            <p className="footer-tagline">{t('footer.tagline')}</p>
+            <p className="footer-description">{t('footer.description')}</p>
           </div>
 
           <div className="footer-section">
-            <h4>Contact Us</h4>
+            <h4>{t('footer.contactTitle')}</h4>
             <p className="contact-info">
-              <strong>Email:</strong><br />
+              <strong>{t('footer.emailLabel')}:</strong><br />
               ftcxcellence@gmail.com
             </p>
             <p className="contact-info">
-              <strong>For Sponsorships:</strong><br />
+              <strong>{t('footer.sponsorshipLabel')}:</strong><br />
               ftcxcellence@gmail.com
             </p>
           </div>
 
           <div className="footer-section">
-            <h4>Follow Us</h4>
+            <h4>{t('footer.followTitle')}</h4>
             <div className="social-links">
               {socialLinks.map((link) => (
                 <a
@@ -94,17 +91,17 @@ const Footer = () => {
            <a href='https://www.instagram.com/arnur_togambayev/' target='_blank' rel='noopener noreferrer'>
                <img src='/xCellence/instagram.svg' alt='arnur' className='instagram' />
            
-           <h4>Want to make your own website? Contact: Arnur </h4>
+           <h4>{t('footer.credit')}</h4>
            </a>
         </div>
 
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-copyright">
-            <p>© {currentYear} xCellence FTC Team. All rights reserved.</p>
+            <p>{t('footer.copyright', { year: currentYear })}</p>
             <p className="first-notice">
-              FIRST® and FIRST Tech Challenge® are registered trademarks of
-              <em> For Inspiration and Recognition of Science and Technology (FIRST)</em>
+              {t('footer.firstTrademark')}
+              <em> {t('footer.firstOrganization')}</em>
             </p>
           </div>
         </div>

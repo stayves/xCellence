@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
@@ -9,6 +10,7 @@ const withBase = (path: string) => {
 };
 
 const Home = () => {
+  const { t } = useTranslation();
   const teamSlides = useMemo(
     () =>
       ['xCellenceTeam9.jpg', 'xCellenceTeam2.jpg', 'xCellenceTeam4.JPG', 'xCellenceTeam1.jpg', 'xCellenceTeam6.jpg','xCellenceTeam5.jpg','xCellenceTeam7.jpg','xCellenceTeam8.jpg'].map((src) =>
@@ -31,50 +33,21 @@ const Home = () => {
   }, [teamSlides.length]);
 
   // Real team news and achievements
-  const [newsItems] = useState([
-    {
-      id: 1,
-      title: "Inerview with Asylbek Myrzakhmetov",
-      date: "December 2025",
-      image: "/xCellence/xCellenceTeam8.jpg",
-      description: "xCellence wins Design Award at Central Asia Championship, showcasing excellence in engineering documentation and robot design.",
-      category: "Outreach"
-    },
-    {
-      id: 2,
-      title: "WRO Worlds",
-      date: "August 3, 2025",
-      image: "/xCellence/xCellenceWRO.jpg",
-      description: "xCellence at WRO Worlds, showcasing excellence in engineering documentation and robot design.",
-      category: "Achievement"
-    },
-    {
-      id: 3,
-      title: "Astana Innovation Forum",
-      date: "December 21, 2025",
-      image: "/xCellence/AIFlogo.jpg",
-      description: "Biggest entrepreneurship forum for students in Central Asia, with 200+ participants, 150+ startups and top speakers from startup ecosystem. Partners included: Master Education, Silkroad Innovation Hub, GloCoach. ",
-      category: "Forum"
-    },
-    {
-      id: 4,
-      title: "Social Media Milestone",
-      date: "2024-2025",
-      image: "/xCellence/news-4.jpg",
-      description: "Reached 800+ followers on Instagram with 150,000 views and 6,000 accounts reached in last 3 months. Managing KZ Robotics Telegram with 250+ members.",
-      category: "Media"
-    }
-  ]);
+  const newsItems = t('home.news.items', { returnObjects: true }) as {
+    id: number;
+    title: string;
+    date: string;
+    image: string;
+    description: string;
+    category: string;
+  }[];
 
   // Sample sponsors data
-  const sponsors = [
-    { name: "Sponsor 1", logo: "/xCellence/Sponsor1.jpg", tier: "platinum" },
-    { name: "Sponsor 2", logo: "/xCellence/Sponsor2.jpg", tier: "platinum" },
-    { name: "Sponsor 3", logo: "/xCellence/sponsor-3.png", tier: "gold" },
-    { name: "Sponsor 4", logo: "/xCellence/sponsor-4.png", tier: "gold" },
-    { name: "Sponsor 5", logo: "/xCellence/sponsor-5.png", tier: "silver" },
-    { name: "Sponsor 6", logo: "/xCellence/sponsor-6.png", tier: "silver" },
-  ];
+  const sponsors = t('home.sponsors.items', { returnObjects: true }) as {
+    name: string;
+    logo: string;
+    tier: string;
+  }[];
 
   const navigate = useNavigate();
 
@@ -95,25 +68,25 @@ const Home = () => {
           <div className="hero-text">
             <h1 className="hero-title">
               <span className="hero-title-main">x<span className="orange-text">Cellence</span></span>
-              <span className="hero-title-sub">Robotics Team</span>
+              <span className="hero-title-sub">{t('home.hero.subtitle')}</span>
             </h1>
             <p className="hero-description">
-              Engineering the Future, One Innovation at a Time
+              {t('home.hero.description')}
             </p>
             <div className="hero-stats">
               <div className="stat-item">
                 <span className="stat-number">190</span>
-                <span className="stat-label">People Engaged Offline</span>
+                <span className="stat-label">{t('home.hero.stats.offline')}</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
                 <span className="stat-number">29,000</span>
-                <span className="stat-label">People Engaged Online</span>
+                <span className="stat-label">{t('home.hero.stats.online')}</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
                 <span className="stat-number">105+</span>
-                <span className="stat-label">Event Hours</span>
+                <span className="stat-label">{t('home.hero.stats.hours')}</span>
               </div>
             </div>
             <div className="hero-cta">
@@ -121,19 +94,23 @@ const Home = () => {
                 Try Driver Trainer
               </button> */}
               <button className="cta-secondary" onClick={() => navigate('/team')}>
-                Meet the Team
+                {t('home.hero.cta')}
               </button>
             </div>
           </div>
         </div>
         {teamSlides.length > 1 && (
-          <div className="hero-carousel-dots" role="tablist" aria-label="Team highlights carousel">
+          <div
+            className="hero-carousel-dots"
+            role="tablist"
+            aria-label={t('home.hero.carouselLabel')}
+          >
             {teamSlides.map((_, index) => (
               <button
                 key={teamSlides[index]}
                 type="button"
                 className={`hero-dot ${currentSlide === index ? 'active' : ''}`}
-                aria-label={`Show team photo ${index + 1}`}
+                aria-label={t('home.hero.showPhoto', { index: index + 1 })}
                 aria-pressed={currentSlide === index}
                 onClick={() => setCurrentSlide(index)}
               />
@@ -141,7 +118,7 @@ const Home = () => {
           </div>
         )}
         <div className="hero-scroll-indicator">
-          <span>Scroll to explore</span>
+          <span>{t('home.hero.scroll')}</span>
           <div className="scroll-arrow">↓</div>
         </div>
       </section>
@@ -205,8 +182,8 @@ const Home = () => {
       <section className="news">
         <div className="news-container">
           <div className="section-header">
-            <span className="section-tag">Latest Updates</span>
-            <h2 className="section-title">Team News & Achievements</h2>
+            <span className="section-tag">{t('home.news.tag')}</span>
+            <h2 className="section-title">{t('home.news.title')}</h2>
             <div className="title-underline"></div>
           </div>
 
@@ -222,7 +199,7 @@ const Home = () => {
                   <h3 className="news-title">{news.title}</h3>
                   <p className="news-description">{news.description}</p>
                   <button className="news-link" onClick={() => navigate('/blog')}>
-                    Read More →
+                    {t('common.cta.readMore')}
                   </button>
                 </div>
               </article>
@@ -230,7 +207,9 @@ const Home = () => {
           </div>
 
           <div className="news-cta">
-            <button className="view-all-btn" onClick={() => navigate('/blog')}>View All News</button>
+            <button className="view-all-btn" onClick={() => navigate('/blog')}>
+              {t('common.cta.viewAllNews')}
+            </button>
           </div>
         </div>
       </section>
@@ -239,12 +218,11 @@ const Home = () => {
       <section className="sponsors">
         <div className="sponsors-container">
           <div className="section-header">
-            <span className="section-tag">Our Partners</span>
-            <h2 className="section-title">Sponsors & Supporters</h2>
+            <span className="section-tag">{t('home.sponsors.tag')}</span>
+            <h2 className="section-title">{t('home.sponsors.title')}</h2>
             <div className="title-underline"></div>
             <p className="sponsors-intro">
-              We are grateful to our sponsors who make our journey possible.
-              Together, we're building the future of robotics and STEM education.
+              {t('home.sponsors.intro')}
             </p>
           </div>
 
@@ -273,9 +251,11 @@ const Home = () => {
 
           <div className="sponsors-cta">
             <div className="sponsors-cta-content">
-              <h3>Become a Sponsor</h3>
-              <p>Support our team and help us inspire the next generation of innovators.</p>
-              <button className="sponsor-btn" onClick={() => navigate('/contact')}>Partner With Us</button>
+              <h3>{t('home.sponsors.cta.title')}</h3>
+              <p>{t('home.sponsors.cta.description')}</p>
+              <button className="sponsor-btn" onClick={() => navigate('/contact')}>
+                {t('home.sponsors.cta.button')}
+              </button>
             </div>
           </div>
         </div>

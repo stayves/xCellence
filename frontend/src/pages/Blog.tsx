@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { blogPosts} from '../data/blog';
+import { useTranslation } from 'react-i18next';
+import { getBlogPosts, type BlogPost } from '../data/blog.ts';
 import './Blog.css';
 
 const Blog = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+  const blogPosts = getBlogPosts(t);
   const handleActivate = (slug?: string) => {
     if (!slug) return;
     navigate(`/blog/${slug}`);
@@ -21,11 +24,10 @@ const Blog = () => {
     <div className="blog-page">
       <section className="blog-hero">
         <div className="blog-hero-content">
-          <span className="section-tag">Team Journal</span>
-          <h1>Stories from the xCellence Lab</h1>
+          <span className="section-tag">{t('blog.hero.tag')}</span>
+          <h1>{t('blog.hero.title')}</h1>
           <p>
-            Follow our engineering breakthroughs, competition recaps, and outreach adventures as we prepare for each
-            FIRST Tech Challenge season.
+            {t('blog.hero.description')}
           </p>
         </div>
       </section>
@@ -33,7 +35,7 @@ const Blog = () => {
       <section className="blog-section">
         <div className="blog-container">
           <div className="blog-grid">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post: BlogPost) => (
               <article
                 key={post.title}
                 className={`blog-card ${post.slug ? 'clickable' : 'disabled'}`}
@@ -61,9 +63,9 @@ const Blog = () => {
                 </footer>
                 <div className="blog-cta-inline">
                   {post.slug ? (
-                    <span className="cta-link">Read story →</span>
+                    <span className="cta-link">{t('blog.cta.readStory')}</span>
                   ) : (
-                    <span className="cta-disabled">Coming soon</span>
+                    <span className="cta-disabled">{t('blog.cta.comingSoon')}</span>
                   )}
                 </div>
               </article>

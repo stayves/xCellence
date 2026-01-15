@@ -431,4 +431,50 @@
   .calendar-tab-row {
     grid-template-columns: 1fr 1fr;
   }
+
+  .track-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .track-pill {
+    padding: 0.65rem 0.7rem;
+    border-radius: 12px;
+  }
+
+  .track-desc,
+  .category-description {
+    display: none;
+  }
+
+  .track-logo,
+  .category-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .track-logo img,
+  .category-logo img {
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  .track-pill-left .tab-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.4px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .category-card {
+    padding: 0.7rem 0.75rem;
+    border-radius: 14px;
+  }
+
+  .category-card .tab-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.4px;
+  }
 }

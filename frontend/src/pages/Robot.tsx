@@ -1,44 +1,25 @@
+import { useTranslation } from 'react-i18next';
 import './Robot.css';
 
 const Robot = () => {
-  const robotSpecs = [
-    { label: "Weight", value: "40 lbs", icon: "⚖️" },
-    { label: "Dimensions", value: "18\" x 18\" x 18\"", icon: "📏" },
-    { label: "Drive System", value: "Mecanum Wheels", icon: "⚙️" },
-    { label: "Power", value: "12V Battery", icon: "🔋" },
-    { label: "Programming", value: "Java", icon: "💻" },
-    { label: "Build Time", value: "3 Months", icon: "⏱️" },
-  ];
-
-  const features = [
-    {
-      title: "Autonomous Navigation",
-      description: "Advanced computer vision and sensor fusion for precise autonomous movement and object detection.",
-      icon: "/xCellence/autonomous.svg"
-    },
-    {
-      title: "Custom Manipulator",
-      description: "Innovative mechanism designed for efficient game piece manipulation with 360° rotation capability.",
-      icon: "/xCellence/custom.svg"
-    },
-    {
-      title: "Modular Design",
-      description: "Quick-swap components allow for rapid strategy changes and field repairs during competitions.",
-      icon: "/xCellence/modular.svg"
-    },
-    {
-      title: "Optimized Drive Train",
-      description: "Mecanum wheel configuration provides omnidirectional movement for maximum maneuverability.",
-      icon: "/xCellence/drive.svg"
-    }
-  ];
+  const { t } = useTranslation();
+  const robotSpecs = t('robot.specs.items', { returnObjects: true }) as {
+    label: string;
+    value: string;
+    icon: string;
+  }[];
+  const features = t('robot.features.items', { returnObjects: true }) as {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
 
   return (
     <div className="robot-page">
       <section className="robot-hero">
         <div className="robot-hero-content">
-          <h1>Our Robot: Phoenix</h1>
-          <p>DECODE SEASON 2025-2026</p>
+          <h1>{t('robot.hero.title')}</h1>
+          <p>{t('robot.hero.subtitle')}</p>
         </div>
       </section>
 
@@ -56,8 +37,8 @@ const Robot = () => {
 
           <div className="robot-info-section">
             <div className="section-header">
-              <span className="section-tag">Specifications</span>
-              <h2 className="section-title">Technical Details</h2>
+              <span className="section-tag">{t('robot.specs.tag')}</span>
+              <h2 className="section-title">{t('robot.specs.title')}</h2>
             </div>
 
             <div className="specs-grid">
@@ -78,8 +59,8 @@ const Robot = () => {
       <section className="robot-features">
         <div className="features-container">
           <div className="section-header">
-            <span className="section-tag">Innovation</span>
-            <h2 className="section-title">Key Features</h2>
+            <span className="section-tag">{t('robot.features.tag')}</span>
+            <h2 className="section-title">{t('robot.features.title')}</h2>
             <div className="title-underline"></div>
           </div>
 
@@ -98,8 +79,8 @@ const Robot = () => {
       <section className="robot-gallery">
         <div className="gallery-container">
           <div className="section-header">
-            <span className="section-tag">Gallery</span>
-            <h2 className="section-title">Robot Gallery</h2>
+            <span className="section-tag">{t('robot.gallery.tag')}</span>
+            <h2 className="section-title">{t('robot.gallery.title')}</h2>
             <div className="title-underline"></div>
           </div>
 
@@ -108,7 +89,7 @@ const Robot = () => {
               <div key={num} className="gallery-item">
                 <img src={`/xCellence/robot_sub${num}.jpg`} alt={`Robot view ${num}`} />
                 <div className="gallery-overlay">
-                  <span>View Details</span>
+                  <span>{t('robot.gallery.viewDetails')}</span>
                 </div>
               </div>
             ))}

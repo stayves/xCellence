@@ -1,0 +1,1631 @@
+{
+  "language": {
+    "label": "Language",
+    "options": {
+      "en": "English",
+      "ru": "Russian",
+      "kk": "Kazakh"
+    },
+    "short": {
+      "en": "EN",
+      "ru": "RU",
+      "kk": "KZ"
+    }
+  },
+  "common": {
+    "cta": {
+      "readMore": "Read More →",
+      "viewAllNews": "View All News"
+    },
+    "status": {
+      "tba": "TBA",
+      "cityTba": "City TBA"
+    }
+  },
+  "header": {
+    "nav": {
+      "home": "Home",
+      "team": "Team",
+      "events": "Events",
+      "trainer": "Driver Trainer",
+      "calendar": "Calendar",
+      "resources": "Resources",
+      "blog": "Blog",
+      "hallOfFame": "Hall of Fame",
+      "contact": "Contact"
+    },
+    "logoAlt": "xCellence Logo",
+    "themeToggle": "Activate {{theme}} theme",
+    "theme": {
+      "light": "light",
+      "dark": "dark"
+    },
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "tagline": "Excellence in Robotics & Innovation",
+    "description": "FIRST Tech Challenge Team dedicated to inspiring the next generation through science, technology, engineering, and mathematics.",
+    "contactTitle": "Contact Us",
+    "emailLabel": "Email",
+    "sponsorshipLabel": "For Sponsorships",
+    "followTitle": "Follow Us",
+    "credit": "Want to make your own website? Contact: Arnur",
+    "copyright": "© {{year}} xCellence FTC Team. All rights reserved.",
+    "firstTrademark": "FIRST® and FIRST Tech Challenge® are registered trademarks of",
+    "firstOrganization": "For Inspiration and Recognition of Science and Technology (FIRST)"
+  },
+  "home": {
+    "hero": {
+      "subtitle": "Robotics Team",
+      "description": "Engineering the Future, One Innovation at a Time",
+      "stats": {
+        "offline": "People Engaged Offline",
+        "online": "People Engaged Online",
+        "hours": "Event Hours"
+      },
+      "cta": "Meet the Team",
+      "carouselLabel": "Team highlights carousel",
+      "showPhoto": "Show team photo {{index}}",
+      "scroll": "Scroll to explore"
+    },
+    "news": {
+      "tag": "Latest Updates",
+      "title": "Team News & Achievements",
+      "items": [
+        {
+          "id": 1,
+          "title": "Interview with Asylbek Myrzakhmetov",
+          "date": "December 2025",
+          "image": "/xCellence/xCellenceTeam8.jpg",
+          "description": "xCellence wins the Design Award at the Central Asia Championship, showcasing excellence in engineering documentation and robot design.",
+          "category": "Outreach"
+        },
+        {
+          "id": 2,
+          "title": "WRO Worlds",
+          "date": "August 3, 2025",
+          "image": "/xCellence/xCellenceWRO.jpg",
+          "description": "xCellence at WRO Worlds, showcasing excellence in engineering documentation and robot design.",
+          "category": "Achievement"
+        },
+        {
+          "id": 3,
+          "title": "Astana Innovation Forum",
+          "date": "December 21, 2025",
+          "image": "/xCellence/AIFlogo.jpg",
+          "description": "The largest entrepreneurship forum for students in Central Asia, with 200+ participants, 150+ startups, and top speakers from the startup ecosystem. Partners included Master Education, Silkroad Innovation Hub, and GloCoach.",
+          "category": "Forum"
+        },
+        {
+          "id": 4,
+          "title": "Social Media Milestone",
+          "date": "2024-2025",
+          "image": "/xCellence/news-4.jpg",
+          "description": "Reached 800+ followers on Instagram with 150,000 views and 6,000 accounts reached in the last 3 months. Managing the KZ Robotics Telegram community with 250+ members.",
+          "category": "Media"
+        }
+      ]
+    },
+    "sponsors": {
+      "tag": "Our Partners",
+      "title": "Sponsors & Supporters",
+      "intro": "We are grateful to our sponsors who make our journey possible. Together, we're building the future of robotics and STEM education.",
+      "items": [
+        { "name": "Sponsor 1", "logo": "/xCellence/Sponsor1.jpg", "tier": "platinum" },
+        { "name": "Sponsor 2", "logo": "/xCellence/Sponsor2.jpg", "tier": "platinum" },
+        { "name": "Sponsor 3", "logo": "/xCellence/sponsor-3.png", "tier": "gold" },
+        { "name": "Sponsor 4", "logo": "/xCellence/sponsor-4.png", "tier": "gold" },
+        { "name": "Sponsor 5", "logo": "/xCellence/sponsor-5.png", "tier": "silver" },
+        { "name": "Sponsor 6", "logo": "/xCellence/sponsor-6.png", "tier": "silver" }
+      ],
+      "cta": {
+        "title": "Become a Sponsor",
+        "description": "Support our team and help us inspire the next generation of innovators.",
+        "button": "Partner With Us"
+      }
+    }
+  },
+  "team": {
+    "hero": {
+      "title": "Meet Our Team",
+      "subtitle": "The brilliant minds behind xCellence"
+    },
+    "mentors": {
+      "tag": "Mentorship",
+      "title": "Mentors & Advisors",
+      "intro": "Our team is guided by highly qualified mentors, researchers, and professors who provide expertise in engineering, AI, automation, and strategic problem solving.",
+      "people": [
+        {
+          "name": "Vladimir Ussoltsev",
+          "role": "Primary Mentor",
+          "image": "/xCellence/vladimir.jpg",
+          "bio": "Primary mentor with extensive hands-on engineering and robotics experience."
+        },
+        {
+          "name": "Madi Mukash",
+          "role": "Primary Mentor",
+          "image": "/xCellence/madi.jpg",
+          "bio": "Primary mentor with extensive hands-on engineering and robotics experience."
+        },
+        {
+          "name": "Ansar Saurbayev",
+          "role": "Secondary Mentor",
+          "image": "/xCellence/Ansar.JPG",
+          "bio": "Secondary mentor with extensive hands-on engineering and robotics experience."
+        }
+      ]
+    },
+    "members": {
+      "tag": "Our People",
+      "title": "Current Team Members",
+      "intro": "Since 2022, four generations of students have been part of xCellence. We continuously cultivate new leaders, engineers, and mentors who explore all areas of robotics.",
+      "people": [
+        { "name": "Zhanarys Kaparov", "role": "Captain & Driver", "image": "/xCellence/zhanarys.jpg", "bio": "Captain and driver of the team." },
+        { "name": "Zhanibek Danabek", "role": "CAD Specialist", "image": "/xCellence/zhanibek.jpg", "bio": "CAD specialist and designer of the team." },
+        { "name": "Arnur Togambayev", "role": "Programmer", "image": "/xCellence/arnur1.jpg", "bio": "Programmer of the team." },
+        { "name": "Asylzhan Sailau", "role": "Lead Inspire", "image": "/xCellence/asylzhan1.jpg", "bio": "Lead Inspire of the team." },
+        { "name": "Aizere Askarova", "role": "Inspire", "image": "/xCellence/aizere1.jpg", "bio": "Inspire of the team." },
+        { "name": "Semyon Chistyakov", "role": "Inspire/Programmer", "image": "/xCellence/semyon.jpg", "bio": "Inspire/Programmer of the team." },
+        { "name": "Togzhan Kabdolda", "role": "Inspire", "image": "/xCellence/togzhan.jpg", "bio": "Inspire of the team." },
+        { "name": "Alzere Chindaliyeva", "role": "Inspire", "image": "/xCellence/alzere1.jpg", "bio": "Inspire of the team." },
+        { "name": "Zhanaiym Tashkenbay", "role": "Inspire", "image": "/xCellence/zhanaiym.jpg", "bio": "Inspire of the team." },
+        { "name": "Dastan Musrepov", "role": "Lead CAD Specialist", "image": "/xCellence/dastan1.jpg", "bio": "Lead CAD specialist of the team." },
+        { "name": "Sayan Orynbek", "role": "Engineer/Builder", "image": "/xCellence/sayan.jpg", "bio": "Engineer/Builder of the team." },
+        { "name": "Najmudin Adikhanov", "role": "Lead Engineer/Builder", "image": "/xCellence/naj.jpg", "bio": "Lead Engineer/Builder of the team." },
+        { "name": "Targyn Faizulla", "role": "CAD Specialist", "image": "/xCellence/targyn.jpg", "bio": "CAD specialist of the team." },
+        { "name": "Vagiz Dissembayev", "role": "Builder", "image": "/xCellence/vagiz3.jpg", "bio": "Builder of the team." },
+        { "name": "Ali Umargaliyev", "role": "Driver & Builder", "image": "/xCellence/ali1.jpg", "bio": "Driver of the team." }
+      ]
+    },
+    "support": {
+      "tag": "Team Support",
+      "title": "Teams We've Mentored & Assisted",
+      "intro": "We care about the sustainability of our school's robotics and Kazakhstan's STEAM ecosystem. We have started and mentored 1 new FTC team and 2 new FLL teams, and assisted 16 teams total.",
+      "families": {
+        "xlnc": {
+          "title": "XLNC Family",
+          "teams": ["XLNC Qtech 21059", "XLNC Nova FLL", "XLNC Feral FLL"]
+        },
+        "started": {
+          "title": "Started & Mentored",
+          "teams": ["xCeption 24804", "XLNC Nova FLL", "XLNC Feral FLL", "SlapSeals 28473", "DostyqBot FLL", "ThanosNIS FLL"]
+        },
+        "assisted": {
+          "title": "Assisted",
+          "teams": ["Celestial 32728", "BILMS FLL", "Akita 33483", "Sakura 33470", "KAP 27674", "Meow-Meow 24893", "JelToqSun 27772", "PID 24670", "BilOrda 28313", "Venom 24783", "Reckles 25444"]
+        }
+      }
+    }
+  },
+  "events": {
+    "hero": {
+      "title": "Events & Competitions",
+      "subtitle": "Our journey through the FTC season"
+    },
+    "upcoming": {
+      "tag": "What's Next",
+      "title": "Upcoming Events",
+      "items": [
+        {
+          "title": "NIS School Hackathon",
+          "date": "January 25, 2026",
+          "location": "NIS EMN Astana",
+          "type": "Hackathon",
+          "description": "School-wide hackathon with business cases from companies, 200,000₸ prize fund for best solutions.",
+          "image": "/xCellence/NIS.png"
+        },
+        {
+          "title": "Girls Go First Forum",
+          "date": "January 18, 2025",
+          "location": "TBA",
+          "type": "Forum",
+          "description": "Forum for girls to learn about robotics and STEAM-focused committees.",
+          "image": "/xCellence/GirlsFoGirst.png"
+        },
+        {
+          "title": "Fusion 360 Bootcamp",
+          "date": "TBA",
+          "location": "American Corner Astana",
+          "type": "Workshop",
+          "description": "Week-long comprehensive CAD training bootcamp in partnership with American Corner.",
+          "image": "/xCellence/American.jpg"
+        }
+      ]
+    },
+    "past": {
+      "tag": "Our Achievements",
+      "title": "Past Events",
+      "items": [
+        {
+          "title": "Meet with NU Robotics Professor",
+          "date": "November 13, 2024",
+          "achievement": "Mentorship session with Prof. Azamat Eshmukhambetov",
+          "type": "Forum",
+          "image": "/xCellence/xCellenceNU.png"
+        },
+        {
+          "title": "Masterclass in Rural School Shortandy",
+          "date": "November 12, 2024",
+          "achievement": "15 participants - introduced robotics competitions, started FLL team recruitment",
+          "type": "Outreach",
+          "image": "/xCellence/rural.jpg"
+        },
+        {
+          "title": "FTC Alumni Q&A",
+          "date": "October 12, 2024",
+          "achievement": "2 alumni, 1 mentor, 40+ stories answered",
+          "type": "Forum",
+          "image": "/xCellence/alumni1.jpg"
+        },
+        {
+          "title": "Alumni Forum",
+          "date": "October 5, 2024",
+          "achievement": "45 participants online - FTC & WRO alumni shared career experiences",
+          "type": "Forum",
+          "image": "/xCellence/AlumniForum.png"
+        },
+        {
+          "title": "Temirqazyq Forum",
+          "date": "October 2, 2024",
+          "achievement": "35 participants - STEM startup leaders panel (Karakoz Tasbolatova, Nurdaulet Bazylbekov, Arlan Rakhmetzhanov)",
+          "type": "Forum",
+          "image": "/xCellence/Forum.png"
+        },
+        {
+          "title": "Kindergarten Robotics Lessons Started",
+          "date": "September 10, 2024",
+          "achievement": "24 hours conducted - 15 kids, 2x/week at Triumph Kindergarten",
+          "type": "Outreach",
+          "image": "/xCellence/deti.jpg"
+        },
+        {
+          "title": "Decode Season Kickoff Livestream",
+          "date": "September 6, 2024",
+          "achievement": "100 viewers, 3 hours - supported with QTech",
+          "type": "Event",
+          "image": "/xCellence/team.jpg"
+        },
+        {
+          "title": "WRO Republican Training Camp",
+          "date": "August 3, 2024",
+          "achievement": "45 participants, 1 week - all NIS schools, conferences with mentors & NU professors",
+          "type": "Training",
+          "image": "/xCellence/WROKazakhstan.png"
+        },
+        {
+          "title": "Astana FIRST Workshop",
+          "date": "April 10, 2024",
+          "achievement": "20 participants - joint event with AMD, SlapSeals, BilOrda",
+          "type": "Workshop",
+          "image": "/xCellence/robot-main.jpg"
+        },
+        {
+          "title": "Arduino & Programming Course",
+          "date": "February 2, 2024",
+          "achievement": "30 participants, 8 weeks - Arduino & C++ training, 2x/week",
+          "type": "Course",
+          "image": "/xCellence/news-1.jpg"
+        },
+        {
+          "title": "SANA Bilim Masterclass",
+          "date": "November 26, 2023",
+          "achievement": "20 participants, 3 sessions × 3 hours - EV3 programming & sumo competitions",
+          "type": "Workshop",
+          "image": "/xCellence/news-1.jpg"
+        }
+      ]
+    }
+  },
+  "trainer": {
+    "controller": {
+      "notDetected": "No controller detected",
+      "connected": "Controller connected"
+    },
+    "hero": {
+      "tag": "Driver Practice",
+      "title": "Driver Trainer Simulator",
+      "description": "Practice mecanum control and checkpoint runs with a connected gamepad. Swap between robot-centric and field-centric driving and generate randomized training paths on the fly.",
+      "actions": {
+        "start": "Start Training Run",
+        "restart": "Restart Path",
+        "reset": "Reset Robot"
+      }
+    },
+    "sim": {
+      "tag": "Live Simulator",
+      "title": "Mecanum Trainer",
+      "description": "Use a PS/Xbox controller: Left stick = move, Right stick X = turn.",
+      "buttons": {
+        "start": "Start Trainer",
+        "newPath": "New Path",
+        "restart": "Restart Path",
+        "end": "End Trainer",
+        "mode": "Mode: {{mode}}"
+      },
+      "modes": {
+        "robot": "Robot-Centric",
+        "field": "Field-Centric"
+      },
+      "noController": {
+        "title": "No controller detected.",
+        "description": "Connect a gamepad and press any button to begin."
+      },
+      "finish": {
+        "title": "Training Complete",
+        "time": "Time: {{time}}s",
+        "restart": "Restart Path",
+        "newRun": "New Run",
+        "shuffle": "Shuffle Path"
+      }
+    },
+    "status": {
+      "title": "Trainer Status",
+      "active": "Active — follow the glowing checkpoint rings.",
+      "idle": "Idle — start a new run to begin.",
+      "labels": {
+        "mode": "Mode",
+        "checkpoint": "Checkpoint",
+        "controller": "Controller"
+      }
+    },
+    "controls": {
+      "title": "Controls",
+      "leftStick": {
+        "label": "Left Stick",
+        "value": "Forward / strafe"
+      },
+      "rightStick": {
+        "label": "Right Stick X",
+        "value": "Rotate"
+      },
+      "newPath": {
+        "label": "X / A",
+        "value": "New randomized path"
+      },
+      "toggleMode": {
+        "label": "△ / Y",
+        "value": "Toggle field-centric mode"
+      },
+      "buttons": {
+        "label": "Buttons above",
+        "value": "Start, End, Mode toggle"
+      }
+    },
+    "tips": {
+      "title": "Tips",
+      "items": [
+        "Keep motion smooth to avoid overshooting checkpoints.",
+        "Field-centric mode aligns movement to the field instead of robot heading.",
+        "Use New Path to practice different trajectories quickly.",
+        "Reset Robot if you drift too far off-center."
+      ]
+    },
+    "aim": {
+      "tag": "Aim Trainer",
+      "title": "Joystick OSU-style Trainer",
+      "description": "Use left/right sticks to hit shrinking circles. Practice timing, accuracy, and stick coordination.",
+      "buttons": {
+        "start": "Start Training",
+        "pause": "Pause",
+        "resume": "Resume",
+        "stop": "Stop",
+        "difficulty": "Difficulty: {{difficulty}}"
+      },
+      "stats": {
+        "title": "Current Stats",
+        "score": "Score",
+        "combo": "Combo",
+        "max": "Max",
+        "accuracy": "Accuracy",
+        "hits": "Hits",
+        "misses": "Misses"
+      },
+      "note": "Left stick = aim (left field), Right stick = aim (right field). Press Start to begin, Pause/Resume as needed. Change difficulty to adjust spawn speed and timing windows."
+    },
+    "canvas": {
+      "leftStick": "Left Stick",
+      "rightStick": "Right Stick",
+      "noController": "No controller detected",
+      "idle": "Aim Trainer Idle — press Start",
+      "paused": "Paused",
+      "difficulty": {
+        "easy": "Easy",
+        "normal": "Normal",
+        "hard": "Hard"
+      },
+      "hud": {
+        "score": "Score: {{score}}",
+        "combo": "Combo: {{combo}} (Max: {{max}})",
+        "accuracy": "Acc: {{accuracy}}%",
+        "difficulty": "Difficulty: {{difficulty}}"
+      }
+    }
+  },
+  "calendar": {
+    "hero": {
+      "label": "Robotics calendar",
+      "title": "Events in Kazakhstan",
+      "description": "Select a track, then dive into categories to see competitions and deadlines."
+    },
+    "tracks": [
+      {
+        "id": "FIRST",
+        "label": "FIRST",
+        "description": "Kick-offs, Regionals, Qualifiers, Big Events, Off-Season",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "WRO",
+        "label": "WRO",
+        "description": "World Robotics Olympiad schedule",
+        "logoSrc": "/xCellence/WROLogo.webp",
+        "logoAlt": "WRO"
+      },
+      {
+        "id": "Other",
+        "label": "Other",
+        "description": "Additional circuits & briefings"
+      }
+    ],
+    "categories": [
+      {
+        "id": "kickoff",
+        "label": "Kick-Off",
+        "description": "Season launch events and broadcasts.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "regionals",
+        "label": "Regionals 2025",
+        "description": "City-by-city FIRST Regionals.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "qualifiers",
+        "label": "Qualifiers '26",
+        "description": "Qualifier events by region.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "bigEvents",
+        "label": "Big Events",
+        "description": "Championships, bridges, and major deadlines.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "offSeason",
+        "label": "Off-Season",
+        "description": "Post-season FIRST opens.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      }
+    ],
+    "categoryEvents": {
+      "kickoff": [
+        {
+          "id": "kickoff-online",
+          "city": "Online",
+          "title": "FIRST LEGO League Unearthed Season Kick-Off",
+          "dates": "06.08.2025 15:00",
+          "venue": "Instagram (@firstroboticskz) / YouTube (USTEM Foundation)",
+          "categories": ["FLL-D", "FLL-E", "FLL-C"],
+          "track": "FIRST"
+        },
+        {
+          "id": "kickoff-astana",
+          "city": "Astana + Online",
+          "title": "Astana FIRST Kick-off",
+          "dates": "07.09.2025 11:00",
+          "venue": "Quantum Tech School",
+          "categories": ["FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "kickoff-almaty",
+          "city": "Almaty + Online",
+          "title": "Almaty FIRST Kick-off",
+          "dates": "07.09.2025 11:00",
+          "venue": "Hybrid / Online",
+          "categories": ["FLL-C", "FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "regionals": [
+        {
+          "id": "regional-osh",
+          "city": "Ош",
+          "title": "Osh FIRST Regional 2025",
+          "dates": "25.10.2025 - 26.10.2025",
+          "registrationDeadline": "22.10.2025",
+          "venue": "Maarif School",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-burabay",
+          "city": "Бурабай",
+          "title": "Burabay FIRST Regional 2025",
+          "dates": "08.11.2025 - 09.11.2025",
+          "registrationDeadline": "02.11.2025",
+          "venue": "IQanat High School of Burabay",
+          "categories": ["FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qyzylorda",
+          "city": "Қызылорда",
+          "title": "Qyzylorda FIRST Regional 2025",
+          "dates": "11.11.2025",
+          "registrationDeadline": "08.11.2025",
+          "venue": "Abai School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-taraz",
+          "city": "Тараз",
+          "title": "Taraz FIRST Regional 2025",
+          "dates": "14.11.2025",
+          "registrationDeadline": "11.11.2025",
+          "venue": "Abai Gymnasium-School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-pavlodar",
+          "city": "Павлодар",
+          "title": "Ertis FIRST Regional 2025",
+          "dates": "15.11.2025",
+          "registrationDeadline": "12.11.2025",
+          "venue": "Samgau, Ekibastuz",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-astana",
+          "city": "Астана",
+          "title": "Astana FIRST Regional 2025",
+          "dates": "15.11.2025 - 16.11.2025",
+          "registrationDeadline": "12.11.2025",
+          "venue": "Kazakhstan International School Astana",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qonaev",
+          "city": "Қонаев",
+          "title": "Qonaev FIRST Regional 2025",
+          "dates": "17.11.2025",
+          "registrationDeadline": "14.11.2025",
+          "venue": "Esik BIL",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-aktobe",
+          "city": "Актөбе",
+          "title": "Aktobe FIRST Regional 2025",
+          "dates": "22.11.2025",
+          "registrationDeadline": "19.11.2025",
+          "venue": "JOO High School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-almaty",
+          "city": "Алматы",
+          "title": "Almaty FIRST Regional 2025",
+          "dates": "22.11.2025 - 23.11.2025",
+          "registrationDeadline": "17.11.2025",
+          "venue": "Secondary School No. 218",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-oskemen",
+          "city": "Өскемен",
+          "title": "Oskemen FIRST Regional 2025",
+          "dates": "28.11.2025",
+          "registrationDeadline": "25.11.2025",
+          "venue": "Regional Specialized IT Lyceum School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-atyrau",
+          "city": "Атырау",
+          "title": "Atyrau FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Farabi International School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-shymkent",
+          "city": "Шымкент",
+          "title": "Shymkent FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Qonaev School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-oral",
+          "city": "Орал",
+          "title": "Jaiyq FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Palace of Schoolchildren",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-semey",
+          "city": "Семей",
+          "title": "Abay FIRST Regional 2025",
+          "dates": "29.11.2025 - 30.11.2025",
+          "registrationDeadline": "25.11.2025",
+          "venue": "Secondary School No. 51",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-taldykorgan",
+          "city": "Талдықорған",
+          "title": "Jetisu FIRST Regional 2025",
+          "dates": "05.12.2025",
+          "registrationDeadline": "02.12.2025",
+          "venue": "School No. 27",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-aktau",
+          "city": "Ақтау",
+          "title": "Mangystau FIRST Regional 2025",
+          "dates": "06.12.2025 - 07.12.2025",
+          "registrationDeadline": "03.12.2025",
+          "venue": "Zhas Kanat Lyceum School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-turkistan",
+          "city": "Түркістан",
+          "title": "Turkistan FIRST Regional 2025",
+          "dates": "08.12.2025 - 09.12.2025",
+          "registrationDeadline": "04.12.2025",
+          "venue": "School No. 34",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-bishkek",
+          "city": "Бишкек",
+          "title": "Bishkek FIRST Regional 2025",
+          "dates": "13.12.2025 - 14.12.2025",
+          "registrationDeadline": "",
+          "venue": "Maarif School",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-kokshetau",
+          "city": "Көкшетау",
+          "title": "Kokshetau FIRST Regional 2025",
+          "dates": "20.12.2025",
+          "registrationDeadline": "15.12.2025",
+          "venue": "KokshetauBIL",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-karagandy",
+          "city": "Қарағанды",
+          "title": "Saryarqa FIRST Regional 2025",
+          "dates": "21.12.2025",
+          "registrationDeadline": "",
+          "venue": "Secondary School No. 24",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-petropavl",
+          "city": "Петропавл",
+          "title": "Qyzylzhar FIRST Regional 2025",
+          "dates": "24.12.2025",
+          "registrationDeadline": "21.12.2025",
+          "venue": "Digital Urpaq",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qostanay",
+          "city": "Қостанай",
+          "title": "Qostanay FIRST Regional 2025",
+          "dates": "29.12.2025",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-zhezkazgan",
+          "city": "Жезқазған",
+          "title": "Ulytau FIRST Regional 2025",
+          "dates": "December 2025",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-tashkent",
+          "city": "Ташкент",
+          "title": "Tashkent FIRST Regional 2025",
+          "dates": "",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": [],
+          "status": "",
+          "track": "FIRST"
+        }
+      ],
+      "qualifiers": [
+        {
+          "id": "qualifier-almaty",
+          "city": "Алматы",
+          "title": "Daryn FIRST Qualifier 2026",
+          "dates": "04.01.2026 - 06.01.2026",
+          "registrationDeadline": "22.12.2025",
+          "venue": "SDU University",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-turkistan",
+          "city": "Түркістан",
+          "title": "Ontustik FIRST Qualifier 2026",
+          "dates": "12.01.2026 - 14.01.2026",
+          "venue": "Karavan Saray Arena",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-aktau",
+          "city": "Актау",
+          "title": "Batys FIRST Qualifier 2026",
+          "dates": "17.01.2026 - 18.01.2026",
+          "registrationDeadline": "05.01.2026",
+          "venue": "Aqtau International School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-astana",
+          "city": "Астана",
+          "title": "Astana FIRST Qualifier 2026",
+          "dates": "23.01.2026 - 25.01.2026",
+          "registrationDeadline": "04.01.2026",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "bigEvents": [
+        {
+          "id": "big-digital-bridge",
+          "city": "Астана",
+          "title": "Digital Bridge 2025",
+          "dates": "02.10.2025 - 04.10.2025",
+          "venue": "Expo International Exhibition Center",
+          "categories": ["FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "big-deans-application",
+          "city": "Online",
+          "title": "Dean's List Application Deadline",
+          "dates": "15.12.2025",
+          "venue": "Online",
+          "categories": ["FTC"],
+          "status": "Completed",
+          "track": "FIRST"
+        },
+        {
+          "id": "big-deans-interview",
+          "city": "Online",
+          "title": "Dean's List Interview 2026",
+          "dates": "10.01.2026 - 11.01.2026",
+          "venue": "Online",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-central-asia-championship",
+          "city": "Астана",
+          "title": "Kazakhstan Central Asia FIRST Championship 2026",
+          "dates": "10.02.2026 - 13.02.2026",
+          "venue": "Expo International Exhibition Center",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-kyrgyzstan-championship",
+          "city": "Бишкек",
+          "title": "Kyrgyzstan FIRST Championship 2026",
+          "dates": "Late February",
+          "venue": "",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-uzbekistan-championship",
+          "city": "Ташкент",
+          "title": "Uzbekistan FIRST Championship 2026",
+          "dates": "",
+          "venue": "",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-digital-ministry",
+          "city": "Алматы",
+          "title": "Digital Ministry Cup 2026",
+          "dates": "",
+          "venue": "",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "offSeason": [
+        {
+          "id": "offseason-astana",
+          "city": "Астана",
+          "title": "Bilim Shyny FIRST Off-Season",
+          "dates": "10.04.2026 - 11.04.2026",
+          "venue": "Palace of Schoolchildren named after Al-Farabi",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "offseason-zhylandy",
+          "city": "Жыланды",
+          "title": "Zhylandy International FIRST Off-Season",
+          "dates": "June 2026",
+          "venue": "Zhylandy Culture House",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        }
+      ]
+    },
+    "tournaments": [
+      { "name": "Robotek Grand Tournament", "organizer": "Robotek LLC", "site": "https://rgt.robotek.kz/" },
+      { "name": "KazRobotics", "organizer": "KazRobotics Federation", "site": "http://www.kazrobotics.org/KK/" },
+      { "name": "RoboLand", "organizer": "Kazdidac Association", "site": "https://roboland.kz/" },
+      { "name": "R:ED FEST", "organizer": "RED Robotics Education", "site": "https://frio.kz/ru/red-fest" },
+      { "name": "Fibonacci International Robot Olympiad", "organizer": "AZ Group" },
+      { "name": "Robotics for Good Youth Challenge", "organizer": "Hailybury" },
+      { "name": "Kazakhstan International Robotics Competition (VEX)", "organizer": "" },
+      { "name": "NatRoboCom", "organizer": "" },
+      { "name": "RoboZerde", "organizer": "" },
+      { "name": "Federation of International Robot-sports association (FIRA)", "organizer": "" }
+    ],
+    "results": {
+      "trackFallback": "Track",
+      "tournaments": {
+        "tag": "Tournament directory",
+        "title": "Robotics circuits to bookmark",
+        "description": "Bookmark the organizers running WRO, FIRST, and other competitions.",
+        "headers": {
+          "tournament": "Tournament",
+          "organizer": "Organizer",
+          "site": "Site"
+        }
+      },
+      "cityTba": "City TBA",
+      "datesLabel": "Dates: {{dates}}",
+      "deadlineLabel": "Reg. deadline: {{date}}",
+      "venueLabel": "Venue",
+      "empty": "No events match your search in this category."
+    }
+  },
+  "resources": {
+    "hero": {
+      "tag": "Toolbox",
+      "title": "Resources for Teams & Mentors",
+      "description": "Explore our curated library of technical guides, CAD templates, and outreach playbooks that power the xCellence workflow throughout the FIRST Tech Challenge season."
+    },
+    "types": {
+      "guide": "Guide",
+      "video": "Video",
+      "tool": "Tool",
+      "template": "Template"
+    },
+    "open": "Open resource",
+    "sections": [
+      {
+        "title": "Programming & Control Systems",
+        "summary": "Build reliable autonomous routines and iterative tele-op control with our essential software stack, documentation, and tutorials.",
+        "items": [
+          {
+            "name": "FTC SDK Documentation",
+            "description": "Official FIRST documentation covering the Android Studio SDK, configuration, and control system APIs.",
+            "href": "https://ftc-docs.firstinspires.org/",
+            "type": "guide"
+          },
+          {
+            "name": "Road Runner Quickstart",
+            "description": "Motion planning template that powers our autonomous navigation with spline paths and feedforward tuning tools.",
+            "href": "https://github.com/acmerobotics/road-runner-quickstart",
+            "type": "template"
+          },
+          {
+            "name": "OnBot Java Cheatsheet",
+            "description": "Concise syntax and lifecycle summary for teams programming directly from the REV Control Hub browser.",
+            "href": "https://gm0.org/en/latest/docs/software/tutorial-onbot.html",
+            "type": "guide"
+          },
+          {
+            "name": "PID Tuning Masterclass",
+            "description": "Recorded workshop focused on tuning PIDF loops for drive, slides, and turrets with dashboard telemetry.",
+            "href": "https://www.youtube.com/watch?v=XRdK5OZFJ1Y",
+            "type": "video"
+          }
+        ]
+      },
+      {
+        "title": "Mechanical Design & Fabrication",
+        "summary": "From CAD to custom manufacturing, these resources accelerate the process of prototyping robust mechanisms.",
+        "items": [
+          {
+            "name": "GrabCAD xCellence Library",
+            "description": "Downloadable models of our drivetrain, linear slides, and modular intake plates ready for remixing.",
+            "href": "https://grabcad.com/library",
+            "type": "template"
+          },
+          {
+            "name": "Design for Manufacturability Checklist",
+            "description": "Our internal DFM checklist that covers tolerances, fastener selection, and assembly serviceability.",
+            "href": "https://docs.google.com/document/d/dfm-checklist",
+            "type": "tool"
+          },
+          {
+            "name": "Into the Deep Game Elements CAD",
+            "description": "Official field element STEP files for the 2025-2026 season to support virtual prototyping.",
+            "href": "https://www.firstinspires.org/resource-library/ftc/game-and-season-info",
+            "type": "template"
+          },
+          {
+            "name": "Gearing & Torque Calculator",
+            "description": "Spreadsheet calculator that models torque, speed, and current draw for custom mechanisms.",
+            "href": "https://www.revolverworks.com/ftc-calculators",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "title": "Strategy, Outreach & Team Operations",
+        "summary": "Resources that help us stay organized, scout intelligently, and share STEM with the community.",
+        "items": [
+          {
+            "name": "xCellence Scouting Portal",
+            "description": "Notion workspace template for match scouting, pit interviews, and remote collaboration.",
+            "href": "https://www.notion.so/templates",
+            "type": "template"
+          },
+          {
+            "name": "Grant Writing Starter Pack",
+            "description": "Sample sponsorship deck, thank-you letters, and budget tracker from our outreach toolkit.",
+            "href": "https://www.firstinspires.org/resource-library/frc/first-robotics-funding-resources",
+            "type": "guide"
+          },
+          {
+            "name": "Event Playbook",
+            "description": "Step-by-step checklist to run community workshops, scrimmages, and robot reveal livestreams.",
+            "href": "https://docs.google.com/document/d/event-playbook",
+            "type": "guide"
+          },
+          {
+            "name": "Scoring Analysis Dashboard",
+            "description": "Google Sheets tool for win probability, cycle times, and alliance partner selection ranking.",
+            "href": "https://docs.google.com/spreadsheets/d/xcellence-scouting",
+            "type": "tool"
+          }
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "hero": {
+      "tag": "Team Journal",
+      "title": "Stories from the xCellence Lab",
+      "description": "Follow our engineering breakthroughs, competition recaps, and outreach adventures as we prepare for each FIRST Tech Challenge season."
+    },
+    "cta": {
+      "readStory": "Read story →",
+      "comingSoon": "Coming soon"
+    },
+    "posts": [
+      {
+        "title": "World Robot Olympiad RoboSport Category",
+        "date": "December 28, 2025",
+        "author": "XLNC Fury — RoboSport Build Team",
+        "summary": "Part 1 Ball Management System: kickers, flywheel, purple ball holding, and Pixy Camera — all from Naj's original guide.",
+        "readTime": "7 min read",
+        "tag": "Hardware",
+        "coverImage": "/xCellence/1PicNaj.png",
+        "coverAlt": "RoboSport flywheel launcher prototype on field",
+        "slug": "wro-robosport-ball-system"
+      },
+      {
+        "title": "xCellence in Singapore",
+        "date": "December 27, 2025",
+        "author": "XLNC Cyrex — Hardware Squad",
+        "summary": "Claws, Arduino Nano Open Platform, and all EV3G blocks for RoboMission — publishing the original Singapore guide.",
+        "readTime": "8 min read",
+        "tag": "Hardware",
+        "coverImage": "/xCellence/1PicSayan.jpg",
+        "coverAlt": "XLNC Cyrex manipulator prototype for WRO RoboMission",
+        "slug": "wro-cyrex-hardware"
+      },
+      {
+        "title": "A Fisherman's Guide to Fusion 360",
+        "date": "December 23, 2025",
+        "author": "Zhanibek - CAD Engineer",
+        "summary": "Zhanibek shares the Fusion 360 habits that let us design lighter custom FTC parts even when kit inventories run thin.",
+        "readTime": "7 min read",
+        "tag": "CAD",
+        "coverImage": "/xCellence/1PicZhan.png",
+        "coverAlt": "Zhanibek presenting Fusion 360 CAD workflow",
+        "slug": "fusion-360"
+      }
+    ],
+    "articlesBySlug": {
+      "fusion-360": {
+        "kicker": "CAD Playbook",
+        "title": "A Fisherman's Guide to Fusion 360",
+        "date": "December 23, 2025",
+        "author": "Zhanibek - CAD Engineer",
+        "readTime": "7 min read",
+        "slug": "fusion-360",
+        "heroImage": "/xCellence/zhanibek.jpg",
+        "heroAlt": "Zhanibek walking through Fusion 360 workflows with the CAD team",
+        "intro": "Fusion 360 is the quiet superstar of our workshop. In this fisherman-style guide, Zhanibek explains how we lean on Autodesk’s toolkit to model custom FIRST Tech Challenge parts even when off-the-shelf components fall short.",
+        "sections": [
+          {
+            "title": "What's Fusion 360?",
+            "paragraphs": [
+              "Fusion 360 is the all-in-one environment we trust for robotics: CAD, CAM, rendering, assemblies, and exports in a single window so we never break focus mid-build.",
+              "While you can assemble a functioning FTC robot from kit parts alone, modeling and printing your own improves efficiency, trims weight, and offsets the limited supply of REV or goBilda stock in local shops."
+            ]
+          },
+          {
+            "title": "Part 2. Drivetrain & Color track system",
+            "paragraphs": [
+              "The drivetrain is one of the most important parts of a robot. There are many variations, and the choice doesn’t have to be rigid — you build around mechanisms. There are no strict rules in design, but we will cover popular choices and our solutions.",
+              "",
+              "Wheels",
+              "The wheels drive the robot’s motion. Their diameter and motor type also affect programming. We recommend mid motors for the drivetrain (we have a guide for mid motor motion).",
+              "",
+              "Fig 2.1 Wheel 61.6mm D. x 13.6mm",
+              "Our 2025 robot used these wheels in combination."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/7PicNaj.png",
+                "alt": "Fig 2.1 Wheel 61.6mm D. x 13.6mm",
+                "caption": "Fig. 2.1 — Wheel 61.6mm D. x 13.6mm"
+              }
+            ]
+          },
+          {
+            "title": "What do we use it for?",
+            "paragraphs": [
+              "Inside our INTO THE DEEP CAD, every colored component highlights a custom-printed part, and it's nearly every mechanism that manipulates game elements.",
+              "The arm, claw, extension, and lift were all tuned digitally before touching printers, which saved plastic, sped up iteration, and let strategy drive geometry."
+            ]
+          },
+          {
+            "title": "Method 1: \"TENET\" and the Parametric Timeline",
+            "paragraphs": [
+              "The parametric timeline logs every feature you create, and Fusion 360 lets you edit that ledger—almost like rewinding time TENET-style.",
+              "Adjust a dimension, replay the timeline, and the downstream features rebuild automatically. It is how we keep experimentation safe instead of brittle."
+            ],
+            "bullets": [
+              "Correct the size of a part when measurements were off.",
+              "Fix misaligned joints or constraints without redrawing.",
+              "Move sketches that started on the wrong plane.",
+              "Extend or shorten extrusions after testing feedback."
+            ]
+          },
+          {
+            "title": "Method 2: Sketch Me Like One of Your French Girls",
+            "paragraphs": [
+              "Everything begins with sketches raised from the base plane, so rookies master lines, arcs, and circles before they ever extrude.",
+              "Constraints are the unsung heroes: Equal keeps lines matched, Coincident locks points together, and fully constrained sketches prevent messy geometry when dimensions change."
+            ],
+            "bullets": [
+              "Equal: tie two segments together so scaling one scales the other.",
+              "Coincident: snap points (and everything attached) into alignment.",
+              "Constraint discipline keeps edits from warping the rest of the sketch."
+            ]
+          },
+          {
+            "title": "Method 3: Astral Projection with Project & Intersect",
+            "paragraphs": [
+              "Project and Intersect duplicate geometry from other sketches or bodies so you can reference it on a new plane—almost like astral projecting shapes into place.",
+              "Those projections stay linked to the original, which means timeline edits ripple through every dependent feature and make late-stage tweaks far less painful."
+            ]
+          },
+          {
+            "title": "Fusion 360 Build Gallery",
+            "paragraphs": [
+              "Snapshots from the fisherman guide: sketches, constraints, joints, renders, and assembly checks that keep our FTC parts consistent and lightweight."
+            ],
+            "images": [
+              { "src": "/xCellence/1PicZhan.png", "alt": "Fusion 360 sketch with constraints applied" },
+              { "src": "/xCellence/2PicZhan.png", "alt": "Parametric timeline showing editable features" },
+              { "src": "/xCellence/3PicZhan.png", "alt": "Extrusion and fillet pass on a drivetrain plate" },
+              { "src": "/xCellence/4PicZhan.png", "alt": "Joint preview verifying rotational clearance" },
+              { "src": "/xCellence/5PicZhan.png", "alt": "Component breakdown for assembly reuse" },
+              { "src": "/xCellence/6PicZhan.png", "alt": "Rendered view of the subsystem housing" },
+              { "src": "/xCellence/7PicZhan.png", "alt": "Exploded view highlighting printed parts" }
+            ]
+          }
+        ],
+        "closing": "Zhanibek’s fisherman guide boils down to habits: learn the tools, constrain the sketches, and let Fusion 360 carry the heavy lifting so every print, driver practice, and match day feels lighter."
+      },
+      "wro-cyrex-hardware": {
+        "kicker": "xCellence in Singapore",
+        "title": "World Robot Olympiad RoboMission Senior Category. Build, Hardware",
+        "date": "December 27, 2025",
+        "author": "XLNC Cyrex — Hardware Squad",
+        "readTime": "8 min read",
+        "slug": "wro-cyrex-hardware",
+        "heroImage": "/xCellence/1PicSayan.jpg",
+        "heroAlt": "XLNC Cyrex manipulator prototype for WRO RoboMission",
+        "intro": "In this series of articles and guides, as national and international medalists of WRO RoboMission Senior, we want to share our experience and tips for this category.",
+        "sections": [
+          {
+            "title": "Chapter 1. Game elements manipulators",
+            "paragraphs": [
+              "Two pairs of claw manipulators sort and store various game elements.",
+              "Two long outer claws on the sides are designed:",
+              "1) to rotate and hold the Payload element;",
+              "",
+              "2) to open the yellow field door and complete lever tasks;",
+              "",
+              "3) to grab and move the Rocket noses element;",
+              "",
+              "Two inner pink claws are intended for sorting and storing Bolt elements.",
+              "",
+              "Inside the robot there are two internal pockets for storing the first two sorted bolts. They work on a trigger mechanism: when the outer claws touch, the compartments open and switch into bolt storage mode.",
+              "",
+              "The rear of the robot includes a new upgrade according to the WRO Open Platform rules. An Arduino Nano board is linked to the EV3 brick via I2C, occupying one port. This Arduino controls a single servo motor for the rear claw. The rear claw was created in case of surprise challenges announced during competition days.",
+              "The robot used a large number of 3D-printed parts for optimal packaging. The principle: the fewer parts used, the simpler and more reliable every mechanism becomes. On the robot photos, the inner claws, trigger mechanism, storage pockets, and rear claw were fully made from PLA plastic following this principle."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/1PicSayan.jpg",
+                "alt": "Overall view of XLNC Cyrex claws on RoboMission",
+                "caption": "Fig. 1 — Overall view of XLNC Cyrex claws"
+              },
+              {
+                "src": "/xCellence/2PicSayan.png",
+                "alt": "Outer claws for Payload and Rocket noses",
+                "caption": "Fig. 2 — Outer claws for Payload and Rocket noses"
+              },
+              {
+                "src": "/xCellence/3PicSayan.png",
+                "alt": "Inner pockets and trigger mechanism for Bolts",
+                "caption": "Fig. 3 — Inner pockets and trigger mechanism for Bolts"
+              }
+            ]
+          },
+          {
+            "title": "Chapter 2. EV3G blocks and innovative software solutions that were used during the world finals.",
+            "paragraphs": [
+              "XLNC Cyrex used the following green blocks:",
+              "Drive:",
+              "The Drive block in LEGO EV3 programming is used for synchronous control of two motors (usually ports B and C), allowing the robot to move as a differential drive platform.",
+              "Our block logic is based on these parameters:",
+              "Steering - defines the ratio between left and right motor speeds.",
+              "A value of 0 means straight movement (both motors rotate at the same speed).",
+              "Positive or negative values create turns by slowing one motor and accelerating the other.",
+              "Power/Speed - sets motor speed.",
+              "Duration - defines how long the movement runs (time, rotations, or degrees).",
+              "Thus, the Drive block converts program logic into precise speed and direction control, ensuring straight motion and smooth turns.",
+              "",
+              "Line following",
+              "Line following with two color sensors is based on feedback control. Sensors on the left and right under the robot constantly measure reflected light or surface color.",
+              "How it works:",
+              "Each sensor detects whether it is over the line (e.g., black) or the background (white).",
+              "The program adjusts motor speeds:",
+              "If the left sensor sees the line, the robot slows the left motor and speeds up the right motor to correct trajectory.",
+              "If the right sensor sees the line, the correction is reversed.",
+              "If both sensors see the background, the robot continues straight.",
+              "Using two sensors improves accuracy and stability compared to one sensor, reducing oscillations and letting the robot respond faster to line changes.",
+              "",
+              "Turn Angle",
+              "Turning a robot to a specific angle in LEGO EV3 uses motor rotation measured by the built-in encoder.",
+              "How it works:",
+              "Each EV3 motor has an encoder that tracks shaft angle in degrees.",
+              "The program sets how many degrees one or both motors should rotate.",
+              "For on-the-spot turns:",
+              "One motor rotates forward, the other backward, or",
+              "Only one motor rotates while the other stays still.",
+              "The number of degrees directly corresponds to robot turn angle and depends on:",
+              "wheel diameter,",
+              "distance between wheels,",
+              "turn type (in place or arc).",
+              "Thus, Turn Angle provides precise, repeatable rotation using motor encoders."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/4PicSayan.png",
+                "alt": "EV3G blocks: Drive, Line following, and Turn Angle",
+                "caption": "Fig. 4 — Drive, Line following, and Turn Angle in EV3G"
+              }
+            ]
+          },
+          {
+            "title": "Blue blocks we used",
+            "paragraphs": [
+              "Claw Position",
+              "To control the claw position in LEGO EV3 Mindstorms, we use the blue motor block in position mode (angle control).",
+              "The principle is based on the motor encoder, which allows specific claw positions to be set and reproduced accurately.",
+              "In the program, each numeric value corresponds to a predefined claw position:",
+              "each value sets a specific motor rotation angle;",
+              "the rotation angle directly defines the claw state (open, half-open, closed, etc.).",
+              "When the program runs, the motor automatically turns to the specified angle and stops, even if the claw started elsewhere. This provides:",
+              "repeatable movements;",
+              "high positioning accuracy;",
+              "independence from motor runtime.",
+              "This approach lets us treat numeric values as logical mechanism states, simplifying control algorithms and improving reliability in manipulation tasks."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/5PicSayan.png",
+                "alt": "Claw Position — blue block for manipulator positioning",
+                "caption": "Fig. 5 — Claw Position blue block"
+              }
+            ]
+          },
+          {
+            "title": "Servo-motor Position and robot tricks",
+            "paragraphs": [
+              "Servo-motor Position",
+              "Robot tricks:",
+              "Pixy Camera on the EV3 robot",
+              "To recognize the color of game elements on the field, we used a Pixy Cam adapted for LEGO EV3. The camera processes images in real time and detects color signatures without heavy load on the main controller.",
+              "Connection between Pixy Cam and LEGO EV3 is via I²C (Inter-Integrated Circuit), providing stable and fast data transfer. I²C lets us receive structured data, including the color signature ID and the coordinates of the detected object.",
+              "System flow:",
+              "game elements are pre-trained in Pixy Cam as color signatures;",
+              "the camera analyzes the image and detects the target color;",
+              "Pixy Cam sends color type and object coordinates via I²C to EV3;",
+              "the robot program uses the data to decide actions (navigation, pickup, or sorting)."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/6PicSayan.jpg",
+                "alt": "Rear claw servo module and drive",
+                "caption": "Fig. 6 — Servo module of the rear claw"
+              },
+              {
+                "src": "/xCellence/7PicSayan.jpg",
+                "alt": "Pixy Camera on EV3 robot with angled mount",
+                "caption": "Fig. 7 — Pixy Camera with adapter mount for EV3"
+              }
+            ]
+          }
+        ],
+        "closing": "Using Pixy Cam with I²C improved color identification accuracy and speed compared to standard color sensors, and allowed stable performance under changing lighting and longer distances."
+      },
+      "wro-robosport-ball-system": {
+        "kicker": "World Robot Olympiad RoboSport Category",
+        "title": "Build & Hardware by Naj, XLNC Fury",
+        "date": "December 28, 2025",
+        "author": "XLNC Fury — RoboSport Build Team",
+        "readTime": "7 min read",
+        "slug": "wro-robosport-ball-system",
+        "heroImage": "/xCellence/robot_sub2.jpg",
+        "heroAlt": "RoboSport flywheel launcher prototype with ball hopper",
+        "intro": "In this series of articles and guides, as national and international medalists of WRO RoboSport, we want to share our experience and tips for this category.",
+        "sections": [
+          {
+            "title": "Part 1. Ball Management System",
+            "paragraphs": [
+              "Building the ball “shot” mechanism in robotic tennis is critical and heavily impacts results. Since the main task is to throw balls, you must throw them quickly and to a precise distance, while also holding purple balls."
+            ]
+          },
+          {
+            "title": "Chapter 1. Shooting Mechanisms",
+            "paragraphs": [
+              "There are several popular mechanisms for the first task.",
+              "Kicker",
+              "",
+              "Fig. 1.1 example of a kicker robot",
+              "",
+              "Fig. 1.2 example of a kicker robot",
+              "The construction is simple: the robot follows a path, collects orange balls, and “kicks” them upward and forward. Rubber bands or springs often add impulse for a sharp kick.",
+              "Pros: simple construction and fewer parts. Choose it if you cannot build more complex variants or lack resources/time. It is also easier and faster to program.",
+              "Cons:",
+              "cannot store balls, so trajectory is limited.",
+              "kick accuracy may be insufficient against strong opponents.",
+              "speed depends on engineering but is often low.",
+              "https://www.youtube.com/watch?v=vEyGXVtalxY&pp=ygUNd3JvIHJvYm9zcG9ydA%3D%3D",
+              "An interesting match example with kicker robots.",
+              "",
+              "Flywheel",
+              "Flywheel is one of the most popular RoboSport solutions. A rotating drum wrapped in elastic material “swallows” balls and “spits” them out. With tensioned rubber and rotation, balls launch at high speed.",
+              "",
+              "Fig. 1.3 example of a flywheel robot",
+              "The back wall matters: as the drum rolls balls inside, a tensioned back wall can boost range and speed.",
+              "",
+              "Fig. 1.4 Flywheel back wall",
+              "",
+              "Fig 1.5 Rubber band layout on the flywheel back wall",
+              "",
+              "Rubber bands are key to flywheel performance and should not be overdone. Options:",
+              "original LEGO 5x5 bands",
+              "office rubber bands.",
+              "",
+              "Too much tension can cause shots that are too strong and long, sending balls outside the field. From experience, stretch rubber until it lightens. Distance is less important than accuracy.",
+              "",
+              "Fig 1.6 Original LEGO rubber bands",
+              "",
+              "This mechanism is, in our view, the best option. World champions use it. It also makes it easiest to integrate other robot functions. However, it is comparatively harder to program.",
+              "The flywheel drum is driven by one large motor and gearing."
+            ],
+            "images": [
+              { "src": "/xCellence/1PicNaj.png", "alt": "Fig. 1.1 example of a kicker robot", "caption": "Fig. 1.1 — example of a kicker robot" },
+              { "src": "/xCellence/2PicNaj.png", "alt": "Fig. 1.2 example of a kicker robot", "caption": "Fig. 1.2 — example of a kicker robot" },
+              { "src": "/xCellence/3PicNaj.png", "alt": "Fig. 1.3 example of a flywheel robot", "caption": "Fig. 1.3 — example of a flywheel robot" },
+              { "src": "/xCellence/4PicNaj.png", "alt": "Fig. 1.4 Flywheel back wall", "caption": "Fig. 1.4 — Flywheel back wall" },
+              { "src": "/xCellence/5PicNaj.png", "alt": "Fig. 1.5 Rubber band layout on the flywheel back wall", "caption": "Fig. 1.5 — Rubber band layout on the flywheel back wall" },
+              { "src": "/xCellence/6PicNaj.png", "alt": "Fig. 1.6 Original LEGO rubber bands", "caption": "Fig. 1.6 — Original LEGO rubber bands" }
+            ]
+          },
+          {
+            "title": "Chapter 2. Ball Holding & Tracking",
+            "paragraphs": [
+              "Ball holding",
+              "",
+              "The second mission in robotic tennis is holding the purple ball on your half of the field. We covered detection in the programming section; here we discuss hardware.",
+              "We held the purple ball in a special compartment behind the flywheel wall. The wall is driven by a medium motor and raises to change the ball path. Instead of going up to the launch zone, the purple ball rolls under the wall into a compartment between motors, where it stays until the end of the game.",
+              "https://youtu.be/EeTfra6aHig",
+              "Video example of the holding mechanism (note: the robot in the video holds an orange ball for demo purposes; in the real game you must hold the purple ball).",
+              "",
+              "Fig. 2.1 Example of holding an orange ball inside the robot",
+              "",
+              "Tracking",
+              "",
+              "Besides initializing color through cameras, the robot has color sensors to detect balls inside. They face downward inside the robot above the flywheel exit. We recommend LEGO color sensors because their polling rate is high, and exact color accuracy is less important than data presence (explained in the software section).",
+              "",
+              "Fig 2.2 LEGO Color Sensor"
+            ]
+          },
+          {
+            "title": "Chapter 3. AI Cameras",
+            "paragraphs": [
+              "Since the LEGO EV3 brick has limited compute and cannot run computer vision, cameras with onboard AI are used to handle processing and simplify communication.",
+              "",
+              "Pixy Camera",
+              "https://pixycam.com/pixy-lego/",
+              "",
+              "The most popular and well-developed camera option. Lessons and guides are included in the programming part of this article and in WRO Future Engineers articles.",
+              "",
+              "Fig 3.1 Pixy2 for Lego Mindstorms EV3 camera",
+              "",
+              "The camera has two M2 mounting holes, which is inconvenient for LEGO beams. Below we attach a 3D-printed adapter file with an angled mount.",
+              "[file will be posted on the site]",
+              "Recommended infill for printing: 15-30%, plastic type is not important.",
+              "",
+              "You can buy PixyCam on OLX or in the KZRobotics chat, as well as on eBay and AliExpress."
+            ]
+          },
+          {
+            "title": "Part 4. Useful materials",
+            "paragraphs": [
+              "Useful materials for this category:",
+              "",
+              "Lecture from the WRO 2025 training camp for RoboSport",
+              "https://www.youtube.com/watch?v=FoRNLSMaYOM&t=8s"
+            ]
+          }
+        ],
+        "closing": "You can buy PixyCam on OLX or in the KZRobotics chat, as well as on eBay and AliExpress."
+      }
+    }
+  },
+  "blogArticle": {
+    "breadcrumb": "xCellence Blog",
+    "photoCredit": "Photo: xCellence Media Team",
+    "back": "← Back to all posts",
+    "share": {
+      "label": "Share",
+      "copy": "Copy link",
+      "copied": "Copied",
+      "telegram": "Telegram",
+      "linkedin": "LinkedIn",
+      "x": "X (Twitter)"
+    },
+    "author": {
+      "label": "Author",
+      "note": "We share practical notes from xCellence: CAD, mechanics, code, and everything that helps us compete in FIRST Tech Challenge."
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Get In Touch",
+      "subtitle": "We'd love to hear from you"
+    },
+    "info": {
+      "tag": "Connect With Us",
+      "title": "Contact Information",
+      "intro": "Whether you're interested in sponsorship opportunities, have questions about our team, or want to collaborate on outreach events, we're here to help!",
+      "items": [
+        { "icon": "", "title": "Email", "detail": "info@xcellenceftc.com", "link": "mailto:info@xcellenceftc.com" },
+        { "icon": "", "title": "Sponsorships", "detail": "sponsor@xcellenceftc.com", "link": "mailto:sponsor@xcellenceftc.com" },
+        { "icon": "", "title": "Social Media", "detail": "@xcellenceftc", "link": "https://instagram.com/xcellenceftc" },
+        {
+          "icon": "",
+          "title": "Location",
+          "detail": "Nazarbayev Intellectual School of Natural Sciences and Mathematics in the Nura district of Astana, Kazakhstan",
+          "link": "#"
+        }
+      ]
+    },
+    "form": {
+      "tag": "Send a Message",
+      "title": "Contact Form",
+      "fields": {
+        "name": {
+          "label": "Name *",
+          "placeholder": "Your full name"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "your.email@example.com"
+        },
+        "subject": {
+          "label": "Subject *",
+          "options": {
+            "placeholder": "Select a subject",
+            "sponsorship": "Sponsorship Inquiry",
+            "collaboration": "Collaboration",
+            "question": "General Question",
+            "outreach": "Outreach Event",
+            "other": "Other"
+          }
+        },
+        "message": {
+          "label": "Message *",
+          "placeholder": "Tell us more about your inquiry..."
+        }
+      },
+      "submit": {
+        "idle": "Send Message",
+        "sending": "Sending..."
+      },
+      "status": {
+        "missingConfig": "Email service is not configured. Please try again later.",
+        "success": "Thank you! Your message has been sent.",
+        "error": "Sorry, something went wrong. Please try again later."
+      }
+    },
+    "email": {
+      "subjectLabel": "Subject",
+      "emailLabel": "Email",
+      "notProvided": "Not provided"
+    }
+  },
+  "robot": {
+    "hero": {
+      "title": "Our Robot: Phoenix",
+      "subtitle": "DECODE SEASON 2025-2026"
+    },
+    "specs": {
+      "tag": "Specifications",
+      "title": "Technical Details",
+      "items": [
+        { "label": "Weight", "value": "40 lbs", "icon": "⚖️" },
+        { "label": "Dimensions", "value": "18\" x 18\" x 18\"", "icon": "📏" },
+        { "label": "Drive System", "value": "Mecanum Wheels", "icon": "⚙️" },
+        { "label": "Power", "value": "12V Battery", "icon": "🔋" },
+        { "label": "Programming", "value": "Java", "icon": "💻" },
+        { "label": "Build Time", "value": "3 Months", "icon": "⏱️" }
+      ]
+    },
+    "features": {
+      "tag": "Innovation",
+      "title": "Key Features",
+      "items": [
+        {
+          "title": "Autonomous Navigation",
+          "description": "Advanced computer vision and sensor fusion for precise autonomous movement and object detection.",
+          "icon": "/xCellence/autonomous.svg"
+        },
+        {
+          "title": "Custom Manipulator",
+          "description": "Innovative mechanism designed for efficient game piece manipulation with 360° rotation capability.",
+          "icon": "/xCellence/custom.svg"
+        },
+        {
+          "title": "Modular Design",
+          "description": "Quick-swap components allow for rapid strategy changes and field repairs during competitions.",
+          "icon": "/xCellence/modular.svg"
+        },
+        {
+          "title": "Optimized Drive Train",
+          "description": "Mecanum wheel configuration provides omnidirectional movement for maximum maneuverability.",
+          "icon": "/xCellence/drive.svg"
+        }
+      ]
+    },
+    "gallery": {
+      "tag": "Gallery",
+      "title": "Robot Gallery",
+      "viewDetails": "View Details"
+    }
+  },
+  "hallOfFame": {
+    "hero": {
+      "tag": "Legacy",
+      "title": "xCellence Hall of Fame",
+      "description": "Celebrating the moments, mentors, and alumni who transformed our program and inspired the next generation of innovators."
+    },
+    "alumni": {
+      "tag": "Community Leaders",
+      "title": "Hall of Fame Honorees",
+      "intro": "Recognizing leaders in Kazakhstan's robotics ecosystem who inspire and guide the next generation.",
+      "items": [
+        {
+          "name": "Asylbek Myrzakhmetov",
+          "role": "Director of USTEM Robotics Development Fund",
+            "achievement": "Asylbek Myrzakhmetov, head of the USTEM Foundation and national organizer of First in Kazakhstan",
+            "photo": "/xCellence/Asylbek.jpeg"
+        },
+       
+        {
+          "name": "Azamat Bidanov",
+          "role": "WRO National Organizer",
+          "achievement": "National organizer of the World Robot Olympiad in Kazakhstan from 2014 to 2024.",
+          "photo": "/xCellence/Azamat.png"
+        }
+      ]
+    }
+  }
+}

@@ -1,10 +1,13 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { blogArticlesBySlug } from '../data/blog';
+import { useTranslation } from 'react-i18next';
+import { getBlogArticlesBySlug } from '../data/blog.ts';
 import './BlogArticle.css';
 
 const BlogArticle = () => {
+  const { t } = useTranslation();
   const { slug } = useParams();
+  const blogArticlesBySlug = getBlogArticlesBySlug(t);
   const article = slug ? blogArticlesBySlug[slug] : undefined;
   const [copied, setCopied] = useState(false);
 
@@ -31,15 +34,15 @@ const BlogArticle = () => {
 
   const shareLinks = [
     {
-      label: 'Telegram',
+      label: t('blogArticle.share.telegram'),
       href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
-      label: 'LinkedIn',
+      label: t('blogArticle.share.linkedin'),
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
-      label: 'X (Twitter)',
+      label: t('blogArticle.share.x'),
       href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     },
   ];
@@ -63,7 +66,7 @@ const BlogArticle = () => {
       <div className="article-topbar">
         <div className="article-topbar-inner">
           <div className="article-breadcrumbs">
-            <Link to="/blog">Блог xCellence</Link>
+            <Link to="/blog">{t('blogArticle.breadcrumb')}</Link>
             <span>/</span>
             <span>{article.kicker}</span>
           </div>
@@ -91,7 +94,7 @@ const BlogArticle = () => {
 
             <figure className="article-cover">
               <img src={article.heroImage} alt={article.heroAlt} />
-              <figcaption>Photo: xCellence Media Team</figcaption>
+              <figcaption>{t('blogArticle.photoCredit')}</figcaption>
             </figure>
 
             {article.sections.map((section) => (
@@ -128,7 +131,7 @@ const BlogArticle = () => {
 
             <div className="article-footer-links">
               <Link to="/blog" className="article-back">
-                ← Вернуться ко всем публикациям
+                {t('blogArticle.back')}
               </Link>
             </div>
           </article>
@@ -136,7 +139,7 @@ const BlogArticle = () => {
 
         <aside className="article-aside">
           <div className="article-card aside-card">
-            <p className="aside-label">Поделиться</p>
+            <p className="aside-label">{t('blogArticle.share.label')}</p>
             <div className="share-links">
               {shareLinks.map((target) => (
                 <a
@@ -150,17 +153,16 @@ const BlogArticle = () => {
                 </a>
               ))}
               <button type="button" className="share-copy" onClick={handleCopyLink}>
-                {copied ? 'Скопировано' : 'Скопировать ссылку'}
+                {copied ? t('blogArticle.share.copied') : t('blogArticle.share.copy')}
               </button>
             </div>
           </div>
 
           <div className="article-card aside-card author-card">
-            <p className="aside-label">Автор</p>
+            <p className="aside-label">{t('blogArticle.author.label')}</p>
             <h3>{article.author}</h3>
             <p className="author-note">
-              Делимся практическими заметками xCellence: CAD, механика, код и всё, что помогает нам выступать на
-              соревнованиях FIRST Tech Challenge.
+              {t('blogArticle.author.note')}
             </p>
           </div>
         </aside>

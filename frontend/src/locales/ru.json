@@ -1,0 +1,1631 @@
+{
+  "language": {
+    "label": "Язык",
+    "options": {
+      "en": "Английский",
+      "ru": "Русский",
+      "kk": "Казахский"
+    },
+    "short": {
+      "en": "EN",
+      "ru": "RU",
+      "kk": "KZ"
+    }
+  },
+  "common": {
+    "cta": {
+      "readMore": "Читать далее →",
+      "viewAllNews": "Все новости"
+    },
+    "status": {
+      "tba": "Скоро",
+      "cityTba": "Город уточняется"
+    }
+  },
+  "header": {
+    "nav": {
+      "home": "Главная",
+      "team": "Команда",
+      "events": "События",
+      "trainer": "Тренажер ",
+      "calendar": "Календарь",
+      "resources": "Ресурсы",
+      "blog": "Блог",
+      "hallOfFame": "Зал славы",
+      "contact": "Контакты"
+    },
+    "logoAlt": "Логотип xCellence",
+    "themeToggle": "Включить {{theme}} тему",
+    "theme": {
+      "light": "светлую",
+      "dark": "темную"
+    },
+    "toggleMenu": "Открыть меню"
+  },
+  "footer": {
+    "tagline": "Совершенство в робототехнике и инновациях",
+    "description": "Команда FIRST Tech Challenge, вдохновляющая новое поколение через науку, технологии, инженерное дело и математику.",
+    "contactTitle": "Свяжитесь с нами",
+    "emailLabel": "Email",
+    "sponsorshipLabel": "Для спонсоров",
+    "followTitle": "Мы в соцсетях",
+    "credit": "Хотите собственный сайт? Свяжитесь: Arnur",
+    "copyright": "© {{year}} xCellence FTC Team. Все права защищены.",
+    "firstTrademark": "FIRST® и FIRST Tech Challenge® — зарегистрированные торговые марки",
+    "firstOrganization": "For Inspiration and Recognition of Science and Technology (FIRST)"
+  },
+  "home": {
+    "hero": {
+      "subtitle": "Робототехническая команда",
+      "description": "Инженерим будущее — по одной инновации за раз",
+      "stats": {
+        "offline": "Людей вовлечено офлайн",
+        "online": "Людей вовлечено онлайн",
+        "hours": "Часов мероприятий"
+      },
+      "cta": "Познакомиться с командой",
+      "carouselLabel": "Карусель фото команды",
+      "showPhoto": "Показать фото {{index}}",
+      "scroll": "Листайте вниз"
+    },
+    "news": {
+      "tag": "Последние обновления",
+      "title": "Новости и достижения команды",
+      "items": [
+        {
+          "id": 1,
+          "title": "Интервью с Асылбеком Мырзахметовым",
+          "date": "Декабрь 2025",
+          "image": "/xCellence/xCellenceTeam8.jpg",
+          "description": "xCellence получает Design Award на Central Asia Championship, демонстрируя высокий уровень инженерной документации и дизайна робота.",
+          "category": "Аутрич"
+        },
+        {
+          "id": 2,
+          "title": "WRO Worlds",
+          "date": "3 августа 2025",
+          "image": "/xCellence/xCellenceWRO.jpg",
+          "description": "xCellence на WRO Worlds, демонстрация инженерного мастерства и дизайна робота.",
+          "category": "Достижение"
+        },
+        {
+          "id": 3,
+          "title": "Astana Innovation Forum",
+          "date": "21 декабря 2025",
+          "image": "/xCellence/AIFlogo.jpg",
+          "description": "Крупнейший форум по предпринимательству для студентов в Центральной Азии: 200+ участников, 150+ стартапов и ведущие спикеры экосистемы. Партнеры: Master Education, Silkroad Innovation Hub и GloCoach.",
+          "category": "Форум"
+        },
+        {
+          "id": 4,
+          "title": "Медиа-успехи",
+          "date": "2024-2025",
+          "image": "/xCellence/news-4.jpg",
+          "description": "800+ подписчиков в Instagram, 150 000 просмотров и 6 000 охвата за последние 3 месяца. Ведем Telegram-сообщество KZ Robotics (250+ участников).",
+          "category": "Медиа"
+        }
+      ]
+    },
+    "sponsors": {
+      "tag": "Наши партнеры",
+      "title": "Спонсоры и поддержка",
+      "intro": "Мы благодарны спонсорам, которые делают наш путь возможным. Вместе мы строим будущее робототехники и STEM-образования.",
+      "items": [
+        { "name": "Спонсор 1", "logo": "/xCellence/Sponsor1.jpg", "tier": "platinum" },
+        { "name": "Спонсор 2", "logo": "/xCellence/Sponsor2.jpg", "tier": "platinum" },
+        { "name": "Спонсор 3", "logo": "/xCellence/sponsor-3.png", "tier": "gold" },
+        { "name": "Спонсор 4", "logo": "/xCellence/sponsor-4.png", "tier": "gold" },
+        { "name": "Спонсор 5", "logo": "/xCellence/sponsor-5.png", "tier": "silver" },
+        { "name": "Спонсор 6", "logo": "/xCellence/sponsor-6.png", "tier": "silver" }
+      ],
+      "cta": {
+        "title": "Стать спонсором",
+        "description": "Поддержите нашу команду и помогите вдохновить новое поколение инноваторов.",
+        "button": "Стать партнером"
+      }
+    }
+  },
+  "team": {
+    "hero": {
+      "title": "Наша команда",
+      "subtitle": "Сильнейшие умы xCellence"
+    },
+    "mentors": {
+      "tag": "Наставничество",
+      "title": "Наставники и консультанты",
+      "intro": "Команду поддерживают опытные наставники, исследователи и профессора с экспертизой в инженерии, ИИ, автоматизации и стратегических задачах.",
+      "people": [
+        {
+          "name": "Vladimir Ussoltsev",
+          "role": "Основной наставник",
+          "image": "/xCellence/vladimir.jpg",
+          "bio": "Основной наставник с большим практическим опытом в инженерии и робототехнике."
+        },
+        {
+          "name": "Madi Mukash",
+          "role": "Основной наставник",
+          "image": "/xCellence/madi.jpg",
+          "bio": "Основной наставник с большим практическим опытом в инженерии и робототехнике."
+        },
+        {
+          "name": "Ansar Saurbayev",
+          "role": "Вторичный наставник",
+          "image": "/xCellence/Ansar.JPG",
+          "bio": "Вторичный наставник с большим практическим опытом в инженерии и робототехнике."
+        }
+      ]
+    },
+    "members": {
+      "tag": "Наши люди",
+      "title": "Текущий состав команды",
+      "intro": "С 2022 года через xCellence прошло четыре поколения учеников. Мы постоянно растим новых лидеров, инженеров и наставников, исследующих все направления робототехники.",
+      "people": [
+        { "name": "Zhanarys Kaparov", "role": "Капитан и драйвер", "image": "/xCellence/zhanarys.jpg", "bio": "Капитан и драйвер команды." },
+        { "name": "Zhanibek Danabek", "role": "CAD специалист", "image": "/xCellence/zhanibek.jpg", "bio": "CAD специалист и дизайнер команды." },
+        { "name": "Arnur Togambayev", "role": "Программист", "image": "/xCellence/arnur1.jpg", "bio": "Программист команды." },
+        { "name": "Asylzhan Sailau", "role": "Лидер Inspire", "image": "/xCellence/asylzhan1.jpg", "bio": "Лидер направления Inspire." },
+        { "name": "Aizere Askarova", "role": "Inspire", "image": "/xCellence/aizere1.jpg", "bio": "Участник направления Inspire." },
+        { "name": "Semyon Chistyakov", "role": "Inspire/Программист", "image": "/xCellence/semyon.jpg", "bio": "Участник Inspire и программист." },
+        { "name": "Togzhan Kabdolda", "role": "Inspire", "image": "/xCellence/togzhan.jpg", "bio": "Участник направления Inspire." },
+        { "name": "Alzere Chindaliyeva", "role": "Inspire", "image": "/xCellence/alzere1.jpg", "bio": "Участник направления Inspire." },
+        { "name": "Zhanaiym Tashkenbay", "role": "Inspire", "image": "/xCellence/zhanaiym.jpg", "bio": "Участник направления Inspire." },
+        { "name": "Dastan Musrepov", "role": "Ведущий CAD специалист", "image": "/xCellence/dastan1.jpg", "bio": "Ведущий CAD специалист команды." },
+        { "name": "Sayan Orynbek", "role": "Инженер/сборщик", "image": "/xCellence/sayan.jpg", "bio": "Инженер и сборщик команды." },
+        { "name": "Najmudin Adikhanov", "role": "Ведущий инженер/сборщик", "image": "/xCellence/naj.jpg", "bio": "Ведущий инженер и сборщик команды." },
+        { "name": "Targyn Faizulla", "role": "CAD специалист", "image": "/xCellence/targyn.jpg", "bio": "CAD специалист команды." },
+        { "name": "Vagiz Dissembayev", "role": "Сборщик", "image": "/xCellence/vagiz3.jpg", "bio": "Сборщик команды." },
+        { "name": "Ali Umargaliyev", "role": "Драйвер и сборщик", "image": "/xCellence/ali1.jpg", "bio": "Драйвер команды." }
+      ]
+    },
+    "support": {
+      "tag": "Поддержка команд",
+      "title": "Команды, которые мы наставляли",
+      "intro": "Мы заботимся об устойчивости школьной робототехники и STEAM-сообщества Казахстана. Мы запустили и наставляли 1 новую FTC и 2 новые FLL команды, а также помогли 16 командам.",
+      "families": {
+        "xlnc": {
+          "title": "XLNC Family",
+          "teams": ["XLNC Qtech 21059", "XLNC Nova FLL", "XLNC Feral FLL"]
+        },
+        "started": {
+          "title": "Создали & менторили",
+          "teams": ["xCeption 24804", "XLNC Nova FLL", "XLNC Feral FLL", "SlapSeals 28473", "DostyqBot FLL", "ThanosNIS FLL"]
+        },
+        "assisted": {
+          "title": "Поддержали",
+          "teams": ["Celestial 32728", "BILMS FLL", "Akita 33483", "Sakura 33470", "KAP 27674", "Meow-Meow 24893", "JelToqSun 27772", "PID 24670", "BilOrda 28313", "Venom 24783", "Reckles 25444"]
+        }
+      }
+    }
+  },
+  "events": {
+    "hero": {
+      "title": "События и соревнования",
+      "subtitle": "Наш путь по сезону FTC"
+    },
+    "upcoming": {
+      "tag": "Что дальше",
+      "title": "Предстоящие события",
+      "items": [
+        {
+          "title": "Школьный хакатон НИШ",
+          "date": "25 января 2026",
+          "location": "ННШ ЕМН Астана",
+          "type": "Хакатон",
+          "description": "Школьный хакатон с бизнес-кейсами от компаний и призовым фондом 200 000₸ за лучшие решения.",
+          "image": "/xCellence/NIS.png"
+        },
+        {
+          "title": "Girls Go First Forum",
+          "date": "18 января 2025",
+          "location": "Скоро",
+          "type": "Форум",
+          "description": "Форум для девушек, чтобы узнать о робототехнике и STEAM-комитетах.",
+          "image": "/xCellence/GirlsFoGirst.png"
+        },
+        {
+          "title": "Fusion 360 Bootcamp",
+          "date": "Скоро",
+          "location": "American Corner Astana",
+          "type": "Воркшоп",
+          "description": "Неделя интенсивного CAD обучения в партнерстве с American Corner.",
+          "image": "/xCellence/American.jpg"
+        }
+      ]
+    },
+    "past": {
+      "tag": "Наши достижения",
+      "title": "Прошедшие события",
+      "items": [
+        {
+          "title": "Встреча с профессором робототехники NU",
+          "date": "13 ноября 2024",
+          "achievement": "Менторская сессия с проф. Азаматом Ешмухамбетовым",
+          "type": "Форум",
+          "image": "/xCellence/xCellenceNU.png"
+        },
+        {
+          "title": "Мастер-класс в сельской школе Шортанды",
+          "date": "12 ноября 2024",
+          "achievement": "15 участников — знакомство с робототехническими соревнованиями, запуск набора в FLL",
+          "type": "Аутрич",
+          "image": "/xCellence/rural.jpg"
+        },
+        {
+          "title": "FTC Alumni Q&A",
+          "date": "12 октября 2024",
+          "achievement": "2 выпускника, 1 наставник, 40+ ответов",
+          "type": "Форум",
+          "image": "/xCellence/alumni1.jpg"
+        },
+        {
+          "title": "Alumni Forum",
+          "date": "5 октября 2024",
+          "achievement": "45 участников онлайн — выпускники FTC и WRO поделились карьерным опытом",
+          "type": "Форум",
+          "image": "/xCellence/AlumniForum.png"
+        },
+        {
+          "title": "Temirqazyq Forum",
+          "date": "2 октября 2024",
+          "achievement": "35 участников — панель лидеров STEM-стартапов (Karakoz Tasbolatova, Nurdaulet Bazylbekov, Arlan Rakhmetzhanov)",
+          "type": "Форум",
+          "image": "/xCellence/Forum.png"
+        },
+        {
+          "title": "Старт занятий робототехникой в детском саду",
+          "date": "10 сентября 2024",
+          "achievement": "24 часа занятий — 15 детей, 2 раза в неделю в Triumph Kindergarten",
+          "type": "Аутрич",
+          "image": "/xCellence/deti.jpg"
+        },
+        {
+          "title": "Decode Season Kickoff Livestream",
+          "date": "6 сентября 2024",
+          "achievement": "100 зрителей, 3 часа — поддержка с QTech",
+          "type": "Событие",
+          "image": "/xCellence/team.jpg"
+        },
+        {
+          "title": "WRO Republican Training Camp",
+          "date": "3 августа 2024",
+          "achievement": "45 участников, 1 неделя — все школы НИШ, лекции наставников и профессоров NU",
+          "type": "Тренинг",
+          "image": "/xCellence/WROKazakhstan.png"
+        },
+        {
+          "title": "Astana FIRST Workshop",
+          "date": "10 апреля 2024",
+          "achievement": "20 участников — совместное событие с AMD, SlapSeals, BilOrda",
+          "type": "Воркшоп",
+          "image": "/xCellence/robot-main.jpg"
+        },
+        {
+          "title": "Курс Arduino и программирования",
+          "date": "2 февраля 2024",
+          "achievement": "30 участников, 8 недель — Arduino и C++ обучение, 2 раза в неделю",
+          "type": "Курс",
+          "image": "/xCellence/news-1.jpg"
+        },
+        {
+          "title": "SANA Bilim Masterclass",
+          "date": "26 ноября 2023",
+          "achievement": "20 участников, 3 сессии × 3 часа — программирование EV3 и сумо",
+          "type": "Воркшоп",
+          "image": "/xCellence/news-1.jpg"
+        }
+      ]
+    }
+  },
+  "trainer": {
+    "controller": {
+      "notDetected": "Контроллер не обнаружен",
+      "connected": "Контроллер подключен"
+    },
+    "hero": {
+      "tag": "Практика вождения",
+      "title": "Тренажер драйвера",
+      "description": "Тренируйте механику и прохождение чекпоинтов с геймпадом. Переключайтесь между robot-centric и field-centric режимами и генерируйте случайные трассы.",
+      "actions": {
+        "start": "Начать тренировку",
+        "restart": "Перезапустить маршрут",
+        "reset": "Сбросить робота"
+      }
+    },
+    "sim": {
+      "tag": "Живой симулятор",
+      "title": "Mecanum Trainer",
+      "description": "Используйте контроллер PS/Xbox: левый стик = движение, правый X = поворот.",
+      "buttons": {
+        "start": "Старт тренера",
+        "newPath": "Новый маршрут",
+        "restart": "Перезапуск маршрута",
+        "end": "Завершить",
+        "mode": "Режим: {{mode}}"
+      },
+      "modes": {
+        "robot": "Robot-Centric",
+        "field": "Field-Centric"
+      },
+      "noController": {
+        "title": "Контроллер не обнаружен.",
+        "description": "Подключите геймпад и нажмите любую кнопку для начала."
+      },
+      "finish": {
+        "title": "Тренировка завершена",
+        "time": "Время: {{time}}с",
+        "restart": "Перезапуск маршрута",
+        "newRun": "Новый заезд",
+        "shuffle": "Перемешать маршрут"
+      }
+    },
+    "status": {
+      "title": "Статус тренера",
+      "active": "Активен — следуйте по светящимся кольцам чекпоинтов.",
+      "idle": "Ожидание — начните новый заезд.",
+      "labels": {
+        "mode": "Режим",
+        "checkpoint": "Чекпоинт",
+        "controller": "Контроллер"
+      }
+    },
+    "controls": {
+      "title": "Управление",
+      "leftStick": {
+        "label": "Левый стик",
+        "value": "Вперед / вбок"
+      },
+      "rightStick": {
+        "label": "Правый стик X",
+        "value": "Поворот"
+      },
+      "newPath": {
+        "label": "X / A",
+        "value": "Новый случайный маршрут"
+      },
+      "toggleMode": {
+        "label": "△ / Y",
+        "value": "Переключить field-centric"
+      },
+      "buttons": {
+        "label": "Кнопки выше",
+        "value": "Старт, стоп, смена режима"
+      }
+    },
+    "tips": {
+      "title": "Советы",
+      "items": [
+        "Двигайтесь плавно, чтобы не перелетать чекпоинты.",
+        "Field-centric выравнивает движение по полю, а не по курсу робота.",
+        "Используйте New Path для быстрой тренировки разных траекторий.",
+        "Сбросьте робота, если ушли слишком далеко от центра."
+      ]
+    },
+    "aim": {
+      "tag": "Aim Trainer",
+      "title": "OSU-тренажер на стиках",
+      "description": "Левый/правый стик — попадайте по сужающимся кругам. Тренируйте тайминг, точность и координацию.",
+      "buttons": {
+        "start": "Начать тренировку",
+        "pause": "Пауза",
+        "resume": "Продолжить",
+        "stop": "Стоп",
+        "difficulty": "Сложность: {{difficulty}}"
+      },
+      "stats": {
+        "title": "Текущая статистика",
+        "score": "Счет",
+        "combo": "Комбо",
+        "max": "Макс",
+        "accuracy": "Точность",
+        "hits": "Попадания",
+        "misses": "Промахи"
+      },
+      "note": "Левый стик = прицел (левое поле), правый стик = прицел (правое поле). Нажмите Start, чтобы начать, Pause/Resume — для паузы. Сложность меняет скорость спавна и окна тайминга."
+    },
+    "canvas": {
+      "leftStick": "Левый стик",
+      "rightStick": "Правый стик",
+      "noController": "Контроллер не обнаружен",
+      "idle": "Aim Trainer idle — нажмите Start",
+      "paused": "Пауза",
+      "difficulty": {
+        "easy": "Легко",
+        "normal": "Нормально",
+        "hard": "Сложно"
+      },
+      "hud": {
+        "score": "Счет: {{score}}",
+        "combo": "Комбо: {{combo}} (макс: {{max}})",
+        "accuracy": "Точность: {{accuracy}}%",
+        "difficulty": "Сложность: {{difficulty}}"
+      }
+    }
+  },
+  "calendar": {
+    "hero": {
+      "label": "Календарь робототехники",
+      "title": "События в Казахстане",
+      "description": "Выберите трек, затем категорию, чтобы увидеть соревнования и дедлайны."
+    },
+    "tracks": [
+      {
+        "id": "FIRST",
+        "label": "FIRST",
+        "description": "Kick-offs, Regionals, Qualifiers, Big Events, Off-Season",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "WRO",
+        "label": "WRO",
+        "description": "Расписание World Robotics Olympiad",
+        "logoSrc": "/xCellence/WROLogo.webp",
+        "logoAlt": "WRO"
+      },
+      {
+        "id": "Other",
+        "label": "Другие",
+        "description": "Дополнительные лиги и брифинги"
+      }
+    ],
+    "categories": [
+      {
+        "id": "kickoff",
+        "label": "Kick-Off",
+        "description": "Запуск сезона и трансляции.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "regionals",
+        "label": "Регионалы 2025",
+        "description": "Региональные этапы FIRST по городам.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "qualifiers",
+        "label": "Квалификации '26",
+        "description": "Квалификационные этапы по регионам.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "bigEvents",
+        "label": "Крупные события",
+        "description": "Чемпионаты, дедлайны и ключевые даты.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      },
+      {
+        "id": "offSeason",
+        "label": "Off-Season",
+        "description": "Постсезонные турниры FIRST.",
+        "logoSrc": "/xCellence/FirstLogo.webp",
+        "logoAlt": "FIRST"
+      }
+    ],
+    "categoryEvents": {
+      "kickoff": [
+        {
+          "id": "kickoff-online",
+          "city": "Онлайн",
+          "title": "FIRST LEGO League Unearthed Season Kick-Off",
+          "dates": "06.08.2025 15:00",
+          "venue": "Instagram (@firstroboticskz) / YouTube (USTEM Foundation)",
+          "categories": ["FLL-D", "FLL-E", "FLL-C"],
+          "track": "FIRST"
+        },
+        {
+          "id": "kickoff-astana",
+          "city": "Астана + Онлайн",
+          "title": "Astana FIRST Kick-off",
+          "dates": "07.09.2025 11:00",
+          "venue": "Quantum Tech School",
+          "categories": ["FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "kickoff-almaty",
+          "city": "Алматы + Онлайн",
+          "title": "Almaty FIRST Kick-off",
+          "dates": "07.09.2025 11:00",
+          "venue": "Hybrid / Online",
+          "categories": ["FLL-C", "FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "regionals": [
+        {
+          "id": "regional-osh",
+          "city": "Ош",
+          "title": "Osh FIRST Regional 2025",
+          "dates": "25.10.2025 - 26.10.2025",
+          "registrationDeadline": "22.10.2025",
+          "venue": "Maarif School",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-burabay",
+          "city": "Бурабай",
+          "title": "Burabay FIRST Regional 2025",
+          "dates": "08.11.2025 - 09.11.2025",
+          "registrationDeadline": "02.11.2025",
+          "venue": "IQanat High School of Burabay",
+          "categories": ["FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qyzylorda",
+          "city": "Қызылорда",
+          "title": "Qyzylorda FIRST Regional 2025",
+          "dates": "11.11.2025",
+          "registrationDeadline": "08.11.2025",
+          "venue": "Abai School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-taraz",
+          "city": "Тараз",
+          "title": "Taraz FIRST Regional 2025",
+          "dates": "14.11.2025",
+          "registrationDeadline": "11.11.2025",
+          "venue": "Абай атындағы мектеп-гимназия",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-pavlodar",
+          "city": "Павлодар",
+          "title": "Ertis FIRST Regional 2025",
+          "dates": "15.11.2025",
+          "registrationDeadline": "12.11.2025",
+          "venue": "Samgau, Ekibastuz",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-astana",
+          "city": "Астана",
+          "title": "Astana FIRST Regional 2025",
+          "dates": "15.11.2025 - 16.11.2025",
+          "registrationDeadline": "12.11.2025",
+          "venue": "Kazakhstan International School Astana",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qonaev",
+          "city": "Қонаев",
+          "title": "Qonaev FIRST Regional 2025",
+          "dates": "17.11.2025",
+          "registrationDeadline": "14.11.2025",
+          "venue": "Esik BIL",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-aktobe",
+          "city": "Актөбе",
+          "title": "Aktobe FIRST Regional 2025",
+          "dates": "22.11.2025",
+          "registrationDeadline": "19.11.2025",
+          "venue": "JOO High school",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-almaty",
+          "city": "Алматы",
+          "title": "Almaty FIRST Regional 2025",
+          "dates": "22.11.2025 - 23.11.2025",
+          "registrationDeadline": "17.11.2025",
+          "venue": "Общеобразовательная школа №218",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-oskemen",
+          "city": "Өскемен",
+          "title": "Oskemen FIRST Regional 2025",
+          "dates": "28.11.2025",
+          "registrationDeadline": "25.11.2025",
+          "venue": "Областная специализированная IT-школа-лицей",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-atyrau",
+          "city": "Атырау",
+          "title": "Atyrau FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Farabi International School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-shymkent",
+          "city": "Шымкент",
+          "title": "Shymkent FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Қонаев мектебі",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-oral",
+          "city": "Орал",
+          "title": "Jaiyq FIRST Regional 2025",
+          "dates": "29.11.2025",
+          "registrationDeadline": "26.11.2025",
+          "venue": "Дворец школьников",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-semey",
+          "city": "Семей",
+          "title": "Abay FIRST Regional 2025",
+          "dates": "29.11.2025 - 30.11.2025",
+          "registrationDeadline": "25.11.2025",
+          "venue": "Средняя общеобразовательная школа №51",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-taldykorgan",
+          "city": "Талдықорған",
+          "title": "Jetisu FIRST Regional 2025",
+          "dates": "05.12.2025",
+          "registrationDeadline": "02.12.2025",
+          "venue": "27 мектеп",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-aktau",
+          "city": "Ақтау",
+          "title": "Mangystau FIRST Regional 2025",
+          "dates": "06.12.2025 - 07.12.2025",
+          "registrationDeadline": "03.12.2025",
+          "venue": "Жас Қанат мектеп лицейі",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-turkistan",
+          "city": "Түркістан",
+          "title": "Turkistan FIRST Regional 2025",
+          "dates": "08.12.2025 - 09.12.2025",
+          "registrationDeadline": "04.12.2025",
+          "venue": "№34 жалпы білім беретін мектеп",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-bishkek",
+          "city": "Бишкек",
+          "title": "Bishkek FIRST Regional 2025",
+          "dates": "13.12.2025 - 14.12.2025",
+          "registrationDeadline": "",
+          "venue": "Maarif School",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-kokshetau",
+          "city": "Көкшетау",
+          "title": "Kokshetau FIRST Regional 2025",
+          "dates": "20.12.2025",
+          "registrationDeadline": "15.12.2025",
+          "venue": "KokshetauBIL",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-karagandy",
+          "city": "Қарағанды",
+          "title": "Saryarqa FIRST Regional 2025",
+          "dates": "21.12.2025",
+          "registrationDeadline": "",
+          "venue": "Общеобразовательная школа №24",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League", "FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-petropavl",
+          "city": "Петропавл",
+          "title": "Qyzylzhar FIRST Regional 2025",
+          "dates": "24.12.2025",
+          "registrationDeadline": "21.12.2025",
+          "venue": "Digital Urpaq",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-qostanay",
+          "city": "Қостанай",
+          "title": "Qostanay FIRST Regional 2025",
+          "dates": "29.12.2025",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-zhezkazgan",
+          "city": "Жезқазған",
+          "title": "Ulytau FIRST Regional 2025",
+          "dates": "Декабрь 2025",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "Keleshek League"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "regional-tashkent",
+          "city": "Ташкент",
+          "title": "Tashkent FIRST Regional 2025",
+          "dates": "",
+          "registrationDeadline": "",
+          "venue": "",
+          "categories": [],
+          "status": "",
+          "track": "FIRST"
+        }
+      ],
+      "qualifiers": [
+        {
+          "id": "qualifier-almaty",
+          "city": "Алматы",
+          "title": "Daryn FIRST Qualifier 2026",
+          "dates": "04.01.2026 - 06.01.2026",
+          "registrationDeadline": "22.12.2025",
+          "venue": "SDU University",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-turkistan",
+          "city": "Түркістан",
+          "title": "Ontustik FIRST Qualifier 2026",
+          "dates": "12.01.2026 - 14.01.2026",
+          "venue": "Karavan Saray Arena",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-aktau",
+          "city": "Актау",
+          "title": "Batys FIRST Qualifier 2026",
+          "dates": "17.01.2026 - 18.01.2026",
+          "registrationDeadline": "05.01.2026",
+          "venue": "Aqtau International School",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "qualifier-astana",
+          "city": "Астана",
+          "title": "Astana FIRST Qualifier 2026",
+          "dates": "23.01.2026 - 25.01.2026",
+          "registrationDeadline": "04.01.2026",
+          "venue": "",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "bigEvents": [
+        {
+          "id": "big-digital-bridge",
+          "city": "Астана",
+          "title": "Digital Bridge 2025",
+          "dates": "02.10.2025 - 04.10.2025",
+          "venue": "Международный выставочный центр Expo",
+          "categories": ["FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "big-deans-application",
+          "city": "Онлайн",
+          "title": "Дедлайн подачи Dean's List",
+          "dates": "15.12.2025",
+          "venue": "Онлайн",
+          "categories": ["FTC"],
+          "status": "Завершено",
+          "track": "FIRST"
+        },
+        {
+          "id": "big-deans-interview",
+          "city": "Онлайн",
+          "title": "Собеседования Dean's List 2026",
+          "dates": "10.01.2026 - 11.01.2026",
+          "venue": "Онлайн",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-central-asia-championship",
+          "city": "Астана",
+          "title": "Kazakhstan Central Asia FIRST Championship 2026",
+          "dates": "10.02.2026 - 13.02.2026",
+          "venue": "Международный выставочный центр Expo",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-kyrgyzstan-championship",
+          "city": "Бишкек",
+          "title": "Kyrgyzstan FIRST Championship 2026",
+          "dates": "Конец февраля",
+          "venue": "",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-uzbekistan-championship",
+          "city": "Ташкент",
+          "title": "Uzbekistan FIRST Championship 2026",
+          "dates": "",
+          "venue": "",
+          "categories": ["FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "big-digital-ministry",
+          "city": "Алматы",
+          "title": "Digital Ministry Cup 2026",
+          "dates": "",
+          "venue": "",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        }
+      ],
+      "offSeason": [
+        {
+          "id": "offseason-astana",
+          "city": "Астана",
+          "title": "Bilim Shyny FIRST Off-Season",
+          "dates": "10.04.2026 - 11.04.2026",
+          "venue": "Дворец школьников им. Аль-Фараби",
+          "categories": ["FLL-D", "FLL-E", "FLL-C", "FTC"],
+          "track": "FIRST"
+        },
+        {
+          "id": "offseason-zhylandy",
+          "city": "Жыланды",
+          "title": "Zhylandy International FIRST Off-Season",
+          "dates": "Июнь 2026",
+          "venue": "Жыланды Мәдениет Үйі",
+          "categories": ["FTC"],
+          "track": "FIRST"
+        }
+      ]
+    },
+    "tournaments": [
+      { "name": "Robotek Grand Tournament", "organizer": "ТОО Роботек", "site": "https://rgt.robotek.kz/" },
+      { "name": "KazRobotics", "organizer": "Федерация Казроботикс", "site": "http://www.kazrobotics.org/KK/" },
+      { "name": "RoboLand", "organizer": "Ассоциация Kazdidac", "site": "https://roboland.kz/" },
+      { "name": "R:ED FEST", "organizer": "RED Robotics Education", "site": "https://frio.kz/ru/red-fest" },
+      { "name": "Fibonacci International Robot Olympiad", "organizer": "AZ Group" },
+      { "name": "Robotics for Good Youth Challenge", "organizer": "Hailybury" },
+      { "name": "Kazakhstan International Robotics Competition (VEX)", "organizer": "" },
+      { "name": "NatRoboCom", "organizer": "" },
+      { "name": "RoboZerde", "organizer": "" },
+      { "name": "Federation of International Robot-sports association (FIRA)", "organizer": "" }
+    ],
+    "results": {
+      "trackFallback": "Трек",
+      "tournaments": {
+        "tag": "Каталог турниров",
+        "title": "Робототехнические лиги",
+        "description": "Добавьте в закладки организаторов WRO, FIRST и других соревнований.",
+        "headers": {
+          "tournament": "Турнир",
+          "organizer": "Организатор",
+          "site": "Сайт"
+        }
+      },
+      "cityTba": "Город уточняется",
+      "datesLabel": "Даты: {{dates}}",
+      "deadlineLabel": "Дедлайн регистрации: {{date}}",
+      "venueLabel": "Место проведения",
+      "empty": "Нет событий для выбранной категории."
+    }
+  },
+  "resources": {
+    "hero": {
+      "tag": "Инструменты",
+      "title": "Ресурсы для команд и наставников",
+      "description": "Собранная библиотека гайдов, CAD-шаблонов и аутрич-плейбуков, которые поддерживают рабочий процесс xCellence на протяжении сезона FIRST Tech Challenge."
+    },
+    "types": {
+      "guide": "Гайд",
+      "video": "Видео",
+      "tool": "Инструмент",
+      "template": "Шаблон"
+    },
+    "open": "Открыть ресурс",
+    "sections": [
+      {
+        "title": "Программирование и системы управления",
+        "summary": "Создавайте надежные автономные режимы и tele-op управление с помощью нашей базы софта, документации и туториалов.",
+        "items": [
+          {
+            "name": "FTC SDK Documentation",
+            "description": "Официальная документация FIRST по Android Studio SDK, настройке и API управления.",
+            "href": "https://ftc-docs.firstinspires.org/",
+            "type": "guide"
+          },
+          {
+            "name": "Road Runner Quickstart",
+            "description": "Шаблон планирования траекторий для автономки с кривыми и настройкой feedforward.",
+            "href": "https://github.com/acmerobotics/road-runner-quickstart",
+            "type": "template"
+          },
+          {
+            "name": "OnBot Java Cheatsheet",
+            "description": "Краткий справочник по синтаксису и жизненному циклу для OnBot Java в REV Control Hub.",
+            "href": "https://gm0.org/en/latest/docs/software/tutorial-onbot.html",
+            "type": "guide"
+          },
+          {
+            "name": "PID Tuning Masterclass",
+            "description": "Запись воркшопа по настройке PIDF для привода, лифтов и турелей с телеметрией.",
+            "href": "https://www.youtube.com/watch?v=XRdK5OZFJ1Y",
+            "type": "video"
+          }
+        ]
+      },
+      {
+        "title": "Механика и производство",
+        "summary": "От CAD до производства — ресурсы, ускоряющие прототипирование надежных механизмов.",
+        "items": [
+          {
+            "name": "GrabCAD xCellence Library",
+            "description": "Модели нашего шасси, лифтов и модульных пластин для повторного использования.",
+            "href": "https://grabcad.com/library",
+            "type": "template"
+          },
+          {
+            "name": "Design for Manufacturability Checklist",
+            "description": "Внутренний чеклист DFM: допуски, крепеж и удобство сборки.",
+            "href": "https://docs.google.com/document/d/dfm-checklist",
+            "type": "tool"
+          },
+          {
+            "name": "Into the Deep Game Elements CAD",
+            "description": "Официальные STEP-файлы элементов поля сезона 2025-2026 для виртуального прототипирования.",
+            "href": "https://www.firstinspires.org/resource-library/ftc/game-and-season-info",
+            "type": "template"
+          },
+          {
+            "name": "Gearing & Torque Calculator",
+            "description": "Таблица для расчета момента, скорости и потребления тока механизмов.",
+            "href": "https://www.revolverworks.com/ftc-calculators",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "title": "Стратегия, аутрич и операционка",
+        "summary": "Ресурсы для организации, скаутинга и работы с сообществом.",
+        "items": [
+          {
+            "name": "xCellence Scouting Portal",
+            "description": "Шаблон Notion для скаутинга, пит-интервью и удаленной работы.",
+            "href": "https://www.notion.so/templates",
+            "type": "template"
+          },
+          {
+            "name": "Grant Writing Starter Pack",
+            "description": "Примеры спонсорских презентаций, благодарственных писем и трекера бюджета.",
+            "href": "https://www.firstinspires.org/resource-library/frc/first-robotics-funding-resources",
+            "type": "guide"
+          },
+          {
+            "name": "Event Playbook",
+            "description": "Пошаговый чеклист для проведения мастер-классов, скриммеджей и робот-стримов.",
+            "href": "https://docs.google.com/document/d/event-playbook",
+            "type": "guide"
+          },
+          {
+            "name": "Scoring Analysis Dashboard",
+            "description": "Google Sheets для анализа шансов победы, циклов и выбора альянса.",
+            "href": "https://docs.google.com/spreadsheets/d/xcellence-scouting",
+            "type": "tool"
+          }
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "hero": {
+      "tag": "Дневник команды",
+      "title": "Истории из лаборатории xCellence",
+      "description": "Следите за инженерными прорывами, отчетами о соревнованиях и аутрич-проектами в сезоне FIRST Tech Challenge."
+    },
+    "cta": {
+      "readStory": "Читать статью →",
+      "comingSoon": "Скоро"
+    },
+    "posts": [
+      {
+        "title": "World Robot Olympiad RoboSport Category",
+        "date": "28 декабря 2025",
+        "author": "XLNC Fury — RoboSport Build Team",
+        "summary": "Часть 1. Система управления мячами: пинатель, флайуил, удержание фиолетового мяча и Pixy Camera — текст из гайда Naj.",
+        "readTime": "7 мин чтения",
+        "tag": "Hardware",
+        "coverImage": "/xCellence/1PicNaj.png",
+        "coverAlt": "RoboSport flywheel launcher prototype on field",
+        "slug": "wro-robosport-ball-system"
+      },
+      {
+        "title": "xCellence in Singapore",
+        "date": "27 декабря 2025",
+        "author": "XLNC Cyrex — Hardware Squad",
+        "summary": "Клешни, Open Platform на Arduino Nano и все EV3G блоки для RoboMission — публикуем оригинальный текст.",
+        "readTime": "8 мин чтения",
+        "tag": "Hardware",
+        "coverImage": "/xCellence/1PicSayan.jpg",
+        "coverAlt": "XLNC Cyrex manipulator prototype for WRO RoboMission",
+        "slug": "wro-cyrex-hardware"
+      },
+      {
+        "title": "A Fisherman's Guide to Fusion 360",
+        "date": "23 декабря 2025",
+        "author": "Zhanibek - CAD Engineer",
+        "summary": "Zhanibek делится привычками Fusion 360, которые помогают делать легкие кастомные детали FTC.",
+        "readTime": "7 мин чтения",
+        "tag": "CAD",
+        "coverImage": "/xCellence/1PicZhan.png",
+        "coverAlt": "Zhanibek presenting Fusion 360 CAD workflow",
+        "slug": "fusion-360"
+      }
+    ],
+    "articlesBySlug": {
+      "fusion-360": {
+        "kicker": "CAD Playbook",
+        "title": "A Fisherman's Guide to Fusion 360",
+        "date": "23 декабря 2025",
+        "author": "Zhanibek - CAD Engineer",
+        "readTime": "7 мин чтения",
+        "slug": "fusion-360",
+        "heroImage": "/xCellence/zhanibek.jpg",
+        "heroAlt": "Zhanibek walking through Fusion 360 workflows with the CAD team",
+        "intro": "Fusion 360 — тихая звезда нашей мастерской. В рыбацком гайде Zhanibek объясняет, как мы используем инструменты Autodesk для моделирования деталей FTC, когда готовых компонентов не хватает.",
+        "sections": [
+          {
+            "title": "Что такое Fusion 360?",
+            "paragraphs": [
+              "Fusion 360 — единая среда для робототехники: CAD, CAM, рендеринг, сборки и экспорт в одном окне, чтобы не терять фокус.",
+              "Можно собрать рабочий FTC-робот из комплектов, но собственные модели и печать ускоряют работу, снижают вес и компенсируют дефицит деталей REV/goBilda."
+            ]
+          },
+          {
+            "title": "Part 2. Drivetrain & Color track system",
+            "paragraphs": [
+              "Не менее важной частью робота является база. Ее вариаций много и, на самом деле, выбор не обязательно должен быть конкретным. Зачастую, базу собирают под механизмы. В конструировании нет определенных правил, но мы рассмотрим популярные выборы и наши решения.",
+              "",
+              "Колеса",
+              "От колес на приводе зависят движения робота. Также их диаметр и тип мотора используется при написании кода. Мы рекомендуем использовать средние моторы для привода (у нас есть гайд на движения на средних моторах)",
+              "",
+              "Fig 2.1 Wheel 61.6mm D. x 13.6mm",
+              "На нашем роботе 2025 года стояли эти колеса в комбинации"
+            ],
+            "images": [
+              {
+                "src": "/xCellence/7PicNaj.png",
+                "alt": "Fig 2.1 Wheel 61.6mm D. x 13.6mm",
+                "caption": "Fig. 2.1 — Wheel 61.6mm D. x 13.6mm"
+              }
+            ]
+          },
+          {
+            "title": "Зачем мы это используем?",
+            "paragraphs": [
+              "В нашем CAD INTO THE DEEP каждый цветной компонент — это напечатанная деталь, и почти каждый механизм работает с элементами игры.",
+              "Рычаг, клешня, выдвижение и лифт были отработаны цифрово до печати, что экономит пластик, ускоряет итерации и дает стратегии форму."
+            ]
+          },
+          {
+            "title": "Метод 1: «TENET» и параметрическая шкала",
+            "paragraphs": [
+              "Параметрическая шкала фиксирует каждую операцию, а Fusion 360 позволяет «перематывать» историю, как в TENET.",
+              "Измените размер — и все зависимости пересоберутся автоматически. Так мы делаем эксперименты безопасными."
+            ],
+            "bullets": [
+              "Исправлять размеры деталей, когда замеры были неточны.",
+              "Править смещенные сопряжения без полного перерисовывания.",
+              "Переносить эскизы, начатые на неправильной плоскости.",
+              "Удлинять или укорачивать выдавливания после тестов."
+            ]
+          },
+          {
+            "title": "Метод 2: Sketch Me Like One of Your French Girls",
+            "paragraphs": [
+              "Все начинается с эскиза, поэтому новичкам важно освоить линии, дуги и окружности до выдавливания.",
+              "Ограничения — скрытые герои: Equal выравнивает отрезки, Coincident соединяет точки, а полностью ограниченные эскизы защищают геометрию."
+            ],
+            "bullets": [
+              "Equal: связывает два сегмента, чтобы масштабировались вместе.",
+              "Coincident: «прилипает» точки и связанные элементы.",
+              "Дисциплина ограничений предотвращает деформации при правках."
+            ]
+          },
+          {
+            "title": "Метод 3: Astral Projection с Project & Intersect",
+            "paragraphs": [
+              "Project и Intersect копируют геометрию из других эскизов и тел на новую плоскость — как проекция в нужное место.",
+              "Проекции остаются связанными с оригиналом, поэтому изменения в таймлайне обновляют все зависимые элементы."
+            ]
+          },
+          {
+            "title": "Галерея Fusion 360",
+            "paragraphs": [
+              "Кадры из гайда: эскизы, ограничения, шарниры, рендеры и проверки сборок, которые делают FTC-детали точными и легкими."
+            ],
+            "images": [
+              { "src": "/xCellence/1PicZhan.png", "alt": "Fusion 360 sketch with constraints applied" },
+              { "src": "/xCellence/2PicZhan.png", "alt": "Parametric timeline showing editable features" },
+              { "src": "/xCellence/3PicZhan.png", "alt": "Extrusion and fillet pass on a drivetrain plate" },
+              { "src": "/xCellence/4PicZhan.png", "alt": "Joint preview verifying rotational clearance" },
+              { "src": "/xCellence/5PicZhan.png", "alt": "Component breakdown for assembly reuse" },
+              { "src": "/xCellence/6PicZhan.png", "alt": "Rendered view of the subsystem housing" },
+              { "src": "/xCellence/7PicZhan.png", "alt": "Exploded view highlighting printed parts" }
+            ]
+          }
+        ],
+        "closing": "Рыбацкий гайд Zhanibek сводится к привычкам: изучите инструменты, ограничивайте эскизы и дайте Fusion 360 сделать тяжелую работу."
+      },
+      "wro-cyrex-hardware": {
+        "kicker": "xCellence in Singapore",
+        "title": "World Robot Olympiad RoboMission Senior Category. Build, Hardware",
+        "date": "27 декабря 2025",
+        "author": "XLNC Cyrex — Hardware Squad",
+        "readTime": "8 мин чтения",
+        "slug": "wro-cyrex-hardware",
+        "heroImage": "/xCellence/1PicSayan.jpg",
+        "heroAlt": "XLNC Cyrex manipulator prototype for WRO RoboMission",
+        "intro": "В данном цикле статей и гайдов мы, как республиканские и международные призеры WRO Robomission Senior, хотели бы поделиться своим опытом и фишками в данной категории.",
+        "sections": [
+          {
+            "title": "Chapter 1. Game elements manipulators",
+            "paragraphs": [
+              "Две пары клешен манипуляторов сортируют и хранят различные игровые элементы.",
+              "Две длинные внешние клешни по бокам предназначены",
+              "1) для вращения и удерживание игрового элемента Payload:",
+              "",
+              "2) для открытия желтой дверцы на поле и выполнения задании с рычагами:",
+              "",
+              "3) для хватания и перемещение игрового элемента Rocket noses:",
+              "",
+              "Две внутренние розовые клешни предназначены для сортировки и хранения игровых элементов Bolts:",
+              "",
+              "Пространство внутри робота - два внутренних кармана для хранение первых двух отсортированных болтов. Они работают на принципе механизма триггер, где при контакте со внешними клешнями, отсеки открываются и переключаются на мод хранения болтов.",
+              "",
+              "Задняя часть робота включает в себя нововведенную модернизацию робота согласно новому правилу WRO Open Platform. Плата Arduino Nano с связанно блоком EV3 благодаря I2C соединению, который занимает один порт в самом блоке. К этой Arduino плате подключен единственный сервомотор отвечающий за заднюю клешню. Задняя клешня была создана на случай сюрприза или челленджа, которые объявляются во время соревновательных дней.",
+              "Робот использовал большое количество 3Д печатных деталей для обеспечения комфортной компоновности робота. Принцип: наименьшее количество использованных деталей на роботе обеспечивает легкую и понятную работу всех частей и деталей робота. На примере фото робота, внутренние клешни, триггерный механизм, удерживающие карманы а также задняя клешня робота были полностью изготовленных из PLA пластика используя выше перечисленный принцип."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/1PicSayan.jpg",
+                "alt": "Общий вид клешней XLNC Cyrex на RoboMission",
+                "caption": "Fig. 1 — Общий вид клешней XLNC Cyrex"
+              },
+              {
+                "src": "/xCellence/2PicSayan.png",
+                "alt": "Внешние клешни для Payload и Rocket noses",
+                "caption": "Fig. 2 — Внешние клешни для Payload и Rocket noses"
+              },
+              {
+                "src": "/xCellence/3PicSayan.png",
+                "alt": "Внутренние карманы и триггерный механизм для Bolts",
+                "caption": "Fig. 3 — Внутренние карманы и триггерный механизм для Bolts"
+              }
+            ]
+          },
+          {
+            "title": "Chapter 2. EV3G blocks and innovative software solutions that were used during the world finals.",
+            "paragraphs": [
+              "Команда XLNC Cyrex Используемые зеленые блоки:",
+              "Drive:",
+              "Drive Block в среде программирования LEGO EV3 используется для синхронного управления двумя моторами, обычно подключенными к портам B и C, что позволяет роботу двигаться как дифференциальной платформе.",
+              "Принцип работы нашего блока основан на следующих параметрах:",
+              "Steering (руление) - определяет соотношение скоростей левого и правого моторов.",
+              "Значение 0 означает движение прямо (оба мотора вращаются с одинаковой скоростью).",
+              "Положительные или отрицательные значения вызывают поворот за счет замедления одного мотора и ускорения другого.",
+              "Power/Speed (мощность или скорость) - задает скорость вращения моторов.",
+              "Duration (длительность) - определяет, как долго будет выполняться движение (по времени, по оборотам или по градусам).",
+              "Таким образом, Drive Block преобразует логические команды программы в точное управление скоростью и направлением вращения двух моторов, обеспечивая прямолинейное движение и плавные повороты робота.",
+              "",
+              "Line following",
+              "Следование по линии с двумя датчиками цвета основано на принципе обратной связи (feedback control). Датчики, установленные слева и справа под роботом, постоянно измеряют отражённый свет или цвет поверхности.",
+              "Принцип работы:",
+              "Каждый датчик определяет, находится ли он над линией (например, черной) или над фоном (белым).",
+              "На основе показаний датчиков программа корректирует скорость моторов:",
+              "Если левый датчик видит линию, робот уменьшает скорость левого мотора и увеличивает скорость правого, чтобы скорректировать траекторию.",
+              "Если правый датчик видит линию - выполняется противоположная коррекция.",
+              "Если оба датчика видят фон, робот продолжает движение прямо.",
+              "Использование двух датчиков повышает точность и устойчивость алгоритма по сравнению с одним датчиком, снижая колебания и позволяя роботу быстрее реагировать на изменение траектории линии.",
+              "",
+              "Turn Angle",
+              "Поворот робота на определенный угол в LEGO EV3 реализуется с помощью управления углом вращения мотора, измеряемого встроенным энкодером.",
+              "Принцип работы:",
+              "Каждый мотор EV3 оснащён энкодером, который отслеживает угол поворота вала в градусах.",
+              "Программа задает, на сколько градусов должен повернуться один или оба мотора.",
+              "Для поворота на месте обычно:",
+              "Один мотор вращается вперёд, а второй - назад, или",
+              "Вращается только один мотор, а второй остается неподвижным.",
+              "Количество градусов вращения мотора напрямую связано с углом поворота робота и зависит от:",
+              "диаметра колёс,",
+              "расстояния между колёсами,",
+              "типа поворота (на месте или дугой).",
+              "Таким образом, Turn Angle обеспечивает точное и воспроизводимое вращение робота за счёт использования энкодеров моторов."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/4PicSayan.png",
+                "alt": "EV3G блоки: Drive, Line following и Turn Angle",
+                "caption": "Fig. 4 — Drive, Line following и Turn Angle в EV3G"
+              }
+            ]
+          },
+          {
+            "title": "Используемые голубые блоки",
+            "paragraphs": [
+              "Claw Position",
+              "Для управления положением клешни робота в LEGO EV3 Mindstorms используется голубой блок управления мотором, работающий в режиме позиционирования по углу вращения.",
+              "Принцип работы основан на использовании встроенного энкодера мотора, который позволяет задавать и точно воспроизводить определенные положения клешни.",
+              "В программе каждой числовой величине соответствует заранее определённая позиция клешни:",
+              "каждое значение задаёт конкретный угол поворота мотора;",
+              "угол поворота напрямую определяет положение клешни (открыта, полуоткрыта, закрыта и т.д.).",
+              "При выполнении программы мотор автоматически вращается до указанного угла и останавливается, даже если начальное положение клешни отличается от предыдущего. Это обеспечивает:",
+              "повторяемость движений;",
+              "высокую точность позиционирования;",
+              "независимость результата от времени работы мотора.",
+              "Такой подход позволяет использовать числовые значения как логические состояния механизма, упрощая алгоритм управления и повышая надежность работы робота при выполнении манипуляционных задач."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/5PicSayan.png",
+                "alt": "Claw Position — голубой блок для позиционирования манипулятора",
+                "caption": "Fig. 5 — Голубой блок Claw Position"
+              }
+            ]
+          },
+          {
+            "title": "Servo-motor Position и фишки робота",
+            "paragraphs": [
+              "Servo-motor Position",
+              "Фишки робота:",
+              "Pixy Camera на роботе EV3",
+              "Для распознавания цвета игровых элементов на поле в робототехнической системе была использована Pixy Cam, адаптированная для работы с LEGO EV3. Камера обеспечивает обработку изображения в реальном времени и позволяет выделять объекты по цветовым сигнатурам без значительной нагрузки на основной контроллер.",
+              "Связь между Pixy Cam и контроллером LEGO EV3 осуществлялась посредством интерфейса I²C (Inter-Integrated Circuit), что обеспечивало стабильную и быструю передачу данных. Использование I²C позволило получать от камеры структурированную информацию, включая идентификатор цветовой сигнатуры и координаты обнаруженного объекта.",
+              "Принцип работы системы заключался в следующем:",
+              "игровые элементы предварительно обучались в Pixy Cam как отдельные цветовые сигнатуры;",
+              "камера анализировала изображение и определяла наличие объекта заданного цвета в поле зрения;",
+              "по I²C на EV3 передавались данные о типе цвета и параметрах обнаруженного объекта;",
+              "программа робота на основе полученных данных принимала решения о дальнейших действиях (навигация, захват или сортировка элементов)."
+            ],
+            "images": [
+              {
+                "src": "/xCellence/6PicSayan.jpg",
+                "alt": "Servo-модуль задней клешни и её привод",
+                "caption": "Fig. 6 — Servo-модуль задней клешни"
+              },
+              {
+                "src": "/xCellence/7PicSayan.jpg",
+                "alt": "Pixy Camera на роботе EV3 с креплением под наклоном",
+                "caption": "Fig. 7 — Pixy Camera с переходником на EV3"
+              }
+            ]
+          }
+        ],
+        "closing": "Применение Pixy Cam с I²C-соединением повысило точность и скорость цветовой идентификации по сравнению с использованием стандартных датчиков цвета, а также позволило эффективно работать в условиях изменяющегося освещения и на больших расстояниях."
+      },
+      "wro-robosport-ball-system": {
+        "kicker": "World Robot Olympiad RoboSport Category",
+        "title": "Build & Hardware by Naj, XLNC Fury",
+        "date": "28 декабря 2025",
+        "author": "XLNC Fury — RoboSport Build Team",
+        "readTime": "7 мин чтения",
+        "slug": "wro-robosport-ball-system",
+        "heroImage": "/xCellence/robot_sub2.jpg",
+        "heroAlt": "RoboSport flywheel launcher prototype with ball hopper",
+        "intro": "В данном цикле статей и гайдов мы, как республиканские и международные призеры WRO RoboSport, хотели бы поделиться своим опытом и фишками в данной категории.",
+        "sections": [
+          {
+            "title": "Part 1. Ball Management System",
+            "paragraphs": [
+              "Сборка и конструкция механизма “выстрела” мячей на парном теннисе очень важны и играю ключевую роль в результатах. Поскольку основным заданием в робоспорте является перекидывание мячей, нужно перекидывать их быстро и на определенную дистанцию, а также удерживать фиолетовые мячи."
+            ]
+          },
+          {
+            "title": "Chapter 1. Shooting Mechanisms",
+            "paragraphs": [
+              "Для первой задачи есть несколько популярных механизмов.",
+              "Пинатель",
+              "",
+              "Fig. 1.1 пример робота-пинатель",
+              "",
+              "Fig. 1.2 пример робота-пинатель",
+              "Конструкция подобных роботов проста - они, ездя по траектории, собирают оранжевые мячи и “пинают” их снизу вверх и вперед. Часто в этом используются резинки или пружины для дополнительного импульса и резкого толчка мячей.",
+              "Преимущества подобной системы являются простота конструкции и меньшее количество задействованных деталей. Данный механизм стоит выбирать если нет возможности собрать следующие варианты или не хватает материальных или временных ресурсов. Помимо этого, их программирование легче и быстрее",
+              "Недостатки:",
+              "нет возможности хранить мячи и, следовательно, траектория ограничена.",
+              "Точность “пинка” может быть недостаточна против сильных соперников.",
+              "Скорость же зависит от конкретных инженерных решений, но зачастую тоже низка.",
+              "https://www.youtube.com/watch?v=vEyGXVtalxY&pp=ygUNd3JvIHJvYm9zcG9ydA%3D%3D",
+              "Интересный пример матча с роботами-пинателями",
+              "",
+              "Fly–Wheel",
+              "Flywheel или же летящее колесо тоже является одним из самых популярных решений в робоспорте. Его суть заключается в крутящемся барабане на сжимающемся материале, обычно резинках. Барабан “проглатывает” мячи внутрь робота и “выплевывает” их наружу. За счет натяжения резинок и вращения, мячи вылетают с большой скоростью.",
+              "",
+              "Fig. 1.3 пример робота с flywheel",
+              "В данном механизме также важна задняя стенка, по которой барабан прокатывает мячи, когда хранит их внутри себя. Если на стенке тоже будет натяжение, то результат броска тоже будет лучше: дальше, сильнее, быстрее.",
+              "",
+              "Fig. 1.4 Задняя стенка для flywheel",
+              "",
+              "Fig 1.5 Распределение резинок на задней стенке флайуилла",
+              "",
+              "Резинки играют ключевую роль в работе флайуилла и важно не перестараться с ними. Варианты резинок:",
+              "оригинальные лего резинки 5x5",
+              "Канцелярские резинки.",
+              "",
+              "Излишнее натяжение резинки может привести к слишком сильной и дальней стрельбе и, соответственно, вылету мячей за дозволенную зону поля. Поэтому на своем опыте мы советуем растягивать резинки до посветления материала. Не так сильно важна насколько далеко вы стреляете, важно насколько точно и правильно вы это делаете.",
+              "",
+              "Fig 1.6 Оригинальные резинки lego",
+              "",
+              "Данный механизм является на наш взгляд наилучшим вариантом. Его используют чемпионы мира и сильнейшие команды. Также при помощи него легче всего организовать остальные функции робота. Тем не менее, запрограммировать его сравнительно сложнее.",
+              "Привод барабана стоит на одном большом моторе и повышающей передачи шестернями."
+            ],
+            "images": [
+              { "src": "/xCellence/1PicNaj.png", "alt": "Fig. 1.1 пример робота-пинатель", "caption": "Fig. 1.1 — пример робота-пинатель" },
+              { "src": "/xCellence/2PicNaj.png", "alt": "Fig. 1.2 пример робота-пинатель", "caption": "Fig. 1.2 — пример робота-пинатель" },
+              { "src": "/xCellence/3PicNaj.png", "alt": "Fig. 1.3 пример робота с flywheel", "caption": "Fig. 1.3 — пример робота с flywheel" },
+              { "src": "/xCellence/4PicNaj.png", "alt": "Fig. 1.4 Задняя стенка для flywheel", "caption": "Fig. 1.4 — Задняя стенка для flywheel" },
+              { "src": "/xCellence/5PicNaj.png", "alt": "Fig. 1.5 Распределение резинок на задней стенке флайуилла", "caption": "Fig. 1.5 — Распределение резинок на задней стенке флайуилла" },
+              { "src": "/xCellence/6PicNaj.png", "alt": "Fig. 1.6 Оригинальные резинки LEGO", "caption": "Fig. 1.6 — Оригинальные резинки LEGO" }
+            ]
+          },
+          {
+            "title": "Chapter 2. Ball Holding & Tracking",
+            "paragraphs": [
+              "Ball holding",
+              "",
+              "Второй миссией тенниса является удержание фиолетового мяча на своей половине поля. То как определять расположение мячей мы разобрали в программной части, тут же рассмотрим аппаратную составляющую.",
+              "Фиолетовый мяч мы удерживали в специальной отсеке за стенкой флауилла. Сама стенка приводится в движение средним мотором и поднимается, меняя путь мячей внутри робота. Т.е. вместо того чтобы идти вверх к зоне вылета, фиолетовый мяч прокатывается снизу под стенкой и попадает в отсек между моторами, где он остается до конца игры.",
+              "https://youtu.be/EeTfra6aHig",
+              "На данном видео пример работы удержания мяча (Примечание: робот на видео удерживает оранжевый мяч, не фиолетовый в целях демонстрации. В настоящей игре нужно удерживать фиолетовый мяч)",
+              "",
+              "Fig. 2.1 Пример удержания оранжевого мяча внутри робота",
+              "",
+              "Tracking",
+              "",
+              "Помимо инициализации цвета через камеры, на роботе установлены датчики цвета для определения наличия мяча внутри робота. Они смотрят вниз внутрь робота, располагаясь над зоной вылета барабана. Мы советуем использовать lego color sensor поскольку у него высокая частота опроса и точность значений цвета не так важна, как наличие данных (этот пункт объясняется в ПО части)",
+              "",
+              "Fig 2.2 Lego Color Sensor"
+            ]
+          },
+          {
+            "title": "Chapter 3. AI Cameras",
+            "paragraphs": [
+              "Поскольку вычислительная способность Lego EV3 блока ограничена и не позволяет запускать на ней компьютерное зрение, используются камеры с встроенным ИИ модулем для всех вычислений и облегченной коммуникации с блоком",
+              "",
+              "Pixy Camera",
+              "https://pixycam.com/pixy-lego/",
+              "",
+              "Самый популярный и проработанный вариант камеры. Уроки и гайды по ней есть в программной части статьи и в статьях по WRO Future Engineers",
+              "",
+              "Fig 3.1 Pixy2 for Lego Mindstorms EV3 camera",
+              "",
+              "Камера имеет два крепления под М2 болты, что не удобно для ее установки на лего балки. Поэтому ниже прикреплен файл для 3D печати переходника с учетом угла наклона камеры.",
+              "[тут будет файл на сайте]",
+              "Заполнение печати рекомендовано на 15-30%, тип пластика не важен.",
+              "",
+              "Купить PixyCam можно на OLX или в чате KZRobotics, а также на Ebay и Aliexpress"
+            ]
+          },
+          {
+            "title": "Part 4. Useful materials",
+            "paragraphs": [
+              "Здесь представленны полезные материалы по данной категории",
+              "",
+              "Лекция на учебно-тренировочных сборах WRO 2025 по категории RoboSport",
+              "https://www.youtube.com/watch?v=FoRNLSMaYOM&t=8s"
+            ]
+          }
+        ],
+        "closing": "Купить PixyCam можно на OLX или в чате KZRobotics, а также на Ebay и Aliexpress."
+      }
+    }
+  },
+  "blogArticle": {
+    "breadcrumb": "Блог xCellence",
+    "photoCredit": "Фото: команда медиа xCellence",
+    "back": "← Вернуться ко всем публикациям",
+    "share": {
+      "label": "Поделиться",
+      "copy": "Скопировать ссылку",
+      "copied": "Скопировано",
+      "telegram": "Telegram",
+      "linkedin": "LinkedIn",
+      "x": "X (Twitter)"
+    },
+    "author": {
+      "label": "Автор",
+      "note": "Делимся практическими заметками xCellence: CAD, механика, код и всё, что помогает нам выступать на соревнованиях FIRST Tech Challenge."
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Связаться с нами",
+      "subtitle": "Будем рады вашему сообщению"
+    },
+    "info": {
+      "tag": "Свяжитесь с нами",
+      "title": "Контактная информация",
+      "intro": "Если вы интересуетесь спонсорством, хотите задать вопросы или сотрудничать в аутрич-проектах — мы на связи!",
+      "items": [
+        { "icon": "", "title": "Email", "detail": "info@xcellenceftc.com", "link": "mailto:info@xcellenceftc.com" },
+        { "icon": "", "title": "Спонсорство", "detail": "sponsor@xcellenceftc.com", "link": "mailto:sponsor@xcellenceftc.com" },
+        { "icon": "", "title": "Соцсети", "detail": "@xcellenceftc", "link": "https://instagram.com/xcellenceftc" },
+        {
+          "icon": "",
+          "title": "Локация",
+          "detail": "Назарбаев Интеллектуальная школа ФМН, район Нура, Астана, Казахстан",
+          "link": "#"
+        }
+      ]
+    },
+    "form": {
+      "tag": "Отправить сообщение",
+      "title": "Форма обратной связи",
+      "fields": {
+        "name": {
+          "label": "Имя *",
+          "placeholder": "Ваше полное имя"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "your.email@example.com"
+        },
+        "subject": {
+          "label": "Тема *",
+          "options": {
+            "placeholder": "Выберите тему",
+            "sponsorship": "Запрос спонсорства",
+            "collaboration": "Сотрудничество",
+            "question": "Общий вопрос",
+            "outreach": "Аутрич-мероприятие",
+            "other": "Другое"
+          }
+        },
+        "message": {
+          "label": "Сообщение *",
+          "placeholder": "Расскажите о вашем запросе..."
+        }
+      },
+      "submit": {
+        "idle": "Отправить",
+        "sending": "Отправка..."
+      },
+      "status": {
+        "missingConfig": "Почтовый сервис не настроен. Попробуйте позже.",
+        "success": "Спасибо! Ваше сообщение отправлено.",
+        "error": "Произошла ошибка. Попробуйте позже."
+      }
+    },
+    "email": {
+      "subjectLabel": "Тема",
+      "emailLabel": "Email",
+      "notProvided": "Не указано"
+    }
+  },
+  "robot": {
+    "hero": {
+      "title": "Наш робот: Phoenix",
+      "subtitle": "СЕЗОН DECODE 2025-2026"
+    },
+    "specs": {
+      "tag": "Характеристики",
+      "title": "Технические детали",
+      "items": [
+        { "label": "Вес", "value": "40 lbs", "icon": "⚖️" },
+        { "label": "Габариты", "value": "18\" x 18\" x 18\"", "icon": "📏" },
+        { "label": "Привод", "value": "Mecanum Wheels", "icon": "⚙️" },
+        { "label": "Питание", "value": "12V Battery", "icon": "🔋" },
+        { "label": "Программирование", "value": "Java", "icon": "💻" },
+        { "label": "Срок сборки", "value": "3 Months", "icon": "⏱️" }
+      ]
+    },
+    "features": {
+      "tag": "Инновации",
+      "title": "Ключевые особенности",
+      "items": [
+        {
+          "title": "Автономная навигация",
+          "description": "Компьютерное зрение и сенсорный фьюжн для точного автономного движения и распознавания объектов.",
+          "icon": "/xCellence/autonomous.svg"
+        },
+        {
+          "title": "Кастомный манипулятор",
+          "description": "Инновационный механизм для работы с игровыми элементами и поворотом на 360°.",
+          "icon": "/xCellence/custom.svg"
+        },
+        {
+          "title": "Модульная конструкция",
+          "description": "Быстрая замена компонентов для смены стратегии и ремонта на соревнованиях.",
+          "icon": "/xCellence/modular.svg"
+        },
+        {
+          "title": "Оптимизированный привод",
+          "description": "Меканум-конфигурация обеспечивает всенаправленное движение и маневренность.",
+          "icon": "/xCellence/drive.svg"
+        }
+      ]
+    },
+    "gallery": {
+      "tag": "Галерея",
+      "title": "Галерея робота",
+      "viewDetails": "Смотреть детали"
+    }
+  },
+  "hallOfFame": {
+    "hero": {
+      "tag": "Наследие",
+      "title": "Зал славы xCellence",
+      "description": "Мы чествуем моменты, наставников и выпускников, которые изменили программу и вдохновили новое поколение."
+    },
+    "alumni": {
+      "tag": "Лидеры сообщества",
+      "title": "Почетные участники",
+      "intro": "Признаем лидеров робототехнической экосистемы Казахстана, вдохновляющих следующее поколение.",
+      "items": [
+        {
+          "name": "Asylbek Myrzakhmetov",
+          "role": "Директор USTEM Robotics Development Fund",
+          "achievement": "Асылбек Мырзахметов - руководитель общественного фонда USTEM Foundation, национальный организатор First в Казахстане ",
+          "photo": "/xCellence/Asylbek.jpeg"
+        },
+       
+        {
+          "name": "Azamat Bidanov",
+          "role": "Национальный организатор WRO",
+          "achievement": "Национальный организатор World Robot Olympiad в Казахстане с 2014 по 2024 год .",
+          "photo": "/xCellence/Azamat.png"
+        }
+      ]
+    }
+  }
+}

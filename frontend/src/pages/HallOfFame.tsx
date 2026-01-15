@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import './HallOfFame.css';
 
 // type Award = {
@@ -106,40 +107,23 @@ import './HallOfFame.css';
 //   },
 // ]
 
-const alumniHighlights = [
-  {
-    name: 'Asylbek Myrzakhmetov',
-    role: 'Director of USTEM Robotics Development Fund',
-    achievement:
-      'Member of the Robotics, STEAM and Programming Development Council at the Ministry of Education of Kazakhstan. Oversees Smart Sarbaz / Zhas Sarbaz patriotic program for military-engineering education through robotics.',
-    photo: '/xCellence/Asylbek.jpeg',
-  },
-  {
-    name: 'Daniyar Ermatov',
-    role: 'FIRST Program Delivery Partner',
-    achievement:
-      'Over 6 years with FIRST as program delivery partner. Electrical and electronics engineer supporting FTC teams across the region.',
-    photo: '/xCellence/Daniyar.jpg',
-  },
-  {
-    name: 'Azamat Bidanov',
-    role: 'WRO National Organizer',
-    achievement:
-      '',
-    photo: '/xCellence/Azamat.png',
-  }
-];
-
 const HallOfFame = () => {
+  const { t } = useTranslation();
+  const alumniHighlights = t('hallOfFame.alumni.items', { returnObjects: true }) as {
+    name: string;
+    role: string;
+    achievement: string;
+    photo: string;
+  }[];
+
   return (
     <div className="hall-page">
       <section className="hall-hero">
         <div className="hall-hero-content">
-          <span className="section-tag">Legacy</span>
-          <h1>xCellence Hall of Fame</h1>
+          <span className="section-tag">{t('hallOfFame.hero.tag')}</span>
+          <h1>{t('hallOfFame.hero.title')}</h1>
           <p>
-            Celebrating the moments, mentors, and alumni who transformed our program and inspired the next generation of
-            innovators.
+            {t('hallOfFame.hero.description')}
           </p>
         </div>
       </section>
@@ -211,11 +195,11 @@ const HallOfFame = () => {
       <section className="hall-section alumni">
         <div className="hall-container">
           <div className="section-header">
-            <span className="section-tag">Community Leaders</span>
-            <h2 className="section-title">Hall of Fame Honorees</h2>
+            <span className="section-tag">{t('hallOfFame.alumni.tag')}</span>
+            <h2 className="section-title">{t('hallOfFame.alumni.title')}</h2>
             <div className="title-underline"></div>
             <p style={{ maxWidth: '800px', margin: '1rem auto', textAlign: 'center', opacity: 0.9 }}>
-              Recognizing leaders in Kazakhstan's robotics ecosystem who inspire and guide the next generation.
+              {t('hallOfFame.alumni.intro')}
             </p>
           </div>
 

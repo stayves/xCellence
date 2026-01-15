@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Trainer.css';
 
 type Point = { x: number; y: number };
@@ -17,18 +18,13 @@ type AimCircle = {
 const canvasSize = { width: 1200, height: 800 };
 const aimCanvasSize = { width: 1200, height: 800 };
 
-const AIM_DIFFICULTIES = [
-  { name: 'Easy', approachTime: 2000, spawnInterval: 1500, tolerance: 0.15 },
-  { name: 'Normal', approachTime: 1500, spawnInterval: 1000, tolerance: 0.12 },
-  { name: 'Hard', approachTime: 1000, spawnInterval: 700, tolerance: 0.08 },
-];
-
 const Trainer = () => {
+  const { t, i18n } = useTranslation();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const aimCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const [mode, setMode] = useState<'robot' | 'field'>('robot');
-  const [controllerLabel, setControllerLabel] = useState('No controller detected');
+  const [controllerId, setControllerId] = useState<string | null>(null);
   const [trainerActive, setTrainerActive] = useState(false);
   const [showFinish, setShowFinish] = useState(false);
   const [finishTime, setFinishTime] = useState<number | null>(null);
@@ -73,9 +69,24 @@ const Trainer = () => {
     accuracy: 100,
   });
   const [aimStats, setAimStats] = useState(aimStatsRef.current);
-  const [aimDifficulty, setAimDifficulty] = useState(AIM_DIFFICULTIES[aimDifficultyRef.current].name);
+  const [aimDifficulty, setAimDifficulty] = useState(() => t('trainer.canvas.difficulty.normal'));
   const [aimRunning, setAimRunning] = useState(false);
   const [aimPaused, setAimPaused] = useState(false);
+
+  const aimDifficulties = useMemo(
+    () => [
+      { name: t('trainer.canvas.difficulty.easy'), approachTime: 2000, spawnInterval: 1500, tolerance: 0.15 },
+      { name: t('trainer.canvas.difficulty.normal'), approachTime: 1500, spawnInterval: 1000, tolerance: 0.12 },
+      { name: t('trainer.canvas.difficulty.hard'), approachTime: 1000, spawnInterval: 700, tolerance: 0.08 },
+    ],
+    [i18n.language, t]
+  );
+
+  const controllerLabel = controllerId ?? t('trainer.controller.notDetected');
+
+  useEffect(() => {
+    setAimDifficulty(aimDifficulties[aimDifficultyRef.current].name);
+  }, [aimDifficulties]);
 
   const round = (v: number) => (Math.abs(v) < 0.0005 ? 0 : Math.round(v * 1000) / 1000);
 
@@ -174,9 +185,9 @@ const Trainer = () => {
   }, []);
 
   const cycleAimDifficulty = useCallback(() => {
-    aimDifficultyRef.current = (aimDifficultyRef.current + 1) % AIM_DIFFICULTIES.length;
-    setAimDifficulty(AIM_DIFFICULTIES[aimDifficultyRef.current].name);
-  }, []);
+    aimDifficultyRef.current = (aimDifficultyRef.current + 1) % aimDifficulties.length;
+    setAimDifficulty(aimDifficulties[aimDifficultyRef.current].name);
+  }, [aimDifficulties]);
 
   const updateAimAccuracy = useCallback(() => {
     const stats = aimStatsRef.current;
@@ -433,12 +444,12 @@ const Trainer = () => {
 
     const handleConnect = (e: GamepadEvent) => {
       gpRef.current = navigator.getGamepads()[e.gamepad.index];
-      setControllerLabel(e.gamepad.id || 'Controller connected');
+      setControllerId(e.gamepad.id || t('trainer.controller.connected'));
     };
 
     const handleDisconnect = () => {
       gpRef.current = null;
-      setControllerLabel('No controller detected');
+      setControllerId(null);
     };
 
     window.addEventListener('gamepadconnected', handleConnect);
@@ -453,7 +464,7 @@ const Trainer = () => {
       window.removeEventListener('gamepadconnected', handleConnect);
       window.removeEventListener('gamepaddisconnected', handleDisconnect);
     };
-  }, [beginTrainer, finishTrainer, generatePath]);
+  }, [beginTrainer, finishTrainer, generatePath, t]);
 
   // Aim trainer loop
   useEffect(() => {
@@ -514,8 +525,8 @@ const Trainer = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Base joystick guides
-      drawJoystickArea(leftCenter, 'Left Stick');
-      drawJoystickArea(rightCenter, 'Right Stick');
+      drawJoystickArea(leftCenter, t('trainer.canvas.leftStick'));
+      drawJoystickArea(rightCenter, t('trainer.canvas.rightStick'));
 
       const gamepad = gpRef.current ? navigator.getGamepads()[gpRef.current.index] : null;
       if (!gamepad) {
@@ -525,7 +536,7 @@ const Trainer = () => {
         ctx.fillStyle = '#ff4d4f';
         ctx.font = 'bold 32px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('No controller detected', canvas.width / 2, canvas.height / 2);
+        ctx.fillText(t('trainer.canvas.noController'), canvas.width / 2, canvas.height / 2);
         anim = requestAnimationFrame(frame);
         return;
       }
@@ -539,7 +550,7 @@ const Trainer = () => {
       drawJoystickPos(rightCenter, rx, ry, '#ff66aa');
 
       if (aimRunningRef.current && !aimPausedRef.current) {
-        const difficulty = AIM_DIFFICULTIES[aimDifficultyRef.current];
+          const difficulty = aimDifficulties[aimDifficultyRef.current];
         if (now >= aimNextSpawnRef.current) {
           const pos = generateRandomPosition();
           aimCirclesRef.current.push({
@@ -571,7 +582,7 @@ const Trainer = () => {
           const leftDistSq = (c.x - leftPos.x) ** 2 + (c.y - leftPos.y) ** 2;
           const rightDistSq = (c.x - rightPos.x) ** 2 + (c.y - rightPos.y) ** 2;
           const minDistSq = Math.min(leftDistSq, rightDistSq);
-          const tolerance = c.radius + AIM_DIFFICULTIES[aimDifficultyRef.current].tolerance * 50;
+          const tolerance = c.radius + aimDifficulties[aimDifficultyRef.current].tolerance * 50;
           const tolSq = tolerance * tolerance;
 
           if (minDistSq <= tolSq) {
@@ -641,24 +652,36 @@ const Trainer = () => {
       ctx.fillStyle = '#ffffff';
       ctx.font = '20px Arial';
       ctx.textAlign = 'left';
-      ctx.fillText(`Score: ${aimStatsRef.current.score}`, 20, 36);
-      ctx.fillText(`Combo: ${aimStatsRef.current.combo} (Max: ${aimStatsRef.current.maxCombo})`, 20, 64);
-      ctx.fillText(`Acc: ${aimStatsRef.current.accuracy.toFixed(2)}%`, 20, 92);
-      ctx.fillText(`Difficulty: ${AIM_DIFFICULTIES[aimDifficultyRef.current].name}`, 20, 120);
+      ctx.fillText(t('trainer.canvas.hud.score', { score: aimStatsRef.current.score }), 20, 36);
+      ctx.fillText(
+        t('trainer.canvas.hud.combo', { combo: aimStatsRef.current.combo, max: aimStatsRef.current.maxCombo }),
+        20,
+        64
+      );
+      ctx.fillText(
+        t('trainer.canvas.hud.accuracy', { accuracy: aimStatsRef.current.accuracy.toFixed(2) }),
+        20,
+        92
+      );
+      ctx.fillText(
+        t('trainer.canvas.hud.difficulty', { difficulty: aimDifficulties[aimDifficultyRef.current].name }),
+        20,
+        120
+      );
       if (!aimRunningRef.current) {
         ctx.fillStyle = 'rgba(0,0,0,0.65)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 28px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('Aim Trainer Idle — press Start', canvas.width / 2, canvas.height / 2);
+        ctx.fillText(t('trainer.canvas.idle'), canvas.width / 2, canvas.height / 2);
       } else if (aimPausedRef.current) {
         ctx.fillStyle = 'rgba(0,0,0,0.4)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 28px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('Paused', canvas.width / 2, canvas.height / 2);
+        ctx.fillText(t('trainer.canvas.paused'), canvas.width / 2, canvas.height / 2);
       }
 
       anim = requestAnimationFrame(frame);
@@ -666,27 +689,26 @@ const Trainer = () => {
 
     anim = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(anim);
-  }, [updateAimAccuracy]);
+  }, [aimDifficulties, t, updateAimAccuracy]);
 
   return (
     <div className="trainer-page">
       <section className="trainer-hero">
         <div className="trainer-hero-content">
-          <span className="section-tag">Driver Practice</span>
-          <h1 className="section-title">Driver Trainer Simulator</h1>
+          <span className="section-tag">{t('trainer.hero.tag')}</span>
+          <h1 className="section-title">{t('trainer.hero.title')}</h1>
           <p>
-            Practice mecanum control and checkpoint runs with a connected gamepad. Swap between robot-centric and
-            field-centric driving and generate randomized training paths on the fly.
+            {t('trainer.hero.description')}
           </p>
           <div className="trainer-actions">
             <button className="cta-primary" onClick={beginTrainer}>
-              Start Training Run
+              {t('trainer.hero.actions.start')}
             </button>
             <button className="cta-secondary" onClick={restartTrainer}>
-              Restart Path
+              {t('trainer.hero.actions.restart')}
             </button>
             <button className="cta-secondary" onClick={resetRobot}>
-              Reset Robot
+              {t('trainer.hero.actions.reset')}
             </button>
           </div>
           <div className="trainer-controller">
@@ -700,25 +722,27 @@ const Trainer = () => {
         <div className="trainer-container">
           <div className="sim-header">
             <div>
-              <span className="section-tag">Live Simulator</span>
-              <h2>Mecanum Trainer</h2>
-              <p>Use a PS/Xbox controller: Left stick = move, Right stick X = turn.</p>
+              <span className="section-tag">{t('trainer.sim.tag')}</span>
+              <h2>{t('trainer.sim.title')}</h2>
+              <p>{t('trainer.sim.description')}</p>
             </div>
             <div className="sim-buttons">
               <button className="ghost" onClick={beginTrainer} disabled={trainerActive}>
-                Start Trainer
+                {t('trainer.sim.buttons.start')}
               </button>
               <button className="ghost" onClick={generatePath}>
-                New Path
+                {t('trainer.sim.buttons.newPath')}
               </button>
               <button className="ghost" onClick={restartTrainer} disabled={trainerActive}>
-                Restart Path
+                {t('trainer.sim.buttons.restart')}
               </button>
               <button className="ghost" onClick={endTrainer} disabled={!trainerActive}>
-                End Trainer
+                {t('trainer.sim.buttons.end')}
               </button>
               <button className="ghost" onClick={() => setMode(mode === 'robot' ? 'field' : 'robot')}>
-                Mode: {mode === 'robot' ? 'Robot-Centric' : 'Field-Centric'}
+                {t('trainer.sim.buttons.mode', {
+                  mode: mode === 'robot' ? t('trainer.sim.modes.robot') : t('trainer.sim.modes.field'),
+                })}
               </button>
             </div>
           </div>
@@ -728,24 +752,24 @@ const Trainer = () => {
               <canvas ref={canvasRef} />
               {!gpRef.current && (
                 <div className="controller-warning">
-                  <p>No controller detected.</p>
-                  <span>Connect a gamepad and press any button to begin.</span>
+                  <p>{t('trainer.sim.noController.title')}</p>
+                  <span>{t('trainer.sim.noController.description')}</span>
                 </div>
               )}
 
               {showFinish && finishTime !== null && (
                 <div className="finish-popup">
-                  <h3>Training Complete</h3>
-                  <p>Time: {finishTime.toFixed(2)}s</p>
+                  <h3>{t('trainer.sim.finish.title')}</h3>
+                  <p>{t('trainer.sim.finish.time', { time: finishTime.toFixed(2) })}</p>
                   <div className="finish-actions">
                     <button className="cta-secondary" onClick={restartTrainer}>
-                      Restart Path
+                      {t('trainer.sim.finish.restart')}
                     </button>
                     <button className="cta-primary" onClick={beginTrainer}>
-                      New Run
+                      {t('trainer.sim.finish.newRun')}
                     </button>
                     <button className="cta-secondary" onClick={generatePath}>
-                      Shuffle Path
+                      {t('trainer.sim.finish.shuffle')}
                     </button>
                   </div>
                 </div>
@@ -754,44 +778,44 @@ const Trainer = () => {
 
             <div className="sim-sidebar">
               <div className="info-card">
-                <h4>Trainer Status</h4>
-                <p>{trainerActive ? 'Active — follow the glowing checkpoint rings.' : 'Idle — start a new run to begin.'}</p>
+                <h4>{t('trainer.status.title')}</h4>
+                <p>{trainerActive ? t('trainer.status.active') : t('trainer.status.idle')}</p>
                 <div className="status-grid">
                   <div>
-                    <span className="label">Mode</span>
-                    <span className="value">{mode === 'robot' ? 'Robot-Centric' : 'Field-Centric'}</span>
+                    <span className="label">{t('trainer.status.labels.mode')}</span>
+                    <span className="value">{mode === 'robot' ? t('trainer.sim.modes.robot') : t('trainer.sim.modes.field')}</span>
                   </div>
                   <div>
-                    <span className="label">Checkpoint</span>
+                    <span className="label">{t('trainer.status.labels.checkpoint')}</span>
                     <span className="value">
                       {checkpointInfo.current}/{checkpointInfo.total || '—'}
                     </span>
                   </div>
                   <div>
-                    <span className="label">Controller</span>
+                    <span className="label">{t('trainer.status.labels.controller')}</span>
                     <span className="value">{controllerLabel}</span>
                   </div>
                 </div>
               </div>
 
               <div className="info-card">
-                <h4>Controls</h4>
+                <h4>{t('trainer.controls.title')}</h4>
                 <ul className="controls-list">
-                  <li><strong>Left Stick:</strong> Forward / strafe</li>
-                  <li><strong>Right Stick X:</strong> Rotate</li>
-                  <li><strong>X / A:</strong> New randomized path</li>
-                  <li><strong>△ / Y:</strong> Toggle field-centric mode</li>
-                  <li><strong>Buttons above:</strong> Start, End, Mode toggle</li>
+                  <li><strong>{t('trainer.controls.leftStick.label')}:</strong> {t('trainer.controls.leftStick.value')}</li>
+                  <li><strong>{t('trainer.controls.rightStick.label')}:</strong> {t('trainer.controls.rightStick.value')}</li>
+                  <li><strong>{t('trainer.controls.newPath.label')}:</strong> {t('trainer.controls.newPath.value')}</li>
+                  <li><strong>{t('trainer.controls.toggleMode.label')}:</strong> {t('trainer.controls.toggleMode.value')}</li>
+                  <li><strong>{t('trainer.controls.buttons.label')}:</strong> {t('trainer.controls.buttons.value')}</li>
                 </ul>
               </div>
 
               <div className="info-card">
-                <h4>Tips</h4>
+                <h4>{t('trainer.tips.title')}</h4>
                 <ul className="controls-list">
-                  <li>Keep motion smooth to avoid overshooting checkpoints.</li>
-                  <li>Field-centric mode aligns movement to the field instead of robot heading.</li>
-                  <li>Use New Path to practice different trajectories quickly.</li>
-                  <li>Reset Robot if you drift too far off-center.</li>
+                  <li>{t('trainer.tips.items.0')}</li>
+                  <li>{t('trainer.tips.items.1')}</li>
+                  <li>{t('trainer.tips.items.2')}</li>
+                  <li>{t('trainer.tips.items.3')}</li>
                 </ul>
               </div>
             </div>
@@ -803,22 +827,22 @@ const Trainer = () => {
         <div className="trainer-container">
           <div className="sim-header">
             <div>
-              <span className="section-tag">Aim Trainer</span>
-              <h2>Joystick OSU-style Trainer</h2>
-              <p>Use left/right sticks to hit shrinking circles. Practice timing, accuracy, and stick coordination.</p>
+              <span className="section-tag">{t('trainer.aim.tag')}</span>
+              <h2>{t('trainer.aim.title')}</h2>
+              <p>{t('trainer.aim.description')}</p>
             </div>
             <div className="sim-buttons">
               <button className="ghost" onClick={startAimTrainer}>
-                Start Training
+                {t('trainer.aim.buttons.start')}
               </button>
               <button className="ghost" onClick={pauseAimTrainer} disabled={!aimRunning}>
-                {aimPaused ? 'Resume' : 'Pause'}
+                {aimPaused ? t('trainer.aim.buttons.resume') : t('trainer.aim.buttons.pause')}
               </button>
               <button className="ghost" onClick={stopAimTrainer} disabled={!aimRunning}>
-                Stop
+                {t('trainer.aim.buttons.stop')}
               </button>
               <button className="ghost" onClick={cycleAimDifficulty}>
-                Difficulty: {aimDifficulty}
+                {t('trainer.aim.buttons.difficulty', { difficulty: aimDifficulty })}
               </button>
             </div>
           </div>
@@ -828,27 +852,26 @@ const Trainer = () => {
               <canvas ref={aimCanvasRef} />
             </div>
             <div className="info-card">
-              <h4>Current Stats</h4>
+              <h4>{t('trainer.aim.stats.title')}</h4>
               <ul className="controls-list">
                 <li>
-                  <strong>Score:</strong> {aimStats.score.toLocaleString()}
+                  <strong>{t('trainer.aim.stats.score')}:</strong> {aimStats.score.toLocaleString()}
                 </li>
                 <li>
-                  <strong>Combo:</strong> {aimStats.combo} (Max {aimStats.maxCombo})
+                  <strong>{t('trainer.aim.stats.combo')}:</strong> {aimStats.combo} ({t('trainer.aim.stats.max')} {aimStats.maxCombo})
                 </li>
                 <li>
-                  <strong>Accuracy:</strong> {aimStats.accuracy.toFixed(2)}%
+                  <strong>{t('trainer.aim.stats.accuracy')}:</strong> {aimStats.accuracy.toFixed(2)}%
                 </li>
                 <li>
-                  <strong>Hits:</strong> 300: {aimStats.hits300} · 100: {aimStats.hits100} · 50: {aimStats.hits50}
+                  <strong>{t('trainer.aim.stats.hits')}:</strong> 300: {aimStats.hits300} · 100: {aimStats.hits100} · 50: {aimStats.hits50}
                 </li>
                 <li>
-                  <strong>Misses:</strong> {aimStats.misses}
+                  <strong>{t('trainer.aim.stats.misses')}:</strong> {aimStats.misses}
                 </li>
               </ul>
               <p className="controls-note">
-                Left stick = aim (left field), Right stick = aim (right field). Press Start to begin, Pause/Resume as
-                needed. Change difficulty to adjust spawn speed and timing windows.
+                {t('trainer.aim.note')}
               </p>
             </div>
           </div>

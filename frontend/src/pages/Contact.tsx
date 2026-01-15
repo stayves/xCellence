@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Contact.css';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,14 +31,14 @@ const Contact = () => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!templateId || !publicKey) {
-      setStatusMessage('Email service is not configured. Please try again later.');
+      setStatusMessage(t('contact.form.status.missingConfig'));
       setIsSending(false);
       return;
     }
 
     const templateParams = {
       name: formData.name,
-      message: `${formData.message}\n\nSubject: ${formData.subject || 'Not provided'}\nEmail: ${formData.email}`,
+      message: `${formData.message}\n\n${t('contact.email.subjectLabel')}: ${formData.subject || t('contact.email.notProvided')}\n${t('contact.email.emailLabel')}: ${formData.email}`,
       time: new Date().toLocaleString(),
     };
 
@@ -56,49 +58,29 @@ const Contact = () => {
         throw new Error(`EmailJS request failed with status ${response.status}`);
       }
 
-      setStatusMessage('Thank you! Your message has been sent.');
+      setStatusMessage(t('contact.form.status.success'));
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      setStatusMessage('Sorry, something went wrong. Please try again later.');
+      setStatusMessage(t('contact.form.status.error'));
       console.error('EmailJS error:', err);
     } finally {
       setIsSending(false);
     }
   };
 
-  const contactInfo = [
-    {
-      icon: '',
-      title: 'Email',
-      detail: 'info@xcellenceftc.com',
-      link: 'mailto:info@xcellenceftc.com'
-    },
-    {
-      icon: '',
-      title: 'Sponsorships',
-      detail: 'sponsor@xcellenceftc.com',
-      link: 'mailto:sponsor@xcellenceftc.com'
-    },
-    {
-      icon: '',
-      title: 'Social Media',
-      detail: '@xcellenceftc',
-      link: 'https://instagram.com/xcellenceftc'
-    },
-    {
-      icon: '',
-      title: 'Location',
-      detail: 'Nazarbayev Intellectual School of Natural Sciences and Mathematics in the Nura district of Astana, Kazakhstan',
-      link: '#'
-    }
-  ];
+  const contactInfo = t('contact.info.items', { returnObjects: true }) as {
+    icon: string;
+    title: string;
+    detail: string;
+    link: string;
+  }[];
 
   return (
     <div className="contact-page">
       <section className="contact-hero">
         <div className="contact-hero-content">
-          <h1>Get In Touch</h1>
-          <p>We'd love to hear from you</p>
+          <h1>{t('contact.hero.title')}</h1>
+          <p>{t('contact.hero.subtitle')}</p>
         </div>
       </section>
 
@@ -106,13 +88,12 @@ const Contact = () => {
         <div className="contact-container">
           <div className="contact-info-section">
             <div className="section-header">
-              <span className="section-tag">Connect With Us</span>
-              <h2 className="section-title">Contact Information</h2>
+              <span className="section-tag">{t('contact.info.tag')}</span>
+              <h2 className="section-title">{t('contact.info.title')}</h2>
             </div>
 
             <p className="contact-intro">
-              Whether you're interested in sponsorship opportunities, have questions about our team,
-              or want to collaborate on outreach events, we're here to help!
+              {t('contact.info.intro')}
             </p>
 
             <div className="contact-info-grid">
@@ -136,14 +117,14 @@ const Contact = () => {
 
           <div className="contact-form-section">
             <div className="section-header">
-              <span className="section-tag">Send a Message</span>
-              <h2 className="section-title">Contact Form</h2>
+              <span className="section-tag">{t('contact.form.tag')}</span>
+              <h2 className="section-title">{t('contact.form.title')}</h2>
             </div>
 
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Name *</label>
+                  <label htmlFor="name">{t('contact.form.fields.name.label')}</label>
                   <input
                     type="text"
                     id="name"
@@ -151,12 +132,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="Your full name"
+                    placeholder={t('contact.form.fields.name.placeholder')}
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email *</label>
+                  <label htmlFor="email">{t('contact.form.fields.email.label')}</label>
                   <input
                     type="email"
                     id="email"
@@ -164,13 +145,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="your.email@example.com"
+                    placeholder={t('contact.form.fields.email.placeholder')}
                   />
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
+                <label htmlFor="subject">{t('contact.form.fields.subject.label')}</label>
                 <select
                   id="subject"
                   name="subject"
@@ -178,17 +159,17 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Select a subject</option>
-                  <option value="sponsorship">Sponsorship Inquiry</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="question">General Question</option>
-                  <option value="outreach">Outreach Event</option>
-                  <option value="other">Other</option>
+                  <option value="">{t('contact.form.fields.subject.options.placeholder')}</option>
+                  <option value="sponsorship">{t('contact.form.fields.subject.options.sponsorship')}</option>
+                  <option value="collaboration">{t('contact.form.fields.subject.options.collaboration')}</option>
+                  <option value="question">{t('contact.form.fields.subject.options.question')}</option>
+                  <option value="outreach">{t('contact.form.fields.subject.options.outreach')}</option>
+                  <option value="other">{t('contact.form.fields.subject.options.other')}</option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">{t('contact.form.fields.message.label')}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -196,12 +177,12 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder={t('contact.form.fields.message.placeholder')}
                 />
               </div>
 
               <button type="submit" className="submit-btn">
-              {isSending ? 'Sending...' : 'Send Message'}
+              {isSending ? t('contact.form.submit.sending') : t('contact.form.submit.idle')}
               </button>
 
             {statusMessage && <p className="form-status">{statusMessage}</p>}
