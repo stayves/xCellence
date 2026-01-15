@@ -368,6 +368,11 @@
         "controller": "Контроллер"
       }
     },
+    "sensitivity": {
+      "title": "Сезімталдық",
+      "label": "Жетек сезімталдығы",
+      "value": "{{value}}%"
+    },
     "controls": {
       "title": "Басқару",
       "leftStick": {
@@ -1395,9 +1400,9 @@
       "title": "Байланыс ақпараты",
       "intro": "Демеушілік, сұрақтар немесе аутрич бойынша ынтымақтастық — біз көмектесеміз!",
       "items": [
-        { "icon": "", "title": "Email", "detail": "info@xcellenceftc.com", "link": "mailto:info@xcellenceftc.com" },
-        { "icon": "", "title": "Демеушілік", "detail": "sponsor@xcellenceftc.com", "link": "mailto:sponsor@xcellenceftc.com" },
-        { "icon": "", "title": "Әлеуметтік желі", "detail": "@xcellenceftc", "link": "https://instagram.com/xcellenceftc" },
+        { "icon": "", "title": "Email", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Демеушілік", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Әлеуметтік желі", "detail": "@xcellence_ftc", "link": "https://instagram.com/xcellence_ftc" },
         {
           "icon": "",
           "title": "Орналасуы",

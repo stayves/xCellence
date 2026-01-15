@@ -368,6 +368,11 @@
         "controller": "Controller"
       }
     },
+    "sensitivity": {
+      "title": "Sensitivity",
+      "label": "Drive sensitivity",
+      "value": "{{value}}%"
+    },
     "controls": {
       "title": "Controls",
       "leftStick": {
@@ -1497,9 +1502,9 @@
       "title": "Contact Information",
       "intro": "Whether you're interested in sponsorship opportunities, have questions about our team, or want to collaborate on outreach events, we're here to help!",
       "items": [
-        { "icon": "", "title": "Email", "detail": "info@xcellenceftc.com", "link": "mailto:info@xcellenceftc.com" },
-        { "icon": "", "title": "Sponsorships", "detail": "sponsor@xcellenceftc.com", "link": "mailto:sponsor@xcellenceftc.com" },
-        { "icon": "", "title": "Social Media", "detail": "@xcellenceftc", "link": "https://instagram.com/xcellenceftc" },
+        { "icon": "", "title": "Email", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Sponsorships", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Social Media", "detail": "@xcellence_ftc", "link": "https://instagram.com/xcellence_ftc" },
         {
           "icon": "",
           "title": "Location",

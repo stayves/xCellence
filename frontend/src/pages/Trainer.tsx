@@ -24,6 +24,7 @@ const Trainer = () => {
   const aimCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const [mode, setMode] = useState<'robot' | 'field'>('robot');
+  const [driveSensitivity, setDriveSensitivity] = useState(1);
   const [controllerId, setControllerId] = useState<string | null>(null);
   const [trainerActive, setTrainerActive] = useState(false);
   const [showFinish, setShowFinish] = useState(false);
@@ -51,6 +52,7 @@ const Trainer = () => {
   const trainerActiveRef = useRef(false);
   const triangleLatchRef = useRef(false);
   const xLatchRef = useRef(false);
+  const driveSensitivityRef = useRef(1);
 
   // Aim trainer state/refs
   const aimRunningRef = useRef(false);
@@ -83,6 +85,10 @@ const Trainer = () => {
   );
 
   const controllerLabel = controllerId ?? t('trainer.controller.notDetected');
+
+  useEffect(() => {
+    driveSensitivityRef.current = driveSensitivity;
+  }, [driveSensitivity]);
 
   useEffect(() => {
     setAimDifficulty(aimDifficulties[aimDifficultyRef.current].name);
@@ -235,9 +241,10 @@ const Trainer = () => {
 
     const mecanum = (tvx: number, tvy: number, tom: number, dt: number) => {
       const robot = robotRef.current;
-      const tVX = tvx * robot.maxSpeed;
-      const tVY = tvy * robot.maxSpeed;
-      const tOM = tom * robot.maxAngularSpeed;
+      const speedScale = driveSensitivityRef.current;
+      const tVX = tvx * robot.maxSpeed * speedScale;
+      const tVY = tvy * robot.maxSpeed * speedScale;
+      const tOM = tom * robot.maxAngularSpeed * speedScale;
 
       const maxA = ACC * dt;
       const maxAR = ANG_ACC * dt;
@@ -795,6 +802,28 @@ const Trainer = () => {
                     <span className="label">{t('trainer.status.labels.controller')}</span>
                     <span className="value">{controllerLabel}</span>
                   </div>
+                </div>
+              </div>
+
+              <div className="info-card">
+                <h4>{t('trainer.sensitivity.title')}</h4>
+                <div className="sensitivity-control">
+                  <label htmlFor="drive-sensitivity" className="sensitivity-label">
+                    {t('trainer.sensitivity.label')}
+                    <span className="sensitivity-value">
+                      {t('trainer.sensitivity.value', { value: Math.round(driveSensitivity * 100) })}
+                    </span>
+                  </label>
+                  <input
+                    id="drive-sensitivity"
+                    type="range"
+                    min={0.6}
+                    max={1.4}
+                    step={0.05}
+                    value={driveSensitivity}
+                    onChange={(event) => setDriveSensitivity(Number(event.target.value))}
+                    className="sensitivity-input"
+                  />
                 </div>
               </div>
 

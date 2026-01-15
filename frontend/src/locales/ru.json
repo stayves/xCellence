@@ -131,27 +131,27 @@
       "subtitle": "Сильнейшие умы xCellence"
     },
     "mentors": {
-      "tag": "Наставничество",
-      "title": "Наставники и консультанты",
-      "intro": "Команду поддерживают опытные наставники, исследователи и профессора с экспертизой в инженерии, ИИ, автоматизации и стратегических задачах.",
+      "tag": "Менторы",
+      "title": "Наши менторы",
+      "intro": "Команду поддерживают опытные менторы, исследователи и профессора с экспертизой в инженерии, ИИ, автоматизации и стратегических задачах.",
       "people": [
         {
           "name": "Vladimir Ussoltsev",
           "role": "Основной наставник",
           "image": "/xCellence/vladimir.jpg",
-          "bio": "Основной наставник с большим практическим опытом в инженерии и робототехнике."
+          "bio": "Главный ментор с большим практическим опытом в инженерии и робототехнике."
         },
         {
           "name": "Madi Mukash",
           "role": "Основной наставник",
           "image": "/xCellence/madi.jpg",
-          "bio": "Основной наставник с большим практическим опытом в инженерии и робототехнике."
+          "bio": "Главный ментор с большим практическим опытом в инженерии и робототехнике."
         },
         {
           "name": "Ansar Saurbayev",
           "role": "Вторичный наставник",
           "image": "/xCellence/Ansar.JPG",
-          "bio": "Вторичный наставник с большим практическим опытом в инженерии и робототехнике."
+          "bio": "Ментор с большим практическим опытом в инженерии и робототехнике."
         }
       ]
     },
@@ -163,12 +163,12 @@
         { "name": "Zhanarys Kaparov", "role": "Капитан и драйвер", "image": "/xCellence/zhanarys.jpg", "bio": "Капитан и драйвер команды." },
         { "name": "Zhanibek Danabek", "role": "CAD специалист", "image": "/xCellence/zhanibek.jpg", "bio": "CAD специалист и дизайнер команды." },
         { "name": "Arnur Togambayev", "role": "Программист", "image": "/xCellence/arnur1.jpg", "bio": "Программист команды." },
-        { "name": "Asylzhan Sailau", "role": "Лидер Inspire", "image": "/xCellence/asylzhan1.jpg", "bio": "Лидер направления Inspire." },
+        { "name": "Asylzhan Sailau", "role": "Главный Inspire", "image": "/xCellence/asylzhan1.jpg", "bio": "Главный Inspire." },
         { "name": "Aizere Askarova", "role": "Inspire", "image": "/xCellence/aizere1.jpg", "bio": "Участник направления Inspire." },
-        { "name": "Semyon Chistyakov", "role": "Inspire/Программист", "image": "/xCellence/semyon.jpg", "bio": "Участник Inspire и программист." },
-        { "name": "Togzhan Kabdolda", "role": "Inspire", "image": "/xCellence/togzhan.jpg", "bio": "Участник направления Inspire." },
-        { "name": "Alzere Chindaliyeva", "role": "Inspire", "image": "/xCellence/alzere1.jpg", "bio": "Участник направления Inspire." },
-        { "name": "Zhanaiym Tashkenbay", "role": "Inspire", "image": "/xCellence/zhanaiym.jpg", "bio": "Участник направления Inspire." },
+        { "name": "Semyon Chistyakov", "role": "Inspire/Программист", "image": "/xCellence/semyon.jpg", "bio": " Inspire и программист." },
+        { "name": "Togzhan Kabdolda", "role": "Inspire", "image": "/xCellence/togzhan.jpg", "bio": " Inspire." },
+        { "name": "Alzere Chindaliyeva", "role": "Inspire", "image": "/xCellence/alzere1.jpg", "bio": "Inspire." },
+        { "name": "Zhanaiym Tashkenbay", "role": "Inspire", "image": "/xCellence/zhanaiym.jpg", "bio": "Inspire." },
         { "name": "Dastan Musrepov", "role": "Ведущий CAD специалист", "image": "/xCellence/dastan1.jpg", "bio": "Ведущий CAD специалист команды." },
         { "name": "Sayan Orynbek", "role": "Инженер/сборщик", "image": "/xCellence/sayan.jpg", "bio": "Инженер и сборщик команды." },
         { "name": "Najmudin Adikhanov", "role": "Ведущий инженер/сборщик", "image": "/xCellence/naj.jpg", "bio": "Ведущий инженер и сборщик команды." },
@@ -367,6 +367,11 @@
         "checkpoint": "Чекпоинт",
         "controller": "Контроллер"
       }
+    },
+    "sensitivity": {
+      "title": "Чувствительность",
+      "label": "Чувствительность джойстика",
+      "value": "{{value}}%"
     },
     "controls": {
       "title": "Управление",
@@ -964,7 +969,7 @@
   "resources": {
     "hero": {
       "tag": "Инструменты",
-      "title": "Ресурсы для команд и наставников",
+      "title": "Ресурсы для команд и менторов",
       "description": "Собранная библиотека гайдов, CAD-шаблонов и аутрич-плейбуков, которые поддерживают рабочий процесс xCellence на протяжении сезона FIRST Tech Challenge."
     },
     "types": {
@@ -1497,9 +1502,9 @@
       "title": "Контактная информация",
       "intro": "Если вы интересуетесь спонсорством, хотите задать вопросы или сотрудничать в аутрич-проектах — мы на связи!",
       "items": [
-        { "icon": "", "title": "Email", "detail": "info@xcellenceftc.com", "link": "mailto:info@xcellenceftc.com" },
-        { "icon": "", "title": "Спонсорство", "detail": "sponsor@xcellenceftc.com", "link": "mailto:sponsor@xcellenceftc.com" },
-        { "icon": "", "title": "Соцсети", "detail": "@xcellenceftc", "link": "https://instagram.com/xcellenceftc" },
+        { "icon": "", "title": "Email", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Спонсорство", "detail": "ftcxcellence@gmail.com", "link": "mailto:ftcxcellence@gmail.com" },
+        { "icon": "", "title": "Соцсети", "detail": "@xcellence_ftc", "link": "https://instagram.com/xcellence_ftc" },
         {
           "icon": "",
           "title": "Локация",
