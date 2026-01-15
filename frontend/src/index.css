@@ -111,10 +111,16 @@ body {
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
+    background: linear-gradient(180deg, rgba(245, 246, 251, 0.88) 0%, rgba(242, 243, 249, 0.84) 45%, rgba(235, 237, 244, 0.88) 100%),
+      url('/xCellence/background1-mobile.png');
   }
 
   :root[data-theme='dark'] body {
     background-attachment: scroll;
+    background: linear-gradient(180deg, rgba(6, 6, 7, 0.72) 0%, rgba(8, 8, 12, 0.66) 45%, rgba(6, 6, 7, 0.74) 100%),
+      url('/xCellence/background1-mobile.png');
+    background-size: cover;
+    background-position: center;
   }
 }
 

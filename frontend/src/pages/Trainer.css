@@ -46,6 +46,18 @@
   margin-bottom: 0.5rem;
 }
 
+.trainer-actions .cta-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.trainer-actions .cta-secondary:hover {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: #ffffff;
+}
+
 .trainer-controller {
   display: inline-flex;
   align-items: center;
@@ -104,6 +116,8 @@
   gap: 1rem;
   border-bottom: 1px solid var(--surface-card-border);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .sim-header h2 {
@@ -145,6 +159,8 @@
   grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
   padding: 1.6rem;
+  position: relative;
+  z-index: 1;
 }
 
 .aim-section {
@@ -175,6 +191,7 @@
   border-radius: 16px;
   overflow: hidden;
   background: #05070e;
+  min-height: 420px;
 }
 
 .canvas-wrap canvas {
@@ -201,6 +218,7 @@
 .controller-warning span {
   color: #ffffff;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .finish-popup {
@@ -313,6 +331,12 @@
 }
 
 @media (max-width: 768px) {
+  .trainer-hero {
+    height: auto;
+    min-height: auto;
+    padding: 3.5rem 1.2rem 3rem;
+  }
+
   .trainer-sim {
     padding: 2.75rem 1.1rem 3.5rem;
   }
@@ -320,18 +344,39 @@
   .trainer-actions {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .sim-header {
     padding: 1.35rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .sim-body {
     padding: 1.35rem;
+    gap: 2rem;
   }
 
   .aim-body {
     padding: 1.35rem;
+  }
+
+  .controller-warning {
+    padding: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .controller-warning p {
+    font-size: 1rem;
+  }
+
+  .controller-warning span {
+    font-size: 0.9rem;
+  }
+
+  .canvas-wrap {
+    min-height: 320px;
   }
 }
 
