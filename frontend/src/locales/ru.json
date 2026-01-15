@@ -51,13 +51,13 @@
     "followTitle": "Мы в соцсетях",
     "credit": "Хотите собственный сайт? Свяжитесь: Arnur",
     "copyright": "© {{year}} xCellence FTC Team. Все права защищены.",
-    "firstTrademark": "FIRST® и FIRST Tech Challenge® — зарегистрированные торговые марки",
+    "firstTrademark": "FIRST® и FIRST Tech Challenge® - зарегистрированные торговые марки",
     "firstOrganization": "For Inspiration and Recognition of Science and Technology (FIRST)"
   },
   "home": {
     "hero": {
       "subtitle": "Робототехническая команда",
-      "description": "Инженерим будущее — по одной инновации за раз",
+      "description": "Инженерим будущее = по одной инновации за раз",
       "stats": {
         "offline": "Людей вовлечено офлайн",
         "online": "Людей вовлечено онлайн",
