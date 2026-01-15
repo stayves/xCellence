@@ -751,7 +751,7 @@
 :root[data-theme="light"] .mission,
 :root[data-theme="light"] .news,
 :root[data-theme="light"] .sponsors {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-position: center;
@@ -760,7 +760,7 @@
 }
 
 :root[data-theme="light"] .home {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(242, 243, 249, 0.86) 45%, rgba(235, 237, 244, 0.9) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(242, 243, 249, 0.56) 45%, rgba(235, 237, 244, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
@@ -771,7 +771,7 @@
 :root[data-theme="light"] .mission,
 :root[data-theme="light"] .news,
 :root[data-theme="light"] .sponsors {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-position: center;

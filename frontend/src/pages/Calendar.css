@@ -6,7 +6,11 @@
 
 .calendar-hero {
   padding: 3.25rem 1.6rem 2.75rem;
-  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

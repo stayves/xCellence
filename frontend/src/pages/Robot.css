@@ -13,7 +13,11 @@
 .robot-hero {
   height: var(--hero-height);
   min-height: var(--hero-min-height);
-  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +73,7 @@
 }
 
 :root[data-theme='light'] .robot-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
@@ -214,7 +218,7 @@
 }
 
 :root[data-theme='light'] .features-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
@@ -297,7 +301,7 @@
 }
 
 :root[data-theme='light'] .gallery-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;

@@ -67,7 +67,7 @@
 }
 
 :root[data-theme='light'] .hall-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
@@ -338,7 +338,7 @@
 
 
 :root[data-theme="light"] .hall-hero {
-  background: linear-gradient(135deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.85) 55%, rgba(255, 107, 53, 0.18) 100%),
+  background: linear-gradient(135deg, rgba(245, 246, 251, 0.5) 0%, rgba(240, 242, 249, 0.5) 55%, rgba(255, 107, 53, 0.12) 100%),
     var(--app-bg-image);
   background-size: cover;
   background-position: center;
