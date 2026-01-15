@@ -6,6 +6,7 @@
 
 :root {
   color-scheme: light;
+  --app-bg-image: url('/xCellence/Background2.png');
   --primary-black: #f5f6fb;
   --secondary-black: #ffffff;
   --hero-height: 32vh;
@@ -49,6 +50,7 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
+  --app-bg-image: url('/xCellence/Background.jpg');
   --primary-black: rgba(6, 6, 7, 0.78);
   --secondary-black: rgba(17, 17, 22, 0.72);
   --hero-height: 32vh;
@@ -87,7 +89,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(242, 243, 249, 0.86) 40%, rgba(235, 237, 244, 0.9) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -98,7 +100,7 @@ body {
 
 :root[data-theme='dark'] body {
   background: linear-gradient(180deg, rgba(6, 6, 7, 0.7) 0%, rgba(8, 8, 12, 0.64) 45%, rgba(6, 6, 7, 0.72) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -106,19 +108,27 @@ body {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --app-bg-image: url('/xCellence/Background1-mobile.png');
+  }
+
+  :root[data-theme='dark'] {
+    --app-bg-image: url('/xCellence/Background1-mobile.png');
+  }
+
   body {
     /* Mobile browsers often ignore fixed backgrounds; use scroll so the image stays visible */
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
     background: linear-gradient(180deg, rgba(245, 246, 251, 0.88) 0%, rgba(242, 243, 249, 0.84) 45%, rgba(235, 237, 244, 0.88) 100%),
-      url('/xCellence/background1-mobile.png');
+      var(--app-bg-image);
   }
 
   :root[data-theme='dark'] body {
     background-attachment: scroll;
     background: linear-gradient(180deg, rgba(6, 6, 7, 0.72) 0%, rgba(8, 8, 12, 0.66) 45%, rgba(6, 6, 7, 0.74) 100%),
-      url('/xCellence/background1-mobile.png');
+      var(--app-bg-image);
     background-size: cover;
     background-position: center;
   }

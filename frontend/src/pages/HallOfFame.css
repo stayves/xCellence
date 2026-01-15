@@ -9,7 +9,7 @@
   min-height: var(--hero-min-height);
   height: var(--hero-height);
   background: linear-gradient(135deg, rgba(6, 6, 7, 0.82) 0%, rgba(10, 10, 14, 0.76) 55%, rgba(255, 107, 53, 0.22) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,7 @@
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
   background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -68,7 +68,7 @@
 
 :root[data-theme='light'] .hall-container {
   background: linear-gradient(180deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.9) 55%, rgba(232, 235, 245, 0.92) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -339,7 +339,7 @@
 
 :root[data-theme="light"] .hall-hero {
   background: linear-gradient(135deg, rgba(245, 246, 251, 0.9) 0%, rgba(240, 242, 249, 0.85) 55%, rgba(255, 107, 53, 0.18) 100%),
-    url('/xCellence/Background2.png');
+    var(--app-bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
