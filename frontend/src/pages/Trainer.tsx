@@ -553,9 +553,6 @@ const Trainer = () => {
       const rx = gamepad.axes[2] ?? 0;
       const ry = gamepad.axes[3] ?? 0;
 
-      drawJoystickPos(leftCenter, lx, ly, '#66aaff');
-      drawJoystickPos(rightCenter, rx, ry, '#ff66aa');
-
       if (aimRunningRef.current && !aimPausedRef.current) {
           const difficulty = aimDifficulties[aimDifficultyRef.current];
         if (now >= aimNextSpawnRef.current) {
@@ -654,6 +651,10 @@ const Trainer = () => {
           ctx.fillText(c.hitScore, c.x, c.y - 70);
         }
       });
+
+      // Draw joystick positions last so they stay visible
+      drawJoystickPos(leftCenter, lx, ly, '#66aaff');
+      drawJoystickPos(rightCenter, rx, ry, '#ff66aa');
 
       // HUD
       ctx.fillStyle = '#ffffff';
