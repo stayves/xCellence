@@ -134,6 +134,20 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .calendar-page,
+  .events-page,
+  .resources-page,
+  .hall-page,
+  .blog-page,
+  .contact-page,
+  .team-page,
+  .robot-page,
+  .trainer-page {
+    background: transparent;
+  }
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
