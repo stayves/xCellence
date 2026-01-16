@@ -109,7 +109,7 @@ body {
 
 @media (max-width: 768px) {
   :root {
-    --app-bg-image: url('/xCellence/Background1-mobile.png');
+    --app-bg-image: url('/xCellence/Background2-mobile.png');
   }
 
   :root[data-theme='dark'] {

@@ -962,6 +962,10 @@
       "cityTba": "Қала нақтыланады",
       "datesLabel": "Күндері: {{dates}}",
       "deadlineLabel": "Тіркелу дедлайны: {{date}}",
+      "registrationStatus": {
+        "open": "Тіркелу ашық",
+        "closed": "Тіркелу жабық"
+      },
       "venueLabel": "Өтетін орны",
       "empty": "Бұл категория бойынша оқиға табылмады."
     }

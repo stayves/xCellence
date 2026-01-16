@@ -962,6 +962,10 @@
       "cityTba": "City TBA",
       "datesLabel": "Dates: {{dates}}",
       "deadlineLabel": "Reg. deadline: {{date}}",
+      "registrationStatus": {
+        "open": "Registration is open",
+        "closed": "Registration is closed"
+      },
       "venueLabel": "Venue",
       "empty": "No events match your search in this category."
     }

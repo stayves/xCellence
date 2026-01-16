@@ -41,14 +41,27 @@
 
 .hall-section {
   padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hall-section.metrics {
-  background: linear-gradient(180deg, var(--secondary-black) 0%, var(--primary-black) 100%);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hall-section.gallery {
-  background: var(--secondary-black);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hall-container {
@@ -304,6 +317,7 @@
   .hall-hero {
     padding: 5rem 1.5rem 3.5rem;
     background-position: center;
+    background-attachment: scroll;
   }
 
   .hall-section {
@@ -314,6 +328,10 @@
     padding: 1.5rem;
     background: rgba(6, 6, 7, 0.72);
     border-radius: 16px;
+  }
+
+  .hall-container {
+    background-attachment: scroll;
   }
 }
 
@@ -349,4 +367,14 @@
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 38px rgba(17, 20, 32, 0.12);
+}
+
+:root[data-theme="light"] .hall-section,
+:root[data-theme="light"] .hall-section.metrics,
+:root[data-theme="light"] .hall-section.gallery {
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

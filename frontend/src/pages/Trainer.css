@@ -343,6 +343,7 @@
     height: auto;
     min-height: auto;
     padding: 3.5rem 1.2rem 3rem;
+    background-attachment: scroll;
   }
 
   .trainer-sim {
@@ -364,6 +365,10 @@
   .sim-body {
     padding: 1.35rem;
     gap: 2rem;
+  }
+
+  .trainer-container {
+    background-attachment: scroll;
   }
 
   .aim-body {

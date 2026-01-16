@@ -287,6 +287,15 @@
 @media (max-width: 768px) {
   .events-content {
     padding: 2.75rem 0.9rem;
+    background-attachment: scroll;
+  }
+
+  .events-container {
+    background-attachment: scroll;
+  }
+
+  .events-hero {
+    background-attachment: scroll;
   }
 
   .events-grid {

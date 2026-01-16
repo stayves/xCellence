@@ -191,6 +191,21 @@ const Calendar = () => {
           <div className="calendar-card-grid">
             {visibleEvents.map((event) => (
               <article key={event.id} className="calendar-card">
+                {/*
+                  Use status as a "registration closed" signal; otherwise show open.
+                */}
+                {(() => {
+                  const isRegistrationClosed = Boolean(event.status)
+                  return (
+                    <div className={`status-pill ${isRegistrationClosed ? 'closed' : 'open'}`}>
+                      {t(
+                        isRegistrationClosed
+                          ? 'calendar.results.registrationStatus.closed'
+                          : 'calendar.results.registrationStatus.open',
+                      )}
+                    </div>
+                  )
+                })()}
                 <div className="calendar-card-head">
                   <span className="calendar-city">{event.city || t('calendar.results.cityTba')}</span>
                   <span className={`track-badge ${event.track === 'FIRST' ? 'first' : 'wro'}`}>
@@ -217,7 +232,6 @@ const Calendar = () => {
                     ))}
                   </div>
                 )}
-                {event.status && <div className="status-pill">{event.status}</div>}
               </article>
             ))}
             {visibleEvents.length === 0 && (

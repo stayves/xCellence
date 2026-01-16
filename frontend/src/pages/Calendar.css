@@ -381,11 +381,32 @@
   display: inline-block;
   padding: 0.3rem 0.7rem;
   border-radius: 10px;
-  background: rgba(33, 150, 83, 0.18);
-  border: 1px solid rgba(33, 150, 83, 0.35);
-  color: #9be7c4;
   font-weight: 700;
   font-size: 0.85rem;
+}
+
+.status-pill.open {
+  background: rgba(22, 163, 74, 0.18);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  color: #9be7c4;
+}
+
+.status-pill.closed {
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #fecaca;
+}
+
+:root[data-theme='light'] .status-pill.open {
+  background: rgba(22, 163, 74, 0.18);
+  border: 1px solid rgba(22, 163, 74, 0.4);
+  color: #166534;
+}
+
+:root[data-theme='light'] .status-pill.closed {
+  background: rgba(220, 38, 38, 0.18);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #991b1b;
 }
 
 .empty-state {
@@ -512,5 +533,14 @@
   .category-card .tab-label {
     font-size: 0.78rem;
     letter-spacing: 0.4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .track-switch,
+  .calendar-categories,
+  .calendar-results,
+  .calendar-hero {
+    background-attachment: scroll;
   }
 }

@@ -208,6 +208,22 @@
 
   .resources-section {
     padding: 3.5rem 1.3rem 4.25rem;
+    background: var(--app-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  .resources-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    background-attachment: scroll;
+  }
+
+  .resource-block {
+    background: transparent;
   }
 
   .resource-item {
