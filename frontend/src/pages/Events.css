@@ -42,6 +42,11 @@
 
 .events-content {
   padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .events-container {
@@ -68,6 +73,14 @@
   background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
+}
+
+:root[data-theme='light'] .events-content {
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
+    var(--app-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .events-grid {
