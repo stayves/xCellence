@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { withBase } from '../utils/asset.ts';
 import './Events.css';
 
 type EventCard = {
@@ -13,8 +14,14 @@ type EventCard = {
 
 const Events = () => {
   const { t } = useTranslation();
-  const upcomingEvents = t('events.upcoming.items', { returnObjects: true }) as EventCard[];
-  const pastEvents = t('events.past.items', { returnObjects: true }) as EventCard[];
+  const upcomingEvents = (t('events.upcoming.items', { returnObjects: true }) as EventCard[]).map((event) => ({
+    ...event,
+    image: event.image ? withBase(event.image) : undefined,
+  }));
+  const pastEvents = (t('events.past.items', { returnObjects: true }) as EventCard[]).map((event) => ({
+    ...event,
+    image: event.image ? withBase(event.image) : undefined,
+  }));
 
   return (
     <div className="events-page">

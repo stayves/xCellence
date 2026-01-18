@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { withBase } from '../utils/asset.ts';
 import './Footer.css';
 
 const Footer = () => {
@@ -89,7 +90,7 @@ const Footer = () => {
         </div>
         <div className='whoMadeThis'>
            <a href='https://www.instagram.com/arnur_togambayev/' target='_blank' rel='noopener noreferrer'>
-               <img src='/xCellence/instagram.svg' alt='arnur' className='instagram' />
+               <img src={withBase('instagram.svg')} alt='arnur' className='instagram' />
            
            <h4>{t('footer.credit')}</h4>
            </a>

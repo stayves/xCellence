@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
+import { withBase } from '../utils/asset.ts'
 import './Calendar.css'
 
 type CategoryId = 'kickoff' | 'regionals' | 'qualifiers' | 'bigEvents' | 'offSeason'
@@ -56,8 +57,16 @@ const parseEventDate = (rawDate: string | undefined): number | null => {
   return null
 }
 
-const getTrackConfig = (t: TFunction) => t('calendar.tracks', { returnObjects: true }) as TrackConfig[]
-const getCategoryConfig = (t: TFunction) => t('calendar.categories', { returnObjects: true }) as CategoryConfig[]
+const getTrackConfig = (t: TFunction) =>
+  (t('calendar.tracks', { returnObjects: true }) as TrackConfig[]).map((track) => ({
+    ...track,
+    logoSrc: track.logoSrc ? withBase(track.logoSrc) : undefined,
+  }))
+const getCategoryConfig = (t: TFunction) =>
+  (t('calendar.categories', { returnObjects: true }) as CategoryConfig[]).map((category) => ({
+    ...category,
+    logoSrc: category.logoSrc ? withBase(category.logoSrc) : undefined,
+  }))
 const getCategoryEvents = (t: TFunction) =>
   t('calendar.categoryEvents', { returnObjects: true }) as Record<CategoryId, EventEntry[]>
 const getTournaments = (t: TFunction) => t('calendar.tournaments', { returnObjects: true }) as Tournament[]

@@ -1,13 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { withBase } from '../utils/asset.ts';
 import './Home.css';
-
-const withBase = (path: string) => {
-  const base = import.meta.env.BASE_URL?.replace(/\/+$/, '') ?? '';
-  const cleanPath = path.replace(/^\/+/, '');
-  return `${base}/${cleanPath}`;
-};
 
 const Home = () => {
   const { t } = useTranslation();
@@ -33,21 +28,21 @@ const Home = () => {
   }, [teamSlides.length]);
 
   // Real team news and achievements
-  const newsItems = t('home.news.items', { returnObjects: true }) as {
+  const newsItems = (t('home.news.items', { returnObjects: true }) as {
     id: number;
     title: string;
     date: string;
     image: string;
     description: string;
     category: string;
-  }[];
+  }[]).map((item) => ({ ...item, image: withBase(item.image) }));
 
   // Sample sponsors data
-  const sponsors = t('home.sponsors.items', { returnObjects: true }) as {
+  const sponsors = (t('home.sponsors.items', { returnObjects: true }) as {
     name: string;
     logo: string;
     tier: string;
-  }[];
+  }[]).map((item) => ({ ...item, logo: withBase(item.logo) }));
 
   const navigate = useNavigate();
 

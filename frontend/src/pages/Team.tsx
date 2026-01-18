@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { withBase } from '../utils/asset.ts';
 import './Team.css';
 
 type Member = {
@@ -10,8 +11,14 @@ type Member = {
 
 const Team = () => {
   const { t } = useTranslation();
-  const mentors = t('team.mentors.people', { returnObjects: true }) as Member[];
-  const currentMembers = t('team.members.people', { returnObjects: true }) as Member[];
+  const mentors = (t('team.mentors.people', { returnObjects: true }) as Member[]).map((mentor) => ({
+    ...mentor,
+    image: withBase(mentor.image),
+  }));
+  const currentMembers = (t('team.members.people', { returnObjects: true }) as Member[]).map((member) => ({
+    ...member,
+    image: withBase(member.image),
+  }));
   const xlncFamilyTeams = t('team.support.families.xlnc.teams', { returnObjects: true }) as string[];
   const startedTeams = t('team.support.families.started.teams', { returnObjects: true }) as string[];
   const assistedTeams = t('team.support.families.assisted.teams', { returnObjects: true }) as string[];

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { withBase } from '../utils/asset.ts';
 import './Header.css';
 
 type HeaderProps = {
@@ -60,7 +61,7 @@ const Header = ({ theme, onToggleTheme }: HeaderProps) => {
       <div className="header-container">
         <Link to="/" className="logo-link">
           <div className="logo">
-            <img src="/xCellence/xCellence.png" alt={t('header.logoAlt')} className="logo-image" />
+            <img src={withBase('xCellence.png')} alt={t('header.logoAlt')} className="logo-image" />
             <span className="logo-text">xCellence</span>
           </div>
         </Link>

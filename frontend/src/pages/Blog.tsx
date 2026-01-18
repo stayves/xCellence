@@ -1,12 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getBlogPosts, type BlogPost } from '../data/blog.ts';
+import { withBase } from '../utils/asset.ts';
 import './Blog.css';
 
 const Blog = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const blogPosts = getBlogPosts(t);
+  const blogPosts = getBlogPosts(t).map((post) => ({
+    ...post,
+    coverImage: withBase(post.coverImage),
+  }));
   const handleActivate = (slug?: string) => {
     if (!slug) return;
     navigate(`/blog/${slug}`);

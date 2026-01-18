@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getBlogArticlesBySlug } from '../data/blog.ts';
+import { withBase } from '../utils/asset.ts';
 import './BlogArticle.css';
 
 const BlogArticle = () => {
@@ -29,8 +30,22 @@ const BlogArticle = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  const resolvedArticle = {
+    ...article,
+    heroImage: withBase(article.heroImage),
+    sections: article.sections.map((section) => ({
+      ...section,
+      images: section.images
+        ? section.images.map((image) => ({
+            ...image,
+            src: withBase(image.src),
+          }))
+        : undefined,
+    })),
+  };
+
   const encodedUrl = encodeURIComponent(shareUrl);
-  const encodedTitle = encodeURIComponent(article.title);
+  const encodedTitle = encodeURIComponent(resolvedArticle.title);
 
   const shareLinks = [
     {
@@ -68,10 +83,10 @@ const BlogArticle = () => {
           <div className="article-breadcrumbs">
             <Link to="/blog">{t('blogArticle.breadcrumb')}</Link>
             <span>/</span>
-            <span>{article.kicker}</span>
+            <span>{resolvedArticle.kicker}</span>
           </div>
           <div className="article-topbar-meta">
-            <span>{article.readTime}</span>
+            <span>{resolvedArticle.readTime}</span>
           </div>
         </div>
       </div>
@@ -80,24 +95,24 @@ const BlogArticle = () => {
         <main className="article-main">
           <article className="article-card">
             <header className="article-header">
-              <span className="article-kicker">{article.kicker}</span>
-              <h1>{article.title}</h1>
-              <p className="article-description">{article.intro}</p>
+              <span className="article-kicker">{resolvedArticle.kicker}</span>
+              <h1>{resolvedArticle.title}</h1>
+              <p className="article-description">{resolvedArticle.intro}</p>
               <div className="article-meta">
-                <span>{article.date}</span>
+                <span>{resolvedArticle.date}</span>
                 <span className="article-dot">•</span>
-                <span>{article.readTime}</span>
+                <span>{resolvedArticle.readTime}</span>
                 <span className="article-dot">•</span>
-                <span className="article-author">{article.author}</span>
+                <span className="article-author">{resolvedArticle.author}</span>
               </div>
             </header>
 
             <figure className="article-cover">
-              <img src={article.heroImage} alt={article.heroAlt} />
+              <img src={resolvedArticle.heroImage} alt={resolvedArticle.heroAlt} />
               <figcaption>{t('blogArticle.photoCredit')}</figcaption>
             </figure>
 
-            {article.sections.map((section) => (
+            {resolvedArticle.sections.map((section) => (
               <section key={section.title} className="article-section">
                 <h2>{section.title}</h2>
                 {section.paragraphs.map((paragraph, index) => (
@@ -110,24 +125,24 @@ const BlogArticle = () => {
                     ))}
                   </ul>
                 )}
-              {section.images && (
-                <div className="article-media-grid">
-                  {section.images.map((image, mediaIndex) => (
-                    <figure
-                      key={`${section.title}-image-${mediaIndex}-${image.src}`}
-                      className="article-inline-image"
-                    >
-                      <img src={image.src} alt={image.alt} loading="lazy" />
-                      <figcaption>{image.caption ?? image.alt}</figcaption>
-                    </figure>
-                  ))}
-                </div>
-              )}
+                {section.images && (
+                  <div className="article-media-grid">
+                    {section.images.map((image, mediaIndex) => (
+                      <figure
+                        key={`${section.title}-image-${mediaIndex}-${image.src}`}
+                        className="article-inline-image"
+                      >
+                        <img src={image.src} alt={image.alt} loading="lazy" />
+                        <figcaption>{image.caption ?? image.alt}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
                 <div className="article-divider" />
               </section>
             ))}
 
-            <p className="article-closing">{article.closing}</p>
+            <p className="article-closing">{resolvedArticle.closing}</p>
 
             <div className="article-footer-links">
               <Link to="/blog" className="article-back">
@@ -160,7 +175,7 @@ const BlogArticle = () => {
 
           <div className="article-card aside-card author-card">
             <p className="aside-label">{t('blogArticle.author.label')}</p>
-            <h3>{article.author}</h3>
+            <h3>{resolvedArticle.author}</h3>
             <p className="author-note">
               {t('blogArticle.author.note')}
             </p>

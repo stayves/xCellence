@@ -6,7 +6,11 @@
 
 :root {
   color-scheme: light;
-  --app-bg-image: url('/xCellence/Background2.png');
+  --app-bg-image-light: none;
+  --app-bg-image-dark: none;
+  --app-bg-image-light-mobile: none;
+  --app-bg-image-dark-mobile: none;
+  --app-bg-image: var(--app-bg-image-light);
   --primary-black: #f5f6fb;
   --secondary-black: #ffffff;
   --hero-height: 32vh;
@@ -50,7 +54,7 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --app-bg-image: url('/xCellence/Background.jpg');
+  --app-bg-image: var(--app-bg-image-dark);
   --primary-black: rgba(6, 6, 7, 0.78);
   --secondary-black: rgba(17, 17, 22, 0.72);
   --hero-height: 32vh;
@@ -109,11 +113,11 @@ body {
 
 @media (max-width: 768px) {
   :root {
-    --app-bg-image: url('/xCellence/Background2-mobile.png');
+    --app-bg-image: var(--app-bg-image-light-mobile);
   }
 
   :root[data-theme='dark'] {
-    --app-bg-image: url('/xCellence/Background1-mobile.png');
+    --app-bg-image: var(--app-bg-image-dark-mobile);
   }
 
   body {

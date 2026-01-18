@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { withBase } from '../utils/asset.ts';
 import './HallOfFame.css';
 
 // type Award = {
@@ -109,12 +110,12 @@ import './HallOfFame.css';
 
 const HallOfFame = () => {
   const { t } = useTranslation();
-  const alumniHighlights = t('hallOfFame.alumni.items', { returnObjects: true }) as {
+  const alumniHighlights = (t('hallOfFame.alumni.items', { returnObjects: true }) as {
     name: string;
     role: string;
     achievement: string;
     photo: string;
-  }[];
+  }[]).map((alumni) => ({ ...alumni, photo: withBase(alumni.photo) }));
 
   return (
     <div className="hall-page">
