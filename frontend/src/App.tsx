@@ -10,6 +10,7 @@ import Resources from './pages/Resources.tsx';
 import Blog from './pages/Blog.tsx';
 import BlogArticle from './pages/BlogArticle.tsx';
 import HallOfFame from './pages/HallOfFame.tsx';
+import { Analytics } from "@vercel/analytics/next"
 import './App.css';
 
 const normalizeBase = (rawBase: string | undefined) => {
@@ -25,6 +26,7 @@ const basename = normalizeBase(import.meta.env.BASE_URL);
 function App() {
   return (
     <Router basename={basename}>
+      <Analytics />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

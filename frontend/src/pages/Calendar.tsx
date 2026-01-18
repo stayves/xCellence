@@ -183,14 +183,23 @@ const Calendar = () => {
               </div>
               {tournaments.map((tournament) => (
                 <div key={tournament.name} className="tournaments-row">
-                  <span>{tournament.name || '—'}</span>
-                  <span>{tournament.organizer || '—'}</span>
+                  <span data-label={t('calendar.results.tournaments.headers.tournament')}>
+                    {tournament.name || '—'}
+                  </span>
+                  <span data-label={t('calendar.results.tournaments.headers.organizer')}>
+                    {tournament.organizer || '—'}
+                  </span>
                   {tournament.site ? (
-                    <a href={tournament.site} target="_blank" rel="noreferrer">
+                    <a
+                      href={tournament.site}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-label={t('calendar.results.tournaments.headers.site')}
+                    >
                       {tournament.site.replace(/^https?:\/\//, '')}
                     </a>
                   ) : (
-                    <span>—</span>
+                    <span data-label={t('calendar.results.tournaments.headers.site')}>—</span>
                   )}
                 </div>
               ))}
