@@ -10,7 +10,7 @@ import Resources from './pages/Resources.tsx';
 import Blog from './pages/Blog.tsx';
 import BlogArticle from './pages/BlogArticle.tsx';
 import HallOfFame from './pages/HallOfFame.tsx';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react'
 import './App.css';
 
 const normalizeBase = (rawBase: string | undefined) => {
