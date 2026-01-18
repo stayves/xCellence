@@ -10,7 +10,7 @@ export const withBase = (path: string) => {
   const base = import.meta.env.BASE_URL ?? '/';
   const normalizedBase = base.endsWith('/') ? base : `${base}/`;
 
-  if (path.startsWith(normalizedBase)) {
+  if (normalizedBase !== '/' && path.startsWith(normalizedBase)) {
     return path;
   }
 
