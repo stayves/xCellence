@@ -132,6 +132,19 @@ body {
     background-size: cover;
     background-position: center;
   }
+
+  .events-container,
+  .blog-container,
+  .feature-container,
+  .resources-container,
+  .hall-container,
+  .contact-container,
+  .trainer-container,
+  .team-container,
+  .robot-container,
+  .article-shell {
+    background-attachment: scroll;
+  }
 }
 
 @media (max-width: 480px) {
