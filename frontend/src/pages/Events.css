@@ -319,3 +319,10 @@
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  .events-container {
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+  }
+}
