@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getBlogArticlesBySlug, type ArticleSection } from '../data/blog.ts';
@@ -77,7 +78,7 @@ const BlogArticle = () => {
   };
 
   const renderLinkedText = (text: string) => {
-    const nodes: Array<JSX.Element | string> = [];
+    const nodes: ReactNode[] = [];
     const urlRegex = /https?:\/\/[^\s)]+/g;
     let lastIndex = 0;
     let match: RegExpExecArray | null;
@@ -141,7 +142,8 @@ const BlogArticle = () => {
   );
 
   const renderSectionMedia = (section: ArticleSection) => {
-    const figImageMap = new Map<string, typeof section.images[number]>();
+    type ArticleImage = NonNullable<ArticleSection['images']>[number];
+    const figImageMap = new Map<string, ArticleImage>();
     section.images?.forEach((image) => {
       const label = normalizeFigLabel(image.caption ?? image.alt);
       if (label) {
