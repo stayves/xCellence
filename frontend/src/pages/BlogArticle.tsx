@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getBlogArticlesBySlug } from '../data/blog.ts';
+import { getBlogArticlesBySlug, type ArticleSection } from '../data/blog.ts';
 import { withBase } from '../utils/asset.ts';
 import './BlogArticle.css';
 
@@ -76,6 +76,121 @@ const BlogArticle = () => {
     }
   };
 
+  const renderLinkedText = (text: string) => {
+    const nodes: Array<JSX.Element | string> = [];
+    const urlRegex = /https?:\/\/[^\s)]+/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = urlRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        nodes.push(text.slice(lastIndex, match.index));
+      }
+
+      let url = match[0];
+      let trailing = '';
+      while (/[.,;:!?]$/.test(url)) {
+        trailing = `${url.slice(-1)}${trailing}`;
+        url = url.slice(0, -1);
+      }
+
+      nodes.push(
+        <a key={`${url}-${match.index}`} href={url} target="_blank" rel="noreferrer">
+          {url}
+        </a>,
+      );
+
+      if (trailing) {
+        nodes.push(trailing);
+      }
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
+      nodes.push(text.slice(lastIndex));
+    }
+
+    return nodes;
+  };
+
+  const slugify = (value: string) => {
+    const slug = value
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[^\p{L}\p{N}]+/gu, '-')
+      .replace(/^-+|-+$/g, '');
+    return slug || 'section';
+  };
+
+  const getFigLabel = (text: string) => {
+    const match = text.match(/fig\.?\s*\d+(?:\.\d+)?/i);
+    return match ? match[0].toLowerCase().replace(/\s+/g, ' ').trim() : null;
+  };
+
+  const normalizeFigLabel = (text: string) => {
+    const label = getFigLabel(text);
+    return label ? label.replace(/\.$/, '') : null;
+  };
+
+  const renderInlineImage = (image: { src: string; alt: string; caption?: string }, key: string) => (
+    <figure key={key} className="article-inline-image">
+      <img src={image.src} alt={image.alt} loading="lazy" />
+      <figcaption>{image.caption ?? image.alt}</figcaption>
+    </figure>
+  );
+
+  const renderSectionMedia = (section: ArticleSection) => {
+    const figImageMap = new Map<string, typeof section.images[number]>();
+    section.images?.forEach((image) => {
+      const label = normalizeFigLabel(image.caption ?? image.alt);
+      if (label) {
+        figImageMap.set(label, image);
+      }
+    });
+
+    const usedImages = new Set<string>();
+
+    const paragraphNodes = section.paragraphs.map((paragraph, index) => {
+      const figLabel = normalizeFigLabel(paragraph);
+      const matchedImage = figLabel ? figImageMap.get(figLabel) : undefined;
+      if (matchedImage) {
+        usedImages.add(matchedImage.src);
+      }
+
+      return (
+        <div key={`${section.title}-paragraph-${index}`}>
+          <p>{renderLinkedText(paragraph)}</p>
+          {matchedImage
+            ? renderInlineImage(matchedImage, `${section.title}-image-${index}-${matchedImage.src}`)
+            : null}
+        </div>
+      );
+    });
+
+    const remainingImages = section.images
+      ? section.images.filter((image) => !usedImages.has(image.src))
+      : [];
+
+    return (
+      <>
+        {paragraphNodes}
+        {remainingImages.length > 0 && (
+          <div className="article-media-grid">
+            {remainingImages.map((image, mediaIndex) =>
+              renderInlineImage(image, `${section.title}-image-${mediaIndex}-${image.src}`),
+            )}
+          </div>
+        )}
+      </>
+    );
+  };
+
+  const tocItems = resolvedArticle.sections.map((section, index) => ({
+    id: `${slugify(section.title)}-${index + 1}`,
+    title: section.title,
+  }));
+
   return (
     <div className="article-shell">
       <div className="article-topbar">
@@ -97,7 +212,7 @@ const BlogArticle = () => {
             <header className="article-header">
               <span className="article-kicker">{resolvedArticle.kicker}</span>
               <h1>{resolvedArticle.title}</h1>
-              <p className="article-description">{resolvedArticle.intro}</p>
+              <p className="article-description">{renderLinkedText(resolvedArticle.intro)}</p>
               <div className="article-meta">
                 <span>{resolvedArticle.date}</span>
                 <span className="article-dot">•</span>
@@ -112,31 +227,29 @@ const BlogArticle = () => {
               <figcaption>{t('blogArticle.photoCredit')}</figcaption>
             </figure>
 
-            {resolvedArticle.sections.map((section) => (
-              <section key={section.title} className="article-section">
+            {tocItems.length > 0 && (
+              <nav className="article-toc" aria-label={t('blogArticle.toc')}>
+                <p className="article-toc-title">{t('blogArticle.toc')}</p>
+                <div className="article-toc-links">
+                  {tocItems.map((item) => (
+                    <a key={item.id} href={`#${item.id}`} className="article-toc-link">
+                      {item.title}
+                    </a>
+                  ))}
+                </div>
+              </nav>
+            )}
+
+            {resolvedArticle.sections.map((section, index) => (
+              <section key={section.title} id={tocItems[index]?.id} className="article-section">
                 <h2>{section.title}</h2>
-                {section.paragraphs.map((paragraph, index) => (
-                  <p key={`${section.title}-${index}`}>{paragraph}</p>
-                ))}
+                {renderSectionMedia(section)}
                 {section.bullets && (
                   <ul className="article-list">
                     {section.bullets.map((bullet, listIndex) => (
                       <li key={`${section.title}-bullet-${listIndex}`}>{bullet}</li>
                     ))}
                   </ul>
-                )}
-                {section.images && (
-                  <div className="article-media-grid">
-                    {section.images.map((image, mediaIndex) => (
-                      <figure
-                        key={`${section.title}-image-${mediaIndex}-${image.src}`}
-                        className="article-inline-image"
-                      >
-                        <img src={image.src} alt={image.alt} loading="lazy" />
-                        <figcaption>{image.caption ?? image.alt}</figcaption>
-                      </figure>
-                    ))}
-                  </div>
                 )}
                 <div className="article-divider" />
               </section>

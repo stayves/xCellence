@@ -157,6 +157,38 @@
   background: var(--surface-subtle);
 }
 
+.article-toc {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid var(--surface-card-border);
+  background: var(--surface-subtle);
+}
+
+.article-toc-title {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.article-toc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.article-toc-link {
+  color: var(--text-white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.article-toc-link:hover {
+  color: var(--primary-orange);
+}
+
 .article-section + .article-section {
   margin-top: 2rem;
 }
