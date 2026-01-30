@@ -346,6 +346,13 @@
   font-weight: 600;
 }
 
+.calendar-card-description {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .deadline {
   color: var(--text-white);
   background: rgba(255, 107, 53, 0.14);

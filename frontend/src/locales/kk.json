@@ -948,6 +948,38 @@
         }
       ]
     },
+    "wroTimeline": [
+      {
+        "id": "wro-open-americas-2026",
+        "city": "Ontario (CA), USA",
+        "title": "WRO 2026 - Open Championship - Americas",
+        "dates": "25.09.2026 - 27.09.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "АҚШ-тағы ұлттық ұйымдастырушы Онтарио, Калифорнияда бізбен кездесу өткізуге дайындалып жатыр. Бұл іс-шарада WRO-ның барлық санаттары мен жас топтары бойынша жарыстар өтеді."
+      },
+      {
+        "id": "wro-open-apac-2026",
+        "city": "City T.B.D., India",
+        "title": "WRO 2026 - Open Championship - Asia & Pacific",
+        "dates": "25.09.2026 - 27.09.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "Үндістанның ұлттық ұйымдастырушысы бізді Open Championship-ке шақырады. Іс-шарада WRO-ның барлық санаттары мен жас топтары ұсынылады."
+      },
+      {
+        "id": "wro-open-europe-2026",
+        "city": "Zagreb, Croatia",
+        "title": "WRO 2026 - Open Championship - Europe",
+        "dates": "13.10.2026 - 16.10.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "Хорватиядағы ұлттық ұйымдастырушы Загребте Open Championship өткізеді. Бұл іс-шарада WRO-ның барлық санаттары мен жас топтары қамтылады."
+      }
+    ],
     "tournaments": [
       { "name": "Robotek Grand Tournament", "organizer": "ТОО Роботек", "site": "https://rgt.robotek.kz/" },
       { "name": "KazRobotics", "organizer": "Федерация Казроботикс", "site": "http://www.kazrobotics.org/KK/" },

@@ -948,18 +948,51 @@
         }
       ]
     },
+    "wroTimeline": [
+      {
+        "id": "wro-open-americas-2026",
+        "city": "Ontario (CA), USA",
+        "title": "WRO 2026 - Open Championship - Americas",
+        "dates": "25.09.2026 - 27.09.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "Our USA National Organizer is preparing to meet us in Ontario, California. At this event there will be competitions in all WRO categories and age groups."
+      },
+      {
+        "id": "wro-open-apac-2026",
+        "city": "City T.B.D., India",
+        "title": "WRO 2026 - Open Championship - Asia & Pacific",
+        "dates": "25.09.2026 - 27.09.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "The India National Organizer invites us to join their Open Championship. All WRO categories and age groups will be represented at the event."
+      },
+      {
+        "id": "wro-open-europe-2026",
+        "city": "Zagreb, Croatia",
+        "title": "WRO 2026 - Open Championship - Europe",
+        "dates": "13.10.2026 - 16.10.2026",
+        "venue": "",
+        "categories": [],
+        "track": "WRO",
+        "description": "Our National Organizer in Croatia will be hosting an Open Championship in Zagreb. All WRO categories and age groups are offered at this event."
+      }
+    ],
     "tournaments": [
       { "name": "Robotek Grand Tournament", "organizer": "Robotek LLC", "site": "https://rgt.robotek.kz/" },
       { "name": "KazRobotics", "organizer": "KazRobotics Federation", "site": "http://www.kazrobotics.org/KK/" },
       { "name": "RoboLand", "organizer": "Kazdidac Association", "site": "https://roboland.kz/" },
       { "name": "R:ED FEST", "organizer": "RED Robotics Education", "site": "https://frio.kz/ru/red-fest" },
+      {"name": "Infomatrix Astana", "organizer": "Infomatrix Astana", "site": "https://infomatrix.asia/"},
       { "name": "Fibonacci International Robot Olympiad", "organizer": "AZ Group" },
       { "name": "Robotics for Good Youth Challenge", "organizer": "Hailybury" },
       { "name": "Kazakhstan International Robotics Competition (VEX)", "organizer": "" },
       { "name": "NatRoboCom", "organizer": "" },
       { "name": "RoboZerde", "organizer": "" },
       { "name": "Federation of International Robot-sports association (FIRA)", "organizer": "" }
-    ],
+    ], 
     "results": {
       "trackFallback": "Track",
       "tournaments": {

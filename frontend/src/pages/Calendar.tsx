@@ -16,6 +16,7 @@ type EventEntry = {
   categories: string[]
   registrationDeadline?: string
   status?: string
+  description?: string
   track: 'FIRST' | 'WRO'
 }
 
@@ -69,6 +70,7 @@ const getCategoryConfig = (t: TFunction) =>
   }))
 const getCategoryEvents = (t: TFunction) =>
   t('calendar.categoryEvents', { returnObjects: true }) as Record<CategoryId, EventEntry[]>
+const getWroTimeline = (t: TFunction) => t('calendar.wroTimeline', { returnObjects: true }) as EventEntry[]
 const getTournaments = (t: TFunction) => t('calendar.tournaments', { returnObjects: true }) as Tournament[]
 
 const Calendar = () => {
@@ -76,23 +78,38 @@ const Calendar = () => {
   const trackConfig = getTrackConfig(t)
   const categoryConfig = getCategoryConfig(t)
   const categoryEvents = getCategoryEvents(t)
+  const wroTimeline = getWroTimeline(t)
   const tournaments = getTournaments(t)
 
   const [activeTrack, setActiveTrack] = useState<TrackId>('FIRST')
   const [activeCategory, setActiveCategory] = useState<CategoryId>('kickoff')
 
   const visibleEvents = useMemo(() => {
-    if (activeTrack !== 'FIRST') return []
-    const events = categoryEvents[activeCategory] ?? []
-    return [...events].sort((a, b) => {
-      const dateA = parseEventDate(a.dates)
-      const dateB = parseEventDate(b.dates)
-      if (dateA !== null && dateB !== null) return dateB - dateA
-      if (dateA !== null) return -1
-      if (dateB !== null) return 1
-      return a.title.localeCompare(b.title)
-    })
-  }, [activeCategory, activeTrack, categoryEvents])
+    if (activeTrack === 'FIRST') {
+      const events = categoryEvents[activeCategory] ?? []
+      return [...events].sort((a, b) => {
+        const dateA = parseEventDate(a.dates)
+        const dateB = parseEventDate(b.dates)
+        if (dateA !== null && dateB !== null) return dateB - dateA
+        if (dateA !== null) return -1
+        if (dateB !== null) return 1
+        return a.title.localeCompare(b.title)
+      })
+    }
+
+    if (activeTrack === 'WRO') {
+      return [...wroTimeline].sort((a, b) => {
+        const dateA = parseEventDate(a.dates)
+        const dateB = parseEventDate(b.dates)
+        if (dateA !== null && dateB !== null) return dateA - dateB
+        if (dateA !== null) return -1
+        if (dateB !== null) return 1
+        return a.title.localeCompare(b.title)
+      })
+    }
+
+    return []
+  }, [activeCategory, activeTrack, categoryEvents, wroTimeline])
 
   const activeConfig = categoryConfig.find((cat) => cat.id === activeCategory)
   const activeTrackConfig = trackConfig.find((track) => track.id === activeTrack)
@@ -239,10 +256,13 @@ const Calendar = () => {
                     </span>
                   )}
                 </div>
-                <div className="calendar-card-meta">
-                  <span className="label">{t('calendar.results.venueLabel')}</span>
-                  <span className="value">{event.venue || t('common.status.tba')}</span>
-                </div>
+                {event.description && <p className="calendar-card-description">{event.description}</p>}
+                {(activeTrack === 'FIRST' || event.venue) && (
+                  <div className="calendar-card-meta">
+                    <span className="label">{t('calendar.results.venueLabel')}</span>
+                    <span className="value">{event.venue || t('common.status.tba')}</span>
+                  </div>
+                )}
                 {event.categories.length > 0 && (
                   <div className="calendar-card-tags">
                     {event.categories.map((tag) => (
