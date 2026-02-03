@@ -292,7 +292,10 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: background 0.2s ease;
-  transform: translateY(-4px);
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transform: translateY(-3px);
 }
 
 .book-close-button:hover {
