@@ -232,6 +232,33 @@
   gap: 1.5rem;
 }
 
+::root[data-theme='light'] .book-modal-backdrop {
+  background: rgba(228, 231, 239, 0.9);
+}
+
+::root[data-theme='light'] .book-modal-content {
+  background: linear-gradient(160deg, rgba(252, 252, 255, 0.98) 0%, rgba(242, 244, 250, 0.96) 100%);
+  border: 1px solid rgba(17, 18, 32, 0.08);
+  box-shadow: 0 26px 56px rgba(17, 20, 32, 0.16);
+}
+
+::root[data-theme='light'] .book-modal-title {
+  color: #1a1d2c;
+}
+
+::root[data-theme='light'] .book-modal-subtitle {
+  color: #5a5f73;
+}
+
+::root[data-theme='light'] .book-close-button {
+  background: rgba(17, 18, 32, 0.08);
+  color: #1a1d2c;
+}
+
+::root[data-theme='light'] .book-close-button:hover {
+  background: rgba(17, 18, 32, 0.16);
+}
+
 .book-modal-header {
   display: flex;
   justify-content: space-between;
@@ -329,6 +356,24 @@
   opacity: 0.4;
 }
 
+::root[data-theme='light'] .book-side-preview {
+  background: rgba(17, 18, 32, 0.04);
+  color: #1a1d2c;
+  border: 1px solid rgba(17, 18, 32, 0.08);
+}
+
+::root[data-theme='light'] .book-side-preview span {
+  color: #5a5f73;
+}
+
+::root[data-theme='light'] .book-side-preview:hover {
+  background: rgba(17, 18, 32, 0.08);
+}
+
+::root[data-theme='light'] .book-side-placeholder {
+  border-color: rgba(17, 18, 32, 0.2);
+}
+
 .book-page-frame {
   background: var(--surface-subtle);
   border-radius: 18px;
@@ -337,6 +382,12 @@
   place-items: center;
   border: 1px solid var(--surface-subtle-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+::root[data-theme='light'] .book-page-frame {
+  background: #ffffff;
+  border-color: rgba(17, 18, 32, 0.08);
+  box-shadow: 0 20px 40px rgba(17, 20, 32, 0.18);
 }
 
 .book-page-frame img {
@@ -368,10 +419,24 @@
   cursor: not-allowed;
 }
 
+::root[data-theme='light'] .book-nav-button {
+  border-color: rgba(17, 18, 32, 0.16);
+  background: rgba(17, 18, 32, 0.04);
+  color: #1a1d2c;
+}
+
+::root[data-theme='light'] .book-nav-button:hover:not(:disabled) {
+  background: rgba(17, 18, 32, 0.1);
+}
+
 .book-modal-footer {
   text-align: center;
   color: var(--text-gray);
   font-size: 0.9rem;
+}
+
+::root[data-theme='light'] .book-modal-footer {
+  color: #5a5f73;
 }
 
 .resource-block header h2 {

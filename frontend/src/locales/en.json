@@ -1149,14 +1149,14 @@
     },
     "posts": [
       {
-        "title": "xAct — action-based фреймворк для FLL / WRO",
-        "date": "23 января 2026",
+        "title": "xAct — an action-based framework for FLL / WRO",
+        "date": "January 23, 2026",
         "author": "xCellence Team",
-        "summary": "Почему xAct появился, как устроены Actions, чем полезна одометрия и как быстро запустить фреймворк в Pybricks.",
-        "readTime": "6 мин чтения",
+        "summary": "Why xAct appeared, how Actions work, why odometry matters, and how to launch the framework quickly in Pybricks.",
+        "readTime": "6 min read",
         "tag": "Software",
         "coverImage": "/xCellence/xact-4 (2).png",
-        "coverAlt": "Схема фреймворка xAct",
+        "coverAlt": "xAct framework diagram",
         "slug": "xact-framework"
       },
       {
@@ -1196,91 +1196,91 @@
     "articlesBySlug": {
       "xact-framework": {
         "kicker": "xAct Framework",
-        "title": "xAct — action-based фреймворк для FLL / WRO",
-        "date": "23 января 2026",
+        "title": "xAct — an action-based framework for FLL / WRO",
+        "date": "January 23, 2026",
         "author": "xCellence Team",
-        "readTime": "6 мин чтения",
+        "readTime": "6 min read",
         "slug": "xact-framework",
         "heroImage": "/xCellence/fll.webp",
-        "heroAlt": "Схема фреймворка xAct",
-        "intro": "Примечание: Если вы хотите сразу посмотреть код и структуру фреймворка, репозиторий xAct доступен здесь: https://github.com/De-Velop/xACT",
+        "heroAlt": "xAct framework diagram",
+        "intro": "Note: If you want to jump straight to the code and structure, the xAct repository is here: https://github.com/De-Velop/xACT",
         "sections": [
           {
-            "title": "Почему появился xAct",
+            "title": "Why xAct was created",
             "paragraphs": [
-              "За несколько сезонов в FLL мы видели, как команды снова и снова сталкивались с одними и теми же проблемами в коде. Робот мог вести себя по-разному от запуска к запуску, рабочие маршруты ломались после незначительных правок, а код со временем превращался в одну длинную функцию, к которой было страшно прикасаться.",
-              "В какой-то момент стало понятно: эти проблемы нельзя решить очередным «костылём». Нужен был другой подход к тому, как вообще описывается поведение робота. Так появился xAct.",
-              "Большинство FLL-команд проходят похожий путь. Сначала всё кажется простым, но по мере роста количества миссий код усложняется, появляется множество «мусора» и временных задержек, а любое изменение начинает влиять на уже работающие части программы. Это не ошибка команд — это ограничение привычного способа программирования под FLL."
+              "Over several FLL seasons we saw teams run into the same issues: robots behaved differently between runs, routes broke after small edits, and code slowly turned into one huge function no one wanted to touch.",
+              "At some point it became clear these problems cannot be fixed with another quick patch. We needed a different way to describe robot behavior. That's how xAct was born.",
+              "Most FLL teams follow a similar path. It starts simple, but as missions grow the code gets messy, delays stack up, and any change ripples through working parts. It's not the teams' fault — it's the limitation of the usual FLL coding style."
             ]
           },
           {
-            "title": "Action-based подход",
+            "title": "The action-based approach",
             "paragraphs": [
-              "В xAct мы предложили смотреть на миссию иначе. Вместо прямого управления моторами мы описываем поведение робота. Миссия перестаёт быть набором команд и становится набором действий, которые можно комбинировать и переиспользовать.",
-              "В основе xAct лежит система Actions. Любое поведение робота — движение, поворот, ожидание или работа манипулятора — оформляется как отдельное действие. Эти действия имеют собственную логику и выполняются до тех пор, пока не завершатся. В результате код перестаёт быть монолитным и начинает напоминать план миссии, а не длинный поезд из циклов."
+              "In xAct we propose looking at missions differently. Instead of direct motor control we describe robot behavior. A mission stops being a list of commands and becomes a set of actions you can combine and reuse.",
+              "At the core of xAct is the Actions system. Any robot behavior — drive, turn, wait, or manipulate — becomes a separate action. Each action has its own logic and runs until it completes. The code is no longer monolithic and starts to look like a mission plan rather than a long train of loops."
             ],
             "images": [
               {
                 "src": "/xCellence/xact-1.png",
-                "alt": "Action-based структура xAct",
-                "caption": "Action-based структура xAct"
+                "alt": "Action-based structure of xAct",
+                "caption": "Action-based structure of xAct"
               }
             ]
           },
           {
-            "title": "Последовательность, параллельность и одометрия",
+            "title": "Sequencing, parallelism, and odometry",
             "paragraphs": [
-              "Одно из ключевых преимуществ такого подхода — явная работа с последовательностью и параллельностью. В xAct легко описать, какие действия должны выполняться одно за другим, а какие — одновременно. Робот может ехать и поднимать манипулятор в один и тот же момент, без блокировок, потоков и сложных state machine. Все действия работают в одном управляющем цикле и не мешают друг другу.",
-              "Отдельное внимание в xAct уделено одометрии (скоро выйдет статья и по ней). Она вычисляется постоянно и параллельно с выполнением миссий. Робот знает свои координаты на поле и использует эту информацию при каждом движении. Накопленные погрешности учитываются, поэтому ошибка одного действия не «тянется» дальше по миссии. На практике это даёт более стабильное и предсказуемое поведение робота на поле.",
-              "При разработке xAct мы сознательно опирались на опыт FTC. Некоторые идеи и алгоритмы были заимствованы из таких библиотек, как Roadrunner и Pure Pursuit. Важно отметить, что это не полноценная FTC-навигация и пока далеко не идеал. Тем не менее даже в текущем виде эти принципы дают FLL-командам более плавное движение, лучшую коррекцию ошибок и понимание того, как строится навигация на следующем уровне соревнований."
+              "A key advantage is explicit sequencing and parallelism. In xAct it's easy to define what runs one after another and what runs at the same time. The robot can drive and lift the manipulator simultaneously without locks, threads, or complex state machines. All actions run in a single control loop and don't block each other.",
+              "xAct also pays special attention to odometry (an article on it is coming soon). It is computed continuously in parallel with mission execution. The robot knows its position on the field and uses that info in every move. Errors are accumulated and accounted for, so a mistake in one action doesn't carry through the whole mission. In practice this yields more stable and predictable behavior on the field.",
+              "While building xAct we leaned on FTC experience. Some ideas and algorithms were inspired by libraries like Roadrunner and Pure Pursuit. It's important to note this is not full FTC navigation and still far from perfect. Even so, these principles already give FLL teams smoother motion, better error correction, and a sense of how higher-level navigation is built."
             ]
           },
           {
-            "title": "Результаты и open-source",
+            "title": "Results and open source",
             "paragraphs": [
-              "Практическая ценность xAct подтверждена результатами на соревнованиях. Мы в полной мере протестировали эти идеи еще летом, на Республиканском этапе World Robot Olympiad. Там наши команды заняли 1 и 2 место в категории Future Engineers, используя раннюю версию xAct.",
-              "xAct — это open-source проект. Мы не рассматриваем его как инструмент одной команды. Наша цель — развивать xAct вместе с комьюнити, постепенно превращая его в удобный и зрелый инструмент для соревнований FLL и WRO. Мы открыты к идеям, обсуждениям и вкладу со стороны других команд."
+              "The practical value of xAct is backed by competition results. We fully tested these ideas in the summer at the Republican stage of the World Robot Olympiad. There our teams took 1st and 2nd place in the Future Engineers category, using an early version of xAct.",
+              "xAct is an open-source project. We don't see it as a tool for one team. Our goal is to grow xAct with the community and gradually turn it into a convenient, mature tool for FLL and WRO competitions. We are open to ideas, discussions, and contributions from other teams."
             ],
             "images": [
               {
                 "src": "/xCellence/xact-2.png",
-                "alt": "xAct на соревнованиях",
-                "caption": "xAct на соревнованиях"
+                "alt": "xAct at competitions",
+                "caption": "xAct at competitions"
               }
             ]
           },
           {
-            "title": "Quick start: запуск xAct в Pybricks",
+            "title": "Quick start: running xAct in Pybricks",
             "paragraphs": [
-              "1. Скачайте файлы",
-              "Перейдите в репозиторий xAct на GitHub и скачайте последний доступный релиз (на момент написания статьи это 0.1.0)",
-              "2. Добавьте xAct в проект Pybricks",
-              "Скопируйте файлы xAct в папку нового проекта Pybricks. Дополнительная установка не требуется: Pybricks работает с этими файлами напрямую.",
-              "3. Настройте описание робота",
-              "В файле main.py укажите порты моторов и задайте направления вращения колёс.",
-              "Это единственное место, которое нужно адаптировать под конкретного робота.",
-              "4. Запустите main.py"
+              "1. Download the files",
+              "Go to the xAct GitHub repository and download the latest available release (at the time of writing, it's 0.1.0).",
+              "2. Add xAct to a Pybricks project",
+              "Copy the xAct files into a new Pybricks project folder. No extra installation is required: Pybricks runs directly from those files.",
+              "3. Configure the robot description",
+              "In main.py, set the motor ports and wheel rotation directions.",
+              "This is the only part you need to adapt for a specific robot.",
+              "4. Run main.py"
             ],
             "images": [
               {
                 "src": "/xCellence/xact-3.png",
-                "alt": "Скачивание релиза xAct",
-                "caption": "Шаг 1 — скачивание релиза"
+                "alt": "Downloading the xAct release",
+                "caption": "Step 1 — download the release"
               },
               {
                 "src": "/xCellence/xact-4.png",
-                "alt": "Файлы xAct в проекте Pybricks",
-                "caption": "Шаг 2 — файлы xAct в проекте"
+                "alt": "xAct files in the Pybricks project",
+                "caption": "Step 2 — xAct files in the project"
               },
               {
                 "src": "/xCellence/xact-5.png",
-                "alt": "Настройка main.py",
-                "caption": "Шаг 3 — настройка main.py"
+                "alt": "main.py configuration",
+                "caption": "Step 3 — main.py configuration"
               }
             ]
           }
         ],
-        "closing": "После запуска программы в консоли вы увидите текущие характеристики батареи, а робот будет стоять в ожидании выбора миссии. Нажав на центральную кнопку хаба, вы запустите выполнение миссии 1. Если все шаги были выполнены верно, поздравляем! Теперь вы готовы к написанию своих миссий. Удачи на соревнованиях!"
+        "closing": "After launching the program, the console shows the current battery stats, and the robot waits for a mission selection. Press the hub's center button to start mission 1. If all steps were followed, congrats — you're ready to write your own missions. Good luck at competitions!"
       },
       "fusion-360": {
         "kicker": "CAD Playbook",
