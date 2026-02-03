@@ -233,13 +233,13 @@
 }
 
 ::root[data-theme='light'] .book-modal-backdrop {
-  background: rgba(228, 231, 239, 0.9);
+  background: rgba(245, 246, 250, 0.92);
 }
 
 ::root[data-theme='light'] .book-modal-content {
-  background: linear-gradient(160deg, rgba(252, 252, 255, 0.98) 0%, rgba(242, 244, 250, 0.96) 100%);
-  border: 1px solid rgba(17, 18, 32, 0.08);
-  box-shadow: 0 26px 56px rgba(17, 20, 32, 0.16);
+  background: #ffffff;
+  border: 1px solid rgba(17, 18, 32, 0.06);
+  box-shadow: 0 26px 56px rgba(17, 20, 32, 0.12);
 }
 
 ::root[data-theme='light'] .book-modal-title {
@@ -357,9 +357,10 @@
 }
 
 ::root[data-theme='light'] .book-side-preview {
-  background: rgba(17, 18, 32, 0.04);
+  background: #ffffff;
   color: #1a1d2c;
-  border: 1px solid rgba(17, 18, 32, 0.08);
+  border: 1px solid rgba(17, 18, 32, 0.1);
+  box-shadow: 0 10px 20px rgba(17, 20, 32, 0.08);
 }
 
 ::root[data-theme='light'] .book-side-preview img {
@@ -391,9 +392,9 @@
 }
 
 ::root[data-theme='light'] .book-page-frame {
-  background: #f8f9fc;
+  background: #ffffff;
   border-color: rgba(17, 18, 32, 0.08);
-  box-shadow: 0 20px 40px rgba(17, 20, 32, 0.18);
+  box-shadow: 0 18px 36px rgba(17, 20, 32, 0.12);
 }
 
 .book-page-tap-zones {
@@ -452,13 +453,14 @@
 }
 
 ::root[data-theme='light'] .book-nav-button {
-  border-color: rgba(17, 18, 32, 0.16);
-  background: rgba(17, 18, 32, 0.04);
+  border-color: rgba(17, 18, 32, 0.12);
+  background: #ffffff;
   color: #1a1d2c;
 }
 
 ::root[data-theme='light'] .book-nav-button:hover:not(:disabled) {
-  background: rgba(17, 18, 32, 0.1);
+  background: rgba(255, 107, 53, 0.12);
+  border-color: rgba(255, 107, 53, 0.35);
 }
 
 .book-modal-footer {
@@ -468,7 +470,7 @@
 }
 
 ::root[data-theme='light'] .book-modal-footer {
-  color: #5a5f73;
+  color: #6b7280;
 }
 
 .resource-block header h2 {
@@ -642,11 +644,11 @@
   }
 
   ::root[data-theme='light'] .book-tap-zone:not(:disabled) {
-    background: linear-gradient(90deg, rgba(255, 107, 53, 0.12), transparent);
+    background: linear-gradient(90deg, rgba(255, 107, 53, 0.14), transparent);
   }
 
   ::root[data-theme='light'] .book-tap-next:not(:disabled) {
-    background: linear-gradient(-90deg, rgba(255, 107, 53, 0.12), transparent);
+    background: linear-gradient(-90deg, rgba(255, 107, 53, 0.14), transparent);
   }
 }
 
