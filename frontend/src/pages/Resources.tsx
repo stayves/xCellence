@@ -49,6 +49,8 @@ const Resources = () => {
   const isFirstPage = pageIndex === 0;
   const isLastPage = pageIndex === totalPages - 1;
   const currentPageSrc = encodeURI(bookPages[pageIndex]);
+  const prevPageSrc = pageIndex > 0 ? encodeURI(bookPages[pageIndex - 1]) : null;
+  const nextPageSrc = pageIndex < totalPages - 1 ? encodeURI(bookPages[pageIndex + 1]) : null;
 
   const openBook = () => {
     setPageIndex(0);
@@ -175,15 +177,35 @@ const Resources = () => {
               </button>
             </div>
             <div className="book-page">
-              <button type="button" className="book-nav-button" onClick={goPrevPage} disabled={isFirstPage}>
-                {t('resources.book.prev')}
-              </button>
+              <div className="book-side">
+                <button type="button" className="book-nav-button" onClick={goPrevPage} disabled={isFirstPage}>
+                  {t('resources.book.prev')}
+                </button>
+                {prevPageSrc ? (
+                  <button type="button" className="book-side-preview" onClick={goPrevPage}>
+                    <img src={prevPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex })} />
+                    <span>{t('resources.book.prev')}</span>
+                  </button>
+                ) : (
+                  <div className="book-side-placeholder" />
+                )}
+              </div>
               <div className="book-page-frame">
                 <img src={currentPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 1 })} />
               </div>
-              <button type="button" className="book-nav-button" onClick={goNextPage} disabled={isLastPage}>
-                {t('resources.book.next')}
-              </button>
+              <div className="book-side">
+                <button type="button" className="book-nav-button" onClick={goNextPage} disabled={isLastPage}>
+                  {t('resources.book.next')}
+                </button>
+                {nextPageSrc ? (
+                  <button type="button" className="book-side-preview" onClick={goNextPage}>
+                    <img src={nextPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 2 })} />
+                    <span>{t('resources.book.next')}</span>
+                  </button>
+                ) : (
+                  <div className="book-side-placeholder" />
+                )}
+              </div>
             </div>
             <div className="book-modal-footer">
               <span>{t('resources.book.hint')}</span>
