@@ -1029,6 +1029,21 @@
       "template": "Template"
     },
     "open": "Open resource",
+    "book": {
+      "title": "Team Book",
+      "summary": "Flip through our book cover-to-cover and explore every page in order.",
+      "description": "Click the cover to open the full book. Use the arrows to move left to right through each page.",
+      "open": "Open book",
+      "coverAlt": "xCellence book cover",
+      "pageCount": "{{count}} pages",
+      "viewer": "Book viewer",
+      "pageLabel": "Page {{current}} of {{total}}",
+      "pageAlt": "Book page {{current}}",
+      "close": "Close book",
+      "prev": "Previous",
+      "next": "Next",
+      "hint": "Tip: use ← and → keys to flip pages"
+    },
     "sections": [
       {
         "title": "Programming & Control Systems",
