@@ -192,6 +192,22 @@ const Resources = () => {
               </div>
               <div className="book-page-frame">
                 <img src={currentPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 1 })} />
+                <div className="book-page-tap-zones">
+                  <button
+                    type="button"
+                    className="book-tap-zone book-tap-prev"
+                    onClick={goPrevPage}
+                    disabled={isFirstPage}
+                    aria-label={t('resources.book.prev')}
+                  />
+                  <button
+                    type="button"
+                    className="book-tap-zone book-tap-next"
+                    onClick={goNextPage}
+                    disabled={isLastPage}
+                    aria-label={t('resources.book.next')}
+                  />
+                </div>
               </div>
               <div className="book-side">
                 <button type="button" className="book-nav-button" onClick={goNextPage} disabled={isLastPage}>
