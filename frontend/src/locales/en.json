@@ -1280,7 +1280,7 @@
             ]
           }
         ],
-        "closing": "After launching the program, the console shows the current battery stats, and the robot waits for a mission selection. Press the hub's center button to start mission 1. If all steps were followed, congrats — you're ready to write your own missions. Good luck at competitions!"
+        "closing": "After launching the program, the console shows the current battery stats, and the robot waits for a mission selection. Press the hub's center button to start mission 1. If all steps were followed, congrats — you're ready to write your own missions. Good luck at competitions!\n\n---\nGitHub: https://github.com/De-Velop/xACT"
       },
       "fusion-360": {
         "kicker": "CAD Playbook",
