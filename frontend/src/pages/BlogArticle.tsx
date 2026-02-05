@@ -188,6 +188,26 @@ const BlogArticle = () => {
     );
   };
 
+  const renderClosingContent = (text: string) => {
+    const lines = text.split('\n');
+    return lines.map((line, index) => {
+      const trimmed = line.trim();
+      if (!trimmed) {
+        return <div key={`closing-spacer-${index}`} className="article-closing-spacer" />;
+      }
+
+      if (trimmed === '---') {
+        return <hr key={`closing-divider-${index}`} className="article-closing-divider" />;
+      }
+
+      return (
+        <p key={`closing-line-${index}`} className="article-closing-line">
+          {renderLinkedText(line)}
+        </p>
+      );
+    });
+  };
+
   const tocItems = resolvedArticle.sections.map((section, index) => ({
     id: `${slugify(section.title)}-${index + 1}`,
     title: section.title,
@@ -257,7 +277,7 @@ const BlogArticle = () => {
               </section>
             ))}
 
-            <p className="article-closing">{resolvedArticle.closing}</p>
+            <div className="article-closing">{renderClosingContent(resolvedArticle.closing)}</div>
 
             <div className="article-footer-links">
               <Link to="/blog" className="article-back">

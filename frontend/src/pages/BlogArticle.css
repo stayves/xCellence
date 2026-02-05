@@ -255,6 +255,31 @@
   font-weight: 600;
   font-size: 1.05rem;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.article-closing-line {
+  color: inherit;
+  margin: 0;
+}
+
+.article-closing a {
+  color: var(--primary-orange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-closing-divider {
+  border: none;
+  border-top: 1px solid var(--surface-card-border);
+  width: 100%;
+  margin: 0.35rem 0;
+}
+
+.article-closing-spacer {
+  height: 0.35rem;
 }
 
 .article-footer-links {
