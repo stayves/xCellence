@@ -1063,74 +1063,14 @@
           {
             "name": "OnBot Java Cheatsheet",
             "description": "Краткий справочник по синтаксису и жизненному циклу для OnBot Java в REV Control Hub.",
-            "href": "https://gm0.org/en/latest/docs/software/tutorial-onbot.html",
+            "href": "https://www.reddit.com/r/learnjava/comments/1p9rivl/java_cheat_sheet/",
             "type": "guide"
           },
           {
             "name": "PID Tuning Masterclass",
             "description": "Запись воркшопа по настройке PIDF для привода, лифтов и турелей с телеметрией.",
-            "href": "https://www.youtube.com/watch?v=XRdK5OZFJ1Y",
+            "href": "https://www.youtube.com/watch?v=6EcxGh1fyMw",
             "type": "video"
-          }
-        ]
-      },
-      {
-        "title": "Механика и производство",
-        "summary": "От CAD до производства — ресурсы, ускоряющие прототипирование надежных механизмов.",
-        "items": [
-          {
-            "name": "GrabCAD xCellence Library",
-            "description": "Модели нашего шасси, лифтов и модульных пластин для повторного использования.",
-            "href": "https://grabcad.com/library",
-            "type": "template"
-          },
-          {
-            "name": "Design for Manufacturability Checklist",
-            "description": "Внутренний чеклист DFM: допуски, крепеж и удобство сборки.",
-            "href": "https://docs.google.com/document/d/dfm-checklist",
-            "type": "tool"
-          },
-          {
-            "name": "Into the Deep Game Elements CAD",
-            "description": "Официальные STEP-файлы элементов поля сезона 2025-2026 для виртуального прототипирования.",
-            "href": "https://www.firstinspires.org/resource-library/ftc/game-and-season-info",
-            "type": "template"
-          },
-          {
-            "name": "Gearing & Torque Calculator",
-            "description": "Таблица для расчета момента, скорости и потребления тока механизмов.",
-            "href": "https://www.revolverworks.com/ftc-calculators",
-            "type": "tool"
-          }
-        ]
-      },
-      {
-        "title": "Стратегия, аутрич и операционка",
-        "summary": "Ресурсы для организации, скаутинга и работы с сообществом.",
-        "items": [
-          {
-            "name": "xCellence Scouting Portal",
-            "description": "Шаблон Notion для скаутинга, пит-интервью и удаленной работы.",
-            "href": "https://www.notion.so/templates",
-            "type": "template"
-          },
-          {
-            "name": "Grant Writing Starter Pack",
-            "description": "Примеры спонсорских презентаций, благодарственных писем и трекера бюджета.",
-            "href": "https://www.firstinspires.org/resource-library/frc/first-robotics-funding-resources",
-            "type": "guide"
-          },
-          {
-            "name": "Event Playbook",
-            "description": "Пошаговый чеклист для проведения мастер-классов, скриммеджей и робот-стримов.",
-            "href": "https://docs.google.com/document/d/event-playbook",
-            "type": "guide"
-          },
-          {
-            "name": "Scoring Analysis Dashboard",
-            "description": "Google Sheets для анализа шансов победы, циклов и выбора альянса.",
-            "href": "https://docs.google.com/spreadsheets/d/xcellence-scouting",
-            "type": "tool"
           }
         ]
       }

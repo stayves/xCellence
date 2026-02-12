@@ -1063,74 +1063,14 @@
           {
             "name": "OnBot Java Cheatsheet",
             "description": "REV Control Hub браузерінде жұмыс істейтін OnBot Java бойынша қысқа нұсқаулық.",
-            "href": "https://gm0.org/en/latest/docs/software/tutorial-onbot.html",
+            "href": "https://www.reddit.com/r/learnjava/comments/1p9rivl/java_cheat_sheet/",
             "type": "guide"
           },
           {
             "name": "PID Tuning Masterclass",
             "description": "PIDF баптау бойынша воркшоп жазбасы.",
-            "href": "https://www.youtube.com/watch?v=XRdK5OZFJ1Y",
+            "href": "https://www.youtube.com/watch?v=6EcxGh1fyMw",
             "type": "video"
-          }
-        ]
-      },
-      {
-        "title": "Механика және өндіріс",
-        "summary": "CAD-тан өндіріске дейінгі прототиптеу үдерісін жылдамдататын ресурстар.",
-        "items": [
-          {
-            "name": "GrabCAD xCellence Library",
-            "description": "Біздің шасси, лифт және модульдік пластиналардың модельдері.",
-            "href": "https://grabcad.com/library",
-            "type": "template"
-          },
-          {
-            "name": "Design for Manufacturability Checklist",
-            "description": "DFM чеклисті: допуск, бекітпе және жинақтау ыңғайлылығы.",
-            "href": "https://docs.google.com/document/d/dfm-checklist",
-            "type": "tool"
-          },
-          {
-            "name": "Into the Deep Game Elements CAD",
-            "description": "2025-2026 маусымының ресми STEP файлдары.",
-            "href": "https://www.firstinspires.org/resource-library/ftc/game-and-season-info",
-            "type": "template"
-          },
-          {
-            "name": "Gearing & Torque Calculator",
-            "description": "Момент, жылдамдық және токты есептеуге арналған кесте.",
-            "href": "https://www.revolverworks.com/ftc-calculators",
-            "type": "tool"
-          }
-        ]
-      },
-      {
-        "title": "Стратегия, аутрич және операциялар",
-        "summary": "Ұйымдастыру, скаутинг және қауымдастықпен жұмысқа арналған ресурстар.",
-        "items": [
-          {
-            "name": "xCellence Scouting Portal",
-            "description": "Матч скаутингі мен пит-интервьюге арналған Notion шаблоны.",
-            "href": "https://www.notion.so/templates",
-            "type": "template"
-          },
-          {
-            "name": "Grant Writing Starter Pack",
-            "description": "Демеушілік презентация, алғыс хаттар және бюджет трекері.",
-            "href": "https://www.firstinspires.org/resource-library/frc/first-robotics-funding-resources",
-            "type": "guide"
-          },
-          {
-            "name": "Event Playbook",
-            "description": "Қоғамдық іс-шаралар өткізуге арналған чеклист.",
-            "href": "https://docs.google.com/document/d/event-playbook",
-            "type": "guide"
-          },
-          {
-            "name": "Scoring Analysis Dashboard",
-            "description": "Жеңіс ықтималдығы, цикл уақыты және альянс таңдауы үшін Google Sheets.",
-            "href": "https://docs.google.com/spreadsheets/d/xcellence-scouting",
-            "type": "tool"
           }
         ]
       }
