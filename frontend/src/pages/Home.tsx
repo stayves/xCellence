@@ -210,7 +210,8 @@ const Home = () => {
             <p>{t('home2.impact.intro')}</p>
           </header>
 
-          <div className="polaroids">
+          {/* The strip reveals as one block: on mobile it scrolls sideways, so cards offscreen would never intersect */}
+          <div className="polaroids reveal">
             {([
               ['deti 2.jpg', 'kids', '50% 30%'],
               ['xCellenceTeam9.jpg', 'captains', '50% 50%'],
@@ -218,7 +219,7 @@ const Home = () => {
               ['xCellenceTeam6.jpg', 'flags', '50% 45%'],
               ['xCellenceTeam7.jpg', 'bridge', '50% 50%'],
             ] as const).map(([src, key, pos], i) => (
-              <figure key={key} className="polaroid reveal" style={{ ['--d' as string]: `${i * 90}ms` }}>
+              <figure key={key} className="polaroid" style={{ ['--d' as string]: `${i * 90}ms` }}>
                 <div className="polaroid__photo">
                   <Picture src={src} alt={t(`home2.impact.photos.${key}`)} fill sizes="(min-width: 900px) 20vw, 60vw" position={pos} />
                 </div>

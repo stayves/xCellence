@@ -44,3 +44,9 @@
 @keyframes ambient-drift-a { to { transform: translate3d(22vw, 26vh, 0) scale(1.15); } }
 @keyframes ambient-drift-b { to { transform: translate3d(-26vw, -18vh, 0) scale(0.9); } }
 @keyframes ambient-drift-c { to { transform: translate3d(14vw, -24vh, 0) scale(1.2); } }
+
+/* Phones: smaller, softer layers keep the GPU cost down */
+@media (max-width: 760px) {
+  .ambient__blob { width: 90vmax; height: 90vmax; filter: blur(48px); }
+  .ambient__grid { background-size: 22px 22px; }
+}

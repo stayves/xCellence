@@ -155,10 +155,11 @@
   }
   .lab-hero__panel--xcellence .lab-hero__team { margin-top: 40vw; }
   .lab-hero__hint { display: none; }
+  .lab-hero__eyebrow::before { display: none; }
 }
 
 /* ---------- Stats ---------- */
-.stats { border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg-elev) 72%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.stats { border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg-elev) 82%, transparent); }
 .stats__list {
   list-style: none; display: grid; grid-template-columns: repeat(4, 1fr);
 }
@@ -211,7 +212,7 @@
 @media (max-width: 860px) { .results__grid { grid-template-columns: 1fr; } }
 
 /* ---------- Impact ---------- */
-.impact { background: color-mix(in srgb, var(--bg-elev) 72%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-block: 1px solid var(--line); overflow: hidden; }
+.impact { background: color-mix(in srgb, var(--bg-elev) 82%, transparent); border-block: 1px solid var(--line); overflow: hidden; }
 .polaroids { display: flex; justify-content: center; gap: clamp(10px, 1.6vw, 22px); margin-bottom: clamp(36px, 5vw, 64px); padding-block: 12px; }
 .polaroid { flex: 1 1 0; max-width: 230px; padding: 10px 10px 34px; background: #fbfaf6; border-radius: 4px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
 .polaroid:nth-child(odd) { rotate: -3deg; }
@@ -230,7 +231,11 @@
 .milestones li::before { content: '★'; margin-right: 10px; color: var(--team-text); }
 @media (max-width: 900px) {
   .impact__grid { grid-template-columns: 1fr 1fr; }
-  .polaroids { overflow-x: auto; justify-content: flex-start; padding: 16px 4px 24px; scroll-snap-type: x mandatory; }
+  .polaroids {
+    overflow-x: auto; justify-content: flex-start; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding: 22px var(--gutter) 28px; scroll-padding-inline: var(--gutter);
+  }
+  .polaroids::-webkit-scrollbar { display: none; }
   .polaroid { flex: 0 0 56vw; max-width: 240px; scroll-snap-align: center; }
 }
 @media (max-width: 480px) { .impact__grid { grid-template-columns: 1fr; } }
@@ -356,4 +361,14 @@
 @media (max-width: 1000px) {
   .lab-hero__spark { display: none; }
   .lab-hero__panel--xception .lab-hero__specks, .lab-hero__panel--xcellence .lab-hero__specks { inset: 0; }
+}
+
+/* Polaroids deal in one by one once their strip reveals */
+.js-reveal .polaroids.reveal { transform: none; }
+.js-reveal .polaroids.reveal .polaroid { opacity: 0; translate: 0 26px; transition: opacity 700ms var(--ease-out) var(--d), translate 800ms var(--ease-spring) var(--d), transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
+.js-reveal .polaroids.reveal.in .polaroid { opacity: 1; translate: 0 0; }
+.js-reveal .polaroids.reveal.in .polaroid:nth-child(even) { translate: 0 14px; }
+.js-reveal .polaroids.reveal.in .polaroid:nth-child(3) { translate: 0 -6px; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .polaroids.reveal .polaroid { opacity: 1; translate: none; }
 }
