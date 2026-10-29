@@ -25,3 +25,7 @@
 /* Resource type chips have tinted fills in several hues: neutral text keeps them readable in both themes */
 .layout .resource-type, .layout .resource-type.template, .layout .resource-type.video, .layout .resource-type.guide,
 .layout .template, .layout .video, .layout .guide { color: var(--fg); }
+
+/* Let the ambient backdrop show through the pre-refactor page roots */
+.layout .blog-page, .layout .contact-page, .layout .hall-page, .layout .resources-page,
+.layout .robot-page, .layout .team-page, .layout .trainer-page, .layout .robot-gallery { background: transparent; }

@@ -140,3 +140,18 @@
   --bg-elev-2: rgba(30, 30, 40, 0.9);
 }
 .header.over-hero::before { content: ''; position: absolute; inset: 0 0 -28px 0; z-index: -1; background: linear-gradient(180deg, rgba(5, 6, 12, 0.72), transparent); pointer-events: none; }
+
+/* Scroll progress: a thin spray line along the header's bottom edge (scroll-driven, no JS) */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .header::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; pointer-events: none;
+      background: var(--team-gradient); box-shadow: 0 0 12px var(--team-glow);
+      transform-origin: 0 50%; transform: scaleX(0);
+      animation: header-progress linear both; animation-timeline: scroll(root);
+    }
+    @keyframes header-progress { to { transform: scaleX(1); } }
+  }
+}
+.brand:hover .brand-mark { animation: brand-hop 620ms var(--ease-spring); }
+@keyframes brand-hop { 30% { translate: 0 -5px; } 60% { translate: 0 1px; } }

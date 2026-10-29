@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { withBase } from '../utils/asset.ts';
+import RobotLogo from './RobotLogo';
 import './Footer.css';
 
 const InstagramIcon = () => (
@@ -30,7 +30,7 @@ const Footer = () => {
       <div className="container footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <img src={withBase('brand/logo-xcellence-white.png')} alt="" width="48" height="53" className="footer-mark" />
+            <RobotLogo team="xcellence" size={48} className="footer-mark" />
             <span>
               <strong>xCellence</strong>
               <em>Robotics Lab</em>

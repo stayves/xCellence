@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 import Footer from './Footer';
+import AmbientBackground from './AmbientBackground';
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
+import { usePointerSpotlight } from '../hooks/usePointerSpotlight';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -65,6 +67,7 @@ function Layout() {
   }, [location.pathname, location.hash]);
 
   useRevealOnScroll(location.pathname);
+  usePointerSpotlight();
 
   const toggleTheme = () => {
     setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
@@ -72,6 +75,7 @@ function Layout() {
 
   return (
     <div className="layout" data-team={teamForPath(location.pathname)}>
+      <AmbientBackground />
       <a className="skip-link" href="#main">{t('header.skip')}</a>
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <main id="main" className="main-content" tabIndex={-1}>

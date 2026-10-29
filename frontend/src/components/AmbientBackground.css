@@ -1,0 +1,46 @@
+/* ===== Ambient page backdrop ===== */
+.ambient {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  contain: strict;
+  background:
+    radial-gradient(120% 80% at 50% -10%, color-mix(in srgb, var(--bg-elev-2) 80%, transparent), transparent 60%),
+    var(--bg);
+}
+
+/* Graffiti wall, barely there, slowly panning */
+.ambient__wall { position: absolute; inset: -8%; opacity: 0.07; filter: saturate(0.6); }
+:root[data-theme='light'] .ambient__wall { opacity: 0.06; filter: grayscale(1) contrast(1.4); mix-blend-mode: multiply; }
+.ambient__wall .pic { background: none; }
+
+/* Aurora blobs */
+.ambient__blob {
+  position: absolute; width: 62vmax; height: 62vmax; border-radius: 50%;
+  filter: blur(80px); opacity: 0.22; will-change: transform;
+}
+.ambient__blob--blue { left: -22vmax; top: -18vmax; background: radial-gradient(closest-side, var(--blue), transparent); }
+.ambient__blob--orange { right: -24vmax; top: 30vh; background: radial-gradient(closest-side, var(--orange), transparent); }
+.ambient__blob--violet { left: 18vw; bottom: -34vmax; width: 50vmax; height: 50vmax; background: radial-gradient(closest-side, #7c3aed, transparent); opacity: 0.14; }
+:root[data-theme='light'] .ambient__blob { opacity: 0.16; }
+:root[data-theme='light'] .ambient__blob--violet { opacity: 0.08; }
+
+/* Dot grid, fading out from the top */
+.ambient__grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(color-mix(in srgb, var(--fg) 16%, transparent) 1px, transparent 1.4px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(90% 70% at 50% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(90% 70% at 50% 0%, #000, transparent 75%);
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient__wall { animation: ambient-pan 70s ease-in-out infinite alternate; }
+  .ambient__blob--blue { animation: ambient-drift-a 38s ease-in-out infinite alternate; }
+  .ambient__blob--orange { animation: ambient-drift-b 44s ease-in-out infinite alternate; }
+  .ambient__blob--violet { animation: ambient-drift-c 52s ease-in-out infinite alternate; }
+  .ambient[data-paused] * { animation-play-state: paused; }
+}
+@keyframes ambient-pan { from { transform: scale(1.05) translate3d(-2%, -1%, 0); } to { transform: scale(1.12) translate3d(2%, 1.5%, 0); } }
+@keyframes ambient-drift-a { to { transform: translate3d(22vw, 26vh, 0) scale(1.15); } }
+@keyframes ambient-drift-b { to { transform: translate3d(-26vw, -18vh, 0) scale(0.9); } }
+@keyframes ambient-drift-c { to { transform: translate3d(14vw, -24vh, 0) scale(1.2); } }

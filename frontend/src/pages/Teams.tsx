@@ -1,7 +1,9 @@
+import type { MouseEvent as ReactMouseEvent } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Picture from '../components/Picture';
-import { withBase } from '../utils/asset.ts';
+import RobotLogo from '../components/RobotLogo';
+import { accentOf, bounce, sprayBurst } from '../utils/motion.ts';
 import './Teams.css';
 
 type Slug = 'xcellence' | 'xception';
@@ -11,6 +13,11 @@ const Arrow = () => <span className="arrow" aria-hidden="true">→</span>;
 
 const mascotFor = (slug: Slug) => (slug === 'xception' ? 'mascot-panda.png' : 'mascot-redpanda.png');
 const mascotPos = (slug: Slug) => (slug === 'xception' ? '40% 38%' : '58% 34%');
+
+const pokeMascot = (e: ReactMouseEvent<HTMLElement>) => {
+  bounce(e.currentTarget.firstElementChild);
+  sprayBurst(e.clientX, e.clientY, accentOf(e.currentTarget), 14);
+};
 
 /** /teams: both teams side by side */
 export const TeamsOverview = () => {
@@ -29,7 +36,7 @@ export const TeamsOverview = () => {
         {SLUGS.map((slug, i) => {
           const awards = t(`teams.${slug}.awards`, { returnObjects: true }) as string[];
           return (
-            <article key={slug} className={`team-card team-card--${slug} reveal`} data-team={slug} style={{ ['--d' as string]: `${i * 100}ms` }}>
+            <article key={slug} className={`team-card team-card--${slug} reveal`} data-team={slug} data-spotlight style={{ ['--d' as string]: `${i * 100}ms` }}>
               <div className="team-card__wall" aria-hidden="true">
                 <Picture src="graffiti-cover.png" alt="" fill sizes="50vw" />
               </div>
@@ -37,7 +44,7 @@ export const TeamsOverview = () => {
                 <Picture src={mascotFor(slug)} alt={`${t(`teams.${slug}.mascot`)}`} fill sizes="260px" position={mascotPos(slug)} />
               </div>
               <div className="team-card__body">
-                <img src={withBase(`brand/logo-${slug}-white.png`)} alt="" width="52" height="52" className="team-card__logo" />
+                <RobotLogo team={slug} size={52} interactive label={t('teams.wink', { name: t(`teams.${slug}.name`) })} className="team-card__logo" />
                 <p className="team-card__tag">{t(`teams.${slug}.tag`)}</p>
                 <h2>{t(`teams.${slug}.name`)}</h2>
                 <ul className="team-card__awards">
@@ -90,7 +97,7 @@ export const TeamPage = () => {
               {t('teams.handleLabel')} · {t(`teams.${slug}.handle`)}
             </a>
           </div>
-          <div className="tv-hero__mascot">
+          <div className="tv-hero__mascot" onClick={pokeMascot}>
             <Picture src={mascotFor(slug)} alt={t(`teams.${slug}.mascot`)} fill eager sizes="(min-width: 900px) 360px, 60vw" position={mascotPos(slug)} />
           </div>
         </div>
@@ -101,7 +108,7 @@ export const TeamPage = () => {
           <h2>{t('teams.storyTitle')}</h2>
           {story.map((p) => <p key={p}>{p}</p>)}
         </div>
-        <img src={withBase(`brand/logo-${slug}-white.png`)} alt="" width="220" height="220" className="team-story__logo" />
+        <RobotLogo team={slug} size={220} interactive label={t('teams.wink', { name: t(`teams.${slug}.name`) })} className="team-story__logo" />
       </section>
 
       <section className="container team-awards">

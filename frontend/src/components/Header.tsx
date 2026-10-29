@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { withBase } from '../utils/asset.ts';
+import RobotLogo from './RobotLogo';
 import { changeLanguage } from '../i18n';
 import './Header.css';
 
@@ -94,7 +94,7 @@ const Header = ({ theme, onToggleTheme }: HeaderProps) => {
     <header className={`header ${scrolled || menuOpen ? 'scrolled' : ''} ${location.pathname === '/' && !scrolled && !menuOpen ? 'over-hero' : ''}`}>
       <div className="header-container">
         <Link to="/" className="brand" viewTransition>
-          <img src={withBase('brand/logo-xcellence-white.png')} alt="" width="40" height="44" className="brand-mark" />
+          <RobotLogo team="xcellence" size={40} className="brand-mark" />
           <span className="brand-text">
             <span className="brand-name">xCellence</span>
             <span className="brand-sub">Robotics Lab</span>

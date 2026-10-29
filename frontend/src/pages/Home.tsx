@@ -1,9 +1,11 @@
-import { useRef, useState } from 'react';
-import type { PointerEvent as ReactPointerEvent } from 'react';
+import { Fragment, useRef, useState } from 'react';
+import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Picture from '../components/Picture';
 import CountUp from '../components/CountUp';
+import RobotLogo from '../components/RobotLogo';
+import { accentOf, bounce, sprayBurst } from '../utils/motion.ts';
 import { getBlogPosts } from '../data/blog.ts';
 import './Home.css';
 
@@ -50,6 +52,12 @@ const Home = () => {
     if (e.pointerType === 'mouse') setActive(team);
   };
 
+  // Easter egg: poke a mascot and it hops, spraying paint in its team colour.
+  const pokeMascot = (e: ReactMouseEvent<HTMLElement>) => {
+    bounce(e.currentTarget.firstElementChild);
+    sprayBurst(e.clientX, e.clientY, accentOf(e.currentTarget), 14);
+  };
+
   return (
     <div className="home">
       {/* ---------- Split hero ---------- */}
@@ -63,7 +71,14 @@ const Home = () => {
       >
         <div className="lab-hero__center">
           <p className="eyebrow lab-hero__eyebrow">{t('home2.hero.eyebrow')}</p>
-          <h1 id="hero-title" className="lab-hero__title">{t('home2.hero.title')}</h1>
+          <h1 id="hero-title" className="lab-hero__title">
+            {t('home2.hero.title').split(' ').map((word, i) => (
+              <Fragment key={`${word}-${i}`}>
+                {i > 0 && ' '}
+                <span className="lab-hero__word" style={{ ['--i' as string]: i }}>{word}</span>
+              </Fragment>
+            ))}
+          </h1>
           <p className="lab-hero__lead">{t('home2.hero.lead')}</p>
           <p className="lab-hero__hint" aria-hidden="true">{t('home2.hero.scroll')} <span>↓</span></p>
         </div>
@@ -79,8 +94,11 @@ const Home = () => {
               <Picture src="graffiti-cover.png" alt="" fill sizes="100vw" priority={team === 'xception'} eager />
             </div>
             <div className="lab-hero__tint" aria-hidden="true" />
+            <div className="lab-hero__specks" aria-hidden="true">
+              {Array.from({ length: 8 }, (_, i) => <span key={i} style={{ ['--s' as string]: i }} />)}
+            </div>
 
-            <div className="lab-hero__mascot">
+            <div className="lab-hero__mascot" onClick={pokeMascot}>
               <Picture
                 src={team === 'xception' ? 'mascot-panda.png' : 'mascot-redpanda.png'}
                 alt={t(`home2.hero.${team}.mascot`)}
@@ -98,6 +116,7 @@ const Home = () => {
               <Link
                 to={`/teams/${team}`}
                 className="btn lab-hero__cta"
+                data-magnetic
                 onFocus={() => setActive(team)}
                 onBlur={() => setActive(null)}
                 viewTransition
@@ -108,6 +127,7 @@ const Home = () => {
           </div>
         ))}
         <div className="lab-hero__seam" aria-hidden="true" />
+        <div className="lab-hero__spark" aria-hidden="true" />
       </section>
 
       {/* ---------- Stats ---------- */}
@@ -132,7 +152,7 @@ const Home = () => {
           </header>
           <div className="programs__grid">
             {programs.map((p, i) => (
-              <article key={p.tag} className="program reveal" style={{ ['--d' as string]: `${i * 90}ms` }}>
+              <article key={p.tag} className="program reveal" data-spotlight style={{ ['--d' as string]: `${i * 90}ms` }}>
                 <span className="program__tag">{p.tag}</span>
                 <h3>{p.title}</h3>
                 <p>{p.text}</p>
@@ -155,13 +175,13 @@ const Home = () => {
           </header>
           <div className="results__grid">
             {(['xception', 'xcellence'] as Team[]).map((team, i) => (
-              <article key={team} className={`award-card award-card--${team} reveal`} data-team={team} style={{ ['--d' as string]: `${i * 100}ms` }}>
+              <article key={team} className={`award-card award-card--${team} reveal`} data-team={team} data-spotlight style={{ ['--d' as string]: `${i * 100}ms` }}>
                 <div className="award-card__head">
-                  <img
-                    src={`${import.meta.env.BASE_URL}brand/logo-${team}-white.png`}
-                    alt=""
-                    width="44"
-                    height="44"
+                  <RobotLogo
+                    team={team}
+                    size={48}
+                    interactive
+                    label={t('teams.wink', { name: t(`teams.${team}.name`) })}
                     className="award-card__logo"
                   />
                   <div>
@@ -208,7 +228,7 @@ const Home = () => {
 
           <ul className="impact__grid">
             {impact.map((it, i) => (
-              <li key={it.label} className="impact__item reveal" style={{ ['--d' as string]: `${i * 80}ms` }}>
+              <li key={it.label} className="impact__item reveal" data-spotlight style={{ ['--d' as string]: `${i * 80}ms` }}>
                 <strong>{it.value}</strong>
                 <span>{it.label}</span>
                 <small>{it.detail}</small>
@@ -233,7 +253,7 @@ const Home = () => {
           </header>
           <div className="journal__grid">
             {posts.map((post, i) => (
-              <article key={post.slug} className="post reveal" style={{ ['--d' as string]: `${i * 90}ms` }}>
+              <article key={post.slug} className="post reveal" data-spotlight style={{ ['--d' as string]: `${i * 90}ms` }}>
                 <Link to={`/blog/${post.slug}`} className="post__link" viewTransition>
                   <div className="post__cover">
                     <Picture src={post.coverImage} alt={post.coverAlt} fill sizes="(min-width: 900px) 33vw, 100vw" />
@@ -277,8 +297,8 @@ const Home = () => {
           <h2>{t('home2.cta.title')}</h2>
           <p>{t('home2.cta.text')}</p>
           <div className="home-cta__row">
-            <Link to="/partners" className="btn" viewTransition>{t('home2.cta.partner')} <Arrow /></Link>
-            <Link to="/contact" className="btn btn--ghost" viewTransition>{t('home2.cta.join')}</Link>
+            <Link to="/partners" className="btn" data-magnetic viewTransition>{t('home2.cta.partner')} <Arrow /></Link>
+            <Link to="/contact" className="btn btn--ghost" data-magnetic viewTransition>{t('home2.cta.join')}</Link>
           </div>
         </div>
       </section>

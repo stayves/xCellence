@@ -16,7 +16,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: clip;
-  background: var(--bg);
+  background: var(--bg); /* the moving backdrop is <AmbientBackground> */
   color: var(--fg);
   font-family: var(--font-text);
   font-size: 1.0625rem;
@@ -129,8 +129,31 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn:hover .arrow { transform: translateX(4px); }
 
 /* Reveal on scroll (progressive: content is visible without JS) */
-.js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: var(--d, 0ms); }
-.js-reveal .reveal.in { opacity: 1; transform: none; }
+.js-reveal .reveal { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); transition: opacity 800ms var(--ease-out), transform 900ms var(--ease-out), filter 800ms var(--ease-out); transition-delay: var(--d, 0ms); }
+.js-reveal .reveal.in { opacity: 1; transform: none; filter: none; }
+/* Eyebrow rule draws itself in when its block reveals */
+.js-reveal .reveal .eyebrow::before { width: 0; transition: width 700ms var(--ease-out) calc(var(--d, 0ms) + 250ms); }
+.js-reveal .reveal.in .eyebrow::before { width: 28px; }
+
+/* Cursor spotlight: pointer position comes from usePointerSpotlight (--px / --py) */
+[data-spotlight] { position: relative; isolation: isolate; }
+[data-spotlight]::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(440px circle at var(--px, 50%) var(--py, 0%), var(--spot, color-mix(in srgb, var(--team-accent) 20%, transparent)), transparent 62%);
+  opacity: 0; transition: opacity 400ms var(--ease-out);
+}
+[data-spotlight]:hover::before { opacity: 1; }
+
+/* Button shine sweep */
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn::after {
+  content: ''; position: absolute; inset: -2px; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.38) 50%, transparent 65%);
+  transform: translateX(-120%);
+}
+.btn:hover::after { transform: translateX(120%); transition: transform 750ms var(--ease-out); }
+.btn--ghost::after { background: linear-gradient(110deg, transparent 35%, color-mix(in srgb, var(--fg) 16%, transparent) 50%, transparent 65%); }
+[data-magnetic] { transition: translate 260ms var(--ease-out), transform 220ms var(--ease-out), background-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms var(--ease-out); }
 
 /* Legacy section headers (older pages) */
 .section-header { text-align: center; margin-bottom: clamp(28px, 4vw, 56px); }
@@ -145,5 +168,6 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .js-reveal .reveal { opacity: 1; transform: none; }
+  .js-reveal .reveal { opacity: 1; transform: none; filter: none; }
+  .js-reveal .reveal .eyebrow::before { width: 28px; }
 }

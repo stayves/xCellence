@@ -1,0 +1,22 @@
+/* Robot logo with a blinking right eye. The bitmap has the eye masked out; the vector eye sits exactly on top. */
+.robot-logo { display: inline-block; flex-shrink: 0; line-height: 0; }
+.robot-logo__body { position: relative; display: block; width: var(--logo-w, 48px); transform-origin: 50% 90%; }
+.robot-logo__img { display: block; width: 100%; height: auto; mask-size: 100% 100%; -webkit-mask-size: 100% 100%; }
+.robot-logo__eye { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.robot-logo__eye polygon { transform-box: fill-box; transform-origin: center; }
+
+/* Interactive: a real button with a comfortable hit area */
+.layout .robot-logo--interactive {
+  min-width: 44px; min-height: 44px; padding: 0; margin: 0;
+  display: inline-grid; place-items: center;
+  background: none; border: 0; border-radius: var(--r-s); color: inherit; cursor: pointer;
+  transition: transform 260ms var(--ease-out);
+}
+.layout .robot-logo--interactive:hover { background: none; transform: rotate(-5deg) scale(1.05); }
+.robot-logo--interactive .robot-logo__body { transition: filter 260ms var(--ease-out); }
+.robot-logo--interactive:hover .robot-logo__body { filter: drop-shadow(0 0 14px var(--team-glow)); }
+.layout .robot-logo--interactive:active { transform: scale(0.94); }
+
+/* Droplets from sprayBurst() */
+.spray-layer { position: fixed; inset: 0; z-index: 1500; pointer-events: none; overflow: hidden; }
+.spray-layer span { position: absolute; border-radius: 50%; box-shadow: 0 0 10px currentColor; will-change: transform, opacity; }
