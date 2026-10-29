@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Resources.css';
+import Picture from '../components/Picture';
 
 type ResourceItem = {
   name: string;
@@ -118,7 +119,7 @@ const Resources = () => {
             </header>
             <div className="book-preview">
               <button type="button" className="book-cover" onClick={openBook} aria-label={t('resources.book.open')}>
-                <img src={encodeURI(bookPages[0])} alt={t('resources.book.coverAlt')} loading="lazy" />
+                <Picture src={encodeURI(bookPages[0])} alt={t('resources.book.coverAlt')} sizes="(min-width: 900px) 30vw, 80vw" />
                 <span className="book-cover-overlay">{t('resources.book.open')}</span>
               </button>
               <div className="book-preview-details">
@@ -183,7 +184,7 @@ const Resources = () => {
                 </button>
                 {prevPageSrc ? (
                   <button type="button" className="book-side-preview" onClick={goPrevPage}>
-                    <img src={prevPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex })} />
+                    <Picture src={prevPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex })} sizes="20vw" />
                     <span>{t('resources.book.prev')}</span>
                   </button>
                 ) : (
@@ -191,7 +192,7 @@ const Resources = () => {
                 )}
               </div>
               <div className="book-page-frame">
-                <img src={currentPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 1 })} />
+                <Picture src={currentPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 1 })} priority sizes="(min-width: 900px) 45vw, 90vw" />
                 <div className="book-page-tap-zones">
                   <button
                     type="button"
@@ -215,7 +216,7 @@ const Resources = () => {
                 </button>
                 {nextPageSrc ? (
                   <button type="button" className="book-side-preview" onClick={goNextPage}>
-                    <img src={nextPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 2 })} />
+                    <Picture src={nextPageSrc} alt={t('resources.book.pageAlt', { current: pageIndex + 2 })} sizes="20vw" />
                     <span>{t('resources.book.next')}</span>
                   </button>
                 ) : (

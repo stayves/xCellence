@@ -8,8 +8,7 @@
   padding: var(--hero-padding);
   min-height: var(--hero-min-height);
   height: var(--hero-height);
-  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,8 +51,7 @@
 
 .resources-section {
   padding: 4rem 1.5rem 5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -65,31 +63,26 @@
   display: grid;
   gap: 3rem;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .resources-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
 
 :root[data-theme='light'] .resources-section {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -110,8 +103,8 @@
 }
 
 .book-block {
-  border: 1px solid rgba(255, 107, 53, 0.45);
-  box-shadow: 0 18px 34px rgba(255, 107, 53, 0.12);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 45%, transparent);
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--team-accent) 12%, transparent);
 }
 
 .book-preview {
@@ -161,7 +154,7 @@
 ::root[data-theme='light'] .book-cover-overlay {
   background: var(--primary-orange);
   color: #fff;
-  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--team-accent) 30%, transparent);
 }
 
 .book-preview-details {
@@ -196,7 +189,7 @@
 
 .book-open-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 22px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 14px 22px color-mix(in srgb, var(--team-accent) 30%, transparent);
 }
 
 .book-page-count {
@@ -474,8 +467,8 @@
 }
 
 ::root[data-theme='light'] .book-nav-button:hover:not(:disabled) {
-  background: rgba(255, 107, 53, 0.12);
-  border-color: rgba(255, 107, 53, 0.35);
+  background: color-mix(in srgb, var(--team-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--team-accent) 35%, transparent);
 }
 
 .book-modal-footer {
@@ -549,8 +542,8 @@
 }
 
 :root[data-theme='light'] .book-nav-button:hover:not(:disabled) {
-  background: rgba(255, 107, 53, 0.12);
-  border-color: rgba(255, 107, 53, 0.35);
+  background: color-mix(in srgb, var(--team-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--team-accent) 35%, transparent);
 }
 
 :root[data-theme='light'] .book-modal-footer {
@@ -631,7 +624,7 @@
 
 .resource-type.video {
   background: rgba(255, 77, 0, 0.18);
-  color: #ff6b35;
+  color: var(--team-accent);
 }
 
 .resource-type.tool {
@@ -740,11 +733,11 @@
   }
 
   :root[data-theme='light'] .book-tap-zone:not(:disabled) {
-    background: linear-gradient(90deg, rgba(255, 107, 53, 0.14), transparent);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--team-accent) 14%, transparent), transparent);
   }
 
   :root[data-theme='light'] .book-tap-next:not(:disabled) {
-    background: linear-gradient(-90deg, rgba(255, 107, 53, 0.14), transparent);
+    background: linear-gradient(-90deg, color-mix(in srgb, var(--team-accent) 14%, transparent), transparent);
   }
 
   .book-modal-header {

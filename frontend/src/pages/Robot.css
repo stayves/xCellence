@@ -13,8 +13,7 @@
 .robot-hero {
   height: var(--hero-height);
   min-height: var(--hero-min-height);
-  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, color-mix(in srgb, var(--team-accent) 20%, transparent) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -61,24 +60,20 @@
   gap: 4rem;
   align-items: start;
   padding: 3rem 2rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .robot-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
@@ -94,7 +89,7 @@
   overflow: hidden;
   border: 2px solid var(--primary-orange);
   background: var(--secondary-black);
-  box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 20px 60px color-mix(in srgb, var(--team-accent) 30%, transparent);
 }
 
 .robot-main-image {
@@ -103,7 +98,7 @@
   display: block;
   min-height: 500px;
   object-fit: cover;
-  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, color-mix(in srgb, var(--team-accent) 20%, transparent) 100%);
 }
 
 .robot-name-tag {
@@ -149,7 +144,7 @@
   background: var(--secondary-black);
   padding: 1.5rem;
   border-radius: 15px;
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -159,7 +154,7 @@
 .spec-card:hover {
   transform: translateY(-5px);
   border-color: var(--primary-orange);
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--team-accent) 20%, transparent);
 }
 
 .spec-icon {
@@ -206,24 +201,20 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 2rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .features-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
@@ -239,7 +230,7 @@
   background: rgba(255, 255, 255, 0.03);
   padding: 2.5rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -247,7 +238,7 @@
 .feature-card:hover {
   transform: translateY(-10px);
   border-color: var(--primary-orange);
-  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--team-accent) 30%, transparent);
 }
 
 .feature-icon {
@@ -289,24 +280,20 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 2rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .gallery-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
@@ -323,7 +310,7 @@
   aspect-ratio: 4/3;
   border-radius: 15px;
   overflow: hidden;
-  border: 2px solid rgba(255, 107, 53, 0.2);
+  border: 2px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -331,7 +318,7 @@
 .gallery-item:hover {
   border-color: var(--primary-orange);
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 15px 40px color-mix(in srgb, var(--team-accent) 40%, transparent);
 }
 
 .gallery-item img {
@@ -339,7 +326,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, color-mix(in srgb, var(--team-accent) 20%, transparent) 100%);
 }
 
 .gallery-item:hover img {

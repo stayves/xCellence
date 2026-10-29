@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { withBase } from '../utils/asset.ts';
 import './Team.css';
+import Picture from '../components/Picture';
 
 type Member = {
   name: string;
@@ -47,7 +48,7 @@ const Team = () => {
             {mentors.map((mentor) => (
               <div key={mentor.name} className="team-member-card">
                 <div className="member-image-wrapper">
-                  <img src={mentor.image} alt={mentor.name} className="member-image" />
+                  <Picture src={mentor.image} alt={mentor.name} fill imgClassName="member-image" sizes="(min-width: 900px) 25vw, 50vw" />
                   <div className="member-overlay">
                     <span className="member-role">{mentor.role}</span>
                   </div>
@@ -77,7 +78,7 @@ const Team = () => {
             {currentMembers.map((member) => (
               <div key={member.name} className="team-member-card">
                 <div className="member-image-wrapper">
-                  <img src={member.image} alt={member.name} className="member-image" />
+                  <Picture src={member.image} alt={member.name} fill imgClassName="member-image" sizes="(min-width: 900px) 25vw, 50vw" />
                   <div className="member-overlay">
                     <span className="member-role">{member.role}</span>
                   </div>

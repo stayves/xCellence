@@ -1,0 +1,27 @@
+/* Containers of the pre-refactor pages that now hold <Picture fill>: they must be positioned. */
+.blog-card-cover, .event-media, .past-event-image, .hall-gallery-media, .alumni-photo, .member-image-wrapper { position: relative; }
+.article-cover .pic, .article-inline-image .pic, .feature-image .pic { border-radius: 18px; }
+.article-cover .pic img, .article-inline-image .pic img { width: 100%; height: 100%; }
+.track-logo .pic, .category-logo .pic { background: none; }
+.book-cover .pic, .book-page .pic, .book-side-preview .pic { border-radius: 8px; }
+
+/* Legacy page heroes sit under the fixed header: consistent top spacing, centred, no stretched tags */
+.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero {
+  height: auto; min-height: 0;
+  padding: calc(var(--header-h) + clamp(32px, 6vw, 80px)) var(--gutter) clamp(36px, 5vw, 64px);
+  position: relative; overflow: hidden; text-align: center;
+  background: radial-gradient(70% 120% at 85% 0%, color-mix(in srgb, var(--team-accent) 22%, transparent), transparent 70%), var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.events-hero h1, .team-hero h1, .calendar-hero h1, .contact-hero h1, .resources-hero h1, .hall-hero h1, .trainer-hero h1, .blog-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+}
+.blog-hero .blog-tag, .blog-hero-content > span:first-child, .hero-label { width: fit-content; margin-inline: auto; }
+.blog-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .team-hero-content, .calendar-hero-content { justify-items: center; margin-inline: auto; }
+
+/* Chips and buttons that were white-on-orange: use the skin's accessible pair instead.
+   `.layout` raises specificity above the lazily loaded page CSS. */
+.layout .book-open-button, .layout .past-event-card .past-event-type { background: var(--team-accent); color: var(--team-on-accent); }
+/* Resource type chips have tinted fills in several hues: neutral text keeps them readable in both themes */
+.layout .resource-type, .layout .resource-type.template, .layout .resource-type.video, .layout .resource-type.guide,
+.layout .template, .layout .video, .layout .guide { color: var(--fg); }

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getBlogArticlesBySlug, type ArticleSection } from '../data/blog.ts';
 import { withBase } from '../utils/asset.ts';
 import './BlogArticle.css';
+import Picture from '../components/Picture';
 
 const BlogArticle = () => {
   const { t } = useTranslation();
@@ -136,7 +137,7 @@ const BlogArticle = () => {
 
   const renderInlineImage = (image: { src: string; alt: string; caption?: string }, key: string) => (
     <figure key={key} className="article-inline-image">
-      <img src={image.src} alt={image.alt} loading="lazy" />
+      <Picture src={image.src} alt={image.alt} sizes="(min-width: 900px) 720px, 100vw" />
       <figcaption>{image.caption ?? image.alt}</figcaption>
     </figure>
   );
@@ -245,7 +246,7 @@ const BlogArticle = () => {
             </header>
 
             <figure className="article-cover">
-              <img src={resolvedArticle.heroImage} alt={resolvedArticle.heroAlt} />
+              <Picture src={resolvedArticle.heroImage} alt={resolvedArticle.heroAlt} priority sizes="(min-width: 900px) 900px, 100vw" />
               <figcaption>{t('blogArticle.photoCredit')}</figcaption>
             </figure>
 

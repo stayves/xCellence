@@ -1,8 +1,7 @@
 .events-page {
   padding-top: 80px;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,8 +10,7 @@
 .events-hero {
   height: var(--hero-height);
   min-height: var(--hero-min-height);
-  background: linear-gradient(135deg, var(--secondary-black) 0%, rgba(255, 107, 53, 0.2) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, color-mix(in srgb, var(--team-accent) 20%, transparent) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -46,8 +44,7 @@
 
 .events-content {
   padding: 4rem 1.5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,39 +54,33 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .events-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
 
 :root[data-theme='light'] .events-content {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 :root[data-theme='light'] .events-page {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -106,7 +97,7 @@
   background: var(--secondary-black);
   padding: 2.25rem;
   border-radius: 15px;
-  border: 2px solid rgba(255, 107, 53, 0.2);
+  border: 2px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -149,7 +140,7 @@
 
 .event-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--team-accent) 30%, transparent);
   border-color: var(--primary-orange);
 }
 
@@ -212,14 +203,14 @@
   border-radius: 14px;
   overflow: hidden;
   background: var(--secondary-black);
-  border: 1px solid rgba(255, 107, 53, 0.25);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 25%, transparent);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .past-event-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(255, 107, 53, 0.25);
+  box-shadow: 0 18px 36px color-mix(in srgb, var(--team-accent) 25%, transparent);
   border-color: var(--primary-orange);
 }
 
@@ -251,7 +242,7 @@
   gap: 0.5rem;
   padding: 1rem 1.1rem 1.2rem;
   background: var(--secondary-black);
-  border-top: 1px solid rgba(255, 107, 53, 0.2);
+  border-top: 1px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
 }
 
 .past-event-type {
@@ -261,7 +252,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.4px;
-  background: rgba(255, 107, 53, 0.85);
+  background: color-mix(in srgb, var(--team-accent) 85%, transparent);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }

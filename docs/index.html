@@ -1,14 +1,51 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/xCellence/xCellence.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>xCellence</title>
-    <script type="module" crossorigin src="/xCellence/assets/index-CJiVdQL5.js"></script>
-    <link rel="stylesheet" crossorigin href="/xCellence/assets/index-AcIjXLj6.css">
+    <title>xCellence Robotics Lab | FTC, FLL and WRO teams from Astana</title>
+    <meta name="description" content="xCellence Robotics Lab at Nazarbayev Intellectual School, Astana: two FIRST Tech Challenge teams (xCellence and xCeption), FLL and WRO programs, and a student community that builds and teaches robotics." />
+    <meta name="theme-color" content="#08080b" />
+    <link rel="icon" href="/xCellence/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/xCellence/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/xCellence/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="xCellence Robotics Lab" />
+    <meta property="og:title" content="xCellence Robotics Lab" />
+    <meta property="og:description" content="Two FIRST Tech Challenge teams, FLL and WRO programs, one student community in Astana, Kazakhstan." />
+    <meta property="og:image" content="/xCellence/og-lab.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Apply the saved theme before first paint so there is no light/dark flash.
+      try {
+        var t = localStorage.getItem('xcellence-theme');
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    </script>
+    <script>
+      // Home route only: start fetching the hero image before the JS bundle has rendered it (fixes late LCP discovery).
+      (function () {
+        var base = '/xCellence/';
+        var path = location.pathname;
+        if (path !== base && path !== base.replace(/\/$/, '')) return;
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'image'; l.type = 'image/avif';
+        l.setAttribute('imagesrcset', base + 'img/graffiti-cover-480.avif 480w, ' + base + 'img/graffiti-cover-960.avif 960w, ' + base + 'img/graffiti-cover-1600.avif 1600w');
+        l.setAttribute('imagesizes', '100vw');
+        l.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(l);
+      })();
+    </script>
+    <script type="module" crossorigin src="/xCellence/assets/index-DIo3swFd.js"></script>
+    <link rel="stylesheet" crossorigin href="/xCellence/assets/index-CmrOtAqP.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/xCellence/assets/onest-latin-wght-normal-Dun_Rd-l.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/xCellence/assets/unbounded-latin-wght-normal-D5afBTBx.woff2">
   </head>
   <body>
     <div id="root"></div>
+    <noscript>xCellence Robotics Lab needs JavaScript to show this site. Contact: ftcxcellence@gmail.com</noscript>
   </body>
 </html>

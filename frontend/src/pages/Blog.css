@@ -8,8 +8,7 @@
   padding: var(--hero-padding);
   min-height: var(--hero-min-height);
   height: var(--hero-height);
-  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,8 +51,7 @@
 
 .blog-section {
   padding: 4rem 1.5rem 5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -63,24 +61,20 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .blog-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
@@ -268,31 +262,26 @@
   flex-direction: column;
   gap: 2.1rem;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.75) 0%, rgba(8, 8, 12, 0.7) 45%, rgba(6, 6, 7, 0.78) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-radius: 24px;
-  border: 1px solid rgba(255, 107, 53, 0.18);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 18%, transparent);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] .feature-container {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.6) 0%, rgba(240, 242, 249, 0.6) 55%, rgba(232, 235, 245, 0.62) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
   border-color: rgba(17, 18, 32, 0.08);
   box-shadow: 0 16px 32px rgba(17, 20, 32, 0.12);
 }
 
 :root[data-theme='light'] .blog-section {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

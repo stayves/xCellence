@@ -1,0 +1,281 @@
+{
+  "header": {
+    "nav": {
+      "teams": "Teams",
+      "explore": "Explore",
+      "people": "Members & mentors",
+      "partners": "Partners"
+    },
+    "skip": "Skip to content",
+    "partnerCta": "Partner with us",
+    "exploreLabel": "More pages",
+    "logoAlt": "xCellence Robotics Lab logo"
+  },
+  "brand": {
+    "lab": "xCellence Robotics Lab",
+    "descriptor": "NIS Nura Robotics Lab · Astana, Kazakhstan"
+  },
+  "footer": {
+    "tagline": "Excellence in Robotics & Innovation",
+    "description": "A robotics lab at Nazarbayev Intellectual School in Astana. Two FIRST Tech Challenge teams, FLL and WRO programs, one student community.",
+    "labTitle": "The lab",
+    "teamsTitle": "Teams",
+    "pagesTitle": "Pages",
+    "copyright": "© {{year}} xCellence Robotics Lab. All rights reserved.",
+    "firstTrademark": "FIRST® and FIRST® Tech Challenge are registered trademarks of",
+    "credit": "Website by Arnur"
+  },
+  "events": { "hero": { "subtitle": "Our journey through the robotics season: FTC, FLL and WRO" } },
+  "resources": {
+    "hero": {
+      "description": "A curated library of technical guides, CAD templates and outreach playbooks behind the xCellence workflow across FTC, FLL and WRO."
+    }
+  },
+  "blog": {
+    "hero": {
+      "description": "Engineering notes, competition recaps and outreach stories from our teams across FTC, FLL and WRO."
+    }
+  },
+  "home2": {
+    "hero": {
+      "eyebrow": "NIS Nura Robotics Lab · Astana, Kazakhstan",
+      "title": "xCellence Robotics Lab",
+      "lead": "Two FIRST Tech Challenge teams, FLL and WRO programs, and a student community that builds, programs and teaches robotics.",
+      "scroll": "Choose a team",
+      "xception": {
+        "name": "xCeption",
+        "tag": "Blue team · team 24804",
+        "pitch": "Control Award winner. Think Award 3rd place at the FIRST World Championship.",
+        "cta": "Explore team xCeption",
+        "mascot": "Giant panda, the mascot of xCeption"
+      },
+      "xcellence": {
+        "name": "xCellence",
+        "tag": "Orange team · team 28300",
+        "pitch": "Think Award and Design Award winner. Two-time Winning Alliance Captain.",
+        "cta": "Explore team xCellence",
+        "mascot": "Red panda, the mascot of xCellence"
+      }
+    },
+    "stats": {
+      "items": [
+        { "value": 190, "suffix": "", "label": "people engaged offline" },
+        { "value": 29000, "suffix": "", "label": "people engaged online" },
+        { "value": 105, "suffix": "+", "label": "event hours" },
+        { "value": 90, "suffix": "+", "label": "people mentored in FTC and FLL teams" }
+      ]
+    },
+    "programs": {
+      "eyebrow": "What we do",
+      "title": "Three programs, one lab",
+      "intro": "Robotics is more than one competition. We compete, we write down what we learn, and we help new teams get started.",
+      "items": [
+        {
+          "tag": "FTC",
+          "title": "FIRST Tech Challenge",
+          "text": "Our two teams, xCeption and xCellence, design, build and program a competition robot every season.",
+          "cta": "See the results",
+          "to": "#results"
+        },
+        {
+          "tag": "FLL",
+          "title": "FIRST LEGO League",
+          "text": "We mentor new FLL teams and publish xAct, an action-based framework for FLL and WRO.",
+          "cta": "Read about xAct",
+          "to": "/blog/xact-framework"
+        },
+        {
+          "tag": "WRO",
+          "title": "World Robot Olympiad",
+          "text": "RoboSport and RoboMission Senior: national and international prizes, with build guides from the students who competed.",
+          "cta": "Read the build guides",
+          "to": "/blog/wro-robosport-ball-system"
+        }
+      ]
+    },
+    "results": {
+      "eyebrow": "Results",
+      "title": "Awards from both teams",
+      "intro": "Season highlights of xCeption and xCellence at regional, national and FIRST World Championship events.",
+      "more": "All results and the story behind them"
+    },
+    "impact": {
+      "eyebrow": "Beyond competition",
+      "title": "What the lab gives back",
+      "intro": "Mentoring, classes for children and events for the wider community.",
+      "items": [
+        { "value": "90+", "label": "people mentored", "detail": "inside FTC and FLL teams" },
+        { "value": "150", "label": "participants at the Astana Innovation Forum", "detail": "100 guests and 130+ startups" },
+        { "value": "35 h", "label": "of robotics classes for kindergarten children", "detail": "twice a week, a group of 15 children" },
+        { "value": "45", "label": "participants at WRO UTC", "detail": "from 7 cities, over 7 days" }
+      ],
+      "milestones": [
+        "Meeting with the Chairman of the Senate",
+        "Presentation to President Kassym-Jomart Tokayev"
+      ],
+      "photos": {
+        "kids": "Team members with children at a robotics class",
+        "ggf": "Girls Go First forum",
+        "uniforms": "Team members in xCellence uniforms at a competition",
+        "flags": "Team members with the flags of Kazakhstan and Taiwan",
+        "captains": "xCellence team with Winning Alliance Captain banners",
+        "bridge": "Team with the xCellence Robotics flag at Digital Bridge 2025"
+      }
+    },
+    "journal": {
+      "eyebrow": "Lab journal",
+      "title": "Guides written by the team",
+      "cta": "All articles",
+      "read": "Read the article"
+    },
+    "cta": {
+      "title": "Build with us",
+      "text": "Companies, schools and students: there is a place for you in the lab.",
+      "partner": "Become a partner",
+      "join": "Join or contact the team"
+    }
+  },
+  "teams": {
+    "hero": {
+      "eyebrow": "Teams",
+      "title": "Two teams, one lab",
+      "lead": "xCeption and xCellence share a workshop, mentors and mission. Each has its own robot, colors and mascot."
+    },
+    "more": "Meet the team",
+    "mascotLabel": "Mascot",
+    "handleLabel": "Instagram",
+    "awardsTitle": "Awards",
+    "storyTitle": "The team",
+    "peopleTitle": "Members and mentors",
+    "peopleText": "Members and mentors of the lab are listed on one page, because the two teams work side by side.",
+    "peopleCta": "See members and mentors",
+    "backToTeams": "All teams",
+    "todoPhotos": "Team photos are coming soon.",
+    "xcellence": {
+      "name": "xCellence",
+      "tag": "Orange team · FTC team 28300",
+      "mascot": "Red panda",
+      "story": [
+        "Since 2022, xCellence has been promoting robotics and STEAM in Kazakhstan. We are now in our 4th generation of students.",
+        "We started and mentored xCeption and several FLL teams, and we publish the guides we wish we had when we began."
+      ],
+      "awards": [
+        "Winning Alliance Captain, 2x",
+        "Inspire Award, 2nd place",
+        "Inspire Award, 3rd place",
+        "Think Award winner",
+        "Think Award, 2nd place",
+        "Design Award winner"
+      ],
+      "handle": "@xcellence_ftc",
+      "url": "https://www.instagram.com/xcellence_ftc/"
+    },
+    "xception": {
+      "name": "xCeption",
+      "tag": "Blue team · FTC team 24804",
+      "mascot": "Giant panda",
+      "story": [
+        "xCeption is the lab's second FTC team. It was started and mentored by xCellence and now competes under its own colors."
+      ],
+      "awards": [
+        "Finalist Alliance Captain, 2x",
+        "Winning Alliance Captain, 2x",
+        "Innovate Award",
+        "Control Award winner",
+        "Control Award, 2nd place",
+        "Inspire Award, 2nd place",
+        "Ladies FIRST Regional winner",
+        "Think Award, 3rd place at the FIRST World Championship"
+      ],
+      "handle": "@xception.ftc",
+      "url": "https://www.instagram.com/xception.ftc/"
+    }
+  },
+  "partners": {
+    "hero": {
+      "eyebrow": "Partners",
+      "title": "Help us build the next generation of engineers",
+      "lead": "We are looking for companies that want to support young engineers in Kazakhstan and be seen with a team that wins.",
+      "cta": "Write to us",
+      "download": "Download the proposal (PDF)"
+    },
+    "about": {
+      "title": "Who we are",
+      "text": "We are NIS Nura Robotics Lab, a robotics community at Nazarbayev Intellectual School in Astana, Kazakhstan. Our lab brings together two teams, xCeption and xCellence, united by a passion for engineering, innovation and teamwork. Together, we design, build and program robots while developing the next generation of STEM leaders."
+    },
+    "first": {
+      "title": "Why FIRST",
+      "text": "FIRST is a global robotics organization that inspires young people to become science and technology leaders. Through FIRST Tech Challenge, our teams engineer robots, compete in challenges and develop real-world skills in programming, design, problem-solving and collaboration. Beyond competition, we share knowledge, mentor others and inspire more students to explore STEM.",
+      "stats": [
+        { "value": "21,000", "label": "schoolchildren across Central Asia take part every year" },
+        { "value": "94%", "label": "of FIRST alumni go on to study STEM" },
+        { "value": "110", "label": "countries take part" },
+        { "value": "3.2M", "label": "people have taken part since 1989" }
+      ],
+      "source": "Figures from FIRST, as quoted in the xCellence business deck."
+    },
+    "track": {
+      "title": "Our track record",
+      "items": [
+        { "value": "4", "label": "years in FIRST" },
+        { "value": "8M ₸", "label": "won by our projects" },
+        { "value": "Top 3", "label": "team in Kazakhstan" }
+      ],
+      "intl": "International awards",
+      "intlItems": [
+        "WRO Future Engineers, 2nd place (Panama)",
+        "WRO RoboMission Junior, 2nd place (Panama)",
+        "FTC Goa International, Think Award winner (India)"
+      ],
+      "alumni": "Our alumni go on to top universities in Kazakhstan and abroad."
+    },
+    "packages": {
+      "title": "Ways to partner",
+      "intro": "Three packages. Details and current prices are in the proposal, or write to us and we will tailor one.",
+      "get": "What you get",
+      "items": [
+        {
+          "name": "Brand & Merch Partner",
+          "for": "For companies that want to be visibly associated with the team and its results.",
+          "perks": [
+            "Your logo on team clothing, banners and branded materials",
+            "Your brand on stickers, print materials and our pit area at competitions and forums",
+            "Mentions in posts about competitions and events"
+          ],
+          "outcome": "Long-term visibility and an association with technology and achievement."
+        },
+        {
+          "name": "Event Partner",
+          "for": "For companies that support educational and technology events and want to reach new STEM students.",
+          "perks": [
+            "Official partner of the team's events",
+            "Brand integration at the Girls Go First forum (with Panheya) and the city STEM hackathon",
+            "Logo on presentations, event screens, banners and the team uniform",
+            "Steady mentions on the team's social media, plus a post and a series of stories about the partnership",
+            "Your representatives at events: networking and direct contact with participants"
+          ],
+          "outcome": "Direct access to schoolchildren and students interested in STEM."
+        },
+        {
+          "name": "Tech & Development Partner",
+          "for": "The key partner behind the team's technical development and competitiveness.",
+          "perks": [
+            "Strategic technical partner status",
+            "Your logo on robots, key technical elements, print materials and the team uniform",
+            "Mentions in everything about development, testing and competition",
+            "Your brand in engineering cases and project presentations",
+            "Priority mentions in media and team reports, plus a post and stories series"
+          ],
+          "outcome": "Your brand inside the engineering process, on the robots, all season."
+        }
+      ],
+      "fundsTitle": "Support goes to",
+      "funds": ["Parts and components", "goBILDA and builds", "Robot upgrades", "Preparation for competitions and testing"]
+    },
+    "contact": {
+      "title": "Let's talk",
+      "text": "Tell us what your company wants to achieve and we will suggest a package.",
+      "cta": "ftcxcellence@gmail.com"
+    }
+  }
+}

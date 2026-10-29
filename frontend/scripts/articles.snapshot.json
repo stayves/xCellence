@@ -1,0 +1,14 @@
+{
+  "en": {
+    "posts": "e85b3fc22f462ba22992d5be91177af8610967fac5f33002a6f40f472cbd46ba",
+    "articlesBySlug": "17bbf0b051d64fa2c355bf8039e5826871475f2eac06fc633d44856ecc8e5189"
+  },
+  "ru": {
+    "posts": "03256e1cf9f1f6ac2c2c6788179c595dd256c100e4f3000c2306c0d2a2a29607",
+    "articlesBySlug": "f27753d8983127524fe8f53b30bf253c8f9dc370be4a400d9c8916cce501e2e4"
+  },
+  "kk": {
+    "posts": "a9aad01e388a679fa9af8166a9ed166282e67b68aa096128c349a80f15e47866",
+    "articlesBySlug": "58dbc80c82727be2de45ee6b73bdd6b60426d2602a3fde2392268a6c180097c4"
+  }
+}

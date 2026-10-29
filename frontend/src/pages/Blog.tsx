@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getBlogPosts, type BlogPost } from '../data/blog.ts';
 import { withBase } from '../utils/asset.ts';
 import './Blog.css';
+import Picture from '../components/Picture';
 
 const Blog = () => {
   const { t } = useTranslation();
@@ -50,7 +51,7 @@ const Blog = () => {
                 aria-disabled={!post.slug}
               >
                 <figure className="blog-card-cover">
-                  <img src={post.coverImage} alt={post.coverAlt} loading="lazy" />
+                  <Picture src={post.coverImage} alt={post.coverAlt} fill sizes="(min-width: 900px) 33vw, 100vw" />
                 </figure>
                 <header className="blog-card-header">
                   <span className="blog-tag">{post.tag}</span>

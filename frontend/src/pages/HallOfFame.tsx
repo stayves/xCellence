@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { withBase } from '../utils/asset.ts';
 import './HallOfFame.css';
+import Picture from '../components/Picture';
 
 // type Award = {
 //   title: string;
@@ -181,7 +182,7 @@ const HallOfFame = () => {
             {hallGallery.map((item) => (
               <article key={item.title} className="hall-gallery-card">
                 <div className="hall-gallery-media">
-                  <img src={item.src} alt={item.title} />
+                  <Picture src={item.src} alt={item.title} fill sizes="(min-width: 900px) 30vw, 90vw" />
                 </div>
                 <div className="hall-gallery-info">
                   <h3>{item.title}</h3>
@@ -209,7 +210,7 @@ const HallOfFame = () => {
               <div key={alumni.name} className="alumni-highlight-card">
                 {alumni.photo && (
                   <div className="alumni-photo">
-                    <img src={alumni.photo} alt={alumni.name} loading="lazy" />
+                    <Picture src={alumni.photo} alt={alumni.name} fill sizes="(min-width: 900px) 20vw, 50vw" />
                   </div>
                 )}
                 <div>

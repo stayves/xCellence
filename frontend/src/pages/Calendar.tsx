@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
 import { withBase } from '../utils/asset.ts'
 import './Calendar.css'
+import Picture from '../components/Picture';
 
 type CategoryId = 'kickoff' | 'regionals' | 'qualifiers' | 'bigEvents' | 'offSeason'
 type TrackId = 'FIRST' | 'WRO' | 'Other'
@@ -138,7 +139,7 @@ const Calendar = () => {
               </div>
               {track.logoSrc && (
                 <div className="track-logo">
-                  <img src={track.logoSrc} alt={track.logoAlt ?? track.label} loading="lazy" />
+                  <Picture src={track.logoSrc} alt={track.logoAlt ?? track.label} sizes="160px" />
                 </div>
               )}
             </button>
@@ -159,7 +160,7 @@ const Calendar = () => {
                   <span className="tab-label">{category.label}</span>
                   {category.logoSrc && (
                     <div className="category-logo">
-                      <img src={category.logoSrc} alt={category.logoAlt ?? category.label} loading="lazy" />
+                      <Picture src={category.logoSrc} alt={category.logoAlt ?? category.label} sizes="120px" />
                     </div>
                   )}
                 </div>

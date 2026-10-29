@@ -1,0 +1,133 @@
+/* ===== xCellence Robotics Lab: design tokens =====
+   One master brand + two team skins. Switch skin with data-team="xcellence" | "xception" on any ancestor.
+   Components must use --team-* tokens, never hard-coded team colours. */
+
+@property --split {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+:root {
+  --font-display: 'Unbounded Variable', 'Onest Variable', system-ui, sans-serif;
+  --font-text: 'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --orange: #ff5a1f;
+  --orange-2: #ff8a3d;
+  --blue: #2563eb; /* white on this = 5.2:1 */
+  --blue-2: #5b8dff;
+
+  --r-xs: 6px;
+  --r-s: 10px;
+  --r-m: 16px;
+  --r-l: 28px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --header-h: 76px;
+  --content-max: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-y: clamp(64px, 9vw, 128px);
+
+  /* Procedural spray grain: tiny inline SVG, no image download */
+  --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Theme: dark (default brand look) ---------- */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #08080b;
+  --bg-elev: #111116;
+  --bg-elev-2: #17171e;
+  --fg: #f6f6f8;
+  --fg-muted: #b7b8c2; /* 9.6:1 on --bg */
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.22);
+  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --noise-opacity: 0.05;
+  --header-bg: rgba(8, 8, 11, 0.72);
+}
+
+/* ---------- Theme: light ---------- */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f7f5f1;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #efece6;
+  --fg: #14141a;
+  --fg-muted: #4d4e5b; /* 7.9:1 on --bg */
+  --line: rgba(20, 20, 26, 0.12);
+  --line-strong: rgba(20, 20, 26, 0.3);
+  --shadow-card: 0 16px 36px rgba(20, 20, 26, 0.1);
+  --noise-opacity: 0.035;
+  --header-bg: rgba(247, 245, 241, 0.82);
+}
+
+/* ---------- Skins ---------- */
+/* Lab (master): orange leads, blue is the secondary signal */
+:root,
+[data-team='lab'] {
+  --team-accent: var(--orange);
+  --team-accent-2: var(--blue);
+  --team-on-accent: #0a0a0c; /* black on orange = 7.1:1 */
+  --team-glow: rgba(255, 90, 31, 0.45);
+  --team-gradient: linear-gradient(115deg, var(--blue) 0%, var(--orange) 100%);
+  --team-text: #ff7a45; /* accent used as text on dark */
+}
+[data-team='xcellence'] {
+  --team-accent: var(--orange);
+  --team-accent-2: var(--orange-2);
+  --team-on-accent: #0a0a0c;
+  --team-glow: rgba(255, 90, 31, 0.5);
+  --team-gradient: linear-gradient(135deg, #ff5a1f 0%, #ff9a3d 100%);
+  --team-text: #ff7a45;
+}
+[data-team='xception'] {
+  --team-accent: var(--blue);
+  --team-accent-2: var(--blue-2);
+  --team-on-accent: #ffffff; /* white on #2563eb = 5.2:1 */
+  --team-glow: rgba(46, 110, 255, 0.55);
+  --team-gradient: linear-gradient(135deg, #1a3fd6 0%, #5b8dff 100%);
+  --team-text: #7ba3ff;
+}
+:root[data-theme='light'],
+:root[data-theme='light'] [data-team='lab'],
+:root[data-theme='light'] [data-team='xcellence'] { --team-text: #b9380b; } /* 5.8:1 on white */
+:root[data-theme='light'] [data-team='xception'] { --team-text: #1d4ed8; } /* 6.7:1 on white */
+
+/* ---------- Legacy aliases: pre-refactor page CSS keeps working, but follows the skin ---------- */
+:root {
+  --primary-orange: var(--team-accent);
+  --secondary-orange: var(--team-accent-2);
+  --accent-orange: var(--team-accent-2);
+  --primary-black: var(--bg);
+  --secondary-black: var(--bg-elev);
+  --text-white: var(--fg);
+  --text-gray: var(--fg-muted);
+  --accent-surface: color-mix(in srgb, var(--team-accent) 16%, transparent);
+  --surface-card: var(--bg-elev);
+  --surface-card-border: var(--line);
+  --surface-card-shadow: var(--shadow-card);
+  --surface-card-shadow-hover: 0 22px 48px var(--team-glow);
+  --surface-subtle: var(--bg-elev-2);
+  --surface-subtle-border: var(--line);
+  --badge-surface: color-mix(in srgb, var(--team-accent) 16%, transparent);
+  --badge-text: var(--team-text);
+  --header-border: var(--line);
+  --header-shadow: rgba(0, 0, 0, 0.25);
+  --nav-link-active: var(--team-text);
+  --hero-height: auto;
+  --hero-min-height: 0px;
+  --hero-padding: clamp(96px, 14vw, 168px) var(--gutter) clamp(40px, 6vw, 72px);
+  --app-bg-image: none;
+}
+
+/* Light theme: legacy pages use the accent as text and as a fill under white text, so give them the text-safe orange (5.8:1 on white). */
+:root[data-theme='light'] {
+  --primary-orange: #b9380b;
+  --secondary-orange: #b9380b;
+  --accent-orange: #b9380b;
+  --nav-link-active: #b9380b;
+  --badge-text: #9a3412;
+  --badge-surface: color-mix(in srgb, #ff5a1f 10%, transparent);
+}

@@ -1,6 +1,5 @@
 .calendar-page {
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,8 +9,7 @@
 
 .calendar-hero {
   padding: 3.25rem 1.6rem 2.75rem;
-  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(135deg, var(--secondary-black) 0%, var(--accent-surface) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -89,13 +87,12 @@
 .calendar-search input:focus {
   outline: none;
   border-color: var(--primary-orange);
-  box-shadow: 0 12px 24px rgba(255, 107, 53, 0.14);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--team-accent) 14%, transparent);
 }
 
 .calendar-categories {
   padding: 1.25rem 1.6rem 0;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -103,8 +100,7 @@
 
 .track-switch {
   padding: 1.25rem 1.6rem 0;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -142,7 +138,7 @@
 .track-pill.active {
   border-color: var(--primary-orange);
   background: linear-gradient(135deg, #fff6f0 0%, #ffe8dc 100%);
-  box-shadow: 0 10px 22px rgba(255, 107, 53, 0.18);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--team-accent) 18%, transparent);
   color: #111319;
 }
 
@@ -204,7 +200,7 @@
 .category-card.active {
   border-color: var(--primary-orange);
   background: linear-gradient(135deg, #fff6f0 0%, #ffe8dc 100%);
-  box-shadow: 0 10px 22px rgba(255, 107, 53, 0.18);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--team-accent) 18%, transparent);
   color: #111319;
 }
 
@@ -241,8 +237,7 @@
   padding: 2.5rem 1.6rem 3.25rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.22) 0%, rgba(8, 8, 12, 0.2) 55%, rgba(6, 6, 7, 0.24) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -250,24 +245,21 @@
 
 :root[data-theme='light'] .track-switch,
 :root[data-theme='light'] .calendar-categories {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 :root[data-theme='light'] .calendar-results {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 :root[data-theme='light'] .calendar-page {
-  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%),
-    var(--app-bg-image);
+  background: linear-gradient(180deg, rgba(245, 246, 251, 0.16) 0%, rgba(240, 242, 249, 0.16) 55%, rgba(232, 235, 245, 0.18) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -322,9 +314,9 @@
 }
 
 .track-badge.first {
-  background: rgba(255, 107, 53, 0.14);
+  background: color-mix(in srgb, var(--team-accent) 14%, transparent);
   color: var(--primary-orange);
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 30%, transparent);
 }
 
 .track-badge.wro {
@@ -355,10 +347,10 @@
 
 .deadline {
   color: var(--text-white);
-  background: rgba(255, 107, 53, 0.14);
+  background: color-mix(in srgb, var(--team-accent) 14%, transparent);
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 107, 53, 0.3);
+  border: 1px solid color-mix(in srgb, var(--team-accent) 30%, transparent);
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -569,7 +561,7 @@
     gap: 0.6rem;
     padding: 0.9rem 1rem;
     border-radius: 14px;
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    border: 1px solid color-mix(in srgb, var(--team-accent) 20%, transparent);
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
     background: #191d2a;
   }

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { withBase } from '../utils/asset.ts';
 import './Events.css';
+import Picture from '../components/Picture';
 
 type EventCard = {
   title: string
@@ -46,7 +47,7 @@ const Events = () => {
               <div key={index} className="event-card upcoming">
                 {event.image && (
                   <div className="event-media">
-                    <img src={event.image} alt={event.title} loading="lazy" />
+                    <Picture src={event.image} alt={event.title} fill sizes="(min-width: 900px) 33vw, 100vw" />
                   </div>
                 )}
                 <div className="event-type-badge">{event.type}</div>
@@ -78,7 +79,7 @@ const Events = () => {
               <div key={index} className="past-event-card">
                 <div className="past-event-image">
                   {event.image && (
-                    <img src={event.image} alt={event.title} loading="lazy" />
+                    <Picture src={event.image} alt={event.title} fill sizes="(min-width: 900px) 33vw, 100vw" />
                   )}
                 </div>
                 <div className="past-event-body">
