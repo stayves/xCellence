@@ -29,6 +29,13 @@
   "resources": {
     "hero": {
       "description": "A curated library of technical guides, CAD templates and outreach playbooks behind the xCellence workflow across FTC, FLL and WRO."
+    },
+    "book": {
+      "read": "Read the book",
+      "swipe": "Swipe or tap the page edges to turn pages",
+      "keys": "← → turn pages · Esc closes",
+      "thumbs": "All pages",
+      "eyebrow": "Illustrated story"
     }
   },
   "blog": {
@@ -278,5 +285,11 @@
       "text": "Tell us what your company wants to achieve and we will suggest a package.",
       "cta": "ftcxcellence@gmail.com"
     }
+  },
+  "transition": {
+    "page": "page",
+    "loading": "Loading {{page}}…",
+    "loaded": "{{page}}",
+    "failed": "Couldn't open the page. You're still on the previous one."
   }
 }

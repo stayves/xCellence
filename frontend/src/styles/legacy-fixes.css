@@ -3,7 +3,6 @@
 .article-cover .pic, .article-inline-image .pic, .feature-image .pic { border-radius: 18px; }
 .article-cover .pic img, .article-inline-image .pic img { width: 100%; height: 100%; }
 .track-logo .pic, .category-logo .pic { background: none; }
-.book-cover .pic, .book-page .pic, .book-side-preview .pic { border-radius: 8px; }
 
 /* Legacy page heroes sit under the fixed header: consistent top spacing, centred, no stretched tags */
 .events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero {
@@ -21,7 +20,7 @@
 
 /* Chips and buttons that were white-on-orange: use the skin's accessible pair instead.
    `.layout` raises specificity above the lazily loaded page CSS. */
-.layout .book-open-button, .layout .past-event-card .past-event-type { background: var(--team-accent); color: var(--team-on-accent); }
+.layout .past-event-card .past-event-type { background: var(--team-accent); color: var(--team-on-accent); }
 /* Resource type chips have tinted fills in several hues: neutral text keeps them readable in both themes */
 .layout .resource-type, .layout .resource-type.template, .layout .resource-type.video, .layout .resource-type.guide,
 .layout .template, .layout .video, .layout .guide { color: var(--fg); }

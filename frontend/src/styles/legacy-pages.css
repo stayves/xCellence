@@ -1,0 +1,174 @@
+/* ===== Pre-refactor pages, brought in line with the home page =====
+   One override layer instead of rewriting nine page stylesheets. `.layout` lifts specificity above the
+   lazily loaded page CSS. Cards get .reveal + [data-spotlight] from useRevealOnScroll. */
+
+/* ---------- Page roots: the hero already clears the fixed header ---------- */
+.layout :is(.blog-page, .contact-page, .events-page, .hall-page, .resources-page, .team-page, .trainer-page, .calendar-page) {
+  padding-top: 0; min-height: 0; background: transparent;
+}
+
+/* ---------- Heroes: animated glow, staggered entrance, no boxed copy on mobile ---------- */
+.layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero) {
+  isolation: isolate;
+  background: transparent;
+  padding-top: calc(var(--header-h) + clamp(40px, 8vw, 104px));
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+.layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero)::after {
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  width: min(70vw, 820px); aspect-ratio: 1; top: -30%; right: -12%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--team-accent) 32%, transparent), transparent);
+  filter: blur(20px);
+}
+.layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero)::before {
+  /* the old single orange rule becomes a softer gradient seam */
+  background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--orange) 70%, transparent);
+  opacity: 0.7;
+}
+.layout :is(.events-hero-content, .team-hero-content, .calendar-hero-content, .contact-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .blog-hero-content) {
+  background: none; border: 0; box-shadow: none; padding: 0; max-width: 880px; margin-inline: auto;
+  display: grid; justify-items: center; gap: 14px;
+}
+.layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero) h1 {
+  font-size: clamp(2.2rem, 6vw, 4.6rem); line-height: 1; letter-spacing: -0.045em; margin: 0;
+}
+.layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero) p {
+  font-size: clamp(1rem, 1.6vw, 1.18rem); max-width: 58ch; color: var(--fg-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .layout :is(.events-hero, .team-hero, .calendar-hero, .contact-hero, .resources-hero, .hall-hero, .trainer-hero, .blog-hero)::after {
+    animation: lp-glow 18s ease-in-out infinite alternate;
+  }
+  .layout :is(.events-hero-content, .team-hero-content, .calendar-hero-content, .contact-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .blog-hero-content) > * {
+    animation: lp-rise 900ms var(--ease-out) both;
+  }
+  .layout :is(.events-hero-content, .team-hero-content, .calendar-hero-content, .contact-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .blog-hero-content) > :nth-child(2) { animation-delay: 110ms; }
+  .layout :is(.events-hero-content, .team-hero-content, .calendar-hero-content, .contact-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .blog-hero-content) > :nth-child(3) { animation-delay: 220ms; }
+  .layout :is(.events-hero-content, .team-hero-content, .calendar-hero-content, .contact-hero-content, .resources-hero-content, .hall-hero-content, .trainer-hero-content, .blog-hero-content) > :nth-child(n + 4) { animation-delay: 330ms; }
+}
+@keyframes lp-rise { from { opacity: 0; translate: 0 22px; filter: blur(8px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
+@keyframes lp-glow { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-18vw, 12vh, 0) scale(1.2); } }
+
+/* ---------- Sections and their panels: no panel-inside-a-panel, gutters come from the container ---------- */
+.layout :is(.blog-section, .events-section, .hall-section, .resources-section, .team-section, .trainer-section, .contact-section, .calendar-section, .aim-section, .alumni-section, .contact-form-section-wrap) {
+  background: transparent; padding-inline: 0;
+}
+.layout :is(.blog-section, .hall-section, .resources-section) { padding-block: clamp(40px, 6vw, 88px); }
+.layout :is(.blog-container, .contact-container, .events-container, .hall-container, .team-container, .trainer-container, .resources-container) {
+  width: min(100% - 2 * var(--gutter), var(--content-max)); max-width: none; margin-inline: auto;
+  padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none;
+}
+:root[data-theme='light'] .layout :is(.blog-container, .contact-container, .events-container, .hall-container, .team-container, .trainer-container, .resources-container) {
+  background: none; border: 0; box-shadow: none;
+}
+:root[data-theme='light'] .layout :is(.blog-section, .events-section, .hall-section, .resources-section, .team-section, .trainer-section, .calendar-section) { background: transparent; }
+
+/* Grids that can't push past a phone screen */
+.layout .blog-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.layout .events-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.layout .past-events-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.layout .team-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.layout .alumni-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(14px, 2vw, 24px); }
+.layout .hall-grid, .layout .metrics-grid, .layout .hall-gallery-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.layout .calendar-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.layout .contact-info-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.layout :is(.blog-grid, .events-grid, .past-events-grid, .team-grid, .calendar-card-grid) { gap: clamp(14px, 2vw, 24px); }
+
+/* Section headings match the home page rhythm */
+.layout .main-content .section-header { margin-bottom: clamp(28px, 4vw, 52px); }
+.layout .section-title { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -0.035em; }
+.layout .section-tag { background: color-mix(in srgb, var(--team-accent) 14%, transparent); border: 1px solid color-mix(in srgb, var(--team-accent) 30%, transparent); }
+.layout .title-underline { width: 64px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .layout .section-header.reveal .title-underline { width: 0; transition: width 800ms var(--ease-out) 300ms; }
+  .js-reveal .layout .section-header.reveal.in .title-underline { width: 64px; }
+}
+
+/* ---------- Cards: one glass surface, one hover language ---------- */
+.layout :is(.blog-card, .event-card, .past-event-card, .team-member-card, .alumni-highlight-card, .hall-card, .metric-card, .calendar-card, .contact-info-card, .info-card, .resource-block, .contact-info-section, .contact-form-section) {
+  background: color-mix(in srgb, var(--bg-elev) 82%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-l);
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
+  transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out), box-shadow 350ms var(--ease-out), opacity 800ms var(--ease-out);
+}
+.layout :is(.blog-card, .event-card, .past-event-card, .team-member-card, .alumni-highlight-card, .hall-card, .metric-card, .calendar-card, .contact-info-card, .info-card, .resource-block):hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--team-accent) 70%, transparent);
+  box-shadow: 0 28px 56px -26px var(--team-glow);
+}
+/* Revealed cards still lift on hover: .reveal.in sets transform:none, so restate it with more weight */
+.js-reveal .layout :is(.blog-card, .event-card, .past-event-card, .team-member-card, .alumni-highlight-card, .hall-card, .metric-card, .calendar-card, .contact-info-card, .info-card, .resource-block).reveal.in:hover { transform: translateY(-6px); }
+.js-reveal .layout :is(.resource-block, .contact-info-section, .contact-form-section).reveal.in:hover { transform: none; }
+.layout .resource-block:hover, .layout .contact-info-section:hover, .layout .contact-form-section:hover { transform: none; }
+
+/* Photos inside cards zoom gently */
+.layout :is(.blog-card-cover, .event-media, .past-event-image, .member-image-wrapper) { overflow: hidden; }
+.layout :is(.blog-card-cover, .event-media, .past-event-image, .member-image-wrapper) .pic img { transition: transform 900ms var(--ease-out), opacity 420ms var(--ease-out); }
+.layout :is(.blog-card, .event-card, .past-event-card, .team-member-card):hover :is(.blog-card-cover, .event-media, .past-event-image, .member-image-wrapper) .pic img { transform: scale(1.06); }
+
+/* Resource links and items */
+.layout .resource-item { background: color-mix(in srgb, var(--bg) 70%, transparent); border: 1px solid var(--line); border-radius: var(--r-m); transition: border-color 300ms var(--ease-out), transform 300ms var(--ease-out); }
+.layout .resource-item:hover { border-color: color-mix(in srgb, var(--team-accent) 60%, transparent); transform: translateX(4px); }
+.js-reveal .layout .resource-item.reveal.in:hover { transform: translateX(4px); }
+.layout .resource-item a { display: inline-flex; align-items: center; gap: 6px; }
+.layout .resource-item a .arrow { transition: transform 220ms var(--ease-out); }
+.layout .resource-item a:hover .arrow { transform: translateX(4px); }
+
+/* ---------- Hall of fame: people cards ---------- */
+.layout .alumni-highlight-card { align-items: flex-start; padding: clamp(20px, 3vw, 32px); }
+.layout .alumni-highlight-card h3 { overflow-wrap: anywhere; font-size: clamp(1.15rem, 2.2vw, 1.4rem); }
+.layout .alumni-photo { border-radius: var(--r-m); }
+@media (max-width: 560px) {
+  .layout .alumni-highlight-card { flex-direction: column; gap: 16px; }
+  .layout .alumni-photo { width: 96px; height: 96px; }
+}
+
+/* ---------- Calendar: theme-aware filter chips instead of white tiles on a dark page ---------- */
+.layout :is(.track-pill, .category-card) {
+  background: color-mix(in srgb, var(--bg-elev) 82%, transparent); color: var(--fg);
+  border: 1px solid var(--line-strong); border-radius: var(--r-m); min-width: 0;
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out), background-color 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
+}
+.layout :is(.track-pill, .category-card):hover { transform: translateY(-2px); border-color: var(--team-accent); background: color-mix(in srgb, var(--team-accent) 10%, var(--bg-elev)); }
+.layout :is(.track-pill, .category-card).active {
+  color: var(--fg); border-color: var(--team-accent);
+  background: color-mix(in srgb, var(--team-accent) 18%, var(--bg-elev));
+  box-shadow: 0 10px 26px -10px var(--team-glow);
+}
+.layout :is(.track-pill, .category-card) :is(.tab-label, .track-desc, .category-description) { color: inherit; overflow-wrap: anywhere; }
+.layout :is(.track-pill, .category-card) :is(.track-desc, .category-description) { color: var(--fg-muted); }
+.layout .track-switch { background: transparent; }
+.layout .category-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); }
+@media (max-width: 640px) {
+  .layout .track-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .layout .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .layout :is(.track-pill, .category-card) { padding: 10px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .layout :is(.track-pill, .category-card) .tab-label { font-size: 0.8rem; line-height: 1.2; }
+}
+
+/* ---------- Mobile rhythm ---------- */
+@media (max-width: 640px) {
+  .layout :is(.blog-card, .event-card, .past-event-card, .hall-card, .metric-card, .calendar-card, .contact-info-card, .info-card) { border-radius: var(--r-m); }
+  .layout .resource-block { padding: 22px 18px; }
+  .layout .contact-container { grid-template-columns: 1fr; }
+  .layout :is(.contact-info-section, .contact-form-section) { padding: 22px 18px; }
+  .layout .event-card { padding: 22px 18px; }
+  .layout .blog-card h3, .layout .blog-card h2 { font-size: 1.2rem; line-height: 1.2; }
+  .layout .blog-card { padding-bottom: 1.25rem; }
+}
+
+/* Once revealed, hover reacts at hover speed (the reveal transition is long and staggered) */
+.js-reveal .layout :is(.blog-card, .event-card, .past-event-card, .team-member-card, .alumni-highlight-card, .hall-card, .metric-card, .calendar-card, .contact-info-card, .info-card, .resource-item).reveal.in {
+  transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out), box-shadow 350ms var(--ease-out), opacity 800ms var(--ease-out) var(--d, 0ms);
+}
+
+/* Grid containers whose implicit column grew to the longest word (long Russian/Kazakh headings) */
+.layout .resources-container { grid-template-columns: minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); }
+.layout :is(.resource-block header h2, .section-title, .blog-card h3, .event-title, .alumni-highlight-card h3) { overflow-wrap: break-word; hyphens: auto; }
+.layout .resource-block header h2 { font-size: clamp(1.4rem, 4.6vw, 1.9rem); }
+@media (max-width: 640px) {
+  .layout .contact-container { grid-template-columns: minmax(0, 1fr); }
+  .layout .book-showcase { padding: 36px 18px 28px; }
+}

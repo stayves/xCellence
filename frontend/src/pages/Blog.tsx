@@ -1,27 +1,27 @@
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getBlogPosts, type BlogPost } from '../data/blog.ts';
 import { withBase } from '../utils/asset.ts';
+import { usePageTransition } from '../hooks/usePageTransition.ts';
 import './Blog.css';
 import Picture from '../components/Picture';
 
 const Blog = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { navigate } = usePageTransition();
   const blogPosts = getBlogPosts(t).map((post) => ({
     ...post,
     coverImage: withBase(post.coverImage),
   }));
-  const handleActivate = (slug?: string) => {
+  const handleActivate = (slug?: string, title?: string) => {
     if (!slug) return;
-    navigate(`/blog/${slug}`);
+    navigate(`/blog/${slug}`, title);
   };
 
-  const handleKeyActivate = (event: React.KeyboardEvent, slug?: string) => {
+  const handleKeyActivate = (event: React.KeyboardEvent, slug?: string, title?: string) => {
     if (!slug) return;
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      navigate(`/blog/${slug}`);
+      navigate(`/blog/${slug}`, title);
     }
   };
 
@@ -46,8 +46,8 @@ const Blog = () => {
                 className={`blog-card ${post.slug ? 'clickable' : 'disabled'}`}
                 role="button"
                 tabIndex={post.slug ? 0 : -1}
-                onClick={() => handleActivate(post.slug)}
-                onKeyDown={(event) => handleKeyActivate(event, post.slug)}
+                onClick={() => handleActivate(post.slug, post.title)}
+                onKeyDown={(event) => handleKeyActivate(event, post.slug, post.title)}
                 aria-disabled={!post.slug}
               >
                 <figure className="blog-card-cover">

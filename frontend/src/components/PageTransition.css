@@ -1,0 +1,46 @@
+/* Branded page transition overlay. Colours come from pageTransition.config.ts as --pt-* custom properties;
+   all motion is Web Animations on transform/opacity, driven from PageTransition.tsx. */
+.pt {
+  position: fixed; inset: 0; z-index: 3000; /* above header (900), spray (1500), skip link (2000) */
+  overflow: hidden; isolation: isolate; contain: strict;
+  pointer-events: auto; cursor: progress;
+  -webkit-tap-highlight-color: transparent;
+}
+.pt[hidden] { display: none; }
+
+/* Each disc is exactly the viewport diagonal (--pt-d), so scale(1) covers every corner on any screen. */
+.pt__disc {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--pt-d, 200vmax); height: var(--pt-d, 200vmax);
+  translate: -50% -50%; transform: scale(0);
+  border-radius: 50%;
+  will-change: transform; backface-visibility: hidden;
+}
+.pt__disc--orange-lead { background: var(--pt-orange-lead); }
+.pt__disc--orange { background: var(--pt-orange); }
+.pt__disc--blue-lead { background: var(--pt-blue-lead); }
+.pt__disc--blue { background: radial-gradient(circle closest-side, var(--pt-blue) 0%, var(--pt-blue) 18%, var(--pt-blue-deep) 100%); }
+
+.pt__stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(18px, 3.2vh, 30px);
+  padding: 0 16px;
+}
+
+.pt__mark { position: relative; aspect-ratio: 306 / 339; opacity: 0; will-change: transform, opacity; }
+.pt__spin { position: absolute; inset: 0; will-change: transform; }
+.pt__logo { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform, opacity; }
+.pt__logo--b { opacity: 0; }
+.pt__logo .robot-logo { width: 100%; }
+.pt__logo .robot-logo__body { width: 100%; filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.18)); }
+.pt__logo--b .robot-logo__body { width: 94%; margin-inline: auto; } /* square mark: optically match the taller one */
+
+.pt__label {
+  margin: 0; max-width: min(80vw, 520px);
+  font-family: var(--font-display); font-size: clamp(0.72rem, 1.5vw, 0.85rem); font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase; color: #fff;
+  padding-left: 0.32em; /* balance trailing letter-spacing */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center;
+  opacity: 0;
+}
